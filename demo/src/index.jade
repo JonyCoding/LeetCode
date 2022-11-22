@@ -1,0 +1,9 @@
+extends ./index_tp.jade
+prepend head
+  - var title = "QR決済を導入検討されている店舗様へ StarPayなら0円で導入いただけます - StarPay";
+prepend body
+  - var body_id = "index";
+block main
+  el-button 222233
+block script
+  script(src="./js/index.js?v=#{time}")
