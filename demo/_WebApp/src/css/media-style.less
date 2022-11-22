@@ -1,0 +1,502 @@
+body,
+html {
+	width: 100%;
+	font-size: 14px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #f9fbff;
+}
+.html {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+.clear {
+	clear: both;
+}
+a,
+p,
+ul {
+	padding: 0px;
+	text-decoration: none;
+	list-style: none;
+	margin: 0px;
+}
+* {
+	margin: 0px;
+	padding: 0px;
+}
+.body {
+	/* margin: 0px 0px 100px; */
+}
+.test-color-1 {
+	color: #ff9741;
+}
+.test-color-2 {
+	color: #000cff;
+}
+.test-color-3 {
+	color: #3b812b;
+}
+.test-color-4 {
+	color: #1e9f4d;
+}
+.test-color-5 {
+	color: #8179ec;
+}
+.test-color-6 {
+	color: #466edd;
+}
+@media screen and (max-width: 1200px) {
+
+    /* 页头 */
+    #index .index-head{
+        background-color: #3E8EE2;
+        min-width: 380px;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        padding: 10px 0;
+        max-height: 70px;
+        transition: all .6s;
+        /* padding: 5px 0; */
+    }
+    .head-active{
+        max-width: 50% !important;
+    }
+     .flex-container{
+        display: block;
+        background-color: #3E8EE2;
+        width: 80%;
+        min-width: 380px;
+        height: auto;
+        margin: 0px auto;
+        /* height: 48px; */
+    }
+    .head-menu {
+        position:absolute;
+        background-color: #3E8EE2;
+        transition: max-width .3s;
+        overflow: hidden;
+        max-width: 0px;
+        z-index: 9999;
+        height: 100vh;
+        /* top: 60px; */
+        left: 0;
+    }
+    .index-head .logo img{
+        width: 20%;
+        min-width: 200px;
+        display: block;
+        margin: 0px auto;
+    }
+    .menu-list{
+        overflow: hidden;
+        list-style: none;
+        display: block;
+        min-width: 200px;
+    }
+    .menu-item{
+        /* width: 10%; */
+        transition: all .5s;
+        border-bottom: 1px solid rgb(141, 187, 247);
+    }
+    .menu-item a{
+        margin-left: 10px;
+        padding-left: 20px;
+    }
+    @keyframes myheader2
+    {
+        from {transform:translateY(0px) scale(1,1);}
+        to {transform:translateY(0px) scale(1,1)}
+    }
+    .menu-item:hover{
+        /* transform:rotateZ(360deg); */
+        background-color: #fff;
+        color: #186EC8;
+        animation: myheader2 .3s;
+        transform:scale(1,1)
+    }
+    .menu-item:hover>a{
+        color: #186EC8;
+        animation: myheader2 .3s;
+        transform:scale(1,1)
+    }
+    .menu-item:hover ul{
+        /* width: 10%; */
+        line-height: 50px;
+        max-height: 500px;
+        transition: all .7s;
+    }
+    .head-menu ul li a{
+        color: white;
+        font-weight: 400;
+        width: 63px;
+        font-size: 16px;
+        text-align: left;
+        text-decoration: none;
+    }
+    .parent-menu{
+        position: relative;
+        max-height: 500px;
+    }
+    .user-menu-action{
+        transform: rotate(90deg);
+    }
+    .child-menu-list{
+        color: white;
+        position: relative;
+        z-index: 999;
+        /* background-color: #3E8EE2; */
+        /* top: 40px; */
+        width: 100%;
+        max-height: 0px;
+        height: auto;
+        overflow: hidden;
+        animation: all .5s;
+    }
+    .child-menu-list li{
+        padding:0px 15px;
+        height: auto;
+        background-color: #3E8EE2;
+        border-bottom: 1px solid #fff;
+        transition: all .6s;
+    }
+    .user-action{
+        display: flex;
+        position: absolute;
+        top: 10px;
+        right: 40px;
+    }
+    .user-menu {
+        position: absolute;
+        top: .8rem;
+        left: 10px;
+        color: white;
+    }
+    #user-action-pc{
+        display: none;
+    }
+    #user-action-mobil{
+        display: flex;
+        position: relative;
+        margin-bottom: 20px;
+        width: 100%;
+        right: 0;
+        left: 10px;
+        min-width: 200px;
+    }
+    .diskDuck{
+        width: 100%;
+        position: fixed;
+        display: none;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 10;
+        background-color: rgba(0, 0, 0,.5);
+    }
+    .disk-show{
+        display: block;
+    }
+    #menu-action { 
+        display: block;
+    }
+    .user-action .login-button a{
+        border-radius: 4px 4px 4px 4px;
+        border: 1px solid white;
+        padding: 5px 10px;
+        font-weight: 400;
+        font-size: 16px;
+        color: white;
+        text-align: left;
+        margin-right: 10px;
+        line-height: 48px;
+    }
+    .user-menu #mobil-i{
+        font-size: 20px;
+    }
+    
+    .child-menu-list li:hover{
+        color: #3E8EE2;
+        cursor:pointer;
+        transform:translateX(0px);
+        border: 1px solid #3E8EE2;
+        background-color: white;
+    }
+    .child-menu-list li:hover a{
+        color: #3E8EE2;
+    }
+    .user-action .login-button a:hover{
+        border-radius: 4px 4px 4px 4px;
+        color: #3E8EE2;
+        border: 1px solid #3E8EE2;
+        background-color: white;
+    }
+    
+    /* 页脚 */
+    .index-footer{
+        width: 100%;
+        min-width: 380px;
+        height:auto;
+        position: relative;
+        background-color: #3E8EE2;
+        /* padding: 20px; */
+    }
+    .footer-container{
+        display: block;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0px auto;
+    }
+    .footer-logo{
+        height: 100px;
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+    }
+    .link-list{
+        display: flex;
+        justify-content: start;
+        width: 580px;
+        margin: 0px auto;
+    }
+    .footer-link h3{
+        color: white;
+        text-align: center;
+    }
+    .footer-link ul{
+        color: white;
+        text-align: center;
+        width: 50%;
+        margin-right: 20px;
+    }
+    .footer-link ul li{
+        margin-top: 20px;
+    }
+    .footer-link ul a{
+        color: white;
+        font-size: 17px;
+        text-align: center;
+    }
+    .footer-service{
+        margin: 0px auto;
+        text-align: center;
+        margin: 30px 0px;
+    }
+    .copy-right{
+        text-align: center;
+        background-color: #186EC8;
+        color: white;
+        font-size: 14px;
+        padding: 20px 0;
+    }
+    
+    .breadcrumb-container .breadcrumb{
+        width: 100%;
+    }
+
+    /* 工具页面 */
+    .tool-chemistry-container{
+        margin: 0px auto;
+        position: relative;
+        width: 100%;
+        min-width: 380px;
+        padding: 10px 10px;
+    }
+    .tool-chemistry-container .tool .btn{
+        border:1px solid #3E8EE2;
+        margin: 0px 8px;
+    }
+    .tool-chemistry-container .btn-primary{
+        background-color: #3E8EE2;
+    }
+    
+    .tool-chemistry-container .btn-default{
+        color: #186EC8;
+    }
+    .tool-chemistry-container .tool-form-flex{
+        display: flex;
+    }
+    .tool-chemistry-container .input-parameter{
+        width: 100%;
+        margin-bottom: 50px;
+    }
+      
+    .tool-chemistry-container #myTab{
+        border-bottom: none;
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0px auto;
+    }
+    .tool-chemistry-container #myTab li a{
+        padding: 5px 15px;
+        margin: 10px;
+        border: 1px solid #186EC8;
+    }
+
+    .tool-chemistry-container #myTab .active a{
+        background-color: #186EC8;
+        color: white;
+    }
+    .tool-chemistry-container #myTabContent .caver img{
+        width: 100%;
+    }
+    
+    .tool-chemistry-container .form-item{
+        display: flex;
+        justify-content: start;
+        position: relative;
+        font-size: 16px;
+        margin-top: 27px;
+        height: 50px;
+        padding: 10px;
+    }
+    .tool-chemistry-container .tab-button{
+        margin: 20px 0;
+        text-align: center;
+    }
+    .tool-chemistry-container .radio-inline{
+        width: 40%;
+    }
+    .tool-chemistry-container  .redio-span{
+        width: 150px;
+    }
+    .tool-chemistry-container .input-span{
+        line-height: 30px;
+        min-width: 70px !important;
+        width: 60%;
+    }
+    .tool-chemistry-container .form-item .form-item-input{
+        margin-left: 10px;
+        width: 100%;
+    }
+    .tool-chemistry-container .form-item .form-item-input input{
+        padding: 5px;
+        box-sizing: border-box;
+        font-size: 20px;
+        border: 1px solid rgb(228, 224, 224);
+        text-align: center;
+        width: 100%;
+        min-width: 80px;
+    }
+    .tool-chemistry-container .submit-button{
+        text-align: left;
+        margin: 10px 0 30px;
+    }
+    .tool-chemistry-container .submit-button button{
+        font-size: 16px;
+        margin-left: 20px;
+    }
+    .tool-chemistry-container label{
+        width: 100%;
+    }
+    .tool-chemistry-container .checkbox-inline, .radio-inline{
+        padding-left: 0px;
+    }
+    .tool-chemistry-container .table-container tr th{
+        background-color: #E4F1FF;
+        padding: 15px 0 !important;
+        text-align: center;
+    }
+    .tool-chemistry-container .breadcrumb{
+        background-color: #fff !important;
+    }
+    .tool-chemistry-container .tool h3{
+        font-size: 16px;
+        margin: 20px 0;
+    }
+    .tool-chemistry-container .tool-container{
+        padding: 0px 0px;
+    }
+    .tool-chemistry-container .tool-form h3 i{
+        font-size: 25px;
+        margin-right: 5px;
+        margin-left: 0px;
+    }
+    .tool-chemistry-container .tool-container h3 i{
+        font-size: 25px;
+        margin-right: 5px;
+        margin-left: 0px;
+    }
+    .tool-chemistry-container .tool-table h3 i{
+        font-size: 25px;
+        margin-right: 5px;
+        margin-top: 10px;
+        margin-left: 0px;
+    
+    }
+    .tool-chemistry-container .tool-container{
+        margin-top: 50px;
+    }
+    
+    .tool-chemistry-container .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+        border:1px solid #F4F4F4 !important;
+    }
+    
+  
+    
+   /* 工具-化学结束 */
+
+/* 工具首页开始 */
+}
+@media screen and (max-width: 620px) {
+    .head-menu{
+        top: 50px;
+    }
+    .user-menu {
+        /* top: .4rem; */
+    }
+
+      
+    .tool-chemistry-container .form-item{
+        display: flex;
+        justify-content: start;
+        position: relative;
+        font-size: 16px;
+        margin-top: 27px;
+        margin-bottom: 10px;
+        height: 50px;
+        padding: 10px;
+    }
+    .tool-chemistry-container .tab-button{
+        margin: 20px 0;
+        text-align: center;
+    }
+    .tool-chemistry-container .radio-inline{
+        width: 40%;
+    }
+    .tool-chemistry-container  .redio-span{
+        width: 150px;
+    }
+    .tool-chemistry-container .input-span{
+        position: absolute;
+        top: -25px;
+        left: 20px;
+    }
+    .link-list{
+        display: block;
+        justify-content: space-between;
+        width: 100%;
+        text-align: center;
+    }
+    .footer-link ul{
+        width: 100%;
+    }
+    .tool-chemistry-container .tool-form-flex{
+        display: block;
+    }
+    
+} 
+@media screen and (max-width: 379px) {
+    .select-button{
+        padding: 0px 5px;
+        position: absolute;
+        right: 60px;
+        bottom: -20px;
+    }
+}

@@ -1,0 +1,36 @@
+variables:
+  IMAGE: "mars/mars-apply"
+  QA_REGISTRY: "275106820702.dkr.ecr.ap-northeast-1.amazonaws.com"
+
+
+stages:
+  -  test
+  -  build
+
+unit_test:
+  stage: test
+  tags:
+  - shell
+  script:
+    - echo "test finished"
+
+
+# docker image build
+image_build:
+  stage: build
+  tags:
+  - shell
+  script: 
+    # generate docker images
+    - projectPath=$PWD
+    - TAG=`date +%Y%m%d%H%Mapply_frontend`
+    - $(aws ecr get-login --no-include-email --region ap-northeast-1 --profile 0702)
+    - docker build -t $IMAGE:$TAG .
+    - docker tag $IMAGE:$TAG $QA_REGISTRY/$IMAGE:$TAG
+    - docker push $QA_REGISTRY/$IMAGE:$TAG
+    - docker logout
+
+
+    # rm image
+    - docker rmi $QA_REGISTRY/$IMAGE:$TAG
+    - docker rmi $IMAGE:$TAG

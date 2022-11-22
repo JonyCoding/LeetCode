@@ -1,0 +1,7 @@
+# SPA_WEB2.0
+
+##构建工具 GULP4
+
+##框架结构 VUE2+ELEMENTUI2.13.0
+
+##组件库 AXIOS+MOREORLESS
