@@ -94,7 +94,7 @@ ul {
   /* width: 10%; */
   max-height: 50px;
   line-height: 50px;
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 @keyframes myheader {
   from {
@@ -152,7 +152,7 @@ ul {
   width: 180px;
   max-height: 0px;
   overflow: hidden;
-  animation: all 0.5s;
+  animation: all 0.3s;
 }
 .child-menu-list li {
   padding: 0px 15px;
@@ -464,7 +464,7 @@ ul {
   /* width: 10%; */
   max-height: 50px;
   line-height: 50px;
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 @keyframes myheader {
   from {
@@ -517,7 +517,7 @@ ul {
   width: 180px;
   max-height: 0px;
   overflow: hidden;
-  animation: all 0.5s;
+  animation: all 0.3s;
 }
 .child-menu-list li {
   padding: 0px 15px;
@@ -704,7 +704,7 @@ ul {
   }
   .menu-item {
     /* width: 10%; */
-    transition: all 0.5s;
+    transition: all 0.3s;
     border-bottom: 1px solid rgb(141, 187, 247);
   }
   .menu-item a {
@@ -762,7 +762,7 @@ ul {
     max-height: 0px;
     height: auto;
     overflow: hidden;
-    animation: all 0.5s;
+    animation: all 0.3s;
   }
   .child-menu-list li {
     padding: 0px 15px;
@@ -1356,7 +1356,7 @@ ul {
     height: 30px;
     line-height: 30px;
     color: #3e8ee2;
-    transition: all 0.5s;
+    transition: all 0.3s;
   }
 
   .panel-head-flex h4 {
@@ -1389,7 +1389,7 @@ ul {
     height: 50px;
     line-height: 50px;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all 0.3s;
   }
   .panel-body ul li a {
     color: white;
@@ -1416,11 +1416,17 @@ ul {
     width: 100%;
     margin-top: 30px;
   }
+  .float-menu{
+    display: none;
+  }
   .newsText {
     display: flex;
     position: relative;
     justify-content: end;
     align-items: center;
+    .text-image {
+      width: 60% !important;
+    }
   }
   .newsText .news-text {
     background-color: #3e8ee2;
@@ -1458,26 +1464,21 @@ ul {
   .tool-index {
     width: 100%;
     margin: 0px auto;
-	position: relative;
+    position: relative;
     .tool-menu {
       width: 80%;
-	  max-width: 300px;
-	  position: fixed;
-	  top: 10vh;
-	  left: 0;
-	  z-index: 11;
-	  background-color: #f9fbff;
-	  max-width: 0px;
-	  max-height: 80vh;
-	  transition: all .3s;
-	  overflow: scroll;
-	  border-radius: 0px 5px 5px 0px;
+      max-width: 300px;
+      // position: fixed;
+      top: 10vh;
+      left: 0;
+      z-index: 11;
+      background-color: #f9fbff;
+      // max-width: 0px;
+      max-height: 80vh;
+      transition: all 0.3s;
+      overflow: scroll;
+      border-radius: 0px 5px 5px 0px;
     }
-	.tool-menu-active{
-		width: 80%;
-		max-width: 300px;
-		min-width: 280px;
-	}
     .tool-menu .panel-group {
       width: 100%;
     }
@@ -1485,12 +1486,13 @@ ul {
       width: 90%;
       background-color: white;
       margin: 0px auto;
-      margin-top: 30px;
+      margin-top: 10px;
+      margin-left: 12px;
       padding: 40px;
       box-sizing: border-box;
     }
     .tool-index-flex {
-      display: block;
+      display: flex;
       justify-content: space-between;
       max-width: 100%;
       overflow: hidden;
@@ -1503,7 +1505,7 @@ ul {
 
     #toolTab {
       border-bottom: none;
-      display: flex;
+      // display: flex;
       justify-content: center;
       flex-wrap: wrap;
       width: 100%;
@@ -1542,7 +1544,7 @@ ul {
     }
     .panel-head-flex {
       display: flex;
-      justify-content: center;
+      justify-content: space-between !important;
       padding: 0px 15px 0 25px;
     }
     .panel-head-flex .bi {
@@ -1552,7 +1554,7 @@ ul {
       height: 30px;
       line-height: 30px;
       color: #3e8ee2;
-      transition: all 0.5s;
+      transition: all 0.3s;
     }
     .panel-head-flex h4 {
       font-size: 20px;
@@ -1584,22 +1586,6 @@ ul {
     .panel-heading-active i {
       color: white !important;
     }
-	.float-menu{
-		width: 25px;
-		height: 50px;
-		border-radius: 0 25px 25px 0;
-		background-color: #186ec8;
-		position: fixed;
-		top: 45vh;
-		i{
-			font-size: 30px;
-			color: white;
-			position: absolute;
-			top: 50%;
-			right: 0px;
-			transform: translateY(-50%)
-		}
-	}
     .panel-body {
       width: 100%;
       text-align: center;
@@ -1611,7 +1597,7 @@ ul {
       height: 50px;
       line-height: 50px;
       cursor: pointer;
-      transition: all 0.5s;
+      transition: all 0.3s;
     }
     .panel-body ul li a {
       color: white;
@@ -1668,18 +1654,96 @@ ul {
     }
   }
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 840px) {
   .tool-index {
     .newsText .news-text {
       background-color: #3e8ee2;
       color: white;
       padding: 12px;
-	  font-size: 12px;
+      font-size: 12px;
       position: relative;
       width: 100%;
     }
     .newsText img {
       display: none;
+    }
+
+    .tool-index-flex {
+      display: block;
+      justify-content: space-between;
+      max-width: 100%;
+      overflow: hidden;
+      margin-bottom: 34px;
+    }
+    .float-menu {
+      width: 25px;
+      height: 50px;
+      border-radius: 0 25px 25px 0;
+      background-color: #186ec8;
+      position: fixed;
+      display:block;
+      top: 45vh;
+      i {
+        font-size: 30px;
+        color: white;
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translateY(-50%);
+      }
+    }
+    #menuTabContent{
+      margin-left: auto;
+    }
+    .tool-menu {
+      width: 80%;
+      // max-width: 300px;
+      position: fixed;
+      top: 10vh;
+      left: 0;
+      z-index: 11;
+      background-color: #f9fbff;
+      max-width: 0px;
+      max-height: 80vh;
+      // transition: all 0.3s;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      border-radius: 0px 5px 5px 0px;
+    }
+    .tool-menu-active {
+      width: 80%;
+      max-width: 300px;
+    }
+    .newsText {
+      display: flex;
+      position: relative;
+      justify-content: end;
+      align-items: center;
+      .news-text {
+        background-color: #3e8ee2;
+        color: white;
+        padding: 17px;
+        position: relative;
+        width: 100%;
+        bottom: 0;
+      }
+
+      .text-image {
+        width: 100% !important;
+      }
+      //   .newsText img{
+      // 	display: none;
+      //   }
+      .news-text h2 {
+        text-align: center;
+      }
+      .news-text p {
+        margin-top: 15px;
+        text-align: left;
+        font-size: 16px;
+      }
+      img {
+      }
     }
   }
 }

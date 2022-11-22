@@ -13,6 +13,10 @@ let vm = new Vue({
 //菜单栏
 $(document).ready(function () {
   var i = 1;
+
+  $("#myCarousel").carousel({
+    interval: 2000,
+  });
   $("#menu-action").click(function () {
     if (i == 0) {
       // 隐藏
@@ -84,15 +88,6 @@ $(document).ready(function () {
 });
 
 //菜单栏
-$(function(){
-  $(".panel-body li").click(function() {
-
-      $(".panel-body li").removeClass('active-panel');
-      
-      $(this).addClass('active-panel');                            // 添加当前元素的样式
-
-  });
-});
 //菜单栏
 $(document).ready(function () {
   var i = 1;
@@ -113,26 +108,27 @@ $(document).ready(function () {
       i = 0;
     }
   });
-//菜单栏
-$(document).ready(function () {
-  var i = 1;
-  $(".float-menu").click(function () {
-    if (i == 0) {
+  //菜单栏
+  $(document).ready(function () {
+    var i = 1;
+    $(".float-menu").click(function () {
+      if (i == 0) {
+        // 隐藏
+        $(".tool-menu").removeClass("tool-menu-active");
+        $(".diskDuck").removeClass("disk-show");
+        i = 1;
+      } else {
+        // 显示
+        $(".tool-menu").addClass("tool-menu-active");
+        $(".diskDuck").addClass("disk-show");
+        i = 0;
+      }
+    });
+    $(".diskDuck").click(function () {
       // 隐藏
       $(".tool-menu").removeClass("tool-menu-active");
       $(".diskDuck").removeClass("disk-show");
       i = 1;
-    } else {
-      // 显示
-      $(".tool-menu").addClass("tool-menu-active");
-      $(".diskDuck").addClass("disk-show");
-      i = 0;
-    }
+    });
   });
-  $(".diskDuck").click(function () {
-    // 隐藏
-      $(".tool-menu").removeClass("tool-menu-active");
-      $(".diskDuck").removeClass("disk-show");
-    i = 1;
-  });
-})})
+});
