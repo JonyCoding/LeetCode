@@ -124,5 +124,18 @@ $(document).ready(function () {
       $(".diskDuck").removeClass("disk-show");
       i = 1;
     });
+    
+    $(function(){
+      $(".panel-body li").click(function() {
+  
+          $(".panel-body li").removeClass('active-panel');
+          
+          $(this).addClass('active-panel');                            // 添加当前元素的样式
+  
+      });
+  });
+
+
+
   });
 });

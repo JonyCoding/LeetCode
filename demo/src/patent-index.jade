@@ -1,0 +1,162 @@
+extends ./index_tp.jade
+prepend head
+    - var title = "专利首页";
+prepend body
+    - var body_id = "index";
+    script(src="./js/jquery-3.3.1.js?v=#{time}")
+    script(src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js")
+    script(src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js")
+block main
+    template.
+        <div class="diskDuck"></div>
+        <div class="body">
+            <div class="patent-index">
+                <div class="patent-index-search">
+                    <el-input placeholder="支持申请号、公开公告号、申请（专利权）人、发明名称）的快速检索" v-model="input3" class="input-with-select">
+                        <el-select v-model="select" slot="prepend" placeholder="请选择">
+                            <el-option label="精细化工专利" value="1"></el-option>
+                            <el-option label="技术专利" value="2"></el-option>
+                            <el-option label="法律状态" value="3"></el-option>
+                        </el-select>
+                        <el-button  type="success" slot="append">检索</el-button>
+                    </el-input>
+                    <img src="/img/patent-search-bg.png" alt="">
+                </div>
+                <div class="layout patent-index-body">
+                    <div class="patent-search">
+                        <div class="tool-title">
+                            <h2>专利检索</h2>
+                            <p>Patent Search</p>
+                        </div>
+                        <div class="patent-search-content">
+                            <ul class="fix-container">
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/patent-simpel-search.png" alt="">
+                                    <h3>简单检索</h3>
+                                    <p>输入专利任意信息实现对不同</p>
+                                </li>
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/patent-combination-search.png" alt="">
+                                    <h3>组合条件检索</h3>
+                                    <p>可通过氢能专利组合条件进行检索</p>
+                                </li>
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/patent-technical-searchl.png" alt="">
+                                    <h3>技术检索</h3>
+                                    <p>可通过专利技术分类进行检索导航</p>
+                                </li>
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/patent-legal-search.png" alt="">
+                                    <h3>法律状态检索</h3>
+                                    <p>法律状态检索正在建设中</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="domain-specific-search">
+                        <div class="tool-title">
+                            <h2>领域专题检索</h2>
+                            <p>Domain specific search</p>
+                        </div>
+                        <div class="patent-search-content">
+                            <ul class="fix-container">
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/patent-water.png" alt="">
+                                    <h3>洁净能源数据库</h3>
+                                    <p>洁净能源15个子领域近100万条专利数据信息</p>
+                                </li>
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/patent-hydrogen.png" alt="">
+                                    <h3>氢能专利数据库</h3>
+                                    <p>氢能专利数据库4个子领域11万条专利数据信息</p>
+                                </li>
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/patent-chemical.png" alt="">
+                                    <h3>精细化工数据库</h3>
+                                    <p>精细化工7个子领域近300万条专利数据信息</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="intellectual-property-consulting">
+                        <div class="tool-title">
+                            <h2>知识产权咨询</h2>
+                            <p>Intellectual Property Consulting</p>
+                        </div>
+                        <div class="patent-search-content">
+                            <ul class="fix-container">
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/information-service.png" alt="">
+                                    <h3>知识产权申请相关服务</h3>
+                                    <ul class="tag-list">
+                                        <li><span>• </span>申请指南</li>
+                                        <li><span>• </span>模板下载</li>
+                                        <li><span>• </span>缴费指南</li>
+                                    </ul>
+                                </li>
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/patent-apply.png" alt="">
+                                    <h3>知识产权信息服务</h3>
+                                    <ul class="tag-list">
+                                        <li><span>• 能源技术布局</span></li>
+                                        <li><span>• 专利导航分析</span></li>
+                                        <li><span>• 专利有效性检索</span></li>
+                                        <li><span>• 专利战略研究</span></li>
+                                    </ul>
+                                </li>
+                                <li class="patent-search-content-item">
+                                    <img src="./img/icon/patent-consulting.png" alt="">
+                                    <h3>知识产权管理规范咨询</h3>
+                                    <ul class="tag-list">
+                                        <li style="width: 100%;"><span>• 科研组织知识产权管理体系</span></li>
+                                        <li style="width: 100%;"><span>• 高等学校知识产权管理规范</span></li>
+                                        <li style="width: 100%;"><span>• 企业知识产权管理体系认证</span></li>
+                                        <li style="width: 100%;"><span>• 装备承制单位知识产权管理要求</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="intell-property-training">
+                        <div class="tool-title">
+                            <h2>知识产权培训</h2>
+                            <p>Intellectual property training</p>
+                        </div>
+                        <div class="patent-search-content">
+                            <el-tabs tab-position="left" lazy="true">
+                                <el-tab-pane label="用户管理">
+                                    <div slot="label" class="tab-slot">
+                                        <h3>01 | 培训资料</h3>
+                                        <p>Training materials</p>
+                                    </div>
+                                    <div class="tab-body">
+                                        22
+                                    </div>
+                                </el-tab-pane>
+                                <el-tab-pane label="用户管理">
+                                    <div slot="label" class="tab-slot">
+                                        <h3>02 | 培训通知</h3>
+                                        <p>Training Notice</p>
+                                    </div>
+                                    <div class="tab-body">
+                                        33
+                                    </div>
+                                </el-tab-pane>
+                                <el-tab-pane label="用户管理">
+                                    <div slot="label" class="tab-slot">
+                                        <h3>03 | 知识问答</h3>
+                                        <p>Knowledge Q&A</p>
+                                    </div>
+                                    <div class="tab-body">
+                                        44
+                                    </div>
+                                </el-tab-pane>
+                              </el-tabs>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+block script
+    script(src="./js/tools-index.js?v=#{time}")

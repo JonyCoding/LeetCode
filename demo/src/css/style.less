@@ -1,59 +1,205 @@
-body,
-html {
-  width: 100%;
-  font-size: 14px;
-  margin: 0px;
-  padding: 0px;
-  background-color: #f9fbff !important;
-}
-.h1,
-.h2,
-.h3,
-h1,
-h2,
-h3 {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-.html {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-}
-.clear {
-  clear: both;
-}
-a,
-p,
-ul {
-  padding: 0px;
-  text-decoration: none;
-  list-style: none;
-  margin: 0px;
-}
-* {
-  margin: 0px;
-  padding: 0px;
-}
-.body {
-  /* margin: 0px 0px 100px; */
-  background-color: #f9fbff;
-}
-.test-color-1 {
-  color: #ff9741;
-}
-.test-color-2 {
-  color: #000cff;
-}
-.test-color-3 {
-  color: #3b812b;
-}
-.test-color-4 {
-  color: #1e9f4d;
-}
-.test-color-5 {
-  color: #8179ec;
-}
-.test-color-6 {
-  color: #466edd;
+@import (reference) "core.less";
+.patent-index {
+	.patent-index-search {
+		width: 100%;
+		// height: 300px;
+		position: relative;
+		.input-with-select {
+			width: 60%;
+			margin: 0px auto;
+			border-radius: 15px;
+			font-size: 20px;
+			.container-center();
+			overflow: hidden;
+			.el-select .el-input {
+				width: 130px;
+			}
+			.input-with-select .el-input-group__prepend {
+				background-color: #fff;
+				padding-right: 0px !important;
+			}
+			.el-input__inner {
+				height: 80px;
+				border: 1px solid #fff;
+			}
+			.el-button,
+			.el-button--success {
+				color: white;
+				background-color: #3e8ee2;
+				margin: 0 5px;
+				padding: 18px 30px;
+				border-radius: 15px;
+			}
+			.el-input-group__append {
+				background-color: #fff !important;
+				padding-right: 0px;
+				border: 1px solid #fff;
+			}
+		}
+		img {
+			width: 100%;
+			height: auto;
+			min-height: 240px;
+			// min-width: 1200px;
+			object-fit: cover;
+			margin: 0px auto;
+		}
+	}
+	.patent-index-body {
+		.fix-container {
+			display: flex;
+			justify-content: space-between;
+		}
+		.patent-search {
+			.patent-search-content {
+				.fix-container {
+					.patent-search-content-item {
+						padding: 40px 30px;
+						background-color: #fff;
+						border-radius: 20px;
+						width: 280px;
+						img {
+							width: 80px;
+						}
+						h3 {
+							font-size: 24 px;
+							margin-top: 26px;
+						}
+						P {
+							font-size: 16 px;
+							margin-top: 14px;
+						}
+					}
+				}
+			}
+		}
+
+		.domain-specific-search {
+			.patent-search-content {
+				.fix-container {
+					.patent-search-content-item {
+						padding: 40px 30px;
+						background-color: #fff;
+						border-radius: 20px;
+						width: 380px;
+						text-align: center;
+						img {
+							width: 110px;
+							margin: 0px auto;
+						}
+						h3 {
+							font-size: 24 px;
+							margin-top: 26px;
+							text-align: center;
+						}
+						P {
+							font-size: 14 px;
+							margin-top: 14px;
+							text-align: center;
+						}
+						&:nth-child(1) {
+							background-color: rgba(62, 142, 226, 1);
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+
+		.intellectual-property-consulting {
+			.patent-search-content {
+				.fix-container {
+					.patent-search-content-item {
+						padding: 40px 20px 20px;
+						background-color: #fff;
+						border-radius: 20px;
+						width: 380px;
+						text-align: center;
+						img {
+							width: 110px;
+							margin: 0px auto;
+						}
+						h3 {
+							font-size: 24 px;
+							margin-top: 26px;
+							text-align: center;
+						}
+						P {
+							font-size: 14 px;
+							margin-top: 14px;
+							text-align: center;
+						}
+						.tag-list {
+							display: flex;
+							justify-content: center;
+							flex-wrap: wrap;
+							margin-top: 24px;
+							li {
+								margin: 10px 0px;
+								font-size: 12px;
+								width: 49%;
+								span {
+									color: #666;
+									font-size: 14px;
+									line-height: 14px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.intell-property-training {
+			.patent-search-content {
+				.el-tabs__item {
+					height: auto;
+					padding: 45px;
+					background-color: #fff;
+					width: 380px;
+					text-align: left;
+					margin-top: 20px;
+					border-radius: 20px;
+					color: #2f374b;
+				}
+				.el-tabs__nav-wrap{
+					overflow: visible;
+				}
+				.el-tabs__nav-scroll{
+					overflow: visible;
+				}
+				.is-active {
+					background-color: #3e8ee2;
+					color: #fff;
+					transition: all .3s;
+					&::after {
+						content: " ";
+						position: absolute;
+						display: block;
+						width: 0;
+						height: 0;
+						border-style: solid;
+						right: -20px;
+						top: 20%;
+						margin-left: -6px;
+						border-width: 10px;
+						border-right-width: 10;
+						border-color: #fff;
+						border-left-color: #3e8ee2;
+					}
+				}
+				.el-tabs__active-bar {
+					display: none;
+				}
+				.el-tabs__nav-wrap::after {
+					background-color: #fff;
+				}
+				.el-tabs__nav-wrap::after{
+					display: none;
+				}
+				.tab-slot {
+				}
+			}
+		}
+	}
 }

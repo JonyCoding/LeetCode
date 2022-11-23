@@ -146,7 +146,7 @@
 .patent-index .patent-index-body .intell-property-training .patent-search-content .is-active {
   background-color: #3e8ee2;
   color: #fff;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 .patent-index .patent-index-body .intell-property-training .patent-search-content .is-active::after {
   content: " ";

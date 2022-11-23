@@ -18,24 +18,9 @@
 }
 .patent-index .patent-index-search .input-with-select .input-with-select .el-input-group__prepend {
   background-color: #fff;
-  padding-right: 0px !important;
 }
 .patent-index .patent-index-search .input-with-select .el-input__inner {
-  height: 80px;
-  border: 1px solid #fff;
-}
-.patent-index .patent-index-search .input-with-select .el-button,
-.patent-index .patent-index-search .input-with-select .el-button--success {
-  color: white;
-  background-color: #3e8ee2;
-  margin: 0 5px;
-  padding: 18px 30px;
-  border-radius: 15px;
-}
-.patent-index .patent-index-search .input-with-select .el-input-group__append {
-  background-color: #fff !important;
-  padding-right: 0px;
-  border: 1px solid #fff;
+  height: 70px;
 }
 .patent-index .patent-index-search img {
   width: 100%;
@@ -43,134 +28,6 @@
   min-height: 240px;
   object-fit: cover;
   margin: 0px auto;
-}
-.patent-index .patent-index-body .fix-container {
-  display: flex;
-  justify-content: space-between;
-}
-.patent-index .patent-index-body .patent-search .patent-search-content .fix-container .patent-search-content-item {
-  padding: 40px 30px;
-  background-color: #fff;
-  border-radius: 20px;
-  width: 280px;
-}
-.patent-index .patent-index-body .patent-search .patent-search-content .fix-container .patent-search-content-item img {
-  width: 80px;
-}
-.patent-index .patent-index-body .patent-search .patent-search-content .fix-container .patent-search-content-item h3 {
-  font-size: 24 px;
-  margin-top: 26px;
-}
-.patent-index .patent-index-body .patent-search .patent-search-content .fix-container .patent-search-content-item P {
-  font-size: 16 px;
-  margin-top: 14px;
-}
-.patent-index .patent-index-body .domain-specific-search .patent-search-content .fix-container .patent-search-content-item {
-  padding: 40px 30px;
-  background-color: #fff;
-  border-radius: 20px;
-  width: 380px;
-  text-align: center;
-}
-.patent-index .patent-index-body .domain-specific-search .patent-search-content .fix-container .patent-search-content-item img {
-  width: 110px;
-  margin: 0px auto;
-}
-.patent-index .patent-index-body .domain-specific-search .patent-search-content .fix-container .patent-search-content-item h3 {
-  font-size: 24 px;
-  margin-top: 26px;
-  text-align: center;
-}
-.patent-index .patent-index-body .domain-specific-search .patent-search-content .fix-container .patent-search-content-item P {
-  font-size: 14 px;
-  margin-top: 14px;
-  text-align: center;
-}
-.patent-index .patent-index-body .domain-specific-search .patent-search-content .fix-container .patent-search-content-item:nth-child(1) {
-  background-color: #3e8ee2;
-  color: #fff;
-}
-.patent-index .patent-index-body .intellectual-property-consulting .patent-search-content .fix-container .patent-search-content-item {
-  padding: 40px 20px 20px;
-  background-color: #fff;
-  border-radius: 20px;
-  width: 380px;
-  text-align: center;
-}
-.patent-index .patent-index-body .intellectual-property-consulting .patent-search-content .fix-container .patent-search-content-item img {
-  width: 110px;
-  margin: 0px auto;
-}
-.patent-index .patent-index-body .intellectual-property-consulting .patent-search-content .fix-container .patent-search-content-item h3 {
-  font-size: 24 px;
-  margin-top: 26px;
-  text-align: center;
-}
-.patent-index .patent-index-body .intellectual-property-consulting .patent-search-content .fix-container .patent-search-content-item P {
-  font-size: 14 px;
-  margin-top: 14px;
-  text-align: center;
-}
-.patent-index .patent-index-body .intellectual-property-consulting .patent-search-content .fix-container .patent-search-content-item .tag-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 24px;
-}
-.patent-index .patent-index-body .intellectual-property-consulting .patent-search-content .fix-container .patent-search-content-item .tag-list li {
-  margin: 10px 0px;
-  font-size: 12px;
-  width: 49%;
-}
-.patent-index .patent-index-body .intellectual-property-consulting .patent-search-content .fix-container .patent-search-content-item .tag-list li span {
-  color: #666;
-  font-size: 14px;
-  line-height: 14px;
-}
-.patent-index .patent-index-body .intell-property-training .patent-search-content .el-tabs__item {
-  height: auto;
-  padding: 45px;
-  background-color: #fff;
-  width: 380px;
-  text-align: left;
-  margin-top: 20px;
-  border-radius: 20px;
-  color: #2f374b;
-}
-.patent-index .patent-index-body .intell-property-training .patent-search-content .el-tabs__nav-wrap {
-  overflow: visible;
-}
-.patent-index .patent-index-body .intell-property-training .patent-search-content .el-tabs__nav-scroll {
-  overflow: visible;
-}
-.patent-index .patent-index-body .intell-property-training .patent-search-content .is-active {
-  background-color: #3e8ee2;
-  color: #fff;
-  transition: all .3s;
-}
-.patent-index .patent-index-body .intell-property-training .patent-search-content .is-active::after {
-  content: " ";
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  right: -20px;
-  top: 20%;
-  margin-left: -6px;
-  border-width: 10px;
-  border-right-width: 10;
-  border-color: #fff;
-  border-left-color: #3e8ee2;
-}
-.patent-index .patent-index-body .intell-property-training .patent-search-content .el-tabs__active-bar {
-  display: none;
-}
-.patent-index .patent-index-body .intell-property-training .patent-search-content .el-tabs__nav-wrap::after {
-  background-color: #fff;
-}
-.patent-index .patent-index-body .intell-property-training .patent-search-content .el-tabs__nav-wrap::after {
-  display: none;
 }
 /* 页头 */
 .index-head {
@@ -1336,15 +1193,9 @@
 .tool-title h2 {
   width: 100%;
   text-align: center;
-  font-weight: 700;
-  font-size: 30px;
 }
 .tool-title p {
   text-align: center;
-  color: #838383;
-  font-weight: 400;
-  font-size: 16px;
-  margin-top: 13px;
 }
 .tool-index {
   width: 1200px;
@@ -1518,20 +1369,14 @@
 }
 @media screen and (max-width: 1200px) {
   .tool-title {
-    padding: 23px 0 23px;
+    padding: 23px 0 10px;
   }
   .tool-title h2 {
     width: 100%;
     text-align: center;
-    font-weight: 700;
-    font-size: 30px;
   }
   .tool-title p {
     text-align: center;
-    color: #838383;
-    font-weight: 400;
-    font-size: 16px;
-    margin-top: 13px;
   }
   .tool-index {
     width: 100%;
