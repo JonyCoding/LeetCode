@@ -684,5 +684,3 @@ settings.BOKISTG = settings.BOKI;
 settings.RMQA = settings.RM;
 settings.RMSTG = settings.RM;
 
-settings.KNGW = settings.KNGW;
-// settings.NSCOQA = settings.RM;
