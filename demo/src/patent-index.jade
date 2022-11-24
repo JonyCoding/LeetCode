@@ -85,7 +85,7 @@ block main
                         </div>
                         <div class="patent-search-content">
                             <ul class="fix-container">
-                                <li class="patent-search-content-item">
+                                <li class="patent-search-content-item" style="padding: 40px 70px;">
                                     <img src="./img/icon/information-service.png" alt="">
                                     <h3>知识产权申请相关服务</h3>
                                     <ul class="tag-list">
@@ -94,24 +94,24 @@ block main
                                         <li><span>• </span>缴费指南</li>
                                     </ul>
                                 </li>
-                                <li class="patent-search-content-item">
+                                <li class="patent-search-content-item" style="padding: 40px 70px;">
                                     <img src="./img/icon/patent-apply.png" alt="">
                                     <h3>知识产权信息服务</h3>
                                     <ul class="tag-list">
-                                        <li><span>• 能源技术布局</span></li>
-                                        <li><span>• 专利导航分析</span></li>
-                                        <li><span>• 专利有效性检索</span></li>
-                                        <li><span>• 专利战略研究</span></li>
+                                        <li><span>• </span>能源技术布局</li>
+                                        <li><span>• </span>专利导航分析</li>
+                                        <li><span>• </span>专利有效性检索</li>
+                                        <li><span>• </span>专利战略研究</li>
                                     </ul>
                                 </li>
                                 <li class="patent-search-content-item">
                                     <img src="./img/icon/patent-consulting.png" alt="">
                                     <h3>知识产权管理规范咨询</h3>
                                     <ul class="tag-list">
-                                        <li style="width: 100%;"><span>• 科研组织知识产权管理体系</span></li>
-                                        <li style="width: 100%;"><span>• 高等学校知识产权管理规范</span></li>
-                                        <li style="width: 100%;"><span>• 企业知识产权管理体系认证</span></li>
-                                        <li style="width: 100%;"><span>• 装备承制单位知识产权管理要求</span></li>
+                                        <li style="width: 50%;"><span>• </span>科研组织知识产权管理体系</li>
+                                        <li style="width: 50%;"><span>• </span>高等学校知识产权管理规范</li>
+                                        <li style="width: 100%;"><span>• </span>企业知识产权管理体系认证</li>
+                                        <li style="width: 100%;"><span>• </span>装备承制单位知识产权管理要求</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -251,15 +251,15 @@ block main
                                 <p>科研组织知识产权管理体系建 设实务</p>
                             </li>
                             <li class="patent-search-content-item">
-                                <img src="./img/patent-book.png" alt="">
+                                <img src="./img/patent-book2.png" alt="">
                                 <p>国家科技成果转移转化示范区建设研究</p>
                             </li>
                             <li class="patent-search-content-item">
-                                <img src="./img/patent-book.png" alt="">
+                                <img src="./img/patent-book3.png" alt="">
                                 <p>清洁技术知识产权</p>
                             </li>
                             <li class="patent-search-content-item">
-                                <img src="./img/patent-book.png" alt="">
+                                <img src="./img/patent-book4.png" alt="">
                                 <p>科研组织知识产权管理体系建设指南</p>
                             </li>
                         </ul>
@@ -282,8 +282,71 @@ block main
                                     <p class="email">邮件：Tisc@dicp.ac.cn</p>
                                 </div>
                             </div>
+                            <div class="user-info-form">
+                                <h3>服务需求</h3>
+                                <div class="form">
+                                    <el-form label-position="left" label-width="80px">
+                                        <el-row :gutter="10">
+                                            <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+                                                <el-form-item label="姓名">
+                                                  <el-input  placeholder="请输入"></el-input>
+                                                </el-form-item>
+                                            </el-col>
+                                            <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+                                                <el-form-item label="地区">
+                                                  <el-input  placeholder="请输入"></el-input>
+                                                </el-form-item>
+                                            </el-col>
+                                            <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+                                                <el-form-item label="公司名称">
+                                                  <el-input  placeholder="请输入"></el-input>
+                                                </el-form-item>
+                                            </el-col>
+                                            <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+                                                <el-form-item label="邮箱">
+                                                  <el-input  placeholder="请输入"></el-input>
+                                                </el-form-item>
+                                            </el-col>
+                                            <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+                                                <el-form-item label="手机号">
+                                                  <el-input  placeholder="请输入"></el-input>
+                                                </el-form-item>
+                                            </el-col>
+                                            <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+                                                <el-form-item label="技术领域">
+                                                  <el-input  placeholder="请输入"></el-input>
+                                                </el-form-item>
+                                            </el-col>
+                                            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                                                <el-form-item label="服务内容">
+                                                    <el-checkbox :value="true">专利信息检索</el-checkbox>
+                                                    <el-checkbox>技术查新</el-checkbox>
+                                                    <el-checkbox>技术情报分析</el-checkbox>
+                                                    <el-checkbox>专利布局导航</el-checkbox>
+                                                    <el-checkbox>知识产权预警</el-checkbox>
+                                                    <el-checkbox>专利价值评估</el-checkbox>
+                                                </el-form-item>
+                                            </el-col>
+                                            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                                                    <el-input
+                                                    type="textarea"
+                                                    :rows="2"
+                                                    placeholder="请输入内容">
+                                                  </el-input>
+                                            </el-col>
+                                            <el-col style="margin-top: 10px;" :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                                                <el-checkbox label="已阅读并同意 服务条款 隐私条款" >已阅读并同意<a href="#"> 服务条款 </a></el-checkbox>
+                                            </el-col>
+                                            <el-col style="margin-top: 10px;" :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                                                <el-button type="primary" style="margin: 0px auto;display: block; width: 320px;height: 60px;font-size: 16px;">提交申请</el-button>
+                                            </el-col>
+                                        </el-row>                                      
+                                    </el-form>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
            

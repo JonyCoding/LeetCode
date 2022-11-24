@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 .patent-index .patent-index-search .input-with-select .el-select .el-input {
-  width: 130px;
+  width: 180px;
 }
 .patent-index .patent-index-search .input-with-select .input-with-select .el-input-group__prepend {
   background-color: #fff;
@@ -32,6 +32,7 @@
   margin: 0 5px;
   padding: 18px 30px;
   border-radius: 15px;
+  margin-right: 10px;
 }
 .patent-index .patent-index-search .input-with-select .el-input-group__append {
   background-color: #fff !important;
@@ -45,6 +46,9 @@
   object-fit: cover;
   margin: 0px auto;
 }
+.patent-index .patent-index-body {
+  padding-bottom: 125px;
+}
 .patent-index .patent-index-body .fix-container {
   display: flex;
   justify-content: space-between;
@@ -54,6 +58,8 @@
   background-color: #fff;
   border-radius: 20px;
   width: 280px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-bottom-width: 10px;
 }
 .patent-index .patent-index-body .patent-search .patent-search-content .fix-container .patent-search-content-item img {
   width: 80px;
@@ -65,6 +71,10 @@
 .patent-index .patent-index-body .patent-search .patent-search-content .fix-container .patent-search-content-item P {
   font-size: 16px;
   margin-top: 14px;
+}
+.patent-index .patent-index-body .patent-search .patent-search-content .fix-container .patent-search-content-item:hover {
+  border: 1px solid #3e8ee2;
+  border-bottom-width: 10px;
 }
 .patent-index .patent-index-body .domain-specific-search .patent-search-content .fix-container .patent-search-content-item {
   padding: 40px 30px;
@@ -119,7 +129,7 @@
   margin-top: 24px;
 }
 .patent-index .patent-index-body .intellectual-property-consulting .patent-search-content .fix-container .patent-search-content-item .tag-list li {
-  margin: 10px 0px;
+  margin: 6px 0px;
   font-size: 12px;
   width: 49%;
 }
@@ -218,6 +228,7 @@
 }
 .patent-index .patent-index-body .intell-property-training .patent-search-content .tab-body ul li .text .data {
   position: relative;
+  line-height: 18px;
 }
 .patent-index .patent-index-body .intell-property-training .patent-search-content .tab-body ul li .text .data:before {
   content: " ";
@@ -231,6 +242,7 @@
 }
 .patent-index .patent-index-body .intell-property-training .patent-search-content .tab-body ul li .text .view {
   position: relative;
+  line-height: 18px;
 }
 .patent-index .patent-index-body .intell-property-training .patent-search-content .tab-body ul li .text .view:before {
   content: " ";
@@ -256,6 +268,7 @@
 .patent-index .patent-index-body .contact-us-container .address-info .text h3 {
   font-size: 18px;
   position: relative;
+  line-height: 24px;
 }
 .patent-index .patent-index-body .contact-us-container .address-info .text h3:before {
   content: " ";
@@ -273,6 +286,7 @@
 }
 .patent-index .patent-index-body .contact-us-container .address-info .text .url {
   position: relative;
+  line-height: 18px;
 }
 .patent-index .patent-index-body .contact-us-container .address-info .text .url:before {
   content: " ";
@@ -286,6 +300,7 @@
 }
 .patent-index .patent-index-body .contact-us-container .address-info .text .add {
   position: relative;
+  line-height: 18px;
 }
 .patent-index .patent-index-body .contact-us-container .address-info .text .add:before {
   content: " ";
@@ -299,6 +314,7 @@
 }
 .patent-index .patent-index-body .contact-us-container .address-info .text .tel {
   position: relative;
+  line-height: 18px;
 }
 .patent-index .patent-index-body .contact-us-container .address-info .text .tel:before {
   content: " ";
@@ -312,6 +328,7 @@
 }
 .patent-index .patent-index-body .contact-us-container .address-info .text .email {
   position: relative;
+  line-height: 18px;
 }
 .patent-index .patent-index-body .contact-us-container .address-info .text .email:before {
   content: " ";
@@ -322,6 +339,37 @@
   background: url("../img/icon/patent-email.png") no-repeat center;
   background-size: 18px;
   vertical-align: top;
+}
+.patent-index .patent-index-body .contact-us-container .user-info-form {
+  margin-top: 25px;
+}
+.patent-index .patent-index-body .contact-us-container .user-info-form h3 {
+  position: relative;
+  line-height: 28px;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+.patent-index .patent-index-body .contact-us-container .user-info-form h3:before {
+  content: " ";
+  display: inline-block;
+  height: 28px;
+  width: 28px;
+  margin-right: 5px;
+  background: url("../img/icon/patent-us-serve.png") no-repeat center;
+  background-size: 28px;
+  vertical-align: top;
+}
+.patent-index .patent-index-body .contact-us-container .user-info-form .el-input {
+  width: 70%;
+}
+.patent-index .patent-index-body .contact-us-container .user-info-form .el-form-item__label {
+  font-size: 16px;
+  color: #333;
+  font-weight: 400;
+}
+.patent-index .patent-index-body .contact-us-container .user-info-form .el-checkbox__label {
+  font-size: 16px;
+  color: #666;
 }
 .patent-index .intellectual-property-research {
   position: relative;
@@ -344,6 +392,7 @@
 .patent-index .intellectual-property-research .fix-container .patent-search-content-item img {
   display: block;
   width: 175px;
+  height: 245px;
   margin: 0px auto;
 }
 .patent-index .intellectual-property-research .fix-container .patent-search-content-item P {
@@ -367,6 +416,34 @@
   min-height: 240px;
   object-fit: cover;
   margin: 0px auto;
+}
+@media screen and (max-width: 1200px) {
+  .patent-index .patent-search .patent-search-content .fix-container {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .patent-index .patent-search .patent-search-content .fix-container .patent-search-content-item {
+    width: 46% !important;
+    margin: 10px 0px;
+  }
+  .patent-index .patent-search-content .fix-container {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .patent-index .patent-search-content .fix-container .patent-search-content-item {
+    width: 80% !important;
+    margin: 10px 0px;
+  }
+  .patent-index .intell-property-training .patent-search-content .el-tabs__item {
+    height: auto;
+    padding: 45px;
+    background-color: #fff;
+    width: 30%;
+    text-align: left;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    color: #2f374b;
+  }
 }
 /* 页头 */
 .index-head {
