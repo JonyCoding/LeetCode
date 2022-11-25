@@ -15,7 +15,7 @@ var gulp = require("gulp"),
 	debug = true,
 	browserSync = require("browser-sync").create(),
 	reload = browserSync.reload,
-	distPath = "../Public/dist/";
+	distPath = "./Public/dist/";
 	tbuilder = require("./gulp-tbuilder");
 
 function $jade() {

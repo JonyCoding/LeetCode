@@ -48,7 +48,7 @@
 		}
 	}
 	.patent-index-body {
-		padding-bottom: 125px;
+		padding-bottom: 127px;
 		.fix-container {
 			display: flex;
 			justify-content: space-between;
@@ -57,12 +57,14 @@
 			.patent-search-content {
 				.fix-container {
 					.patent-search-content-item {
+						cursor:pointer;
 						padding: 40px 30px;
 						background-color: #fff;
 						border-radius: 20px;
 						width: 280px;
 						border: 1px solid rgba(0, 0, 0, 0);
 						border-bottom-width: 10px;
+						box-shadow: 0 0 20px 20px rgba(190, 179, 195, 0.1);
 						img {
 							width: 80px;
 						}
@@ -87,11 +89,14 @@
 			.patent-search-content {
 				.fix-container {
 					.patent-search-content-item {
+						cursor:pointer;
 						padding: 40px 30px;
 						background-color: #fff;
 						border-radius: 20px;
 						width: 380px;
 						text-align: center;
+						transition: all 0.3s;
+						box-shadow: 0 0 20px 20px rgba(190, 179, 195, 0.1);
 						img {
 							width: 110px;
 							margin: 0px auto;
@@ -106,7 +111,7 @@
 							margin-top: 14px;
 							text-align: center;
 						}
-						&:nth-child(1) {
+						&:hover {
 							background-color: rgba(62, 142, 226, 1);
 							color: #fff;
 						}
@@ -121,9 +126,12 @@
 					.patent-search-content-item {
 						padding: 40px 20px 20px;
 						background-color: #fff;
+						box-shadow: 0 0 20px 20px rgba(190, 179, 195, 0.1);
 						border-radius: 20px;
 						width: 380px;
 						text-align: center;
+						transition: all 0.3s;
+						cursor:pointer;
 						img {
 							width: 110px;
 							margin: 0px auto;
@@ -138,7 +146,7 @@
 							margin-top: 14px;
 							text-align: center;
 						}
-                        
+
 						.tag-list {
 							display: flex;
 							justify-content: center;
@@ -153,22 +161,29 @@
 									font-size: 14px;
 									line-height: 14px;
 								}
-                                
 							}
-                            
 						}
-                        &:nth-child(3){
-                            .tag-list{
-                                li{
-                                    &:nth-child(1),&:nth-child(2){
-                                        width: 50%;
-                                    }
-                                    &:nth-child(3),&:nth-child(4){
-                                        width: 100%;
-                                    }
-                                }
-                            }
-                        }
+						&:nth-child(3) {
+							.tag-list {
+								li {
+									&:nth-child(1),
+									&:nth-child(2) {
+										width: 50%;
+									}
+									&:nth-child(3),
+									&:nth-child(4) {
+										width: 100%;
+									}
+								}
+							}
+						}
+						&:hover {
+							background-color: rgba(62, 142, 226, 1);
+							color: #fff;
+							span {
+								color: white !important;
+							}
+						}
 					}
 				}
 			}
@@ -185,6 +200,7 @@
 					margin-bottom: 20px;
 					border-radius: 20px;
 					color: #2f374b;
+					cursor:pointer;
 				}
 				.el-tabs__nav-wrap {
 					overflow: visible;
@@ -222,12 +238,12 @@
 				.el-tabs__nav-wrap::after {
 					display: none;
 				}
-                .label-sm{
-                    display: none;
-                }
-                .label-lg{
-                    display: block;
-                }
+				.label-sm {
+					display: none;
+				}
+				.label-lg {
+					display: block;
+				}
 				.tab-body {
 					margin-left: 24px;
 					ul {
@@ -240,7 +256,11 @@
 							border-bottom: 1px solid rgba(221, 221, 221, 1);
 							display: flex;
 							align-items: center;
-							&:nth-child(3) {
+							cursor:pointer;
+							// &:hover{
+							// 	background-color: #3e8ee2;
+							// }
+							&:last-child {
 								border: none;
 							}
 							img {
@@ -285,7 +305,7 @@
 				justify-content: space-between;
 				align-items: center;
 				img {
-					width: 50%;
+					width: 545px;
 				}
 				.text {
 					width: 46%;
@@ -316,10 +336,14 @@
 				h3 {
 					.before-icon("../img/icon/patent-us-serve.png",28px);
 					font-size: 18px;
-					margin-bottom: 25px;
+					margin-bottom: 20px;
+				}
+				.el-form-item {
+					margin-bottom: 8px;
 				}
 				.el-input {
 					width: 70%;
+					height: 36px;
 				}
 				.el-form-item__label {
 					font-size: 16px;
@@ -330,10 +354,16 @@
 					font-size: 16px;
 					color: #666;
 				}
-                .form{
-                    padding: 0 15px;
-                    overflow: hidden;
-                }
+				.el-input__inner {
+					height: 36px;
+				}
+				.form {
+					padding: 0 15px;
+					overflow: hidden;
+				}
+				textarea {
+					height: 145px;
+				}
 			}
 		}
 	}
@@ -349,7 +379,7 @@
 			display: flex;
 			justify-content: space-between;
 			.patent-search-content-item {
-				padding: 40px 0px 0;
+				padding: 0;
 				background-color: #fff;
 				// border-radius: 20px;
 				width: 280px;
@@ -357,20 +387,21 @@
 					display: block;
 					width: 175px;
 					height: 245px;
-					margin: 0px auto;
+					margin: 40px auto 0;
 				}
 				P {
 					font-size: 16px;
 					margin-top: 14px;
-					padding: 41px;
+					padding: 24px;
 					color: #fff;
 					background-color: #3e8ee2;
 					text-align: center;
-					height: 128px;
+					height: 90px;
 				}
 			}
 		}
 		.tool-title {
+			padding: 114px 0 53px;
 			h2 {
 				color: white;
 			}
@@ -385,49 +416,6 @@
 			// min-width: 1199px;
 			object-fit: cover;
 			margin: 0px auto;
-		}
-	}
-	@media screen and (max-width: 1199px) {
-		.patent-search {
-			.patent-search-content {
-				.fix-container {
-					flex-wrap: wrap;
-					width: 100%;
-					.patent-search-content-item {
-						// flex:0 0 50%;
-						width: 46% !important;
-						margin: 10px 0px;
-					}
-				}
-			}
-		}
-		.patent-search-content {
-			.fix-container {
-				flex-wrap: wrap;
-				justify-content: space-around;
-				.patent-search-content-item {
-					// flex:0 0 100%
-					width: 80% !important;
-					margin: 10px 0px;
-				}
-			}
-		}
-		.intell-property-training {
-			.patent-search-content {
-				.el-tabs__item {
-					height: auto;
-					padding: 45px;
-					background-color: #fff;
-					width: auto !important;
-					text-align: left;
-					margin-bottom: 20px;
-					border-radius: 20px;
-					color: #2f374b;
-                    img{
-                        width: 50%;
-                    }
-				}
-			}
 		}
 	}
 }
