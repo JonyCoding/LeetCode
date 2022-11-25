@@ -47,7 +47,7 @@
   margin: 0px auto;
 }
 .patent-index .patent-index-body {
-  padding-bottom: 127px;
+  padding-bottom: 97px;
 }
 .patent-index .patent-index-body .fix-container {
   display: flex;
@@ -223,7 +223,7 @@
 }
 .patent-index .patent-index-body .intell-property-training .patent-search-content .tab-body ul li {
   justify-content: start;
-  padding: 25px;
+  padding: 23px 25px;
   border-bottom: 1px solid #dddddd;
   display: flex;
   align-items: center;
@@ -415,6 +415,9 @@
 }
 .patent-index .patent-index-body .contact-us-container .user-info-form textarea {
   height: 145px;
+}
+.patent-index .patent-index-body .contact-us {
+  padding-bottom: 30px;
 }
 .patent-index .intellectual-property-research {
   position: relative;
