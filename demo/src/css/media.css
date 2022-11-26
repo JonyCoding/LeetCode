@@ -456,6 +456,400 @@
     object-fit: cover;
     margin: 0px auto;
   }
+  .energy-knowledge {
+    padding: 0 20px;
+  }
+  .energy-knowledge .comprehensive-energy-knowledge {
+    position: relative;
+  }
+  .energy-knowledge .comprehensive-energy-knowledge img {
+    min-height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+  .energy-knowledge .comprehensive-energy-knowledge .comprehensive-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    min-height: 100px;
+  }
+  .energy-knowledge .comprehensive-energy-knowledge .comprehensive-text h1 {
+    font-weight: 700;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 7px 10px 12px rgba(25, 87, 138, 0.5);
+  }
+  .energy-knowledge .comprehensive-energy-knowledge .comprehensive-text h4 {
+    text-transform: uppercase;
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+    text-shadow: 5px 10px 5px rgba(2, 2, 2, 0.7);
+  }
+  .energy-knowledge .breadcrumb-container {
+    background-color: inherit;
+  }
+  .energy-knowledge .breadcrumb-container .breadcrumb {
+    background-color: inherit;
+  }
+  .energy-knowledge .el-button {
+    border-color: #3e8ee2 !important;
+    color: #3e8ee2 !important;
+  }
+  .energy-knowledge .energy-knowledge-body .tool-title {
+    padding: 0px 0 44px;
+  }
+  .energy-knowledge .energy-knowledge-body .tool-title h2,
+  .energy-knowledge .energy-knowledge-body .tool-title p {
+    text-align: left;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy {
+    display: block;
+    justify-content: space-between;
+    margin: 20px 0 45px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text {
+    width: 100%;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .tool-title {
+    padding: 0px 0 44px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .tool-title h2,
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .tool-title p {
+    text-align: left;
+    color: #3e8ee2;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .tool-title h2 {
+    font-size: 36px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .tool-title p {
+    font-size: 18px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .news-list li {
+    margin-bottom: 34px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .news-list li h3 {
+    font-size: 16px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .news-list li p {
+    font-size: 14px;
+    color: #999;
+    margin-top: 19px;
+    line-height: 21px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .news-list a {
+    display: block;
+    width: 50%;
+    min-width: 300px;
+    background-color: #3e8ee2;
+    padding: 18px 0px;
+    justify-content: space-around;
+    color: white;
+    text-align: center;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .news-list a h3 {
+    display: block;
+    margin: 0px auto;
+    font-size: 20px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .news-list a p {
+    font-size: 14px;
+    text-align: left;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .text .news-list a .bi {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-left: 33px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .news-details {
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #dddddd;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .news-details img {
+    width: 100%;
+    height: 484px;
+    object-fit: cover;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .news-details .news-details-text {
+    padding: 0px 25px 15px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .news-details .news-details-text h4 {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .news-details .news-details-text p {
+    font-size: 14px;
+    color: #999;
+    margin-top: 14px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-pllicy .news-details .news-details-text span {
+    font-size: 16px;
+    color: #000;
+    margin-top: 20px;
+    display: block;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .text {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .text .tool-title {
+    padding: 0;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details {
+    margin-top: 35px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul li {
+    display: block;
+    justify-content: start;
+    margin-left: 10px;
+    border-right: 1px solid #ddd;
+    padding: 10px 0;
+    padding-right: 5px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul li:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul li:first-child {
+    margin-left: 0px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul li .data {
+    width: 100%;
+    text-align: left;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul li .data h2 {
+    font-size: 28px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul li .data span {
+    color: #666;
+    font-size: 16px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul li .detail {
+    box-sizing: content-box;
+    margin-left: 0px;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul li .detail span {
+    font-size: 14px;
+    color: #999;
+  }
+  .energy-knowledge .energy-knowledge-body .energy-news .news-details .news-details-text ul li .detail h4 {
+    font-size: 16px;
+    line-height: 29px;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation {
+    margin-top: 100px;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .text {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .text .tool-title {
+    padding: 0;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details {
+    margin-top: 35px;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details .news-details-text ul {
+    display: block;
+    justify-content: space-between;
+    margin-top: 32px;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details .news-details-text ul li {
+    width: 80%;
+    margin: 0 auto 20px;
+    padding: 17px;
+    background-color: #fff;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details .news-details-text ul li img {
+    width: 100%;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details .news-details-text ul li h3 {
+    font-size: 14px;
+    margin-top: 19px;
+    font-weight: 500;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details .news-details-text ul li p {
+    font-size: 14px;
+    line-height: 23px;
+    margin-top: 16px;
+    color: #999;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details .news-details-text ul li .link-button {
+    display: inline-block;
+    margin: 33px auto 15px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation {
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .text {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .text .tool-title {
+    padding: 0;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details {
+    margin-top: 35px;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text {
+    display: block;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text .video-info {
+    width: 90%;
+    margin: 0px auto;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text .video-info video {
+    width: 80%;
+    display: block;
+    margin: 0px auto;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text .video-info h3 {
+    font-size: 20px;
+    line-height: 29px;
+    margin: 23px 0 20px;
+    font-weight: bold;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text .video-info P {
+    border-top: 1px solid #ddd;
+    font-size: 13px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 29px;
+    padding-top: 14px;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul {
+    width: 90%;
+    margin: 20px auto 0;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li {
+    margin-bottom: 23px;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a {
+    display: flex;
+    justify-content: space-between;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a img {
+    display: block;
+    width: 227px;
+    height: 137px;
+    min-width: 227px;
+    min-height: 137px;
+    object-fit: cover;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a .more-video-info {
+    margin-left: 26px;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a .more-video-info h3 {
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a .more-video-info p {
+    font-size: 14px;
+    line-height: 29px;
+    margin-top: 16px;
+    color: #000;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li .link-button {
+    margin: 33px auto 15px;
+  }
+  .energy-knowledge .expert-opinion {
+    position: relative;
+    padding-bottom: 105px;
+    margin-top: 85px;
+    background: url("../img/energy-expert-opinion.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .energy-knowledge .expert-opinion .fix-container {
+    width: 100%;
+    margin: 0px auto;
+    display: block;
+    justify-content: space-between;
+  }
+  .energy-knowledge .expert-opinion .fix-container .patent-search-content-item {
+    padding: 0;
+    background-color: #fff;
+    padding: 32px 26px 23px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto 20px;
+  }
+  .energy-knowledge .expert-opinion .fix-container .patent-search-content-item img {
+    display: block;
+    width: 186px;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  .energy-knowledge .expert-opinion .fix-container .patent-search-content-item h3 {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .energy-knowledge .expert-opinion .fix-container .patent-search-content-item h4 {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+  .energy-knowledge .expert-opinion .fix-container .patent-search-content-item P {
+    font-size: 14px;
+    color: #999;
+    margin-top: 15px;
+    margin-bottom: 21px;
+  }
+  .energy-knowledge .expert-opinion .more-button {
+    width: 100%;
+    margin-top: 61px;
+  }
+  .energy-knowledge .expert-opinion .more-button .link-button {
+    display: inline-block;
+    background-color: #fff;
+    margin: 0px auto;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .energy-knowledge .expert-opinion .tool-title {
+    padding: 103px 0 59px;
+  }
+  .energy-knowledge .expert-opinion .tool-title h2 {
+    color: white;
+  }
+  .energy-knowledge .expert-opinion .tool-title p {
+    color: #a8b6cb;
+  }
+  .energy-knowledge .expert-opinion img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0px auto;
+  }
 }
 @media screen and (max-width: 640px) {
   .label-sm {
@@ -505,5 +899,24 @@
   }
   .patent-index .intellectual-property-research .fix-container .patent-search-content-item {
     width: 80% !important;
+  }
+  .energy-knowledge {
+    padding: 0 10px;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text .video-info video {
+    width: 100%;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a {
+    display: block;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a img {
+    width: 100%;
+    height: auto;
+  }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a .more-video-info {
+    margin-top: 20px;
+  }
+  .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details .news-details-text ul li {
+    width: 90%;
   }
 }
