@@ -124,7 +124,8 @@
   padding: 0px 15px;
   background-color: #3e8ee2;
   border-bottom: 1px solid #fff;
-  transition: all 0.6s;
+  transition: all 0.3s;
+  border: 1px solid #fff0;
 }
 .child-menu-list li #is-select:before {
   display: none;
@@ -477,7 +478,7 @@
   padding: 0px 15px;
   background-color: #3e8ee2;
   border-bottom: 1px solid #fff;
-  transition: all 0.6s;
+  transition: all 0.3s;
 }
 .user-action {
   display: flex;
@@ -499,6 +500,15 @@
   margin-right: 10px;
   line-height: 48px;
 }
+#is-select-child {
+  color: #3e8ee2;
+  cursor: pointer;
+  border-radius: 10px 0px 0px 10px;
+  background-color: white;
+}
+#is-select-child a {
+  color: #3e8ee2;
+}
 .child-menu-list li:hover {
   color: #3e8ee2;
   cursor: pointer;
@@ -508,16 +518,6 @@
   background-color: white;
 }
 .child-menu-list li:hover a {
-  color: #3e8ee2;
-}
-#is-select-child {
-  color: #3e8ee2;
-  cursor: pointer;
-  transform: translateX(25px);
-  border-radius: 10px 0px 0px 10px;
-  background-color: white;
-}
-#is-select-child a {
   color: #3e8ee2;
 }
 .user-action .login-button a:hover {
@@ -626,7 +626,7 @@
     z-index: 999;
     padding: 10px 0;
     max-height: 70px;
-    transition: all 0.6s;
+    transition: all 0.3s;
     /* padding: 5px 0; */
   }
   .head-active {
@@ -780,8 +780,8 @@
     padding: 0px 15px;
     height: auto;
     background-color: #3e8ee2;
-    border-bottom: 1px solid #ddd;
-    transition: all 0.6s;
+    border-top: 1px solid #ddd;
+    transition: all 0.3s;
   }
   .user-action {
     display: flex;
@@ -878,7 +878,7 @@
     color: #3e8ee2;
     cursor: pointer;
     transform: translateX(0px);
-    border: none;
+    border-top: 1px solid #ddd;
     border-radius: 0;
     background-color: white;
   }

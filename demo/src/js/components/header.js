@@ -1,8 +1,83 @@
 Vue.component("h-header", {
 	data: function () {
 		return {
-			isSelect: "patentService",
+			isSelect: "newsPolicy",
+			menuList: [
+				{
+					title: "首页",
+					pageURL: "index.html",
+				},
+				{
+					title: "能源数据",
+					pageURL: "energy-knowledge.html",
+				},
+				{
+					title: "我们的研究",
+					pageURL: "our-research.html",
+				},
+				{
+					title: "知识服务",
+					pageURL: "our-research.html",
+					includes:[],
+					child: [
+						{
+							title: "文献服务",
+							pageURL: "literature-service.html",
+						},
+						{
+							title: "专利服务",
+							pageURL: "patent-index.html",
+						},
+						{
+							title: "新闻/政策",
+							pageURL: "news-policy.html",
+						},
+					],
+				},
+				{
+					title: "数据/工具",
+					pageURL: "tools-index.html",
+				},
+				{
+					title: "联系我们",
+					pageURL: "our-research.html",
+					includes:[],
+					child: [
+						{
+							title: "研究合作",
+							pageURL: "research-cooperation.html",
+						},
+						{
+							title: "工作机会",
+							pageURL: "job-opportunities.html",
+						},
+					],
+				},
+			],
 		};
+	},
+	props:{
+		path:String
+	},
+	mounted() {
+		function camelize(str) {
+			const camelizeRE = /-(\w)/g;
+			return str.replace(camelizeRE, function (_, c) {
+				return c ? c.toUpperCase() : "";
+			});
+		}
+		this.menuList.forEach((menu) => {
+			this.$set(menu, "key", camelize(menu.pageURL.split('.html')[0]));
+			if (menu.child && menu.child.length > 0) {
+				let childKeyList = [];
+				menu.child.forEach((child) => {
+					this.$set(child, "key", camelize(child.pageURL.split('.html')[0]));
+					childKeyList.push(child.key);
+				});
+				this.$set(menu, "childKeys", childKeyList);
+			}
+		});
+		this.isSelect = camelize(this.path.replace(/\//g,'').split('.html')[0])
 	},
 	methods: {},
 	template: `                
@@ -17,25 +92,15 @@ Vue.component("h-header", {
                 <img src="./img/logo-blue.png" alt="" srcset="" />
             </div>
 			<ul class="menu-list">
-				<li :id="isSelect==='index'?'is-select':''" class="menu-item"><a href="">首页</a></li>
-				<li :id="isSelect==='energyData'?'is-select':''" class="menu-item"><a href="">能源数据</a></li>
-				<li :id="isSelect==='ourResearch'?'is-select':''" class="menu-item"><a href="">我们的研究</a></li>
-				<li :id="['literatureService','patentService','newsPolicy'].includes(isSelect)?'is-select':''" class="parent-menu menu-item">
-					<a class="child-menu-title" href="javascript:;">知识服务<i class="bi bi-chevron-down bi-active"></i></a>
-					<ul id="show-knowledge" class="child-menu-list">
-						<li :id="isSelect==='literatureService'?'is-select-child':''"><a href="">文献服务</a></li>
-						<li :id="isSelect==='patentService'?'is-select-child':''"><a href="">专利服务</a></li>
-						<li :id="isSelect==='newsPolicy'?'is-select-child':''"><a href="">新闻/政策</a></li>
-					</ul>
-				</li>
-				<li :id="isSelect==='dataTool'?'is-select':''" class="menu-item"><a href="">数据/工具</a></li>
-				<li :id="['researchCooperation','jobOpportunities'].includes(isSelect)?'is-select':''" class="parent-menu menu-item">
-					<a class="child-menu-title" href="javascript:;">联系我们<i class="bi bi-chevron-down bi-active"></i></a>
-					<ul id="show-technology" class="child-menu-list">
-						<li :id="isSelect==='researchCooperation'?'is-select-child':''"><a href="">研究合作</a></li>
-						<li :id="isSelect==='jobOpportunities'?'is-select-child':''"><a href="">工作机会</a></li>
-					</ul>
-				</li>
+				<template v-for="item in menuList">
+					<li v-if="item.child&&item.child.length>0" :id="item.childKeys.includes(isSelect)?'is-select':''" class="parent-menu menu-item">
+						<a class="child-menu-title" href="javascript:;">知识服务<i class="bi bi-chevron-down bi-active"></i></a>
+						<ul id="show-knowledge" class="child-menu-list">
+							<li v-for="item2 in item.child" :id="isSelect===item2.key?'is-select-child':''"><a :href="'/'+item2.pageURL">{{item2.title}}</a></li>
+						</ul>
+					</li>
+					<li v-else :id="isSelect=== item.key?'is-select':''" class="menu-item"><a :href="'/'+item.pageURL">{{item.title}}</a></li>
+				</template>
 			</ul>
 			<div id="user-action-mobil" class="user-action">
 				<div class="login-button login"><a href="">登录</a></div>
@@ -89,15 +154,15 @@ $(document).ready(function () {
 	});
 	$(function () {
 		$(".menu-list li").click(function () {
-			if ($(this).hasClass('menu-item-active')) {
+			if ($(this).hasClass("menu-item-active")) {
 				$(".menu-list li").removeClass("menu-item-active");
 			} else {
 				$(".menu-list li").removeClass("menu-item-active");
 				$(this).addClass("menu-item-active"); // 添加当前元素的样式
 			}
 		});
-        $(".menu-list li").mouseleave(function () {
-				$(".menu-list li").removeClass("menu-item-active");
+		$(".menu-list li").mouseleave(function () {
+			$(".menu-list li").removeClass("menu-item-active");
 		});
 	});
 });
