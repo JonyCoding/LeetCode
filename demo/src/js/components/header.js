@@ -1,7 +1,7 @@
 Vue.component("h-header", {
 	data: function () {
 		return {
-			isSelect: "literatureService",
+			isSelect: "patentService",
 		};
 	},
 	methods: {},
@@ -23,17 +23,17 @@ Vue.component("h-header", {
 				<li :id="['literatureService','patentService','newsPolicy'].includes(isSelect)?'is-select':''" class="parent-menu menu-item">
 					<a class="child-menu-title" href="javascript:;">知识服务<i class="bi bi-chevron-down bi-active"></i></a>
 					<ul id="show-knowledge" class="child-menu-list">
-						<li :id="isSelect==='literatureService'?'is-select-child':''"><a>文献服务</a></li>
-						<li :id="isSelect==='patentService'?'is-select-child':''"><a>专利服务</a></li>
-						<li :id="isSelect==='newsPolicy'?'is-select-child':''"><a>新闻/政策</a></li>
+						<li :id="isSelect==='literatureService'?'is-select-child':''"><a href="">文献服务</a></li>
+						<li :id="isSelect==='patentService'?'is-select-child':''"><a href="">专利服务</a></li>
+						<li :id="isSelect==='newsPolicy'?'is-select-child':''"><a href="">新闻/政策</a></li>
 					</ul>
 				</li>
 				<li :id="isSelect==='dataTool'?'is-select':''" class="menu-item"><a href="">数据/工具</a></li>
 				<li :id="['researchCooperation','jobOpportunities'].includes(isSelect)?'is-select':''" class="parent-menu menu-item">
 					<a class="child-menu-title" href="javascript:;">联系我们<i class="bi bi-chevron-down bi-active"></i></a>
 					<ul id="show-technology" class="child-menu-list">
-						<li :id="isSelect==='researchCooperation'?'is-select-child':''"><a>研究合作</a></li>
-						<li :id="isSelect==='jobOpportunities'?'is-select-child':''"><a>工作机会</a></li>
+						<li :id="isSelect==='researchCooperation'?'is-select-child':''"><a href="">研究合作</a></li>
+						<li :id="isSelect==='jobOpportunities'?'is-select-child':''"><a href="">工作机会</a></li>
 					</ul>
 				</li>
 			</ul>
