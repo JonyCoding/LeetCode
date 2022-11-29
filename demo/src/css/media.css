@@ -916,7 +916,16 @@
   .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a .more-video-info {
     margin-top: 20px;
   }
+  .energy-knowledge .energy-knowledge-body .video-interpretation .news-details .news-details-text ul li a .more-video-info {
+    margin-left: 0px;
+  }
   .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details .news-details-text ul li {
     width: 90%;
+  }
+  .energy-knowledge .expert-opinion .tool-title {
+    padding: 53px 0 29px;
+  }
+  .energy-knowledge .expert-opinion {
+    margin-top: 40px;
   }
 }

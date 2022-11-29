@@ -690,6 +690,7 @@
   width: 32%;
   padding: 17px;
   background-color: #fff;
+  box-shadow: 0 0 40px 10px #0002;
 }
 .energy-knowledge .energy-knowledge-body .policy-interpretation .news-details .news-details-text ul li img {
   width: 100%;

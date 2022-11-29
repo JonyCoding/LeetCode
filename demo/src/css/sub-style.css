@@ -36,6 +36,12 @@
   line-height: 50px;
   transition: all 0.3s;
 }
+.menu-item a {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+}
 @keyframes myheader {
   from {
     transform: translateY(-5px) scale(1, 1);
@@ -54,6 +60,9 @@
   animation: myheader 0.3s;
   transform: scale(1.2, 1.2);
 }
+.menu-item:hover:before {
+  display: none !important;
+}
 .menu-item:hover ul {
   line-height: 50px;
   max-height: 500px;
@@ -62,13 +71,31 @@
 .head-menu ul li a {
   color: white;
   font-weight: 400;
-  width: 63px;
   font-size: 16px;
   text-align: left;
   text-decoration: none;
 }
+#is-select {
+  position: relative;
+}
+#is-select:before {
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 30px;
+  border-radius: 3px;
+  margin-right: 5px;
+  background-color: #ffffff;
+  background-size: 3px;
+  vertical-align: top;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .menu-list .menu-item i {
   transition: all 0.3s;
+  margin-left: 5px;
 }
 .menu-list .menu-item:hover i {
   /* display: block; */
@@ -91,12 +118,16 @@
   max-height: 0px;
   overflow: hidden;
   animation: all 0.3s;
+  padding-top: 5px;
 }
 .child-menu-list li {
   padding: 0px 15px;
   background-color: #3e8ee2;
   border-bottom: 1px solid #fff;
   transition: all 0.6s;
+}
+.child-menu-list li #is-select:before {
+  display: none;
 }
 .user-action {
   display: flex;
@@ -400,20 +431,20 @@
     transform: translateY(0px) scale(1.2, 1.2);
   }
 }
-.menu-item:hover {
-  /* transform:rotateZ(360deg); */
-  animation: myheader 0.3s;
-  transform: scale(1.2, 1.2);
+.close-action {
+  display: none;
 }
-.menu-item:hover ul {
+.menu-item-active ul {
   line-height: 50px;
   max-height: 500px;
   transition: all 0.7s;
 }
+#mobil-logo {
+  display: none;
+}
 .head-menu ul li a {
   color: white;
   font-weight: 400;
-  width: 63px;
   font-size: 16px;
   text-align: left;
   text-decoration: none;
@@ -422,7 +453,6 @@
   transition: all 0.3s;
 }
 .menu-list .menu-item:hover i {
-  /* display: block; */
   display: inline-block;
   transform: rotateX(180deg);
 }
@@ -478,6 +508,16 @@
   background-color: white;
 }
 .child-menu-list li:hover a {
+  color: #3e8ee2;
+}
+#is-select-child {
+  color: #3e8ee2;
+  cursor: pointer;
+  transform: translateX(25px);
+  border-radius: 10px 0px 0px 10px;
+  background-color: white;
+}
+#is-select-child a {
   color: #3e8ee2;
 }
 .user-action .login-button a:hover {
@@ -579,7 +619,7 @@
   /* 页头 */
   .index-head {
     background-color: #3e8ee2;
-    min-width: 380px;
+    min-width: 330px;
     width: 100%;
     position: sticky;
     top: 0;
@@ -591,26 +631,69 @@
   }
   .head-active {
     max-width: 50% !important;
+    min-width: 260px !important;
+    overflow: inherit !important;
   }
   .flex-container {
     display: block;
     background-color: #3e8ee2;
     width: 80%;
-    min-width: 380px;
+    min-width: 330px;
     height: auto;
     margin: 0px auto;
     /* height: 48px; */
   }
   .head-menu {
-    position: absolute;
-    background-color: #3e8ee2;
-    transition: max-width 0.3s;
+    position: fixed;
+    background-color: #ffffff;
+    color: #000;
+    transition: all 0.3s;
     overflow: hidden;
     max-width: 0px;
+    min-width: 0px;
     z-index: 9999;
     height: 100vh;
-    /* top: 60px; */
-    left: 0;
+    top: 0px;
+    right: 0;
+  }
+  .head-menu .close-action {
+    color: #ffffff;
+    display: block;
+    font-size: 40px;
+    position: absolute;
+    left: -50px;
+    top: 20px;
+  }
+  .head-menu .user-action {
+    width: 100%;
+    padding-top: 19px;
+  }
+  .head-menu .user-action img {
+    width: 200px;
+    display: block;
+    margin: 0px auto;
+  }
+  .head-menu li {
+    background-color: #fff !important;
+  }
+  .head-menu li a {
+    color: #000 !important;
+  }
+  #mobil-logo {
+    display: block;
+  }
+  #is-select {
+    background-color: #F0F7FF !important;
+  }
+  #is-select .child-menu-title {
+    color: #3e8ee2 !important;
+  }
+  #is-select-child {
+    transform: translateX(0);
+    background-color: #F0F7FF !important;
+  }
+  #is-select-child a {
+    color: #3e8ee2 !important;
   }
   .index-head .logo img {
     width: 20%;
@@ -619,7 +702,6 @@
     margin: 0px auto;
   }
   .menu-list {
-    overflow: hidden;
     list-style: none;
     display: block;
     min-width: 200px;
@@ -627,11 +709,16 @@
   .menu-item {
     /* width: 10%; */
     transition: all 0.3s;
-    border-bottom: 1px solid #8dbbf7;
+    border-bottom: 1px solid #ddd;
+    line-height: 70px;
+    max-height: 70px;
   }
   .menu-item a {
-    margin-left: 10px;
-    padding-left: 20px;
+    overflow: hidden;
+    padding-left: 49px;
+    font-size: 20px;
+    line-height: 70px;
+    height: 70px;
   }
   @keyframes myheader2 {
     from {
@@ -662,16 +749,18 @@
   .head-menu ul li a {
     color: white;
     font-weight: 400;
-    width: 63px;
-    font-size: 16px;
+    font-size: 20px;
     text-align: left;
     text-decoration: none;
+    display: block;
+    width: 100%;
   }
   .parent-menu {
     position: relative;
     max-height: 500px;
   }
   .user-menu-action {
+    font-size: 25px;
     transform: rotate(90deg);
   }
   .child-menu-list {
@@ -685,12 +774,13 @@
     height: auto;
     overflow: hidden;
     animation: all 0.3s;
+    padding-top: 0px;
   }
   .child-menu-list li {
     padding: 0px 15px;
     height: auto;
     background-color: #3e8ee2;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
     transition: all 0.6s;
   }
   .user-action {
@@ -704,18 +794,55 @@
     top: 0.8rem;
     left: 10px;
     color: white;
+    transition: all 0.3s;
   }
   #user-action-pc {
     display: none;
   }
-  #user-action-mobil {
-    display: flex;
+  #mobil-logo {
+    display: block;
+    margin-bottom: 20px;
+    padding-top: 19px;
     position: relative;
+    width: 100%;
+    right: 0;
+    min-width: 180px;
+  }
+  #mobil-logo img {
+    width: 220px;
+    display: block;
+    margin: 0px auto;
+  }
+  #mobil-logo .login-button a {
+    display: block;
+    width: 90%;
+    margin: 0px auto 20px;
+    padding: 0px 10px;
+    text-align: center;
+    background-color: #3e8ee2;
+    color: white;
+    font-size: 20px;
+  }
+  #user-action-mobil {
+    display: block;
+    position: absolute;
     margin-bottom: 20px;
     width: 100%;
     right: 0;
+    bottom: 0px !important;
     left: 10px;
-    min-width: 200px;
+    top: auto;
+    min-width: 180px;
+  }
+  #user-action-mobil .login-button a {
+    display: block;
+    width: 80%;
+    margin: 0px auto 20px;
+    padding: 0px 10px;
+    text-align: center;
+    background-color: #3e8ee2;
+    color: white;
+    font-size: 20px;
   }
   .diskDuck {
     width: 100%;
@@ -735,30 +862,31 @@
   }
   .user-action .login-button a {
     border-radius: 4px 4px 4px 4px;
-    border: 1px solid white;
+    border: 1px solid #3e8ee2;
     padding: 5px 10px;
     font-weight: 400;
     font-size: 16px;
-    color: white;
+    color: #3e8ee2;
     text-align: left;
     margin-right: 10px;
     line-height: 48px;
   }
   .user-menu #mobil-i {
-    font-size: 20px;
+    font-size: 25px;
   }
   .child-menu-list li:hover {
     color: #3e8ee2;
     cursor: pointer;
     transform: translateX(0px);
-    border: 1px solid #3e8ee2;
+    border: none;
+    border-radius: 0;
     background-color: white;
   }
   .child-menu-list li:hover a {
     color: #3e8ee2;
   }
   .user-action .login-button a:hover {
-    border-radius: 4px 4px 4px 4px;
+    border-radius: none;
     color: #3e8ee2;
     border: 1px solid #3e8ee2;
     background-color: white;
@@ -766,7 +894,7 @@
   /* 页脚 */
   .index-footer {
     width: 100%;
-    min-width: 380px;
+    min-width: 330px;
     height: auto;
     position: relative;
     background-color: #3e8ee2;
@@ -785,6 +913,7 @@
     margin-left: 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .link-list {
     display: flex;
@@ -830,7 +959,7 @@
     margin: 0px auto;
     position: relative;
     width: 100%;
-    min-width: 380px;
+    min-width: 330px;
     padding: 10px 10px;
   }
   .tool-chemistry-container .tool .btn {
@@ -973,7 +1102,7 @@
     margin: 0px auto;
     position: relative;
     width: 100%;
-    min-width: 380px;
+    min-width: 330px;
     padding: 10px 10px;
   }
   .tool-chemistry-container .tool .btn {
@@ -1102,7 +1231,7 @@
 }
 @media screen and (max-width: 620px) {
   .head-menu {
-    top: 50px;
+    top: 0px;
   }
   .user-menu {
     /* top: .4rem; */
