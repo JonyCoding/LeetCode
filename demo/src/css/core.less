@@ -61,7 +61,19 @@
 		vertical-align: top;
     }
 }
-
+.before-text-icon(@icon,@size) {
+	position: relative;
+    line-height: @size;
+    &:before {
+		content: @icon;
+		display: inline-block;
+        font-size: @size;
+		height: @size;
+		width: @size;
+		vertical-align: top;
+        font-family: bootstrap-icons !important;
+    }
+}
 .container-center() {
     position: absolute;
     top: 50%;

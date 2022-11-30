@@ -18,7 +18,6 @@ Vue.component("h-header", {
 				{
 					title: "知识服务",
 					pageURL: "our-research.html",
-					includes:[],
 					child: [
 						{
 							title: "文献服务",
@@ -41,7 +40,6 @@ Vue.component("h-header", {
 				{
 					title: "联系我们",
 					pageURL: "our-research.html",
-					includes:[],
 					child: [
 						{
 							title: "研究合作",
@@ -94,12 +92,12 @@ Vue.component("h-header", {
 			<ul class="menu-list">
 				<template v-for="item in menuList">
 					<li v-if="item.child&&item.child.length>0" :id="item.childKeys.includes(isSelect)?'is-select':''" class="parent-menu menu-item">
-						<a class="child-menu-title" href="javascript:;">知识服务<i class="bi bi-chevron-down bi-active"></i></a>
+						<a class="child-menu-title" href="javascript:;">{{item.title}}<i class="bi bi-chevron-down bi-active"></i></a>
 						<ul id="show-knowledge" class="child-menu-list">
-							<li v-for="item2 in item.child" :id="isSelect===item2.key?'is-select-child':''"><a :href="'/'+item2.pageURL">{{item2.title}}</a></li>
+							<li v-for="item2 in item.child" :id="isSelect===item2.key?'is-select-child':''"><a :href="'./'+item2.pageURL">{{item2.title}}</a></li>
 						</ul>
 					</li>
-					<li v-else :id="isSelect=== item.key?'is-select':''" class="menu-item"><a :href="'/'+item.pageURL">{{item.title}}</a></li>
+					<li v-else :id="isSelect=== item.key?'is-select':''" class="menu-item"><a :href="'./'+item.pageURL">{{item.title}}</a></li>
 				</template>
 			</ul>
 			<div id="user-action-mobil" class="user-action">
