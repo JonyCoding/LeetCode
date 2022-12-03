@@ -69,7 +69,7 @@
   transition: all 0.7s;
 }
 .head-menu ul li a {
-  color: white;
+  color: #666;
   font-weight: 400;
   font-size: 16px;
   text-align: left;
@@ -473,10 +473,14 @@
   max-height: 0px;
   overflow: hidden;
   animation: all 0.3s;
+  border-radius: 0px 0px 4px 4px;
+}
+.child-menu-list li a {
+  color: #666 !important;
 }
 .child-menu-list li {
   padding: 0px 15px;
-  background-color: #3e8ee2;
+  background-color: #ffffff;
   border-bottom: 1px solid #fff;
   transition: all 0.3s;
 }
@@ -503,17 +507,17 @@
 #is-select-child {
   color: #3e8ee2;
   cursor: pointer;
-  border-radius: 10px 0px 0px 10px;
-  background-color: white;
+  border-radius: 0px;
+  background-color: #f2f8ff;
 }
 #is-select-child a {
-  color: #3e8ee2;
+  color: #3e8ee2 !important;
 }
 .child-menu-list li:hover {
   color: #3e8ee2;
   cursor: pointer;
   transform: translateX(25px);
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 5px 0px 0px 5px;
   border: 1px solid #3e8ee2;
   background-color: white;
 }
@@ -683,14 +687,14 @@
     display: block;
   }
   #is-select {
-    background-color: #F0F7FF !important;
+    background-color: #f0f7ff !important;
   }
   #is-select .child-menu-title {
     color: #3e8ee2 !important;
   }
   #is-select-child {
     transform: translateX(0);
-    background-color: #F0F7FF !important;
+    background-color: #f0f7ff !important;
   }
   #is-select-child a {
     color: #3e8ee2 !important;
@@ -705,6 +709,8 @@
     list-style: none;
     display: block;
     min-width: 200px;
+    max-height: 60vh;
+    overflow-y: scroll;
   }
   .menu-item {
     /* width: 10%; */
@@ -775,6 +781,9 @@
     overflow: hidden;
     animation: all 0.3s;
     padding-top: 0px;
+  }
+  .child-menu-list a {
+    color: #ffffff !important;
   }
   .child-menu-list li {
     padding: 0px 15px;

@@ -1,0 +1,267 @@
+extends ./index_tp.jade
+prepend head
+    - var title = "专利首页";
+prepend body
+    - var body_id = "index";
+    - var path = "research-direction.html";
+    script(src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js")
+    script(src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js")
+block main
+    template.
+        <div class="body">
+            <div class="research-direction">
+                <div class="research-direction-header">
+                    <img src="./img/patent-search-bg.png" alt="">
+                </div>
+                <div class="research-direction-body layout">
+                    <div class="tool-title">
+                        <h2>研究方向</h2>
+                        <p>Research direction</p>
+                    </div>
+                    <div class="direction-tab">
+                        <el-tabs v-model="activeName" @tab-click="handleClick">
+                            <el-tab-pane label="用户管理" name="first">
+                                <ul>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon1.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon2.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon3.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon4.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </el-tab-pane>
+                            <el-tab-pane label="配置管理" name="second">
+                                <ul>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon1.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon2.png" alt="">
+                                                    </div>
+                                                    <h3>配置管理<span>achievements</span></h3>
+                                                    <p>配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon3.png" alt="">
+                                                    </div>
+                                                    <h3>配置管理<span>achievements</span></h3>
+                                                    <p>配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理配置管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon4.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul></el-tab-pane>
+                            <el-tab-pane label="角色管理" name="third">
+                                <ul>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon1.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon2.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon3.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon4.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理角色管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul></el-tab-pane>
+                            <el-tab-pane label="定时任务补偿" name="fourth">
+                                <ul>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon1.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon2.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon3.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿定时任务补偿</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="container">
+                                            <img src="./img/news-details.jpg" alt="">
+                                            <div class="text-content">
+                                                <div class="text">
+                                                    <div class="top-icon">
+                                                        <img src="./img/icon/research-icon4.png" alt="">
+                                                    </div>
+                                                    <h3>煤炭开采<span>achievements</span></h3>
+                                                    <p>详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul></el-tab-pane>
+                          </el-tabs>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+block script
+    script(src="./js/research-direction.js?v=#{time}")

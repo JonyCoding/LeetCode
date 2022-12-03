@@ -912,10 +912,11 @@
 	}
 	.tab-body {
 		width: 890px;
-		height: 550px;
-		overflow-y: scroll;
+		height: auto;
+		min-height: 550px;
+		// overflow-y: auto;
 		background: url("../img/tool-panel-bg.png") center no-repeat;
-		background-size: 100%;
+		background-size: 100% 100%;
 		ul {
 			// background-color: #fff;
 			width: 100%;
@@ -964,11 +965,182 @@
 							line-height: 24px;
 							text-overflow: ellipsis;
 							display: -webkit-box;
-							-webkit-line-clamp: 2;
+							-webkit-line-clamp: 3;
 							-webkit-box-orient: vertical;
 							overflow: hidden;
 						}
 						.data {
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.research-direction{
+	.research-direction-header{
+		img{
+			width: 100%;
+		}
+	}
+	.research-direction-body{
+		.tool-title{
+			padding: 68px 0 40px;
+		}
+		.direction-tab{
+			.el-tabs__active-bar{
+				display: none;
+				background-color: #fff;
+				// border: ;
+				border-width: 10px;
+				border-bottom-width: 0px;
+				border-color: #fff;
+				border-top-color: #3e8ee2;
+				width: auto !important;
+				transform:rotate(180deg);
+			}
+			.el-tabs__header{
+				margin-bottom: 45px;
+			}
+			.el-tabs__nav {
+				float: none;
+				display: flex;
+				justify-content: center;
+				margin-bottom: 10px;
+				.el-tabs__item{
+					border: 1px solid #3e8ee2;
+					padding: 0 33px;
+					margin: 0px 8px;
+					color: #004EA2;
+					font-size: 16px;
+					border-radius: 4px;
+					background-color: #fff;
+				}
+				.is-active {
+					color: #fff;
+					background-color: #3e8ee2;
+					// border: 1px solid #004EA2;
+					&:after{
+						content: " ";
+						display: inline-block;
+						position: absolute;
+						bottom: -11px;
+						left: 50%;
+						transform: translateX(-50%);
+						border-width: 10px;
+						border-bottom-width: 0px;
+						border-color: #fff;
+						border-style: solid;
+						border-top-color: #3e8ee2;
+						
+					}
+				}
+			}
+			.el-tabs__nav-wrap::after{
+				display: none;
+			}
+			ul{
+				li{
+					.container{
+						position: relative;
+						display: flex;
+						justify-content: end;
+						margin-bottom: 60px;
+						padding-right:0;
+						padding-left: 0;
+						.text-content{
+							padding-right: 70px;
+							border-bottom: 9px solid #17286e;
+							width: 627px;
+							height: 412px;
+							background-color: #fff;
+							position: absolute;
+							top: 50%;
+							left: 0px;
+							transform: translateY(-45%);
+							.text{
+								padding-left: 70px;
+								// padding-bottom: 115px;
+								border-bottom: 9px solid #3E8EE2;
+								margin-bottom: -9px;
+								height: 412px;
+								padding-top: 110px;
+								position: relative;
+								.top-icon{
+									background-color: #17286E;
+									width: 110px;
+									height: 110px;
+									// padding: 30px 23px;
+									position: absolute;
+									top: -60px;
+									img{
+										width: 60px;
+										height: 60px;
+										position: absolute;
+										top: 50%;
+										left: 50%;
+										transform: translate(-50%,-50%);
+									}
+								}
+								h3{
+									font-size: 22px;
+									span{
+										font-size: 12px;
+										font-weight: 400;
+										color: #666666;
+										line-height: 46px;
+										margin-left: 10px;
+										text-transform: uppercase;
+									}
+								}
+								p{
+									font-weight: 400;
+									color: #999999;
+									line-height: 25px;
+									text-overflow: ellipsis;
+									display: -webkit-box;
+									-webkit-line-clamp: 6;
+									-webkit-box-orient: vertical;
+									overflow: hidden;
+									margin-top: 15px;
+								}
+							}
+						}
+						img{
+							width: 642px;
+							height: 564px;
+						}
+					}
+				}
+				li:nth-child(even){
+					.container{
+						justify-content: start;
+						.text-content{
+							padding-left: 70px;
+							padding-right: 0;
+							border-bottom: 9px solid #17286e;
+							background-color: #fff;
+							right: 0px;
+							left: auto;
+							.text{
+								padding-right: 70px;
+								padding-left: 0;
+								// padding-bottom: 115px;
+								border-bottom: 9px solid #3E8EE2;
+								margin-bottom: -9px;
+								padding-top: 110px;
+								position: relative;
+								.top-icon{
+									background-color: #17286E;
+									// width: 110px;
+									// height: 110px;
+									padding: 30px 23px;
+									position: absolute;
+									top: -60px;
+									right: 83px;
+								}
+							}
 						}
 					}
 				}

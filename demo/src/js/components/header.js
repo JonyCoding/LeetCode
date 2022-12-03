@@ -14,6 +14,28 @@ Vue.component("h-header", {
 				{
 					title: "我们的研究",
 					pageURL: "our-research.html",
+					child: [
+						{
+							title: "研究方向",
+							pageURL: "research-direction.html",
+						},
+						{
+							title: "研究成果",
+							pageURL: "patent-index.html",
+						},
+						{
+							title: "技术清单",
+							pageURL: "news-policy.html",
+						},
+						{
+							title: "数据和工具",
+							pageURL: "news-policy.html",
+						},
+						{
+							title: "能源创新指数",
+							pageURL: "news-policy.html",
+						},
+					],
 				},
 				{
 					title: "知识服务",
