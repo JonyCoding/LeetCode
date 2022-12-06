@@ -21,7 +21,7 @@ Vue.component("h-header", {
 						},
 						{
 							title: "研究成果",
-							pageURL: "patent-index.html",
+							pageURL: "research-findings.html",
 						},
 						{
 							title: "技术清单",

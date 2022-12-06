@@ -989,6 +989,9 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.research-direction {
+  padding-bottom: 129px;
+}
 .research-direction .research-direction-header img {
   width: 100%;
 }
@@ -1136,4 +1139,238 @@
   position: absolute;
   top: -60px;
   right: 83px;
+}
+.index-page .comprehensive-energy-knowledge {
+  position: relative;
+}
+.index-page .comprehensive-energy-knowledge .comprehensive-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.index-page .comprehensive-energy-knowledge .comprehensive-text h1 {
+  font-weight: 700;
+  font-size: 70px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 7px 10px 12px rgba(25, 87, 138, 0.5);
+}
+.index-page .comprehensive-energy-knowledge .comprehensive-text h4 {
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 30px;
+  color: #ffffff;
+  text-shadow: 5px 10px 5px rgba(2, 2, 2, 0.7);
+}
+.index-page .energy-pllicy {
+  display: flex;
+  justify-content: space-between;
+  margin: 90px 0 0px;
+}
+.index-page .energy-pllicy .text {
+  width: 48%;
+}
+.index-page .energy-pllicy .text .tool-title {
+  padding: 0px 0 44px;
+}
+.index-page .energy-pllicy .text .tool-title h2,
+.index-page .energy-pllicy .text .tool-title p {
+  text-align: left;
+  color: #3e8ee2;
+}
+.index-page .energy-pllicy .text .tool-title h2 {
+  font-size: 36px;
+}
+.index-page .energy-pllicy .text .tool-title p {
+  font-size: 18px;
+}
+.index-page .energy-pllicy .text .news-list li {
+  margin-bottom: 34px;
+}
+.index-page .energy-pllicy .text .news-list li h3 {
+  font-size: 16px;
+}
+.index-page .energy-pllicy .text .news-list li p {
+  font-size: 14px;
+  color: #999;
+  margin-top: 19px;
+  line-height: 21px;
+}
+.index-page .energy-pllicy .text .news-list a {
+  display: block;
+  width: 100%;
+  background-color: #3e8ee2;
+  padding: 28px 170px;
+  justify-content: space-around;
+  color: white;
+  text-align: center;
+  display: flex;
+}
+.index-page .energy-pllicy .text .news-list a h3 {
+  display: block;
+  margin: 0px auto;
+  font-size: 20px;
+}
+.index-page .energy-pllicy .text .news-list a p {
+  font-size: 14px;
+  text-align: left;
+}
+.index-page .energy-pllicy .text .news-list a .bi {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-left: 33px;
+}
+.index-page .energy-pllicy .news-details {
+  width: 48%;
+  border: 1px solid #dddddd;
+}
+.index-page .energy-pllicy .news-details img {
+  width: 100%;
+  height: 484px;
+  object-fit: cover;
+}
+.index-page .energy-pllicy .news-details .news-details-text {
+  padding: 0px 25px;
+}
+.index-page .energy-pllicy .news-details .news-details-text h4 {
+  font-size: 16px;
+  margin-top: 30px;
+}
+.index-page .energy-pllicy .news-details .news-details-text p {
+  font-size: 14px;
+  color: #999;
+  margin-top: 14px;
+}
+.index-page .energy-pllicy .news-details .news-details-text span {
+  font-size: 16px;
+  color: #000;
+  margin-top: 31px;
+  display: block;
+}
+.index-page .patent-search .patent-search-content .fix-container {
+  display: flex;
+  justify-content: space-between;
+}
+.index-page .patent-search .patent-search-content .fix-container .patent-search-content-item {
+  cursor: pointer;
+  padding: 24px 18px;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 280px;
+  border: 1px solid #3E8EE2;
+  transition: all 0.3s;
+}
+.index-page .patent-search .patent-search-content .fix-container .patent-search-content-item img {
+  width: 100%;
+  margin-top: 17px;
+}
+.index-page .patent-search .patent-search-content .fix-container .patent-search-content-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+}
+.index-page .patent-search .patent-search-content .fix-container .patent-search-content-item P {
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #666666;
+  line-height: 23px;
+  margin-top: 15px;
+}
+.index-page .patent-search .patent-search-content .fix-container .patent-search-content-item:hover {
+  border: 1px solid #3e8ee2;
+  box-shadow: 0px 11px 36px 10px rgba(163, 163, 163, 0.28);
+}
+.index-page .news-peport {
+  padding: 180px 0 0;
+}
+.index-page .news-peport .news-peport-container {
+  display: flex;
+  justify-content: space-between;
+}
+.index-page .news-peport .news-peport-container .flex-container-item {
+  width: 586px;
+}
+.index-page .news-peport .news-peport-container .flex-container-item .title {
+  padding: 30px;
+  background-color: #3E8EE2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.index-page .news-peport .news-peport-container .flex-container-item .title h3 {
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 22px;
+}
+.index-page .news-peport .news-peport-container .flex-container-item .title h3 span {
+  font-weight: 400;
+  color: #C8E3FF;
+  font-size: 17px;
+  margin-left: 14px;
+}
+.index-page .news-peport .news-peport-container .flex-container-item .title a {
+  font-size: 18px;
+  color: #FFFFFF;
+}
+.index-page .news-peport .news-peport-container .flex-container-item .text-list-container .text-list {
+  background-color: #FFFFFF;
+  border: 1px solid #ddd;
+}
+.index-page .news-peport .news-peport-container .flex-container-item .text-list-container .text-list .text-item {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid #ddd;
+  transition: all 0.3s;
+}
+.index-page .news-peport .news-peport-container .flex-container-item .text-list-container .text-list .text-item h4 {
+  font-size: 16px;
+  color: #000;
+}
+.index-page .news-peport .news-peport-container .flex-container-item .text-list-container .text-list .text-item p {
+  margin-top: 17px;
+  font-size: 14px;
+  color: #999;
+}
+.index-page .news-peport .news-peport-container .flex-container-item .text-list-container .text-list .text-item:hover {
+  box-shadow: 0px 11px 36px 10px rgba(197, 197, 197, 0.28);
+}
+.index-page .research-direction .tool-title {
+  padding: 100px 0 40px;
+}
+.index-page .research-direction .patent-search-content .fix-container {
+  display: flex;
+  justify-content: space-between;
+  border-top: 4px solid #038de2;
+  padding: 40px 40px 34px;
+  background-color: #fff;
+}
+.index-page .research-direction .patent-search-content .fix-container .patent-search-content-item {
+  cursor: pointer;
+  width: 14%;
+  transition: all 0.3s;
+}
+.index-page .research-direction .patent-search-content .fix-container .patent-search-content-item h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+}
+.index-page .research-direction .patent-search-content .fix-container .patent-search-content-item ul {
+  margin-top: 32px;
+}
+.index-page .research-direction .patent-search-content .fix-container .patent-search-content-item ul li {
+  margin-top: 16px;
+}
+.index-page .research-direction .patent-search-content .fix-container .patent-search-content-item ul li a {
+  font-weight: 400;
+  font-size: 18px;
+  color: #3E8EE2;
+}
+.index-page .research-direction .patent-search-content .fix-container .patent-search-content-item ul li a:hover {
+  text-decoration: underline;
 }
