@@ -1128,7 +1128,7 @@
     background-color: #fff;
     border-radius: 8px;
     width: 46%;
-    border: 1px solid #3E8EE2;
+    border: 1px solid #3e8ee2;
     transition: all 0.3s;
     margin-top: 20px;
   }
@@ -1167,28 +1167,28 @@
   }
   .index-page .news-peport .news-peport-container .flex-container-item .title {
     padding: 30px;
-    background-color: #3E8EE2;
+    background-color: #3e8ee2;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   .index-page .news-peport .news-peport-container .flex-container-item .title h3 {
     font-weight: bold;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 22px;
   }
   .index-page .news-peport .news-peport-container .flex-container-item .title h3 span {
     font-weight: 400;
-    color: #C8E3FF;
+    color: #c8e3ff;
     font-size: 17px;
     margin-left: 14px;
   }
   .index-page .news-peport .news-peport-container .flex-container-item .title a {
     font-size: 18px;
-    color: #FFFFFF;
+    color: #ffffff;
   }
   .index-page .news-peport .news-peport-container .flex-container-item .text-list-container .text-list {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border: 1px solid #ddd;
   }
   .index-page .news-peport .news-peport-container .flex-container-item .text-list-container .text-list .text-item {
@@ -1242,10 +1242,377 @@
   .index-page .research-direction .patent-search-content .fix-container .patent-search-content-item ul li a {
     font-weight: 400;
     font-size: 18px;
-    color: #3E8EE2;
+    color: #3e8ee2;
   }
   .index-page .research-direction .patent-search-content .fix-container .patent-search-content-item ul li a:hover {
     text-decoration: underline;
+  }
+  .research-findings .tool-title {
+    padding-top: 69px;
+  }
+  .research-findings .research-findings-header img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  .research-findings .research-findings-body {
+    padding: 0 10px;
+  }
+  .research-findings .research-findings-body .text {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .research-findings .research-findings-body .text .tool-title {
+    padding: 0;
+  }
+  .research-findings .research-findings-body .article {
+    margin-top: 27px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li {
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;
+    margin-top: 13px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .title-container {
+    display: block;
+    justify-content: space-between;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .title-container h3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .title-container .icon {
+    min-width: 150px;
+    margin-top: 13px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .title-container .icon span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #3e8ee2;
+    margin: 0 10px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .title-container .icon .view {
+    position: relative;
+    line-height: 18px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .title-container .icon .view:before {
+    content: " ";
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+    background: url("../img/icon/view-blue.png") no-repeat center;
+    background-size: 18px;
+    vertical-align: top;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .title-container .icon .download {
+    position: relative;
+    line-height: 18px;
+    border-left: 1px solid;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .title-container .icon .download:before {
+    content: " ";
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+    background: url("../img/icon/download-blue.png") no-repeat center;
+    background-size: 18px;
+    vertical-align: top;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .article-info {
+    display: flex;
+    justify-content: start;
+    margin-top: 13px;
+    flex-wrap: wrap;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .article-info .span1 {
+    color: #ff7e00;
+    background: #fff8e8;
+    border: 1px solid #ff7e00;
+    border-radius: 13px;
+    font-size: 14px;
+    padding: 2px 9px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .article-info .span2 {
+    color: #52a844;
+    background: #f0ffed;
+    border: 1px solid #52a844;
+    font-size: 14px;
+    border-radius: 13px;
+    padding: 2px 9px;
+    margin-left: 12px;
+    margin-right: 25px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .article-info .info {
+    margin-top: 8px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .article-info .info .date {
+    font-size: 16px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #666666;
+    margin-left: 0;
+    margin-top: 13px;
+    position: relative;
+    line-height: 18px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .article-info .info .date:before {
+    content: " ";
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+    background: url("../img/icon/patent-data.png") no-repeat center;
+    background-size: 18px;
+    vertical-align: top;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .article-info .info .auth {
+    font-size: 14px;
+    color: #999999;
+    margin-left: 25px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .content {
+    margin-top: 13px;
+  }
+  .research-findings .research-findings-body .article .articel-container ul li .content p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #999999;
+    line-height: 25px;
+  }
+  .research-findings .research-findings-body .patent {
+    margin-top: 109px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li {
+    width: 90%;
+    background-color: #fff;
+    padding: 20px 30px;
+    margin-top: 29px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container {
+    display: block;
+    justify-content: space-between;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .title {
+    display: flex;
+    justify-content: start;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .title .span1 {
+    color: #4d78ff;
+    background: #f0f3ff;
+    border: 1px solid #4d78ff;
+    border-radius: 13px;
+    font-size: 14px;
+    padding: 2px 9px;
+    margin-left: 12px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .title .span2 {
+    color: #fff;
+    background: #4d78ff;
+    font-size: 14px;
+    border-radius: 4px;
+    padding: 2px 13px;
+    margin-left: 12px;
+    line-height: 22px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .title h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 25px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .icon {
+    margin-top: 10px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .icon span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #3e8ee2;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .icon .view {
+    position: relative;
+    line-height: 18px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .icon .view:before {
+    content: " ";
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+    background: url("../img/icon/view-blue.png") no-repeat center;
+    background-size: 18px;
+    vertical-align: top;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .icon .download {
+    position: relative;
+    line-height: 18px;
+    border-left: 1px solid;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .title-container .icon .download:before {
+    content: " ";
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+    background: url("../img/icon/download-blue.png") no-repeat center;
+    background-size: 18px;
+    vertical-align: top;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .content {
+    margin-top: 13px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .content h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .content .info {
+    margin-top: 13px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .content .info span {
+    font-size: 14px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #999999;
+    margin-right: 36px;
+  }
+  .research-findings .research-findings-body .patent .patent-container ul li .content p {
+    margin-top: 13px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #999999;
+    line-height: 25px;
+  }
+  .research-findings .research-findings-layout {
+    width: 100%;
+    background-color: #fff;
+    padding: 84px 0 109px;
+    margin-top: 100px;
+  }
+  .research-findings .research-findings-layout .text {
+    padding: 0 10px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .research-findings .research-findings-layout .text .tool-title {
+    padding: 0;
+    text-align: left;
+  }
+  .research-findings .research-findings-layout .text .tool-title p {
+    text-align: left;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li {
+    width: 47%;
+    background-color: #fff;
+    padding: 30px 20px;
+    margin-top: 29px;
+    display: block;
+    box-shadow: 0px 4px 31px 1px rgba(170, 170, 170, 0.18);
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .img-container img {
+    width: 161px;
+    height: 205px;
+    display: block;
+    margin: 0px auto;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container {
+    margin-left: 0px;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .title-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .title-container h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 20px;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .title-container .icon span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #3e8ee2;
+    margin: 0 10px;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .title-container .icon .view {
+    position: relative;
+    line-height: 18px;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .title-container .icon .view:before {
+    content: " ";
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+    background: url("../img/icon/view-blue.png") no-repeat center;
+    background-size: 18px;
+    vertical-align: top;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .title-container .icon .download {
+    position: relative;
+    line-height: 18px;
+    border-left: 1px solid;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .title-container .icon .download:before {
+    content: " ";
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+    background: url("../img/icon/download-blue.png") no-repeat center;
+    background-size: 18px;
+    vertical-align: top;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .article-info {
+    display: flex;
+    justify-content: start;
+    margin-top: 21px;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .article-info .date {
+    font-size: 16px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #666666;
+    position: relative;
+    line-height: 20px;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .article-info .date:before {
+    content: " ";
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+    background: url("../img/icon/patent-data.png") no-repeat center;
+    background-size: 20px;
+    vertical-align: top;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .article-info .auth {
+    font-size: 14px;
+    color: #999999;
+    margin-left: 25px;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .content {
+    margin-top: 21px;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li .carbon-container .content p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 29px;
   }
 }
 @media screen and (max-width: 640px) {
@@ -1436,5 +1803,25 @@
   }
   .index-page .research-direction .patent-search-content .fix-container .patent-search-content-item {
     width: 45%;
+  }
+  .research-findings .research-findings-layout .text {
+    flex-direction: column;
+  }
+  .research-findings .research-findings-body .text {
+    flex-direction: column;
+  }
+  .research-findings .link-button {
+    border: none;
+  }
+  .research-findings .link-button:hover {
+    background-color: rgba(0, 0, 0, 0) !important;
+    color: #038de2;
+    border: none;
+  }
+  .research-findings .tool-title {
+    padding: 20px 0 10px;
+  }
+  .research-findings .research-findings-layout .carbon .articel-container ul li {
+    width: 90%;
   }
 }

@@ -4,7 +4,9 @@ let vm = new Vue({
 	data: function () {
 		return {
 			input3: "",
-			select: "",
+			select: true,
+			form
 		};
 	},
 });
+console.log("this",vm.select)
