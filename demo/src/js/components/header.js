@@ -113,7 +113,7 @@ Vue.component("h-header", {
             </div>
 			<ul class="menu-list">
 				<template v-for="item in menuList">
-					<li v-if="item.child&&item.child.length>0" :id="item.childKeys.includes(isSelect)?'is-select':''" class="parent-menu menu-item">
+					<li v-if="item.child&&item.child.length>0" :id="item.childKeys&&item.childKeys.includes(isSelect)?'is-select':''" class="parent-menu menu-item">
 						<a class="child-menu-title" href="javascript:;">{{item.title}}<i class="bi bi-chevron-down bi-active"></i></a>
 						<ul id="show-knowledge" class="child-menu-list">
 							<li v-for="item2 in item.child" :id="isSelect===item2.key?'is-select-child':''"><a :href="'./'+item2.pageURL">{{item2.title}}</a></li>

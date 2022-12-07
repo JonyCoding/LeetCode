@@ -699,6 +699,9 @@
   #is-select-child a {
     color: #3e8ee2 !important;
   }
+  .index-head .logo {
+    min-width: 200px;
+  }
   .index-head .logo img {
     width: 20%;
     min-width: 200px;
