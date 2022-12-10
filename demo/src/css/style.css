@@ -13,6 +13,92 @@
 a {
   color: #038de2;
 }
+.login-container {
+  background: url("../img/login-bg.png") center no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+.login-container .login-view-container {
+  width: 80%;
+  min-width: 1100px;
+  max-width: 1620px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  justify-content: space-between;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login-container .login-view-container .login-logo {
+  width: 40%;
+}
+.login-container .login-view-container .login-form {
+  background-color: #fff;
+  width: 580px;
+  background: #ffffff;
+  box-shadow: 0px 17px 28px 4px rgba(21, 53, 92, 0.4);
+  border-radius: 12px;
+  padding: 80px 60px;
+}
+.login-container .login-view-container .login-form h3 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 64px;
+  position: relative;
+}
+.login-container .login-view-container .login-form h3:after {
+  content: " ";
+  display: inline-block;
+  width: 30px;
+  height: 7px;
+  background: #3e8ee2;
+  border-radius: 4px;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.login-container .login-view-container .login-form .select-login-type {
+  text-align: center;
+  margin-top: 50px;
+}
+.login-container .login-view-container .login-form .form-container .input-container .el-input__inner {
+  width: 100%;
+  height: 60px;
+  margin-top: 22px;
+  border-radius: 8px;
+}
+.login-container .login-view-container .login-form .form-container .input-container .input-item {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+}
+.login-container .login-view-container .login-form .form-container .input-container .input-item span {
+  width: 80px;
+  height: 14px;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  margin-top: 15px;
+  color: #999999;
+}
+.login-container .login-view-container .login-form .form-container .input-container .buttom-container {
+  margin-top: 50px;
+}
+.login-container .login-view-container .login-form .form-container .input-container .buttom-container .el-button {
+  width: 100%;
+  height: 56px;
+}
+.login-container .login-view-container .login-form .form-container .input-container .buttom-container .el-button + .el-button {
+  margin-left: 0;
+  margin-top: 24px;
+}
 .patent-index .patent-index-search {
   width: 100%;
   position: relative;
