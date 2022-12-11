@@ -1810,3 +1810,161 @@ a {
   color: #000000;
   line-height: 29px;
 }
+.energy-innovation-index {
+  padding-bottom: 129px;
+}
+.energy-innovation-index .energy-innovation-header img {
+  width: 100%;
+}
+.energy-innovation-index .energy-innovation-body .tool-title {
+  padding: 68px 0 40px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .el-tabs__active-bar {
+  display: none;
+  background-color: #fff;
+  border-width: 10px;
+  border-bottom-width: 0px;
+  border-color: #fff;
+  border-top-color: #3e8ee2;
+  width: auto !important;
+  transform: rotate(180deg);
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .el-tabs__header {
+  margin-bottom: 45px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .el-tabs__nav {
+  float: none;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .el-tabs__nav .el-tabs__item {
+  border: 1px solid #3e8ee2;
+  padding: 0 33px;
+  margin: 0px 8px;
+  color: #004ea2;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .el-tabs__nav .is-active {
+  color: #fff;
+  background-color: #3e8ee2;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .el-tabs__nav .is-active:after {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  bottom: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-bottom-width: 0px;
+  border-color: #fff;
+  border-style: solid;
+  border-top-color: #3e8ee2;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .el-tabs__nav-wrap::after {
+  display: none;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .energy-tab-container {
+  border-top: 4px solid #3e8ee2;
+  padding: 40px;
+  background-color: #fff;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .overall-ranking .el-table th {
+  background: #f2f8ff;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .overall-ranking .el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: #ececec;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .overall-ranking h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2f374b;
+  line-height: 46px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .overall-ranking p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #2f374b;
+  line-height: 22px;
+  margin-top: 16px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .overall-ranking .table-title {
+  margin: 31px 0 26px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .select-title {
+  display: flex;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .select-title .el-select {
+  width: 174px;
+  margin-right: 29px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .select-title h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2f374b;
+  line-height: 40px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #2f374b;
+  line-height: 24px;
+  margin-top: 19px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li {
+  width: 30%;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li:nth-child(1) {
+  border-left: 11px solid #536CE0;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li:nth-child(2) {
+  border-left: 11px solid #FFC167;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li:nth-child(3) {
+  border-left: 11px solid #7FC6A7;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li:nth-child(4) {
+  border-left: 11px solid #FFC167;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li:nth-child(5) {
+  border-left: 11px solid #7FC6A7;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li:nth-child(6) {
+  border-left: 11px solid #536CE0;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li img {
+  width: 72px;
+  margin-right: 10px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li .info-detail h6 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2f374b;
+  margin: 0;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li .info-detail p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #2f374b;
+  margin-top: 5px;
+}
+.energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li .info-detail p span {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2f374b;
+  margin-right: 8px;
+}

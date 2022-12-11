@@ -1,0 +1,119 @@
+extends ./index_tp.jade
+prepend head
+    - var title = "能源创新指数";
+prepend body
+    - var body_id = "index";
+    - var path = "research-direction.html";
+    script(src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js")
+    script(src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js")
+block main
+    template.
+        <div class="body">
+            <div class="energy-innovation-index">
+                <div class="energy-innovation-header">
+                    <img src="./img/patent-search-bg.png" alt="">
+                </div>
+                <div class="energy-innovation-body layout">
+                    <div class="tool-title">
+                        <h2>能源创新指数</h2>
+                        <p>Energy innovation index</p>
+                    </div>
+                    <div class="direction-tab">
+                        <el-tabs v-model="activeName">
+                            <el-tab-pane label="总体排名" name="first">
+                                <div class="overall-ranking energy-tab-container">
+                                    <h3>能源创新指数</h3>
+                                    <p>能源科技创新指数(Enerqy Technology Innovation Index, ETII) 旨在衡量各国能源科技创新能力,切实反映国家能源科技创新质量和效率的综 合性指数。该指数借鉴洛桑国际竞争力评价采
+                                        用的标杆分析法,从创新环境、创新投入、创新产出和创新成效4个维度构建指标体系,力求全 面、客观、准确地反映各国能源科技创新能力在创新链不同环节的特点,形成一套比较完整的指
+                                        标体系和评估模型。</p>
+                                    <h3 class="table-title">2020国家排序</h3>
+                                    <el-table border stripe :data="tableData">
+                                        <el-table-column type="index" label="排序" width="60"></el-table-column>
+                                        <el-table-column prop="contry" label="国家" width=""></el-table-column>
+                                        <el-table-column prop="environment" label="创新环境" width=""></el-table-column>
+                                        <el-table-column prop="investment" label="创新投入" width=""></el-table-column>
+                                        <el-table-column prop="results" label="创新成效" width=""></el-table-column>
+                                        <el-table-column prop="produce" label="创新产出" width=""></el-table-column>
+                                        <el-table-column prop="score" label="总得分" width=""></el-table-column>
+                                    </el-table>
+                                </div>
+                            </el-tab-pane>
+                            <el-tab-pane label="国家概况" name="second">
+                                <div class="country-profile energy-tab-container">
+                                    <div class="select-title">
+                                        <el-select v-model="value" placeholder="请选择">
+                                            <el-option label="中国" value="china"></el-option>
+                                            <el-option label="日本" value="japen"></el-option>
+                                          </el-select>
+                                          <h3>指标评级: A</h3>
+                                    </div>
+                                    <div class="text">
+                                        <p>中国位于亚洲东部、太平洋西岸，是全球第二大经济体，陆地面积约960万平方千米，人口13.98亿，人均国内生产总值10216.63美元（2019年现价）。目前，我国已形成较为完善的能
+                                            源生产和供应体系，包含煤炭、电力、石油、天然气、新能源、可再生能源等成熟的能源品类。作为全球最大的电动汽车市场以及可再生能源投资市场，光伏、风能等清洁能源技术快
+                                            速发展，部分技术实现全球领跑。与此同时，作为世界上最大的能源消费国和最大的温室气体排放国，我国面临着在保持经济增长的同时减少煤炭污染和控制温室气体排放的挑战。此
+                                            外，持续的工业化和城市化导致能源需求大大增加，能源自给率成为能源安全体系的主要问题。 联合国可持续发展目标（SDG）最新跟踪调查数据显示，2018年一次能源强度150.44吨
+                                            标油/百万美元（按2011年购买力平价），人均可再生能源消费量0.06 吨标油/人，非化石能源发电量占比达28.88%。国际能源署（IEA）统计数据显示，一次能源碳强度达2.98吨二氧化
+                                            碳/吨标油，单位GDP能源相关二氧化碳强度0.40千克二氧化碳/美元（按2015年购买力平价），人均能源相关二氧化碳排放量6.84吨二氧化碳/人。</p>
+                                    </div>
+                                    <div class="info-list">
+                                        <ul>
+                                            <li>
+                                                <img src="./img/energy-people.png" alt="">
+                                                <div class="info-detail">
+                                                    <h6>人口数量</h6>
+                                                    <p><span>0.83</span>亿人</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <img src="./img/energy-land-area.png" alt="">
+                                                <div class="info-detail">
+                                                    <h6>陆地面积</h6>
+                                                    <p><span>0.83</span>万平方公里</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <img src="./img/energy-gdp.png" alt="">
+                                                <div class="info-detail">
+                                                    <h6>人均国内生产总值</h6>
+                                                    <p><span>0.83</span>美元</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <img src="./img/energy-co.png" alt="">
+                                                <div class="info-detail">
+                                                    <h6>一次能源碳强度</h6>
+                                                    <p><span>0.83</span>吨二氧化碳吨标油</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <img src="./img/energy-price.png" alt="">
+                                                <div class="info-detail">
+                                                    <h6>人均可再生能源消费量</h6>
+                                                    <p><span>0.83</span>吨标油</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <img src="./img/energy-fire.png" alt="">
+                                                <div class="info-detail">
+                                                    <h6>单位GDP碳强度</h6>
+                                                    <p><span>0.83</span>美元</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </el-tab-pane>
+                            <el-tab-pane label="对比分析" name="third">
+                                cccc
+                            </el-tab-pane>
+                            <el-tab-pane label="指标体系" name="fourth">
+                                dddd
+                            </el-tab-pane>
+                        </el-tabs>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+block script
+    script(src="./js/energy-innovation-index.js?v=#{time}")
