@@ -13,6 +13,9 @@
 	color: white;
 	background-color: #3e8ee2 !important;
 }
+.el-button--primary {
+	background-color: #3e8ee2 !important;
+}
 a {
 	color: #038de2;
 }
@@ -1908,23 +1911,23 @@ a {
 							border: 1px solid #dddddd;
 							border-radius: 10px;
 							margin-top: 30px;
-							&:nth-child(1){
-								border-left: 11px solid #536CE0;
+							&:nth-child(1) {
+								border-left: 11px solid #536ce0;
 							}
-							&:nth-child(2){
-								border-left: 11px solid #FFC167;
+							&:nth-child(2) {
+								border-left: 11px solid #ffc167;
 							}
-							&:nth-child(3){
-								border-left: 11px solid #7FC6A7;
+							&:nth-child(3) {
+								border-left: 11px solid #7fc6a7;
 							}
-							&:nth-child(4){
-								border-left: 11px solid #FFC167;
+							&:nth-child(4) {
+								border-left: 11px solid #ffc167;
 							}
-							&:nth-child(5){
-								border-left: 11px solid #7FC6A7;
+							&:nth-child(5) {
+								border-left: 11px solid #7fc6a7;
 							}
-							&:nth-child(6){
-								border-left: 11px solid #536CE0;
+							&:nth-child(6) {
+								border-left: 11px solid #536ce0;
 							}
 							img {
 								width: 72px;
@@ -1952,6 +1955,248 @@ a {
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+}
+
+.energy-news {
+	.tool-title {
+		padding-top: 69px;
+	}
+	.energy-news-header {
+		img {
+			width: 100%;
+			height: 300px;
+			object-fit: cover;
+		}
+	}
+	.energy-news-body {
+		.text {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			margin: 84px 0 32px;
+			.tool-title {
+				padding: 0;
+			}
+			.search-container {
+				display: flex;
+				.el-input__inner {
+					border-radius: 4px 0 0 4px;
+					border: 1px solid #dddddd;
+					width: 275px;
+				}
+				.el-button {
+					border-radius: 0 4px 4px 0;
+				}
+			}
+		}
+		.open-tree{
+			display: none;
+		}
+		.energy-news-container {
+			display: flex;
+			justify-content: space-between;
+			.tree-UI {
+				width: 240px;
+				min-width: 240px;
+				overflow-y: auto;
+				position: relative;
+				background-color: #fff;
+				border-top: 6px solid #3e8ee2;
+				height: max-content;
+				ul {
+					list-style: none;
+					padding-left: 7px;
+				}
+				.tree-container {
+					padding: 10px;
+					padding-left: 26px;
+					position: relative;
+					.range-title {
+						font-size: 16px;
+						font-family: Source Han Sans CN;
+						font-weight: bold;
+						color: #000000;
+						line-height: 29px;
+						&:before {
+							content: " ";
+							display: inline-block;
+							height: 22px;
+							width: 22px;
+							margin-right: 5px;
+							background: url("../img/icon/technical-field.png") no-repeat center;
+							background-size: 22px;
+							vertical-align: top;
+							position: relative;
+							top: 4px;
+						}
+					}
+				}
+				.tree-container .content-body {
+					position: absolute;
+					top: 0px;
+					left: 0px;
+					padding: 0px 10px;
+					height: 80vh;
+					overflow: hidden;
+					max-height: 0;
+					z-index: 10;
+					transition: all 0.3s;
+					background-color: #fff;
+				}
+				.tree-container .content-body .close {
+					width: 100%;
+					padding: 10px;
+					text-align: right;
+				}
+				.tree-container .content-body-active {
+					max-height: 79vh;
+				}
+				.tree-container .tree-list .tree-item {
+					padding-top: 13px;
+					padding-left: 10px;
+				}
+				.tree-container .tree-list .tree-item .title {
+					font-size: 19px;
+					padding: 0px 10px 7px;
+					font-size: 16px;
+					font-family: Source Han Sans CN;
+					font-weight: 400;
+					color: #333333;
+					position: relative;
+					line-height: 22px;
+					cursor: pointer;
+				}
+				.tree-container .tree-list .tree-item .title-active {
+					color: #3E8EE2;
+					
+				}
+				.tree-container .tree-list .tree-item .title:before {
+					margin-right: 9px;
+				}
+				.tree-container .tree-list .tree-item .tree-child-list {
+					max-height: 0px;
+					transition: all 0.3s;
+					overflow: hidden;
+				}
+				.tree-container .tree-list .tree-item .tree-child-list li {
+					padding: 7px;
+				}
+				.tree-container .tree-list .tree-item .tree-child-list li a {
+					position: relative;
+					line-height: 16px;
+					display: block;
+					font-size: 14px;
+					font-family: Source Han Sans CN;
+					font-weight: 400;
+					color: #999999;
+					width: 100%;
+					padding: 5px 10px;
+					text-decoration: none;
+				}
+				
+				.tree-container .tree-list .tree-item .tree-child-list li .title-active {
+					color: #3E8EE2;
+					
+				}
+				.tree-container .tree-list .tree-item .tree-child-list li a:before {
+					width: 10px;
+					background-size: 10px;
+				}
+				.tree-container .tree-list .tree-item .tree-child-list li:hover {
+					background-color: #fff;
+				}
+				.tree-container .tree-list .tree-item .tree-child-active {
+					max-height: 500px;
+					padding: 0px 10px 0;
+				}
+			}
+			.energy-news-list {
+				width: 940px;
+				.energy-news-list-item {
+					li {
+						border-radius: 4px;
+						padding: 20px;
+						display: flex;
+						justify-content: start;
+						margin-bottom: 18px;
+						background-color: #fff;
+						.energy-news-detail-img {
+							img {
+								width: 330px;
+								height: 220px;
+								object-fit: cover;
+							}
+						}
+						.energy-news-detail-text {
+							margin-left: 22px;
+							transition: all .3s;
+							.tag {
+								margin-top: 10px;
+								margin-left: 12px;
+								span {
+									font-size: 14px;
+									font-weight: 400;
+									color: #999999;
+									margin-right: 20px;
+									&:before {
+										position: relative;
+										top: 2px;
+										margin-right: 7px;
+									}
+									&:nth-child(1) {
+										.before-icon("../img/icon/energy-tag.png",15px);
+									}
+									&:nth-child(2) {
+										.before-icon("../img/icon/energy-flag.png",15px);
+
+										&:before {
+											position: relative;
+											top: 3px;
+											margin-right: 7px;
+											width: 12px;
+											height: 15px;
+										}
+									}
+								}
+							}
+							h3 {
+								margin-top: 18px;
+								font-size: 16px;
+								font-weight: 400;
+								color: #000000;
+								margin-bottom: 15px;
+								.max-text-line(1)
+							}
+							.time {
+								font-size: 14px;
+								font-weight: 400;
+								color: #999999;
+								.before-icon("../img/icon/patent-data.png",15px);
+								&:before {
+									position: relative;
+									top: 2px;
+								}
+							}
+							p {
+								margin-top: 15px;
+								font-size: 14px;
+								font-weight: 400;
+								color: #999999;
+								.max-text-line(2)
+							}
+							.el-button {
+								margin-top: 15px;
+								padding: 9px 20px;
+							}
+						}
+					}
+				}
+				.pagination{
+					margin-bottom: 64px;
 				}
 			}
 		}

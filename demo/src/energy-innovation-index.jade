@@ -3,7 +3,7 @@ prepend head
     - var title = "能源创新指数";
 prepend body
     - var body_id = "index";
-    - var path = "research-direction.html";
+    - var path = "energy-innovation-index.html";
     script(src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js")
     script(src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js")
 block main
@@ -41,7 +41,7 @@ block main
                             <el-tab-pane label="国家概况" name="second">
                                 <div class="country-profile energy-tab-container">
                                     <div class="select-title">
-                                        <el-select v-model="value" placeholder="请选择">
+                                        <el-select v-model="selectValue" placeholder="请选择">
                                             <el-option label="中国" value="china"></el-option>
                                             <el-option label="日本" value="japen"></el-option>
                                           </el-select>

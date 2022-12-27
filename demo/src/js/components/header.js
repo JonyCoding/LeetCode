@@ -33,7 +33,7 @@ Vue.component("h-header", {
 						},
 						{
 							title: "能源创新指数",
-							pageURL: "news-policy.html",
+							pageURL: "energy-innovation-index.html",
 						},
 					],
 				},
@@ -51,7 +51,7 @@ Vue.component("h-header", {
 						},
 						{
 							title: "新闻/政策",
-							pageURL: "news-policy.html",
+							pageURL: "energy-news.html",
 						},
 					],
 				},

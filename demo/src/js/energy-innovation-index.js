@@ -4,6 +4,7 @@ let vm = new Vue({
 	data: function () {
 		return {
       activeName:"second",
+      selectValue:'',
       tableData:[
         {
           contry:"中国",

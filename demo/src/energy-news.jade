@@ -1,0 +1,281 @@
+extends ./index_tp.jade
+prepend head
+    - var title = "专利首页";
+prepend body
+    - var body_id = "index";
+    - var path = "energy-news.html";
+    script(src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js")
+    script(src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js")
+block main
+    template.
+        <div class="body">
+            <div class="energy-news">
+                <div class="energy-news-header">
+                    <img src="./img/patent-search-bg.png" alt="">
+                </div>
+                <div class="energy-news-body layout">
+                    <div class="dusk-view">
+                        <i class="close-tree el-icon-close"></i>
+
+                    </div>
+                    <div class="article">
+                        <div class="text">
+                            <div class="tool-title">
+                                <h2>能源新闻</h2>
+                                <p>Energy News</p>
+                            </div>
+                            <div class="search-container">
+                                <el-input
+                                    placeholder="新闻关键词检索"
+                                    prefix-icon="el-icon-search">
+                                </el-input>
+                                <button class="el-button el-button--primary" type="param">检查</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="energy-news-container">
+                        <div class="open-tree">
+                            <i class="el-icon-arrow-right"></i>
+                        </div>
+                        <div class="tree-UI">
+                            <div class="tree-container">
+                                <h3 class="range-title">技术领域</h3>
+                                <ul class="tree-list">
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">全部</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">化石能源</h3>
+                                        <ul class="tree-child-list">
+                                            <li>
+                                                <a class="open-content" href="javascript:void(0);">石油</a>
+                                            </li>
+                                            <li>
+                                                <a class="open-content" href="javascript:void(0);">煤化工</a>
+                                            </li>
+                                            <li>
+                                                <a class="open-content" href="javascript:void(0);">天然气</a>
+                                            </li>
+                                        </ul>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">可再生能源与核能</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">工业流程再造</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">智慧能源</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">融合技术</h3>
+                                    </section>
+                                </ul>
+                            </div>
+                            <div class="tree-container">
+                                <h3 class="range-title">国家发文机构</h3>
+                                <ul class="tree-list">
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">全部</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">中共中央</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">国务院</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">国家发展和改革委员会</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">国家能源局</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">工业和信息化部</h3>
+                                    </section>
+                                </ul>
+                            </div>
+                            <div class="tree-container">
+                                <h3 class="range-title">地方发文机构</h3>
+                                <ul class="tree-list">
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">全部</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">北京市</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">天津市</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">河北省</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">山西省</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">内蒙古自治区</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">更多>></h3>
+                                    </section>
+                                </ul>
+                            </div>
+                            <div class="tree-container">
+                                <h3 class="range-title">发文年份</h3>
+                                <ul class="tree-list">
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">全部</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">2022</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">2021</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">2020</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">2019</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">2018</h3>
+                                    </section>
+                                    <section class="tree-item">
+                                        <h3 id="title" class="title">更多>></h3>
+                                    </section>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="energy-news-list">
+                            <ul class="energy-news-list-item">
+                                <li>
+                                    <div class="energy-news-detail-img">
+                                        <img src="./img/energy-news-item-img.jpg" alt="">
+                                    </div>
+                                    <div class="energy-news-detail-text">
+                                        <div class="tag">
+                                            <span>能源界</span>
+                                            <span>钢铁</span>
+                                            <span>氢能</span>
+                                        </div>
+                                        <h3>炼焦副产氢气减排效果显著，钢企布局氢能产业应谋定而</h3>
+                                        <span class="time">2022-11-11</span>
+                                        <p>应用焦炉煤气提取的灰氢也具有较好的减碳作用：灰氢炼铁，理论上可减少碳排放27%;灰 氢重卡，理论上可减少碳排放21%。当前，</p>
+                                        <button class="el-button el-button--primary" type="param">查看详情</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="energy-news-detail-img">
+                                        <img src="./img/energy-news-item-img.jpg" alt="">
+                                    </div>
+                                    <div class="energy-news-detail-text">
+                                        <div class="tag">
+                                            <span>能源界</span>
+                                            <span>钢铁</span>
+                                            <span>氢能</span>
+                                        </div>
+                                        <h3>炼焦副产氢气减排效果显著，钢企布局氢能产业应谋定而</h3>
+                                        <span class="time">2022-11-11</span>
+                                        <p>应用焦炉煤气提取的灰氢也具有较好的减碳作用：灰氢炼铁，理论上可减少碳排放27%;灰 氢重卡，理论上可减少碳排放21%。当前，</p>
+                                        <button class="el-button el-button--primary" type="param">查看详情</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="energy-news-detail-img">
+                                        <img src="./img/energy-news-item-img.jpg" alt="">
+                                    </div>
+                                    <div class="energy-news-detail-text">
+                                        <div class="tag">
+                                            <span>能源界</span>
+                                            <span>钢铁</span>
+                                            <span>氢能</span>
+                                        </div>
+                                        <h3>炼焦副产氢气减排效果显著，钢企布局氢能产业应谋定而</h3>
+                                        <span class="time">2022-11-11</span>
+                                        <p>应用焦炉煤气提取的灰氢也具有较好的减碳作用：灰氢炼铁，理论上可减少碳排放27%;灰 氢重卡，理论上可减少碳排放21%。当前，</p>
+                                        <button class="el-button el-button--primary" type="param">查看详情</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="energy-news-detail-img">
+                                        <img src="./img/energy-news-item-img.jpg" alt="">
+                                    </div>
+                                    <div class="energy-news-detail-text">
+                                        <div class="tag">
+                                            <span>能源界</span>
+                                            <span>钢铁</span>
+                                            <span>氢能</span>
+                                        </div>
+                                        <h3>炼焦副产氢气减排效果显著，钢企布局氢能产业应谋定而</h3>
+                                        <span class="time">2022-11-11</span>
+                                        <p>应用焦炉煤气提取的灰氢也具有较好的减碳作用：灰氢炼铁，理论上可减少碳排放27%;灰 氢重卡，理论上可减少碳排放21%。当前，</p>
+                                        <button class="el-button el-button--primary" type="param">查看详情</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="energy-news-detail-img">
+                                        <img src="./img/energy-news-item-img.jpg" alt="">
+                                    </div>
+                                    <div class="energy-news-detail-text">
+                                        <div class="tag">
+                                            <span>能源界</span>
+                                            <span>钢铁</span>
+                                            <span>氢能</span>
+                                        </div>
+                                        <h3>炼焦副产氢气减排效果显著，钢企布局氢能产业应谋定而</h3>
+                                        <span class="time">2022-11-11</span>
+                                        <p>应用焦炉煤气提取的灰氢也具有较好的减碳作用：灰氢炼铁，理论上可减少碳排放27%;灰 氢重卡，理论上可减少碳排放21%。当前，</p>
+                                        <button class="el-button el-button--primary" type="param">查看详情</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="energy-news-detail-img">
+                                        <img src="./img/energy-news-item-img.jpg" alt="">
+                                    </div>
+                                    <div class="energy-news-detail-text">
+                                        <div class="tag">
+                                            <span>能源界</span>
+                                            <span>钢铁</span>
+                                            <span>氢能</span>
+                                        </div>
+                                        <h3>炼焦副产氢气减排效果显著，钢企布局氢能产业应谋定而</h3>
+                                        <span class="time">2022-11-11</span>
+                                        <p>应用焦炉煤气提取的灰氢也具有较好的减碳作用：灰氢炼铁，理论上可减少碳排放27%;灰 氢重卡，理论上可减少碳排放21%。当前，</p>
+                                        <button class="el-button el-button--primary" type="param">查看详情</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="energy-news-detail-img">
+                                        <img src="./img/energy-news-item-img.jpg" alt="">
+                                    </div>
+                                    <div class="energy-news-detail-text">
+                                        <div class="tag">
+                                            <span>能源界</span>
+                                            <span>钢铁</span>
+                                            <span>氢能</span>
+                                        </div>
+                                        <h3>炼焦副产氢气减排效果显著，钢企布局氢能产业应谋定而</h3>
+                                        <span class="time">2022-11-11</span>
+                                        <p>应用焦炉煤气提取的灰氢也具有较好的减碳作用：灰氢炼铁，理论上可减少碳排放27%;灰 氢重卡，理论上可减少碳排放21%。当前，</p>
+                                        <button class="el-button el-button--primary" type="param">查看详情</button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="pagination">
+                                <el-pagination
+                                    background
+                                    :pager-count="3"
+                                    layout="total, prev, pager, next, jumper"
+                                    :total="1000">
+                                </el-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+block script
+    script(src="./js/energy-news.js?v=#{time}")

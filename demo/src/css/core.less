@@ -1,56 +1,56 @@
 .red {
-    background-color: red !important;
-    opacity: 0.5;
+	background-color: red !important;
+	opacity: 0.5;
 }
 
 .no_ml {
-    margin-left: 0 !important;
+	margin-left: 0 !important;
 }
 
 .no_mr {
-    margin-right: 0 !important;
+	margin-right: 0 !important;
 }
 
 .no_pl {
-    padding-left: 0 !important;
+	padding-left: 0 !important;
 }
 
 .no_pr {
-    padding-right: 0 !important;
+	padding-right: 0 !important;
 }
 
 .clear {
-    &:after {
-        content: "";
-        display: block;
-        height: 0;
-        clear: both;
-        visibility: hidden;
-    }
+	&:after {
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
 }
 
 .vleft {
-    vertical-align: top;
-    float: left;
+	vertical-align: top;
+	float: left;
 }
 
 .vright {
-    vertical-align: top;
-    float: right;
+	vertical-align: top;
+	float: right;
 }
 
 .bg_jpg_m(@name) {
-    background-image: url("../img/@{name}.jpg");
+	background-image: url("../img/@{name}.jpg");
 }
 
 .bg_png_m(@name) {
-    background-image: url("../img/@{name}.png");
+	background-image: url("../img/@{name}.png");
 }
 
 .before-icon(@url,@size) {
 	position: relative;
-    line-height: @size;
-    &:before {
+	line-height: @size;
+	&:before {
 		content: " ";
 		display: inline-block;
 		height: @size;
@@ -59,26 +59,33 @@
 		background: url(@url) no-repeat center;
 		background-size: @size;
 		vertical-align: top;
-    }
+	}
 }
 .before-text-icon(@icon,@size) {
 	position: relative;
-    line-height: @size;
-    &:before {
+	line-height: @size;
+	&:before {
 		content: @icon;
 		display: inline-block;
-        font-size: @size;
+		font-size: @size;
 		height: @size;
 		width: @size;
 		vertical-align: top;
-        font-family: bootstrap-icons !important;
-    }
+		font-family: bootstrap-icons !important;
+	}
+}
+.max-text-line(@maxLine) {
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: @maxLine;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 .container-center() {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 @ft3: #333333;
 @ft6: #666666;
