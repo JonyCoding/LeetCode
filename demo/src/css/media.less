@@ -98,7 +98,135 @@
 			}
 		}
 	}
-
+	.register-container {
+		background: url("../img/login-bg.png") center no-repeat;
+		background-size: cover;
+		// background-size: 100vw;
+		padding: 30px;
+		height: auto;
+		position: relative;
+		.register-view-container {
+			width: 90%;
+			min-width: auto;
+			max-width: none;
+			margin: 0px auto;
+			display: block;
+			align-items: center;
+			position: relative;
+			justify-content: space-between;
+			transition: all .3s;
+			top: 0%;
+			left: 0%;
+			transform: translate(-0%, -0%);
+			.register-logo {
+				width: 40%;
+				margin: 0px auto;
+				min-width: 260px;
+			}
+			.register-form {
+				background-color: #fff;
+				width: auto;
+				max-width: 580px;
+				background: #ffffff;
+				box-shadow: 0px 17px 28px 4px rgba(21, 53, 92, 0.4);
+				border-radius: 12px;
+				padding: 80px 60px;
+				margin: 30px auto;
+				h3 {
+					text-align: center;
+					font-size: 36px;
+					font-weight: 600;
+					color: #000000;
+					line-height: 64px;
+					position: relative;
+					&:after {
+						content: " ";
+						display: inline-block;
+						width: 30px;
+						height: 7px;
+						background: #3e8ee2;
+						border-radius: 4px;
+						position: absolute;
+						bottom: -10px;
+						left: 50%;
+						transform: translateX(-50%);
+					}
+				}
+				.select-login-type {
+					text-align: center;
+					margin-top: 50px;
+				}
+				.form-container {
+					margin-top: 30px;
+					.input-container {
+						.input-item {
+							width: 100%;
+							display: flex;
+							justify-content: end;
+							flex-wrap: wrap;
+							span {
+								width: 80px;
+								height: 14px;
+								font-size: 14px;
+								font-family: PingFang SC;
+								font-weight: 400;
+								margin-top: 15px;
+								color: #999999;
+							}
+							.input-label{
+								display: flex;
+								justify-content: space-between;
+								width: 100%;
+								margin-top: 12px;
+								h4{
+									font-size: 14px;
+									font-weight: 400;
+									color: #3A3A3A;
+									line-height: 35px;
+								}
+								.el-input{
+									width: 85%;
+									.el-input__inner {
+										width: 100%;
+										height: 60px;
+										border-radius: 8px;
+										font-size: 16px;
+									}
+									select{
+										display: block;
+										width: 100%;
+										height: 60px;
+										padding: 10px;
+										border-radius: 8px;
+										font-size: 16px;
+										border: 1px solid #DCDFE6;
+									}
+									.select-placeholder{
+										color: #bbbd;
+									}
+								}
+								.el-input2{
+									width: 75%;
+								}
+							}
+						}
+						.buttom-container {
+							margin-top: 50px;
+							.el-button {
+								width: 100%;
+								height: 56px;
+								font-size: 16px;
+							}
+							.el-button + .el-button {
+								margin-left: 0;
+								margin-top: 24px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	.patent-index {
 		.patent-index-search {
 			width: 100%;
@@ -2119,7 +2247,26 @@
 		margin-bottom: 0;
 		box-shadow: none;
 	}
-
+	.register-container .register-view-container {
+		width: 100%;
+		min-width: 370px;
+	}
+	.register-container .register-view-container .register-form {
+		border-radius: 0%;
+		width: 100%;
+	}
+	.register-container {
+		padding: 30px 0 30px;
+		background-size: inherit;
+	}
+	.register-container .register-view-container .register-form {
+		padding: 30px 15px;
+		margin-bottom: 0;
+		box-shadow: none;
+	}
+	.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label .el-input2{
+		width: 70%;
+	}
 	.energy-news .energy-news-body .energy-news-container .tree-UI{
 		position: fixed;
 		top: 50px;

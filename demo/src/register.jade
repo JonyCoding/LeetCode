@@ -1,0 +1,91 @@
+extends ./index_tp2.jade
+prepend head
+  - var title = "登录页面";
+prepend body
+  - var body_id = "login";    
+block script
+  script(src="./js/register.js?v=#{time}")
+  block main
+      template.
+        <div class="register-container">
+            <div class="register-view-container">
+                <div class="register-logo">
+                    <img width="100%" src="./img/login-logo.png" alt="">
+                </div>
+                <div class="register-form">
+                    <h3>注册</h3>
+                    <div class="form-container">
+                        <div class="input-container" :style="radio === 'user' ? '':'display: none;'">
+                            <div class="input-item">
+                                <div class="input-label">
+                                    <h4>账户名</h4> 
+                                    <div class="el-input">
+                                        <input type="text" autocomplete="off" placeholder="请输入账户名 " class="el-input__inner">
+                                    </div>
+                                </div>
+                                <div class="input-label">
+                                    <h4>姓名</h4> 
+                                    <div class="el-input">
+                                        <input type="text" autocomplete="off" placeholder="请输入姓名 " class="el-input__inner">
+                                    </div>
+                                </div>
+                                <div class="input-label">
+                                    <h4>地区</h4> 
+                                    <div class="el-input">
+                                        <input type="text" autocomplete="off" placeholder="请输入地区 " class="el-input__inner">
+                                    </div>
+                                </div>
+                                <div class="input-label">
+                                    <h4>手机号</h4> 
+                                    <div class="el-input">
+                                        <input type="text" autocomplete="off" placeholder="请输入手机号码 " class="el-input__inner">
+                                    </div>
+                                </div>
+                                <div class="input-label">
+                                    <h4>邮箱</h4> 
+                                    <div class="el-input">
+                                        <input type="text" autocomplete="off" placeholder="请输入邮箱 " class="el-input__inner">
+                                    </div>
+                                </div>
+                                <div class="input-label">
+                                    <h4>组织/公司名称</h4> 
+                                    <div class="el-input el-input2">
+                                        <input type="text" autocomplete="off" placeholder="请输入组织/公司名称 " class="el-input__inner">
+                                    </div>
+                                </div>
+                                <div class="input-label">
+                                    <h4>组织类型</h4> 
+                                    <div class="el-input el-input2">
+                                        <select name="select" id="select" class="select-placeholder">
+                                            <option value="" hidden selected disabled>请选择组织类型</option>
+                                            <option value="1">政府</option>
+                                            <option value="2">行业机构</option>
+                                            <option value="3">贸易金融</option>
+                                            <option value="4">学术界/大学</option>
+                                            <option value="5">国际组织</option>
+                                            <option value="6">非盈利机构</option>
+                                            <option value="7">其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttom-container">
+                                <button type="button" class="el-button el-button--primary">
+                                    <span>注册</span>
+                                </button>
+                                
+                                <button type="button" class="el-button el-button">
+                                    <span>已有账号？去登陆</span>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        <div class="dingLogin-container" :style="radio === 'ding' ? '':'display: none;'">
+                            <div id="login_container" style="display: grid; justify-content: center">
+                                <img width="100%" src="./img/dingding-login.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
