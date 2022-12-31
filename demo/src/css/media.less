@@ -17,7 +17,7 @@
 			align-items: center;
 			position: relative;
 			justify-content: space-between;
-			transition: all .3s;
+			transition: all 0.3s;
 			top: 0%;
 			left: 0%;
 			transform: translate(-0%, -0%);
@@ -114,7 +114,7 @@
 			align-items: center;
 			position: relative;
 			justify-content: space-between;
-			transition: all .3s;
+			transition: all 0.3s;
 			top: 0%;
 			left: 0%;
 			transform: translate(-0%, -0%);
@@ -173,18 +173,18 @@
 								margin-top: 15px;
 								color: #999999;
 							}
-							.input-label{
+							.input-label {
 								display: flex;
 								justify-content: space-between;
 								width: 100%;
 								margin-top: 12px;
-								h4{
+								h4 {
 									font-size: 14px;
 									font-weight: 400;
-									color: #3A3A3A;
+									color: #3a3a3a;
 									line-height: 35px;
 								}
-								.el-input{
+								.el-input {
 									width: 85%;
 									.el-input__inner {
 										width: 100%;
@@ -192,20 +192,20 @@
 										border-radius: 8px;
 										font-size: 16px;
 									}
-									select{
+									select {
 										display: block;
 										width: 100%;
 										height: 60px;
 										padding: 10px;
 										border-radius: 8px;
 										font-size: 16px;
-										border: 1px solid #DCDFE6;
+										border: 1px solid #dcdfe6;
 									}
-									.select-placeholder{
+									.select-placeholder {
 										color: #bbbd;
 									}
 								}
-								.el-input2{
+								.el-input2 {
 									width: 75%;
 								}
 							}
@@ -1666,6 +1666,190 @@
 					}
 				}
 			}
+			.tisc {
+				margin-top: 80px;
+				.tisc-monthly-container {
+					display: flex;
+					justify-content: space-around;
+					overflow: hidden;
+					border-radius: 15px;
+					margin-top: 30px;
+					.tisc-list-container {
+						width: 50%;
+						background-color: #fff;
+						padding: 20px 0 10px;
+						&:first-child ul {
+							border-right: 2px solid rgb(240, 240, 240);
+							padding: 0 25px;
+						}
+						ul {
+							padding: 0 30px;
+							li {
+								display: flex;
+								justify-content: space-between;
+								margin-bottom: 10px;
+								a {
+									.max-text-line(1);
+									color: #000;
+									font-size: 16px;
+									&:hover {
+										color: #038de2;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.carbon {
+				margin-top: 100px;
+				.carbon-monthly-container {
+					display: flex;
+					justify-content: space-between;
+					// flex-wrap: wrap;
+					overflow: hidden;
+					border-radius: 15px;
+					margin-top: 20px;
+					.carbon-list-container {
+						width: 100%;
+						background-color: #fff;
+						padding: 20px 0 10px;
+						&:first-child ul {
+							border-right: 2px solid rgb(240, 240, 240);
+							padding: 0 25px;
+						}
+						ul {
+							padding: 0 30px;
+							li {
+								margin-bottom: 15px;
+								height: 78px;
+								a {
+									color: #000;
+									display: block;
+									margin-bottom: 10px;
+									font-size: 16px;
+									.max-text-line(2);
+									&:hover {
+										color: #038de2;
+									}
+								}
+								.people {
+									margin-left: 20px;
+									.before-icon("../img/icon/people-icon.png",15px);
+								}
+								span {
+									color: #999;
+									&:before {
+										position: relative;
+										top: 2px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.standard-monograph {
+				display: flex;
+				justify-content: space-between;
+				margin-top: 80px;
+				margin-bottom: 100px;
+				flex-wrap: wrap;
+				.standard {
+					width: 100%;
+					.text {
+						align-items: center;
+						display: flex;
+						justify-content: space-between;
+						.tool-title {
+							padding: 0;
+							display: flex;
+							justify-content: start;
+							h2 {
+								text-align: left;
+							}
+							p {
+								text-align: left;
+								margin-left: 10px;
+							}
+						}
+						a {
+							border: none;
+						}
+					}
+					.standard-list-container {
+						margin-top: 20px;
+						background-color: #fff;
+						border-radius: 15px;
+						padding: 20px;
+						padding-bottom: 10px;
+						ul {
+							li {
+								display: flex;
+								justify-content: space-between;
+								margin-bottom: 10px;
+								a {
+									.max-text-line(1);
+									color: #000;
+									font-size: 16px;
+									&:hover {
+										color: #038de2;
+									}
+								}
+							}
+						}
+					}
+				}
+				.monograph {
+					width: 100%;
+					margin-top: 50px;
+					.text {
+						align-items: center;
+						display: flex;
+						justify-content: space-between;
+						.tool-title {
+							padding: 0;
+							display: flex;
+							h2 {
+								text-align: left;
+							}
+							p {
+								text-align: left;
+								margin-left: 10px;
+							}
+						}
+						a {
+							border: none;
+							.max-text-line(1);
+							:hover {
+								background-color: #fff;
+							}
+						}
+					}
+					.monograph-list-container {
+						padding: 20px;
+						padding-bottom: 10px;
+						background-color: #fff;
+						border-radius: 15px;
+						margin-top: 20px;
+						ul {
+							li {
+								display: flex;
+								justify-content: space-between;
+								margin-bottom: 10px;
+								a {
+									.max-text-line(1);
+									color: #000;
+									font-size: 16px;
+									&:hover {
+										color: #038de2;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 		.research-findings-layout {
 			width: 100%;
@@ -1766,254 +1950,252 @@
 			}
 		}
 	}
-	
-.energy-news {
-	.tool-title {
-		padding-top: 69px;
-	}
-	.energy-news-header {
-		img {
-			width: 100%;
-			height: 300px;
-			object-fit: cover;
+
+	.energy-news {
+		.tool-title {
+			padding-top: 69px;
 		}
-	}
-	.energy-news-body {
-		padding: 0px 20px;
-		.text {
-			align-items: center;
-			display: flex;
-			justify-content: space-between;
-			margin: 84px 0 32px;
-			.tool-title {
-				padding: 0;
+		.energy-news-header {
+			img {
+				width: 100%;
+				height: 300px;
+				object-fit: cover;
 			}
-			.search-container {
+		}
+		.energy-news-body {
+			padding: 0px 20px;
+			.text {
+				align-items: center;
 				display: flex;
-				.el-input__inner {
-					border-radius: 4px 0 0 4px;
-					border: 1px solid #dddddd;
-					width: 275px;
+				justify-content: space-between;
+				margin: 84px 0 32px;
+				.tool-title {
+					padding: 0;
 				}
-				.el-button {
-					border-radius: 0 4px 4px 0;
-				}
-			}
-		}
-		.energy-news-container {
-			display: flex;
-			justify-content: space-between;
-			.tree-UI {
-				width: 240px;
-				min-width: 240px;
-				overflow-y: auto;
-				position: relative;
-				background-color: #fff;
-				border-top: 6px solid #3e8ee2;
-				height: max-content;
-				ul {
-					list-style: none;
-					padding-left: 7px;
-				}
-				.tree-container {
-					padding: 10px;
-					padding-left: 26px;
-					position: relative;
-					.range-title {
-						font-size: 16px;
-						font-family: Source Han Sans CN;
-						font-weight: bold;
-						color: #000000;
-						line-height: 29px;
-						&:before {
-							content: " ";
-							display: inline-block;
-							height: 22px;
-							width: 22px;
-							margin-right: 5px;
-							background: url("../img/icon/technical-field.png") no-repeat center;
-							background-size: 22px;
-							vertical-align: top;
-							position: relative;
-							top: 4px;
-						}
+				.search-container {
+					display: flex;
+					.el-input__inner {
+						border-radius: 4px 0 0 4px;
+						border: 1px solid #dddddd;
+						width: 275px;
+					}
+					.el-button {
+						border-radius: 0 4px 4px 0;
 					}
 				}
-				.tree-container .content-body {
-					position: absolute;
-					top: 0px;
-					left: 0px;
-					padding: 0px 10px;
-					height: 80vh;
-					overflow: hidden;
-					max-height: 0;
-					z-index: 10;
-					transition: all 0.3s;
-					background-color: #fff;
-				}
-				.tree-container .content-body .close {
-					width: 100%;
-					padding: 10px;
-					text-align: right;
-				}
-				.tree-container .content-body-active {
-					max-height: 79vh;
-				}
-				.tree-container .tree-list .tree-item {
-					padding-top: 13px;
-					padding-left: 10px;
-				}
-				.tree-container .tree-list .tree-item .title {
-					font-size: 19px;
-					padding: 0px 10px 7px;
-					font-size: 16px;
-					font-family: Source Han Sans CN;
-					font-weight: 400;
-					color: #333333;
-					position: relative;
-					line-height: 22px;
-					cursor: pointer;
-				}
-				.tree-container .tree-list .tree-item .title-active {
-					color: #3E8EE2;
-					
-				}
-				.tree-container .tree-list .tree-item .title:before {
-					margin-right: 9px;
-				}
-				.tree-container .tree-list .tree-item .tree-child-list {
-					max-height: 0px;
-					transition: all 0.3s;
-					overflow: hidden;
-				}
-				.tree-container .tree-list .tree-item .tree-child-list li {
-					padding: 7px;
-				}
-				.tree-container .tree-list .tree-item .tree-child-list li a {
-					position: relative;
-					line-height: 16px;
-					display: block;
-					font-size: 14px;
-					font-family: Source Han Sans CN;
-					font-weight: 400;
-					color: #999999;
-					width: 100%;
-					padding: 5px 10px;
-					text-decoration: none;
-				}
-				
-				.tree-container .tree-list .tree-item .tree-child-list li .title-active {
-					color: #3E8EE2;
-					
-				}
-				.tree-container .tree-list .tree-item .tree-child-list li a:before {
-					width: 10px;
-					background-size: 10px;
-				}
-				.tree-container .tree-list .tree-item .tree-child-list li:hover {
-					background-color: #fff;
-				}
-				.tree-container .tree-list .tree-item .tree-child-active {
-					max-height: 500px;
-					padding: 0px 10px 0;
-				}
 			}
-			.energy-news-list {
-				width: calc(~"100% - 270px");
-				.energy-news-list-item {
-					li {
-						border-radius: 4px;
-						padding: 20px;
-						display: block;
-						justify-content: start;
-						margin-bottom: 18px;
-						background-color: #fff;
-						.energy-news-detail-img {
-							img {
-								max-width: 330px;
-								width: 100%;
-								height: auto;
-								object-fit: cover;
-								margin: 0px auto;
-								display: block;
+			.energy-news-container {
+				display: flex;
+				justify-content: space-between;
+				.tree-UI {
+					width: 240px;
+					min-width: 240px;
+					overflow-y: auto;
+					position: relative;
+					background-color: #fff;
+					border-top: 6px solid #3e8ee2;
+					height: max-content;
+					ul {
+						list-style: none;
+						padding-left: 7px;
+					}
+					.tree-container {
+						padding: 10px;
+						padding-left: 26px;
+						position: relative;
+						.range-title {
+							font-size: 16px;
+							font-family: Source Han Sans CN;
+							font-weight: bold;
+							color: #000000;
+							line-height: 29px;
+							&:before {
+								content: " ";
+								display: inline-block;
+								height: 22px;
+								width: 22px;
+								margin-right: 5px;
+								background: url("../img/icon/technical-field.png") no-repeat center;
+								background-size: 22px;
+								vertical-align: top;
+								position: relative;
+								top: 4px;
 							}
 						}
-						.energy-news-detail-text {
-							text-align: center;
-							margin-left: 0px;
-							.tag {
-								margin-top: 10px;
-								margin-left: 0px;
-								span {
-									font-size: 14px;
-									font-weight: 400;
-									color: #999999;
-									margin-right: 20px;
-									&:before {
-										position: relative;
-										top: 2px;
-										margin-right: 7px;
-									}
-									&:nth-child(1) {
-										.before-icon("../img/icon/energy-tag.png",15px);
-									}
-									&:nth-child(2) {
-										.before-icon("../img/icon/energy-flag.png",15px);
+					}
+					.tree-container .content-body {
+						position: absolute;
+						top: 0px;
+						left: 0px;
+						padding: 0px 10px;
+						height: 80vh;
+						overflow: hidden;
+						max-height: 0;
+						z-index: 10;
+						transition: all 0.3s;
+						background-color: #fff;
+					}
+					.tree-container .content-body .close {
+						width: 100%;
+						padding: 10px;
+						text-align: right;
+					}
+					.tree-container .content-body-active {
+						max-height: 79vh;
+					}
+					.tree-container .tree-list .tree-item {
+						padding-top: 13px;
+						padding-left: 10px;
+					}
+					.tree-container .tree-list .tree-item .title {
+						font-size: 19px;
+						padding: 0px 10px 7px;
+						font-size: 16px;
+						font-family: Source Han Sans CN;
+						font-weight: 400;
+						color: #333333;
+						position: relative;
+						line-height: 22px;
+						cursor: pointer;
+					}
+					.tree-container .tree-list .tree-item .title-active {
+						color: #3e8ee2;
+					}
+					.tree-container .tree-list .tree-item .title:before {
+						margin-right: 9px;
+					}
+					.tree-container .tree-list .tree-item .tree-child-list {
+						max-height: 0px;
+						transition: all 0.3s;
+						overflow: hidden;
+					}
+					.tree-container .tree-list .tree-item .tree-child-list li {
+						padding: 7px;
+					}
+					.tree-container .tree-list .tree-item .tree-child-list li a {
+						position: relative;
+						line-height: 16px;
+						display: block;
+						font-size: 14px;
+						font-family: Source Han Sans CN;
+						font-weight: 400;
+						color: #999999;
+						width: 100%;
+						padding: 5px 10px;
+						text-decoration: none;
+					}
 
+					.tree-container .tree-list .tree-item .tree-child-list li .title-active {
+						color: #3e8ee2;
+					}
+					.tree-container .tree-list .tree-item .tree-child-list li a:before {
+						width: 10px;
+						background-size: 10px;
+					}
+					.tree-container .tree-list .tree-item .tree-child-list li:hover {
+						background-color: #fff;
+					}
+					.tree-container .tree-list .tree-item .tree-child-active {
+						max-height: 500px;
+						padding: 0px 10px 0;
+					}
+				}
+				.energy-news-list {
+					width: calc(~"100% - 270px");
+					.energy-news-list-item {
+						li {
+							border-radius: 4px;
+							padding: 20px;
+							display: block;
+							justify-content: start;
+							margin-bottom: 18px;
+							background-color: #fff;
+							.energy-news-detail-img {
+								img {
+									max-width: 330px;
+									width: 100%;
+									height: auto;
+									object-fit: cover;
+									margin: 0px auto;
+									display: block;
+								}
+							}
+							.energy-news-detail-text {
+								text-align: center;
+								margin-left: 0px;
+								.tag {
+									margin-top: 10px;
+									margin-left: 0px;
+									span {
+										font-size: 14px;
+										font-weight: 400;
+										color: #999999;
+										margin-right: 20px;
 										&:before {
 											position: relative;
-											top: 3px;
+											top: 2px;
 											margin-right: 7px;
-											width: 12px;
-											height: 15px;
+										}
+										&:nth-child(1) {
+											.before-icon("../img/icon/energy-tag.png",15px);
+										}
+										&:nth-child(2) {
+											.before-icon("../img/icon/energy-flag.png",15px);
+
+											&:before {
+												position: relative;
+												top: 3px;
+												margin-right: 7px;
+												width: 12px;
+												height: 15px;
+											}
 										}
 									}
 								}
-							}
-							h3 {
-								margin-top: 10px;
-								font-size: 16px;
-								font-weight: 400;
-								color: #000000;
-								margin-bottom: 15px;
-								line-height: 25px;
-								.max-text-line(2)
-							}
-							.time {
-								font-size: 14px;
-								font-weight: 400;
-								color: #999999;
-								.before-icon("../img/icon/patent-data.png",15px);
-								&:before {
-									position: relative;
-									top: 2px;
+								h3 {
+									margin-top: 10px;
+									font-size: 16px;
+									font-weight: 400;
+									color: #000000;
+									margin-bottom: 15px;
+									line-height: 25px;
+									.max-text-line(2);
 								}
-							}
-							p {
-								margin-top: 15px;
-								font-size: 14px;
-								font-weight: 400;
-								color: #999999;
-								.max-text-line(2)
-							}
-							.el-button {
-								margin-top: 15px;
-								padding: 9px 20px;
+								.time {
+									font-size: 14px;
+									font-weight: 400;
+									color: #999999;
+									.before-icon("../img/icon/patent-data.png",15px);
+									&:before {
+										position: relative;
+										top: 2px;
+									}
+								}
+								p {
+									margin-top: 15px;
+									font-size: 14px;
+									font-weight: 400;
+									color: #999999;
+									.max-text-line(2);
+								}
+								.el-button {
+									margin-top: 15px;
+									padding: 9px 20px;
+								}
 							}
 						}
 					}
-				}
-				.pagination{
-					margin-bottom: 64px;
-					.el-pagination {
-						white-space: inherit;
-						line-height: 40px;
+					.pagination {
+						margin-bottom: 64px;
+						.el-pagination {
+							white-space: inherit;
+							line-height: 40px;
+						}
 					}
 				}
 			}
 		}
 	}
-}
 }
 
 @media screen and (max-width: 640px) {
@@ -2229,6 +2411,59 @@
 	.research-findings .research-findings-layout .carbon .articel-container ul li {
 		width: 90%;
 	}
+	.research-findings .research-findings-body .standard-monograph .standard .text .tool-title {
+		display: block;
+		text-align: center;
+		h2 {
+			text-align: center;
+		}
+		p {
+			text-align: center;
+			margin: 13px 0;
+		}
+	}
+	.research-findings .research-findings-body .standard-monograph .monograph .text .tool-title {
+		display: block;
+		h2 {
+			text-align: center;
+		}
+		p {
+			text-align: center;
+			margin: 13px 0;
+		}
+	}
+	.research-findings .research-findings-body .tisc .tisc-monthly-container {
+		display: block;
+		background-color: #fff;
+		padding: 20px 0 10px;
+		.tisc-list-container {
+			width: 100%;
+			padding: 0;
+			ul {
+				padding: 0 25px;
+			}
+		}
+	}
+	.research-findings .research-findings-body .carbon .carbon-monthly-container {
+		display: block;
+		background-color: #fff;
+		padding-top: 30px;
+		.carbon-list-container {
+			width: 100%;
+			padding: 0;
+			ul {
+				padding: 0 25px;
+			}
+		}
+	}
+	.research-findings .research-findings-body .standard-monograph .standard .standard-list-container ul li{
+		// display: block;
+		a{
+			.max-text-line(2);
+			width: 80%;
+			margin-bottom: 10px;
+		}
+	}
 	.login-container .login-view-container {
 		width: 100%;
 		min-width: 370px;
@@ -2264,10 +2499,10 @@
 		margin-bottom: 0;
 		box-shadow: none;
 	}
-	.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label .el-input2{
+	.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label .el-input2 {
 		width: 70%;
 	}
-	.energy-news .energy-news-body .energy-news-container .tree-UI{
+	.energy-news .energy-news-body .energy-news-container .tree-UI {
 		position: fixed;
 		top: 50px;
 		left: 0px;
@@ -2277,33 +2512,32 @@
 		max-width: 0;
 		min-width: 0;
 		overflow: hidden;
-		transition: all .3s;
-		.tree-container{
+		transition: all 0.3s;
+		.tree-container {
 			min-width: 240px;
 		}
 	}
-	.energy-news .energy-news-body .energy-news-container .tree-show{
+	.energy-news .energy-news-body .energy-news-container .tree-show {
 		max-width: 240px;
 		min-width: 240px;
 		overflow: scroll;
 	}
-	.energy-news .energy-news-body .open-tree{
+	.energy-news .energy-news-body .open-tree {
 		display: block;
 		width: 30px;
 		height: 50px;
 		border-radius: 0 50px 50px 0;
-		background-color: #3E8EE2;
+		background-color: #3e8ee2;
 		position: fixed;
 		top: 50%;
 		left: 0;
-		i{
-			
+		i {
 			font-size: 30px;
 			margin: 10px 0 0;
 			color: #fff;
 		}
 	}
-	.energy-news-body .dusk-view{
+	.energy-news-body .dusk-view {
 		display: none;
 		background-color: rgba(0, 0, 0, 0.5);
 		width: 100vw;
@@ -2312,35 +2546,35 @@
 		top: 0;
 		left: 0;
 		z-index: 10;
-		.close-tree{
+		.close-tree {
 			position: absolute;
 			color: #ffffff;
 			left: 260px;
 			top: 60px;
 			font-size: 40px;
 			opacity: 0;
-			transition: all .7s;
+			transition: all 0.7s;
 		}
 	}
-	.energy-news-body .dusk-view-show{
+	.energy-news-body .dusk-view-show {
 		display: block;
-		.close-tree{
+		.close-tree {
 			opacity: 1;
 		}
 	}
-	.energy-news .energy-news-body .energy-news-container .energy-news-list{
+	.energy-news .energy-news-body .energy-news-container .energy-news-list {
 		width: 100%;
 	}
-	.energy-news .energy-news-body .text{
+	.energy-news .energy-news-body .text {
 		display: block;
 	}
-	.energy-news .energy-news-body .text .search-container{
+	.energy-news .energy-news-body .text .search-container {
 		justify-content: start;
 		margin-top: 20px;
 		width: 100%;
 		margin: 20px auto;
 	}
-	.energy-news .energy-news-body .text .search-container .el-input__inner{
+	.energy-news .energy-news-body .text .search-container .el-input__inner {
 		width: 100%;
 	}
 }

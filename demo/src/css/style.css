@@ -102,6 +102,123 @@ a {
   margin-left: 0;
   margin-top: 24px;
 }
+.register-container {
+  background: url("../img/login-bg.png") center no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-height: 1000px;
+  position: relative;
+}
+.register-container .register-view-container {
+  width: 80%;
+  min-width: 1100px;
+  max-width: 1620px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  justify-content: space-between;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.register-container .register-view-container .register-logo {
+  width: 40%;
+}
+.register-container .register-view-container .register-form {
+  background-color: #fff;
+  width: 580px;
+  background: #ffffff;
+  box-shadow: 0px 17px 28px 4px rgba(21, 53, 92, 0.4);
+  border-radius: 12px;
+  padding: 60px 60px 80px;
+}
+.register-container .register-view-container .register-form h3 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 64px;
+  position: relative;
+}
+.register-container .register-view-container .register-form h3:after {
+  content: " ";
+  display: inline-block;
+  width: 30px;
+  height: 7px;
+  background: #3e8ee2;
+  border-radius: 4px;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.register-container .register-view-container .register-form .form-container {
+  margin-top: 30px;
+}
+.register-container .register-view-container .register-form .form-container .input-container .input-item {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+}
+.register-container .register-view-container .register-form .form-container .input-container .input-item span {
+  width: 80px;
+  height: 14px;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  margin-top: 15px;
+  color: #999999;
+}
+.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 12px;
+}
+.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label h4 {
+  font-size: 14px;
+  font-weight: 400;
+  color: #3a3a3a;
+  line-height: 35px;
+}
+.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label .el-input {
+  width: 85%;
+}
+.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label .el-input .el-input__inner {
+  width: 100%;
+  height: 60px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label .el-input select {
+  display: block;
+  width: 100%;
+  height: 60px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: 1px solid #dcdfe6;
+}
+.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label .el-input .select-placeholder {
+  color: #bbbd;
+}
+.register-container .register-view-container .register-form .form-container .input-container .input-item .input-label .el-input2 {
+  width: 75%;
+}
+.register-container .register-view-container .register-form .form-container .input-container .buttom-container {
+  margin-top: 50px;
+}
+.register-container .register-view-container .register-form .form-container .input-container .buttom-container .el-button {
+  width: 100%;
+  height: 56px;
+  font-size: 16px;
+}
+.register-container .register-view-container .register-form .form-container .input-container .buttom-container .el-button + .el-button {
+  margin-left: 0;
+  margin-top: 24px;
+}
 .patent-index .patent-index-search {
   width: 100%;
   position: relative;
@@ -1482,6 +1599,10 @@ a {
 }
 .research-findings .research-findings-body .text .tool-title {
   padding: 0;
+  padding-left: 10px;
+}
+.research-findings .research-findings-body .text .tool-title p {
+  text-align: left;
 }
 .research-findings .research-findings-body .article {
   margin-top: 27px;
@@ -1697,6 +1818,230 @@ a {
   font-weight: 400;
   color: #999999;
   line-height: 25px;
+}
+.research-findings .research-findings-body .time {
+  font-size: 14px;
+  color: #999;
+  min-width: max-content;
+  position: relative;
+  line-height: 15px;
+}
+.research-findings .research-findings-body .time:before {
+  content: " ";
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  background: url("../img/icon/time-icon.png") no-repeat center;
+  background-size: 15px;
+  vertical-align: top;
+}
+.research-findings .research-findings-body .tisc {
+  margin-top: 80px;
+}
+.research-findings .research-findings-body .tisc .tisc-monthly-container {
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+.research-findings .research-findings-body .tisc .tisc-monthly-container .tisc-list-container {
+  width: 50%;
+  background-color: #fff;
+  padding: 20px 0 10px;
+}
+.research-findings .research-findings-body .tisc .tisc-monthly-container .tisc-list-container:first-child ul {
+  border-right: 2px solid #f0f0f0;
+  padding: 0 25px;
+}
+.research-findings .research-findings-body .tisc .tisc-monthly-container .tisc-list-container ul {
+  padding: 0 30px;
+}
+.research-findings .research-findings-body .tisc .tisc-monthly-container .tisc-list-container ul li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.research-findings .research-findings-body .tisc .tisc-monthly-container .tisc-list-container ul li a {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #000;
+  font-size: 16px;
+}
+.research-findings .research-findings-body .tisc .tisc-monthly-container .tisc-list-container ul li a:hover {
+  color: #038de2;
+}
+.research-findings .research-findings-body .carbon {
+  margin-top: 100px;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container {
+  width: 50%;
+  background-color: #fff;
+  padding: 20px 0 10px;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container:first-child ul {
+  border-right: 2px solid #f0f0f0;
+  padding: 0 25px;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container ul {
+  padding: 0 30px;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container ul li {
+  margin-bottom: 15px;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container ul li a {
+  color: #000;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container ul li a:hover {
+  color: #038de2;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container ul li .people {
+  margin-left: 20px;
+  position: relative;
+  line-height: 15px;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container ul li .people:before {
+  content: " ";
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  background: url("../img/icon/people-icon.png") no-repeat center;
+  background-size: 15px;
+  vertical-align: top;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container ul li span {
+  color: #999;
+}
+.research-findings .research-findings-body .carbon .carbon-monthly-container .carbon-list-container ul li span:before {
+  position: relative;
+  top: 2px;
+}
+.research-findings .research-findings-body .standard-monograph {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.research-findings .research-findings-body .standard-monograph .standard {
+  width: 60%;
+}
+.research-findings .research-findings-body .standard-monograph .standard .text {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.research-findings .research-findings-body .standard-monograph .standard .text .tool-title {
+  padding: 0;
+  display: flex;
+  justify-content: start;
+}
+.research-findings .research-findings-body .standard-monograph .standard .text .tool-title h2 {
+  text-align: left;
+}
+.research-findings .research-findings-body .standard-monograph .standard .text .tool-title p {
+  text-align: left;
+  margin-left: 10px;
+}
+.research-findings .research-findings-body .standard-monograph .standard .text a {
+  border: none;
+}
+.research-findings .research-findings-body .standard-monograph .standard .standard-list-container {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  padding-bottom: 10px;
+}
+.research-findings .research-findings-body .standard-monograph .standard .standard-list-container ul li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.research-findings .research-findings-body .standard-monograph .standard .standard-list-container ul li a {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #000;
+  font-size: 16px;
+}
+.research-findings .research-findings-body .standard-monograph .standard .standard-list-container ul li a:hover {
+  color: #038de2;
+}
+.research-findings .research-findings-body .standard-monograph .monograph {
+  width: 38%;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .text {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .text .tool-title {
+  padding: 0;
+  display: flex;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .text .tool-title h2 {
+  text-align: left;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .text .tool-title p {
+  text-align: left;
+  margin-left: 10px;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .text a {
+  border: none;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .text a :hover {
+  background-color: #fff;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .monograph-list-container {
+  padding: 20px;
+  padding-bottom: 10px;
+  background-color: #fff;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .monograph-list-container ul li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .monograph-list-container ul li a {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #000;
+  font-size: 16px;
+}
+.research-findings .research-findings-body .standard-monograph .monograph .monograph-list-container ul li a:hover {
+  color: #038de2;
 }
 .research-findings .research-findings-layout {
   width: 100%;
@@ -2133,7 +2478,7 @@ a {
   cursor: pointer;
 }
 .energy-news .energy-news-body .energy-news-container .tree-UI .tree-container .tree-list .tree-item .title-active {
-  color: #3E8EE2;
+  color: #3e8ee2;
 }
 .energy-news .energy-news-body .energy-news-container .tree-UI .tree-container .tree-list .tree-item .title:before {
   margin-right: 9px;
@@ -2159,7 +2504,7 @@ a {
   text-decoration: none;
 }
 .energy-news .energy-news-body .energy-news-container .tree-UI .tree-container .tree-list .tree-item .tree-child-list li .title-active {
-  color: #3E8EE2;
+  color: #3e8ee2;
 }
 .energy-news .energy-news-body .energy-news-container .tree-UI .tree-container .tree-list .tree-item .tree-child-list li a:before {
   width: 10px;
