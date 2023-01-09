@@ -1815,14 +1815,13 @@ a {
 				}
 			}
 		}
-		.time{
+		.time {
 			font-size: 14px;
 			color: #999;
 			min-width: max-content;
 			.before-icon("../img/icon/time-icon.png",15px);
 		}
-		.people{
-
+		.people {
 		}
 		.tisc {
 			margin-top: 80px;
@@ -1889,14 +1888,13 @@ a {
 									color: #038de2;
 								}
 							}
-							.people{
+							.people {
 								margin-left: 20px;
 								.before-icon("../img/icon/people-icon.png",15px);
-
 							}
-							span{
+							span {
 								color: #999;
-								&:before{
+								&:before {
 									position: relative;
 									top: 2px;
 								}
@@ -1921,7 +1919,7 @@ a {
 						padding: 0;
 						display: flex;
 						justify-content: start;
-						h2{
+						h2 {
 							text-align: left;
 						}
 						p {
@@ -1929,18 +1927,18 @@ a {
 							margin-left: 10px;
 						}
 					}
-					a{
+					a {
 						border: none;
 					}
 				}
-				.standard-list-container{
+				.standard-list-container {
 					margin-top: 20px;
 					background-color: #fff;
 					border-radius: 15px;
 					padding: 20px;
 					padding-bottom: 10px;
-					ul{
-						li{
+					ul {
+						li {
 							display: flex;
 							justify-content: space-between;
 							margin-bottom: 10px;
@@ -1965,7 +1963,7 @@ a {
 					.tool-title {
 						padding: 0;
 						display: flex;
-						h2{
+						h2 {
 							text-align: left;
 						}
 						p {
@@ -1973,22 +1971,22 @@ a {
 							margin-left: 10px;
 						}
 					}
-					a{
+					a {
 						border: none;
 						.max-text-line(1);
-						:hover{
+						:hover {
 							background-color: #fff;
 						}
 					}
 				}
-				.monograph-list-container{
+				.monograph-list-container {
 					padding: 20px;
 					padding-bottom: 10px;
 					background-color: #fff;
 					border-radius: 15px;
 					margin-top: 20px;
-					ul{
-						li{
+					ul {
+						li {
 							display: flex;
 							justify-content: space-between;
 							margin-bottom: 10px;
@@ -2002,7 +2000,6 @@ a {
 							}
 						}
 					}
-					
 				}
 			}
 		}
@@ -2539,6 +2536,133 @@ a {
 					margin-bottom: 64px;
 				}
 			}
+		}
+	}
+}
+.company-profile {
+	padding: 0 0 70px;
+	.comprehensive-energy-knowledge {
+		position: relative;
+		.comprehensive-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			h1 {
+				font-weight: 700;
+				font-size: 70px;
+				text-align: center;
+				color: #ffffff;
+				text-shadow: 7px 10px 12px rgba(25, 87, 138, 0.5);
+			}
+			h4 {
+				text-transform: uppercase;
+				font-size: 20px;
+				text-align: center;
+				margin-top: 30px;
+				color: #ffffff;
+				text-shadow: 5px 10px 5px rgba(2, 2, 2, 0.7);
+			}
+		}
+	}
+
+	.profile-container {
+		margin: 0px 0 0px;
+		.profile-item {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 100px;
+			.text {
+				width: 33%;
+				position: relative;
+				.tool-title {
+					padding: 0px 0 44px;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					h2,
+					p {
+						text-align: left;
+						color: #333;
+					}
+					h2 {
+						font-size: 36px;
+					}
+					p {
+						font-size: 18px;
+					}
+				}
+			}
+			.profile-content {
+				padding: 0 10px 0px;
+				width: 64%;
+				background-color: #fff;
+				position: relative;
+				margin-bottom: 30px;
+				.icon {
+					margin-top: -20px;
+					margin-left: 20px;
+					span {
+						.before-icon("../img/icon/text-icon.png",40px);
+					}
+				}
+				.content {
+					padding: 40px 50px;
+					p {
+						text-indent: 2em;
+						font-size: 14px;
+						font-family: Source Han Sans CN;
+						font-weight: 400;
+						color: #333333;
+						line-height: 29px;
+					}
+					ul {
+						li {
+							.before-icon("../img/icon/list-icon.jpg",10px);
+							margin-bottom: 15px;
+							&:before {
+								border-radius: 50%;
+								margin-top: 10px;
+
+								margin-right: 15px;
+							}
+							font-size: 18px;
+							font-family: Source Han Sans CN;
+							font-weight: bold;
+							color: #333333;
+							line-height: 29px;
+							padding-left: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.img-container {
+		ul {
+			display: flex;
+			justify-content: space-between;
+			li {
+				width: 32%;
+				img {
+					width: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+	.text-container {
+		padding: 30px;
+		margin-top: 17px;
+		background-color: #fff;
+		p {
+			text-indent: 2em;
+			margin-bottom: 20px;
+			font-size: 14px;
+			font-family: Source Han Sans CN;
+			font-weight: 400;
+			color: #333333;
+			line-height: 29px;
 		}
 	}
 }

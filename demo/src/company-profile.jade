@@ -1,0 +1,87 @@
+extends ./index_tp.jade
+prepend head
+  - var title = "中心介绍";
+prepend body
+  - var body_id = "index";
+  - var path = "index";
+block main
+    template.
+        <div class="body">
+            <div class="company-profile">
+                <div class="comprehensive-energy-knowledge">
+                    <img width="100%" src="./img/energy-news-bg.png" alt="">
+                    <div class="comprehensive-text">
+                        <h1>能源知识   一手掌握</h1>
+                        <h4>Comprehensive energy knowledge</h4>
+                    </div>
+                </div>
+                <div class="layout company-profile-container">
+                    <div class="profile-container">
+                      <div class="profile-item">
+                        <div class="text">
+                            <div class="tool-title">
+                                <h2>中心介绍</h2>
+                                <p>大连化学物理研究所能源战略研究中心</p>
+                            </div>
+                        </div>
+                        <div class="profile-content">
+                            <div class="icon">
+                              <span></span>
+                            </div>
+                            <div class="content">
+                                <p>大连化学物理研究所能源战略研究中心主要围绕国家能源领域重大需求，开展以技术为基础的具有中科院特色的能源战略研究工作。中心通过构建以技术为基础，以数据、分析、模型为手段的具有中国科学院特色的能源战略体系，通过推进科学技术与国家需求、产业发展及各级规划的有效衔接，促进科技成果转化与战略成果产出服务研究所重大决策，服务中科院能源战略制定，服务区域及国家的能源规划制定，助力于清洁低碳、安全高效的现代能源体系构建和“碳达峰”、“碳中和”目标的实现。</p>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="img-container">
+                      <ul>
+                        <li>
+                          <img src="./img/company-profile-img1.png" alt="">
+                        </li>
+                        <li>
+                          <img src="./img/company-profile-img2.png" alt="">
+                        </li>
+                        <li>
+                          <img src="./img/company-profile-img3.png" alt="">
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="text-container">
+                      <p>中心也是中科院洁净能源创新研究院的能源战略研究中心，获批辽宁科技创新发展智库首批研究基地、大连市首批重点新兴智库，拥有一批国内外顶尖的院士专家咨询团队。 参与完成了“能源技术革命创新行动计划（2016-2030）”、“煤炭深加工产业升级示范规划（2016-2020年）”（本项目2015年度荣获国家能源局能源软科学研究优秀成果一 等奖）等一批国家规划的编制工作。形成了《中科院专家关于建设国家级能源革命创新示范区的建议》、《关于我国新能源发展的相关建议》、《探索新时代重大战略的举国科 研体制》等一批建议意见获得国家采纳。</p>
+                      <p>能源战略研究中心目前承担了中国科学院“变革性洁净能源关键技术与示范”A类先导项目“面向国家能源结构变革战略研究”课题，“碳中和重大院士咨询项目”，“中
+                        科院能源领域规划战略研究项目”；中国工程院咨询项目“多能融合综合能源示范区发展战略研究”、“能源化工技术在发展中国家推广及应用战略研究”、“能源革命推动能
+                        源富集地区绿色发展”等，代表中国工程院正与法国国家技术研究院共同开展中法氢能战略研究项目，参与了国际工程院联盟全球能源终端用户脱碳研究等；牵头负责开展榆林
+                        国家级能源革命创新示范区创建方案编制、宁东基地煤化工产业链延伸与产品耦合发展研究、山东省能源高质量发展战略研究、山西省甲醇经济发展战略研究、碳达峰、碳中和
+                        国家目标下辽宁省面临的挑战与机遇研究、河南产业发展生态环境保护战略研究、海南省工信领域碳达峰实施意见和碳中和路径研究、大连市碳中和技术路线研究等省市级能源
+                        产业战略规划项目。</p>
+                      <p>        中心与高校、研究机构、头部企业也开展了广泛的交流与合作，与商汤科技、中材节能、中科院武汉文献情报中心、中科院高等研究院等签订了战略合作协议，承担了中国
+                        建材联合会“揭榜挂帅”项目“绿色氢能煅烧水泥熟料关键技术”，与恒力石化、华新水泥、鞍钢等化工、水泥、钢铁行业头部企业就行业技术发展研究保持了密切合作。</p>
+                    </div>
+                    <div class="profile-container">
+                      <div class="profile-item">
+                        <div class="text">
+                            <div class="tool-title">
+                                <h2>我们的称号</h2>
+                                <p>大连化学物理研究所能源战略研究中心</p>
+                            </div>
+                        </div>
+                        <div class="profile-content">
+                            <div class="icon">
+                              <span></span>
+                            </div>
+                            <div class="content">
+                              <ul>
+                                <li>大连市重点新型智库</li>
+                                <li>辽宁省重点新型智库</li>
+                                <li>辽宁科技创新发展智库研究基地</li>
+                              </ul>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+block script
+  script(src="./js/index.js?v=#{time}")
