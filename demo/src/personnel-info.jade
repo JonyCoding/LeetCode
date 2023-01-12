@@ -1,0 +1,123 @@
+extends ./index_tp.jade
+prepend head
+  - var title = "人员介绍";
+prepend body
+  - var body_id = "index";
+  - var path = "index";
+block main
+    template.
+        <div class="body">
+            <div class="personnel-info">
+                <div class="comprehensive-energy-knowledge">
+                    <img width="100%" src="./img/energy-news-bg.png" alt="">
+                    <div class="comprehensive-text">
+                        <h1>能源知识   一手掌握</h1>
+                        <h4>Comprehensive energy knowledge</h4>
+                    </div>
+                </div>
+                <div class="layout personnel-info-container">
+                    <div class="tool-title">
+                        <h2>人员方向</h2>
+                        <p>PERSONNEL INTRODUCTION</p>
+                    </div>
+                    <div class="personnel-list-container">
+                        <ul class="personnel-list">
+                            <li>
+                                <div class="img personnel-icon-mobile">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>蔡睿<span>Cai Rui</span></h3>
+                                    <p>台盟中央常委</p>
+                                    <p>辽宁省主委、大连市主委</p>
+                                    <p>中科院大连化学物理研究所副所长</p>
+                                </div>
+                                <div class="img personnel-icon-pc">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img personnel-icon-mobile">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>蔡睿<span>Cai Rui</span></h3>
+                                    <p>台盟中央常委</p>
+                                    <p>辽宁省主委、大连市主委</p>
+                                    <p>中科院大连化学物理研究所副所长</p>
+                                </div>
+                                <div class="img personnel-icon-pc">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img personnel-icon-mobile">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>蔡睿<span>Cai Rui</span></h3>
+                                    <p>台盟中央常委</p>
+                                    <p>辽宁省主委、大连市主委</p>
+                                    <p>中科院大连化学物理研究所副所长</p>
+                                </div>
+                                <div class="img personnel-icon-pc">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img personnel-icon-mobile">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>蔡睿<span>Cai Rui</span></h3>
+                                    <p>台盟中央常委</p>
+                                    <p>辽宁省主委、大连市主委</p>
+                                    <p>中科院大连化学物理研究所副所长</p>
+                                </div>
+                                <div class="img personnel-icon-pc">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img personnel-icon-mobile">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>蔡睿<span>Cai Rui</span></h3>
+                                    <p>台盟中央常委</p>
+                                    <p>辽宁省主委、大连市主委</p>
+                                    <p>中科院大连化学物理研究所副所长</p>
+                                </div>
+                                <div class="img personnel-icon-pc">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img personnel-icon-mobile">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>蔡睿<span>Cai Rui</span></h3>
+                                    <p>台盟中央常委</p>
+                                    <p>辽宁省主委、大连市主委</p>
+                                    <p>中科院大连化学物理研究所副所长</p>
+                                </div>
+                                <div class="img personnel-icon-pc">
+                                    <img src="./img/personnel-icon1.jpg" alt="">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="pagination">
+                            <el-pagination
+                                background
+                                :pager-count="3"
+                                layout="total, prev, pager, next, jumper"
+                                :total="340">
+                            </el-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+block script
+  script(src="./js/index.js?v=#{time}")

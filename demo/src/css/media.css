@@ -2473,6 +2473,103 @@
     color: #333333;
     line-height: 29px;
   }
+  .personnel-info .comprehensive-energy-knowledge {
+    position: relative;
+  }
+  .personnel-info .comprehensive-energy-knowledge img {
+    min-height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+  .personnel-info .comprehensive-energy-knowledge .comprehensive-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    min-height: 100px;
+  }
+  .personnel-info .comprehensive-energy-knowledge .comprehensive-text h1 {
+    font-weight: 700;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 7px 10px 12px rgba(25, 87, 138, 0.5);
+  }
+  .personnel-info .comprehensive-energy-knowledge .comprehensive-text h4 {
+    text-transform: uppercase;
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+    text-shadow: 5px 10px 5px rgba(2, 2, 2, 0.7);
+  }
+  .personnel-info .personnel-info-container {
+    padding: 15px;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list li {
+    display: block;
+    width: 48%;
+    background-color: #fff;
+    padding: 20px;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list li .text {
+    position: relative;
+    margin-top: 10%;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list li .text h3 {
+    font-size: 26px;
+    font-family: Source Han Sans CN;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 25px;
+    letter-spacing: 10px;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list li .text h3 span {
+    font-size: 18px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #999999;
+    letter-spacing: 2px;
+    margin-left: 10px;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list li .text p {
+    font-size: 16px;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list li .personnel-icon-mobile {
+    display: block;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list li .personnel-icon-pc {
+    display: none;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list li .img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .pagination {
+    margin: 30px auto 140px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .pagination .el-pagination {
+    white-space: inherit;
+    line-height: 40px;
+  }
 }
 @media screen and (max-width: 640px) {
   .label-sm {
@@ -2886,5 +2983,13 @@
     width: 80%;
     margin: 0px auto;
     margin-top: 20px;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .personnel-list li {
+    width: 100%;
+  }
+  .personnel-info .personnel-info-container .personnel-list-container .pagination {
+    width: 100%;
+    transform: translateX(0);
+    margin-left: 0;
   }
 }
