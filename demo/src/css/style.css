@@ -1395,6 +1395,52 @@ a {
 .index-page .energy-pllicy .text .tool-title p {
   font-size: 18px;
 }
+.index-page .energy-pllicy .text .news-list .data-container {
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  padding: 12px;
+}
+.index-page .energy-pllicy .text .news-list .data-container .time {
+  min-width: 88px;
+  max-height: 93px;
+  min-height: 93px;
+  background: #f6f6f6;
+}
+.index-page .energy-pllicy .text .news-list .data-container .time span {
+  display: block;
+  text-align: center;
+}
+.index-page .energy-pllicy .text .news-list .data-container .time .day {
+  font-size: 24px;
+  font-family: Source Han Sans CN;
+  font-weight: 800;
+  color: #333333;
+  line-height: 29px;
+  margin-top: 20px;
+}
+.index-page .energy-pllicy .text .news-list .data-container .time .date {
+  font-size: 12px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #000000;
+  line-height: 29px;
+}
+.index-page .energy-pllicy .text .news-list .data-container .news-title {
+  margin-left: 13px;
+}
+.index-page .energy-pllicy .text .news-list .data-container .news-title h3 {
+  margin-top: 14px;
+}
+.index-page .energy-pllicy .text .news-list .data-container .news-title p {
+  margin-top: 13px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .index-page .energy-pllicy .text .news-list li {
   margin-bottom: 34px;
 }
@@ -1425,6 +1471,11 @@ a {
 .index-page .energy-pllicy .text .news-list a p {
   font-size: 14px;
   text-align: left;
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  line-height: 29px;
+  text-transform: uppercase;
 }
 .index-page .energy-pllicy .text .news-list a .bi {
   width: 25px;
