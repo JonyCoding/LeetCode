@@ -1305,7 +1305,7 @@
     border: 1px solid #fff;
     border-radius: 25px;
     font-size: 16px;
-    margin-top: 5px;
+    margin-top: 13px;
     margin-left: 33px;
   }
   .index-page .energy-pllicy .news-details {
@@ -2984,8 +2984,14 @@
     margin: 0px auto;
     margin-top: 20px;
   }
+  .index-page .energy-pllicy .text .news-list .data-container .news-title h3 {
+    margin-top: 0;
+  }
   .personnel-info .personnel-info-container .personnel-list-container .personnel-list li {
     width: 100%;
+  }
+  .energy-innovation-index .energy-innovation-body .direction-tab .country-profile .select-title {
+    display: block;
   }
   .personnel-info .personnel-info-container .personnel-list-container .pagination {
     width: 100%;

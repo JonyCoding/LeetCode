@@ -1442,7 +1442,7 @@ a {
   overflow: hidden;
 }
 .index-page .energy-pllicy .text .news-list li {
-  margin-bottom: 34px;
+  margin-bottom: 30px;
 }
 .index-page .energy-pllicy .text .news-list li h3 {
   font-size: 16px;
@@ -1483,7 +1483,7 @@ a {
   border: 1px solid #fff;
   border-radius: 25px;
   font-size: 16px;
-  margin-top: 5px;
+  margin-top: 15px;
   margin-left: 33px;
 }
 .index-page .energy-pllicy .news-details {
@@ -2319,7 +2319,7 @@ a {
   flex-wrap: wrap;
 }
 .energy-innovation-index .energy-innovation-body .direction-tab .country-profile .info-list ul li {
-  width: 30%;
+  width: 330px;
   padding: 25px;
   display: flex;
   align-items: center;
