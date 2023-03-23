@@ -2905,3 +2905,254 @@ a {
   width: 500px;
   display: block;
 }
+.coal-to-ethanol .coal-container {
+  position: relative;
+}
+.coal-to-ethanol .coal-container .line-bgi {
+  width: 632px;
+  margin: 50px auto 200px;
+}
+.coal-to-ethanol .coal-container .coal-text {
+  width: 632px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.coal-to-ethanol .coal-container .coal-text .coal {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0px 9px 20px 4px rgba(172, 197, 255, 0.22);
+  border-radius: 29px;
+  padding: 8px 9px;
+  width: fit-content;
+  min-width: 140px;
+  position: absolute;
+}
+.coal-to-ethanol .coal-container .coal-text .coal h2 {
+  display: block;
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 38px;
+  margin-left: 20px;
+}
+.coal-to-ethanol .coal-container .coal-text .corners-50 {
+  border-radius: 50px;
+}
+.coal-to-ethanol .coal-container .coal-text .corners-50 img {
+  width: 48px;
+  height: 48px;
+}
+.coal-to-ethanol .coal-container .coal-text .corners-10 {
+  width: 200px;
+  height: 111px;
+  box-shadow: 0px 9px 20px 4px rgba(172, 197, 255, 0.22);
+  border-radius: 8px;
+}
+.coal-to-ethanol .coal-container .coal-text .corners-10 img {
+  width: 70px;
+  height: 77px;
+}
+.coal-to-ethanol .coal-container .coal-text .label1 {
+  top: -20px;
+  left: 50px;
+}
+.coal-to-ethanol .coal-container .coal-text .label2 {
+  top: 105px;
+  left: 25px;
+}
+.coal-to-ethanol .coal-container .coal-text .label3 {
+  top: 270px;
+  left: 60px;
+}
+.coal-to-ethanol .coal-container .coal-text .label4 {
+  top: 465px;
+  left: -70px;
+}
+.coal-to-ethanol .coal-container .coal-text .label5 {
+  top: 465px;
+  left: 200px;
+}
+.coal-to-ethanol .coal-container .coal-text .label6 {
+  top: 465px;
+  right: -72px;
+}
+.coal-to-ethanol .coal-container .coal-tag {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  width: 632px;
+  transform: translateX(-50%);
+}
+.coal-to-ethanol .coal-container .coal-tag .tag {
+  background-color: #038de2;
+  display: block;
+  width: max-content;
+  margin: 20px;
+  padding: 10px 5px;
+  position: absolute;
+  transition: all 0.3s;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag a {
+  color: #fff;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag a h2 {
+  font-size: 19px;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 26px;
+  line-height: 33px;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #f9fbff;
+  border-style: solid;
+  border-right: none;
+  border-width: 27px;
+  border-top-width: 27px;
+  border-bottom-width: 26px;
+  border-left-width: 20px;
+  border-right-width: 20px;
+  border-color: #038de2 #038de2 #038de2 #f9fbff;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag:after {
+  content: " ";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  right: -10px;
+  border-right: none;
+  top: 0;
+  right: 0px;
+  margin-left: -6px;
+  border-top-width: 27px;
+  border-bottom-width: 27px;
+  border-left-width: 18px;
+  border-right-width: 18px;
+  border-color: #f9fbff;
+  border-left-color: #3e8ee2;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag1 {
+  transform: scale(0.8);
+  background: #6091ff;
+  left: 300px;
+  top: 60px;
+  box-shadow: -5px 20px 20px 0px rgba(40, 108, 255, 0.129);
+}
+.coal-to-ethanol .coal-container .coal-tag .tag1:hover {
+  transform: scale(1);
+}
+.coal-to-ethanol .coal-container .coal-tag .tag1:before {
+  left: -18px;
+  border-color: #6091ff #6091ff #6091ff #f9fbff;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag1:after {
+  border-color: #f9fbff;
+  right: -15px;
+  border-left-color: #6091ff;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag2 {
+  top: 230px;
+  left: 300px;
+  transform: rotate(38deg) scale(0.8);
+  background: #86dbc6;
+  box-shadow: -5px 20px 20px 0px rgba(125, 216, 192, 0.128);
+}
+.coal-to-ethanol .coal-container .coal-tag .tag2:hover {
+  transform: rotate(38deg) scale(1);
+}
+.coal-to-ethanol .coal-container .coal-tag .tag2:before {
+  left: -18px;
+  border-color: #86dbc6 #86dbc6 #86dbc6 #f9fbff;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag2:after {
+  border-color: #f9fbff;
+  right: -15px;
+  border-left-color: #86dbc6;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag3 {
+  top: 320px;
+  left: 180px;
+  transform: rotate(38deg) scale(0.8);
+  background: #7a74f4;
+  box-shadow: -5px 20px 20px 0px rgba(125, 119, 247, 0.156);
+}
+.coal-to-ethanol .coal-container .coal-tag .tag3:hover {
+  transform: rotate(38deg) scale(1);
+}
+.coal-to-ethanol .coal-container .coal-tag .tag3:before {
+  border-top-width: 42px;
+  border-bottom-width: 44px;
+  left: -18px;
+  border-color: #7a74f4 #7a74f4 #7a74f4 #f9fbff;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag3:after {
+  border-top-width: 43px;
+  border-bottom-width: 43px;
+  border-color: #f9fbff;
+  right: -15px;
+  border-left-color: #7a74f4;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag4 {
+  background: #feb65e;
+  box-shadow: -5px 20px 20px 0px rgba(251, 159, 39, 0.125);
+  top: 560px;
+  left: 100px;
+  transform: scale(0.8);
+  padding-left: 20px;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag4:hover {
+  transform: scale(1);
+}
+.coal-to-ethanol .coal-container .coal-tag .tag4:before {
+  border-top-width: 43px;
+  border-bottom-width: 43px;
+  left: -18px;
+  border-color: #feb65e #feb65e #feb65e #f9fbff;
+}
+.coal-to-ethanol .coal-container .coal-tag .tag4:after {
+  border-top-width: 43px;
+  border-bottom-width: 44px;
+  border-color: #f9fbff;
+  right: -15px;
+  border-left-color: #feb65e;
+}
+.coal-to-ethanol .coal-container .coal-operation {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  width: 632px;
+  transform: translateX(-50%);
+}
+.coal-to-ethanol .coal-container .coal-operation .operation {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  position: absolute;
+  width: 30px;
+}
+.coal-to-ethanol .coal-container .coal-operation .operation1 {
+  top: 300px;
+  left: 440px;
+}
+.coal-to-ethanol .coal-container .coal-operation .operation2 {
+  top: 300px;
+  left: 640px;
+}
+.coal-to-ethanol .coal-container .coal-operation .operation3 {
+  left: 440px;
+  top: 500px;
+}
+.coal-to-ethanol .coal-container .coal-operation .operation4 {
+  top: 540px;
+  left: 350px;
+}
