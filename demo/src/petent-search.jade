@@ -1,0 +1,134 @@
+extends ./index_tp.jade
+prepend head
+  - var title = "化物所首页";
+prepend body
+  - var body_id = "index";
+  - var path = "index";
+block main
+    template.
+        <div class="body">
+            <div class="petent-battery">
+                <div class="comprehensive-energy-knowledge">
+                    <img width="100%" src="./img/battery/banner.png" alt="">
+                </div>
+                
+                <div class="layout company-profile-container">
+                    <div class="profile-container">
+                      <div class="profile-item">
+                            <div class="text">
+                                <div class="tool-title">
+                                    <h2>全钒液流电池</h2>
+                                    <p>Coal to ethanol technology</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="battery-container">
+                            <div class="battery-body">
+                                <div class="battery-body-left">
+                                        <img width="936px" src="./img/battery-bg-left.png" alt="">
+                                        <div class="left-text">
+                                            <div class="raw-material">
+                                                <ul>
+                                                    <li>
+                                                        <a href="">
+                                                            <img src="./img/battery/membrane.png" alt="">
+                                                            <div class="text">
+                                                                <h3>膜</h3>
+                                                                <h4><span>321</span>件专利</h4>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <img src="./img/battery/electrode.png" alt="">
+                                                            <div class="text">
+                                                                <h3>电极</h3>
+                                                                <h4><span>321</span>件专利</h4>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <img src="./img/battery/electrolyte.png" alt="">
+                                                            <div class="text">
+                                                                <h3>电解液</h3>
+                                                                <h4><span>321</span>件专利</h4>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <img src="./img/battery/bipolar.png" alt="">
+                                                            <div class="text">
+                                                                <h3>双极板</h3>
+                                                                <h4><span>321</span>件专利</h4>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="next">
+                                                <img width="110px" src="./img/battery/next-tip.png" alt="">
+                                            </div>
+                                            <div class="middleware">
+                                                <ul>
+                                                    <li>
+                                                        <a href="">
+                                                            <h3>电堆</h3>
+                                                            <h4><span>321</span>件专利</h4>
+                                                            <img src="./img/battery/pile.png" alt="">
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <h3>电池管理系统</h3>
+                                                            <h4><span>321</span>件专利</h4>
+                                                            <img src="./img/battery/management.png" alt="">
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="battery-body-right">
+                                    <div class="battery">
+                                        <div class="next">
+                                            <img width="110px" src="./img/battery/next-tip.png" alt="">
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <a href="">
+                                                    <h3>电池系统</h3>
+                                                    <h4><span>321</span>件专利</h4>
+                                                    <img src="./img/battery/battery.png" alt="">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="battery-body-bottom">
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <h3>电池系统</h3>
+                                            <h4><span>321</span>件专利</h4>
+                                            <img src="./img/battery/other.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h3>电池系统</h3>
+                                            <h4><span>321</span>件专利</h4>
+                                            <img src="./img/battery/ detection.png" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+block script
+  script(src="./js/index.js?v=#{time}")
