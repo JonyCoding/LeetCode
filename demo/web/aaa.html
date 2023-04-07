@@ -1,0 +1,175 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>数据查看</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" id="viewport-meta" />
+		<meta name="google" content="notranslate" />
+		<meta content="CDMNext" name="description" />
+		<meta content="ISI" name="author" />
+
+		<script src="./jquery.min.js?v=2.1.4"></script>
+
+		<link href="./databaseStatistics.css?v=1.0" rel="stylesheet" />
+		<script src="./databaseStatistics.js?v=1.0"></script>
+		<script src="./Sortable.js?v=1.0"></script>
+		<link href="./css/bootstrap.min.css" rel="stylesheet" />
+		<link href="./font/bootstrap-icons.css" rel="stylesheet" />
+		<script src="./js/bootstrap.min.js" ></script>
+		<!-- 	<script src="/static/modular/technical/databaseStatistics/Sortable.min.js?v=1.0"></script> -->
+	</head>
+	<body>
+		<div class="whole_page">
+			<div class="page_title">
+				<div class="page_title_menu">
+					<i class="bi bi-menu"></i>
+				</div>
+				<div class="page_title_logo">logo+商标</div>
+				<div class="page_title_spacer">空白过度</div>
+				<div class="page_title_buttons">导入导出</div>
+				<div class="page_title_controls">页面管理</div>
+			</div>
+			<div class="page_content">
+				<div class="target_content" style="width: 983px">
+					<div class="search_header">
+						<div class="search_header_wrapper">
+							<div class="search_header_area">
+								<div class="search_header_area_show">全部地区:展示</div>
+								<div class="search_header_area_expand">一个新的div</div>
+							</div>
+							<div class="search_header_input">
+								<div class="search_header_input_show">一个搜索input</div>
+								<div class="search_header_input_expand"></div>
+							</div>
+						</div>
+						<div class="search_header_expander">》图标</div>
+					</div>
+					<div class="search_body">
+						<div class="search_body_type"></div>
+						<div class="search_body_database">
+							<div class="database_header"></div>
+							<div class="database_presentation">
+								<!-- 							<div class="presentation_briefings"></div> -->
+								<div class="presentation_content_a">
+									<div class="presentation_content_type_a">
+										<div>数据库</div>
+										<!-- 									<div>数列</div> -->
+										<!-- 									<div>数据集</div> -->
+									</div>
+									<div class="presentation_content presentation_content_a" style="height: 762px">
+										<div class="data_tree_node_all">
+											<div class="data_tree_node">
+												<div class="data_tree_toggle" listtablename="technical_contents_list" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.contentsListControl(this)">+</div>
+												<div class="data_tree_title">中国科技统计年鉴1</div>
+											</div>
+											<div class="contents_data_node_list" style="display: none">
+												<div class="contents_data_node_all">
+													<div class="contents_data_node">
+														<div class="contents_data_toggle" contentsnumber="al" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.targetListControl(this)">+</div>
+														<div class="contents_data_title">综合</div>
+													</div>
+												</div>
+												<div class="contents_data_node_all">
+													<div class="contents_data_node">
+														<div class="contents_data_toggle" contentsnumber="a1" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.targetListControl(this)">+</div>
+														<div class="contents_data_title">研究与试验发展(R&amp;D)人员</div>
+													</div>
+												</div>
+												<div class="contents_data_node_all">
+													<div class="contents_data_node">
+														<div class="contents_data_toggle" contentsnumber="b2" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.targetListControl(this)">+</div>
+														<div class="contents_data_title">全国研究与试验发展(R&amp;D)人员全时当量</div>
+													</div>
+													<div class="target_data_node_list" style="display: none">
+														<div class="target_data_node">
+															<div class="target_data_toggle"><input type="checkbox" /></div>
+															<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:R&amp;D人员全时当量合计</div>
+														</div>
+														<div class="target_data_node">
+															<div class="target_data_toggle"><input type="checkbox" /></div>
+															<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:基础研究</div>
+														</div>
+														<div class="target_data_node">
+															<div class="target_data_toggle"><input type="checkbox" /></div>
+															<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:应用研究</div>
+														</div>
+														<div class="target_data_node">
+															<div class="target_data_toggle"><input type="checkbox" /></div>
+															<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:试验发展</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="data_tree_node_all">
+											<div class="data_tree_node">
+												<div class="data_tree_toggle" listtablename="technical_contents_list" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.contentsListControl(this)">+</div>
+												<div class="data_tree_title">中国科技统计年鉴2</div>
+											</div>
+										</div>
+										<div class="data_tree_node_all">
+											<div class="data_tree_node">
+												<div class="data_tree_toggle" listtablename="technical_contents_list" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.contentsListControl(this)">+</div>
+												<div class="data_tree_title">中国科技统计年鉴3</div>
+											</div>
+											<div class="contents_data_node_list" style="display: none">
+												<div class="contents_data_node_all">
+													<div class="contents_data_node">
+														<div class="contents_data_toggle" contentsnumber="al" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.targetListControl(this)">+</div>
+														<div class="contents_data_title">综合</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- 							<div class="presentation_content_b"> -->
+								<!-- 								<div class="presentation_content_type_b"> -->
+								<!-- 								</div> -->
+								<!-- 								<div class="presentation_content_b"> -->
+
+								<!-- 								</div> -->
+								<!-- 							</div> -->
+								<!-- 							<div class="presentation_content_c"> -->
+								<!-- 								<div class="presentation_content_type_c"> -->
+								<!-- 								</div> -->
+								<!-- 								<div class="presentation_content_c"> -->
+
+								<!-- 								</div> -->
+								<!-- 							</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="width_adjustment">
+					<div class="width_adjustment_icon">
+						<div>.</div>
+						<div>.</div>
+						<div></div>
+						.
+					</div>
+				</div>
+				<div class="data_template" style="width: 927px">
+					<input type="hidden" id="templateListFlag" value="0" />
+					<div class="template_title">我的数据模板&gt;数据模板 7</div>
+					<div class="template_list" style="display: none"></div>
+					<div class="template_detail">
+						<div class="template_menu">
+							<div></div>
+						</div>
+						<div class="template_exhibition">
+							<div class="template_progression">
+								<div class="template_progression_menu"></div>
+								<div class="template_progression_detail">
+									<div class="progression_show_control"></div>
+									<div class="progression_list"></div>
+								</div>
+							</div>
+							<div class="template_chart"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
