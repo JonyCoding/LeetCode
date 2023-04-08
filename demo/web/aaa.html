@@ -1,175 +1,773 @@
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>数据查看</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" id="viewport-meta" />
-		<meta name="google" content="notranslate" />
-		<meta content="CDMNext" name="description" />
-		<meta content="ISI" name="author" />
 
-		<script src="./jquery.min.js?v=2.1.4"></script>
+<head>
+	<meta charset="utf-8" />
+	<title>数据查看</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		id="viewport-meta" />
+	<meta name="google" content="notranslate" />
+	<meta content="CDMNext" name="description" />
+	<meta content="ISI" name="author" />
 
-		<link href="./databaseStatistics.css?v=1.0" rel="stylesheet" />
-		<script src="./databaseStatistics.js?v=1.0"></script>
-		<script src="./Sortable.js?v=1.0"></script>
-		<link href="./css/bootstrap.min.css" rel="stylesheet" />
-		<link href="./font/bootstrap-icons.css" rel="stylesheet" />
-		<script src="./js/bootstrap.min.js" ></script>
-		<!-- 	<script src="/static/modular/technical/databaseStatistics/Sortable.min.js?v=1.0"></script> -->
-	</head>
-	<body>
-		<div class="whole_page">
-			<div class="page_title">
-				<div class="page_title_menu">
-					<i class="bi bi-menu"></i>
+	<script src="./js/jquery.min.js?v=2.1.4"></script>
+
+	<link href="./css/databaseStatistics.css?v=1.0" rel="stylesheet" />
+	<script src="./databaseStatistics.js?v=1.0"></script>
+	<script src="./Sortable.js?v=1.0"></script>
+	<script src="./js/data.js"></script>
+	<link href="./css/bootstrap.min.css" rel="stylesheet" />
+	<link href="./font/bootstrap-icons.css" rel="stylesheet" />
+	<script src="./js/bootstrap.bundle.min.js"></script>
+	<!-- 	<script src="/static/modular/technical/databaseStatistics/Sortable.min.js?v=1.0"></script> -->
+</head>
+<script>
+	//下拉框查询组件点击查询栏时不关闭下拉框
+	$(function () {
+		$("div.dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
+			e.stopPropagation();
+		});
+	});
+	//下拉框查询组件点击查询栏时不关闭下拉框
+	$(function () {
+		$(".nav-item").click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	});
+
+</script>
+
+<body>
+	<div class="whole_page">
+		<div class="page_title container-fluid">
+			<div class="row align-items-center">
+				<div class="page_title_menu col-lg-10">
+					<button type="button" class="btn"><i class="bi bi-list"></i></button>
+					<img height="18px" src="https://insights.ceicdata.com/img/ceic.svg" alt="">
+					<span class="text-secondary">CDM Next，您的CEIC数据管理平台</span>
 				</div>
-				<div class="page_title_logo">logo+商标</div>
-				<div class="page_title_spacer">空白过度</div>
-				<div class="page_title_buttons">导入导出</div>
-				<div class="page_title_controls">页面管理</div>
+				<div class="page_title_buttons col-lg-1">导入导出</div>
+				<div class="page_title_controls col-lg-1">页面管理</div>
 			</div>
-			<div class="page_content">
-				<div class="target_content" style="width: 983px">
-					<div class="search_header">
-						<div class="search_header_wrapper">
-							<div class="search_header_area">
-								<div class="search_header_area_show">全部地区:展示</div>
-								<div class="search_header_area_expand">一个新的div</div>
-							</div>
-							<div class="search_header_input">
-								<div class="search_header_input_show">一个搜索input</div>
-								<div class="search_header_input_expand"></div>
+		</div>
+		<div class="page_content">
+			<div class="target_content" style="width: 983px">
+				<div class="search_header">
+					<div class="search_header_wrapper row">
+						<div class="search_header_area">
+							<div class="search_header_area_show">
+								<button type="button" class="btn btn-secondary btn-light" id="dropdownMenuButton"
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									全部地区
+									<i class="bi bi-chevron-down"></i>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<div class="search-area-container" data-stopPropagation>
+										<div class="area-header-container">
+											<div class="input-group">
+												<input type="text" class="form-control" placeholder="搜素……"
+													aria-label="Username" aria-describedby="basic-addon1">
+											</div>
+										</div>
+										<div class="search-tab">
+											<nav>
+												<div class="nav nav-tabs" id="nav-tab" role="tablist">
+													<a class="nav-item nav-link active" id="nav-all-tab"
+														data-toggle="tab" href="#nav-all" role="tab"
+														aria-controls="nav-all" aria-selected="true">全部</a>
+													<a class="nav-item nav-link" id="nav-china-tab" data-toggle="tab"
+														href="#nav-china" role="tab" aria-controls="nav-china"
+														aria-selected="false">中国</a>
+												</div>
+											</nav>
+											<div class="tab-content" id="nav-tabContent">
+												<div class="tab-pane fade show active" id="nav-all" role="tabpanel"
+													aria-labelledby="nav-all-tab">
+													<div class="nav-china-container">
+														<div class="china-container-left">
+															<div class="card">
+																<h5 class="card-header"> </h5>
+																<div class="card-body card-body-left">
+
+																	<div
+																		class="presentation_content presentation_content_a">
+																		<div class="data_tree_node_all">
+																			<div class="data_tree_node">
+																				<div class="data_tree_toggle"
+																					listtablename="technical_contents_list"
+																					viewtablename="technical_base_data_view"
+																					deploymentstatus="0"
+																					onclick="DatabaseStatistics.contentsListControl(this)">
+																					+</div>
+																				<div class="data_tree_title">中国科技统计年鉴1
+																				</div>
+																			</div>
+																			<div class="contents_data_node_list"
+																				style="display: none">
+																				<div class="contents_data_node_all">
+																					<div class="contents_data_node">
+																						<div class="contents_data_toggle"
+																							contentsnumber="al"
+																							viewtablename="technical_base_data_view"
+																							deploymentstatus="0"
+																							onclick="DatabaseStatistics.targetListControl(this)">
+																							+</div>
+																						<div
+																							class="contents_data_title">
+																							综合</div>
+																					</div>
+																				</div>
+																				<div class="contents_data_node_all">
+																					<div class="contents_data_node">
+																						<div class="contents_data_toggle"
+																							contentsnumber="a1"
+																							viewtablename="technical_base_data_view"
+																							deploymentstatus="0"
+																							onclick="DatabaseStatistics.targetListControl(this)">
+																							+</div>
+																						<div
+																							class="contents_data_title">
+																							研究与试验发展(R&amp;D)人员</div>
+																					</div>
+																				</div>
+																				<div class="contents_data_node_all">
+																					<div class="contents_data_node">
+																						<div class="contents_data_toggle"
+																							contentsnumber="b2"
+																							viewtablename="technical_base_data_view"
+																							deploymentstatus="0"
+																							onclick="DatabaseStatistics.targetListControl(this)">
+																							+</div>
+																						<div
+																							class="contents_data_title">
+																							全国研究与试验发展(R&amp;D)人员全时当量
+																						</div>
+																					</div>
+																					<div class="target_data_node_list"
+																						style="display: none">
+																						<div class="target_data_node">
+																							<div
+																								class="target_data_toggle">
+																								<input
+																									type="checkbox" />
+																							</div>
+																							<div
+																								class="target_data_title">
+																								全国研究与试验发展(R&amp;D)人员全时当量:R&amp;D人员全时当量合计
+																							</div>
+																						</div>
+																						<div class="target_data_node">
+																							<div
+																								class="target_data_toggle">
+																								<input
+																									type="checkbox" />
+																							</div>
+																							<div
+																								class="target_data_title">
+																								全国研究与试验发展(R&amp;D)人员全时当量:基础研究
+																							</div>
+																						</div>
+																						<div class="target_data_node">
+																							<div
+																								class="target_data_toggle">
+																								<input
+																									type="checkbox" />
+																							</div>
+																							<div
+																								class="target_data_title">
+																								全国研究与试验发展(R&amp;D)人员全时当量:应用研究
+																							</div>
+																						</div>
+																						<div class="target_data_node">
+																							<div
+																								class="target_data_toggle">
+																								<input
+																									type="checkbox" />
+																							</div>
+																							<div
+																								class="target_data_title">
+																								全国研究与试验发展(R&amp;D)人员全时当量:试验发展
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="data_tree_node_all">
+																			<div class="data_tree_node">
+																				<div class="data_tree_toggle"
+																					listtablename="technical_contents_list"
+																					viewtablename="technical_base_data_view"
+																					deploymentstatus="0"
+																					onclick="DatabaseStatistics.contentsListControl(this)">
+																					+</div>
+																				<div class="data_tree_title">中国科技统计年鉴2
+																				</div>
+																			</div>
+																		</div>
+																		<div class="data_tree_node_all">
+																			<div class="data_tree_node">
+																				<div class="data_tree_toggle"
+																					listtablename="technical_contents_list"
+																					viewtablename="technical_base_data_view"
+																					deploymentstatus="0"
+																					onclick="DatabaseStatistics.contentsListControl(this)">
+																					+</div>
+																				<div class="data_tree_title">中国科技统计年鉴3
+																				</div>
+																			</div>
+																			<div class="contents_data_node_list"
+																				style="display: none">
+																				<div class="contents_data_node_all">
+																					<div class="contents_data_node">
+																						<div class="contents_data_toggle"
+																							contentsnumber="al"
+																							viewtablename="technical_base_data_view"
+																							deploymentstatus="0"
+																							onclick="DatabaseStatistics.targetListControl(this)">
+																							+</div>
+																						<div
+																							class="contents_data_title">
+																							综合</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="china-container-right">
+															<div class="card">
+																<h5 class="card-header">地区</h5>
+																<div class="card-body">
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="exampleCheck1">
+																		<label class="form-check-label"
+																			for="exampleCheck1">Albania</label>
+																	</div>
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="exampleCheck2">
+																		<label class="form-check-label"
+																			for="exampleCheck2">Bahrain</label>
+																	</div>
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="exampleCheck3">
+																		<label class="form-check-label"
+																			for="exampleCheck3">Chile</label>
+																	</div>
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="exampleCheck4">
+																		<label class="form-check-label"
+																			for="exampleCheck4">Albania</label>
+																	</div>
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="exampleCheck5">
+																		<label class="form-check-label"
+																			for="exampleCheck5">Bahrain</label>
+																	</div>
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="exampleCheck6">
+																		<label class="form-check-label"
+																			for="exampleCheck6">Chile</label>
+																	</div>
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="exampleCheck7">
+																		<label class="form-check-label"
+																			for="exampleCheck7">Albania</label>
+																	</div>
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="exampleCheck8">
+																		<label class="form-check-label"
+																			for="exampleCheck8">Bahrain</label>
+																	</div>
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="exampleCheck9">
+																		<label class="form-check-label"
+																			for="exampleCheck9">Chile</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="tab-pane fade" id="nav-china" role="tabpanel"
+													aria-labelledby="nav-china-tab">
+													<div class="china-tab-container">
+														<div class="card china-tab-left">
+															<h5 class="card-header">地方区域集群</h5>
+															<div class="card-body">
+																<div class="contents_data_node_all">
+																	<div class="contents_data_node">
+																		<div class="contents_data_toggle"
+																			contentsnumber="b2"
+																			viewtablename="technical_base_data_view"
+																			deploymentstatus="0"
+																			onclick="DatabaseStatistics.targetListControl(this)">
+																			+</div>
+																		<div class="contents_data_title">
+																			经济圈
+																		</div>
+																	</div>
+																	<div class="target_data_node_list"
+																		style="display: none">
+																		<div class="target_data_node">
+																			<div class="target_data_toggle">
+																				<input type="checkbox" />
+																			</div>
+																			<div class="target_data_title">
+																				粤港澳大湾区
+																			</div>
+																		</div>
+																		<div class="target_data_node">
+																			<div class="target_data_toggle">
+																				<input type="checkbox" />
+																			</div>
+																			<div class="target_data_title">
+																				珠江三角洲
+																			</div>
+																		</div>
+																		<div class="target_data_node">
+																			<div class="target_data_toggle">
+																				<input type="checkbox" />
+																			</div>
+																			<div class="target_data_title">
+																				长江三角洲
+																			</div>
+																		</div>
+																		<div class="target_data_node">
+																			<div class="target_data_toggle">
+																				<input type="checkbox" />
+																			</div>
+																			<div class="target_data_title">
+																				渤海经济区
+																			</div>
+																		</div>
+																		<div class="target_data_node">
+																			<div class="target_data_toggle">
+																				<input type="checkbox" />
+																			</div>
+																			<div class="target_data_title">
+																				成渝地区
+																			</div>
+																		</div>
+																		<div class="target_data_node">
+																			<div class="target_data_toggle">
+																				<input type="checkbox" />
+																			</div>
+																			<div class="target_data_title">
+																				上海大都市圈
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
+															</div>
+														</div>
+														<div class="card china-tab-right">
+															<h5 class="card-header">
+																<div class="form-group form-check">
+																	<input type="checkbox" class="form-check-input"
+																		id="contry">
+																	<label class="form-check-label"
+																		for="contry">国家</label>
+																</div>
+																
+															</h5>
+															<div class="card-body">
+																<ul>
+																	<li>
+																		<h3>省份</h3>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck1">
+																			<label class="form-check-label"
+																				for="exampleCheck1">Albania</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck2">
+																			<label class="form-check-label"
+																				for="exampleCheck2">Bahrain</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck3">
+																			<label class="form-check-label"
+																				for="exampleCheck3">Chile</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck4">
+																			<label class="form-check-label"
+																				for="exampleCheck4">Albania</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck5">
+																			<label class="form-check-label"
+																				for="exampleCheck5">Bahrain</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck6">
+																			<label class="form-check-label"
+																				for="exampleCheck6">Chile</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck7">
+																			<label class="form-check-label"
+																				for="exampleCheck7">Albania</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck8">
+																			<label class="form-check-label"
+																				for="exampleCheck8">Bahrain</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck9">
+																			<label class="form-check-label"
+																				for="exampleCheck9">Chile</label>
+																		</div>
+
+																	</li>
+																	<li>
+																		<h3>辖区</h3>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck1">
+																			<label class="form-check-label"
+																				for="exampleCheck1">Albania</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck2">
+																			<label class="form-check-label"
+																				for="exampleCheck2">Bahrain</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck3">
+																			<label class="form-check-label"
+																				for="exampleCheck3">Chile</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck4">
+																			<label class="form-check-label"
+																				for="exampleCheck4">Albania</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck5">
+																			<label class="form-check-label"
+																				for="exampleCheck5">Bahrain</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck6">
+																			<label class="form-check-label"
+																				for="exampleCheck6">Chile</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck7">
+																			<label class="form-check-label"
+																				for="exampleCheck7">Albania</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck8">
+																			<label class="form-check-label"
+																				for="exampleCheck8">Bahrain</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck9">
+																			<label class="form-check-label"
+																				for="exampleCheck9">Chile</label>
+																		</div>
+																	</li>
+																	<li>
+																		<h3>县</h3>
+
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck1">
+																			<label class="form-check-label"
+																				for="exampleCheck1">Albania</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck2">
+																			<label class="form-check-label"
+																				for="exampleCheck2">Bahrain</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck3">
+																			<label class="form-check-label"
+																				for="exampleCheck3">Chile</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck4">
+																			<label class="form-check-label"
+																				for="exampleCheck4">Albania</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck5">
+																			<label class="form-check-label"
+																				for="exampleCheck5">Bahrain</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck6">
+																			<label class="form-check-label"
+																				for="exampleCheck6">Chile</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck7">
+																			<label class="form-check-label"
+																				for="exampleCheck7">Albania</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck8">
+																			<label class="form-check-label"
+																				for="exampleCheck8">Bahrain</label>
+																		</div>
+																		<div class="form-group form-check">
+																			<input type="checkbox" class="form-check-input"
+																				id="exampleCheck9">
+																			<label class="form-check-label"
+																				for="exampleCheck9">Chile</label>
+																		</div>
+																	</li>
+																</ul>
+																<div class="hongkong">
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="contry">
+																		<label class="form-check-label"
+																			for="contry">中国澳门特别行政区</label>
+																	</div>
+																	<div class="form-group form-check">
+																		<input type="checkbox" class="form-check-input"
+																			id="contry">
+																		<label class="form-check-label"
+																			for="contry">中国香港特别行政区</label>
+																	</div>
+
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="submit-button-container">
+											<button type="button" class="btn btn-link">取消</button>
+											<button type="button" class="btn btn-primary">应用筛选</button>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="search_header_expander">》图标</div>
-					</div>
-					<div class="search_body">
-						<div class="search_body_type"></div>
-						<div class="search_body_database">
-							<div class="database_header"></div>
-							<div class="database_presentation">
-								<!-- 							<div class="presentation_briefings"></div> -->
-								<div class="presentation_content_a">
-									<div class="presentation_content_type_a">
-										<div>数据库</div>
-										<!-- 									<div>数列</div> -->
-										<!-- 									<div>数据集</div> -->
+						<div class="search_header_input col-md">
+							<div class="search_header_input_show">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1"><i
+												class="bi bi-search"></i></span>
 									</div>
-									<div class="presentation_content presentation_content_a" style="height: 762px">
-										<div class="data_tree_node_all">
-											<div class="data_tree_node">
-												<div class="data_tree_toggle" listtablename="technical_contents_list" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.contentsListControl(this)">+</div>
-												<div class="data_tree_title">中国科技统计年鉴1</div>
+									<input type="text" class="form-control" placeholder="搜索" aria-label="Username"
+										aria-describedby="basic-addon1">
+								</div>
+							</div>
+							<div class="search_header_input_expand"></div>
+						</div>
+						<div class="search_header_expander" style="color: aliceblue;"><i
+								class="bi bi-chevron-double-right"></i></div>
+					</div>
+					<div class="search-screen">
+						<div class="search-screen-index">
+							<div class="button-index">
+
+								<button type="button" class="btn btn-secondary btn-light" id="dropdownMenuButton"
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									指标
+									<i class="bi bi-chevron-down"></i>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+							</div>
+							<div class="button-index">
+
+								<button type="button" class="btn btn-secondary btn-light" id="dropdownMenuButton"
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									数据来源
+									<i class="bi bi-chevron-down"></i>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="#">2222</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+							</div>
+						</div>
+						<div class="search-screen-other">
+
+						</div>
+					</div>
+				</div>
+				<div class="search_body">
+					<div class="search_body_type"></div>
+					<div class="search_body_database">
+						<div class="database_header"></div>
+						<div class="database_presentation">
+							<!-- 							<div class="presentation_briefings"></div> -->
+							<div class="presentation_content_a">
+								<div class="presentation_content_type_a">
+									<div>数据库</div>
+								</div>
+								<div class="presentation_content presentation_content_a">
+									<div class="data_tree_node_all">
+										<div class="data_tree_node">
+											<div class="data_tree_toggle" listtablename="technical_contents_list"
+												viewtablename="technical_base_data_view" deploymentstatus="0"
+												onclick="DatabaseStatistics.contentsListControl(this)">+</div>
+											<div class="data_tree_title">中国科技统计年鉴1</div>
+										</div>
+										<div class="contents_data_node_list" style="display: none">
+											<div class="contents_data_node_all">
+												<div class="contents_data_node">
+													<div class="contents_data_toggle" contentsnumber="al"
+														viewtablename="technical_base_data_view" deploymentstatus="0"
+														onclick="DatabaseStatistics.targetListControl(this)">+</div>
+													<div class="contents_data_title">综合</div>
+												</div>
 											</div>
-											<div class="contents_data_node_list" style="display: none">
-												<div class="contents_data_node_all">
-													<div class="contents_data_node">
-														<div class="contents_data_toggle" contentsnumber="al" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.targetListControl(this)">+</div>
-														<div class="contents_data_title">综合</div>
-													</div>
+											<div class="contents_data_node_all">
+												<div class="contents_data_node">
+													<div class="contents_data_toggle" contentsnumber="a1"
+														viewtablename="technical_base_data_view" deploymentstatus="0"
+														onclick="DatabaseStatistics.targetListControl(this)">+</div>
+													<div class="contents_data_title">研究与试验发展(R&amp;D)人员</div>
 												</div>
-												<div class="contents_data_node_all">
-													<div class="contents_data_node">
-														<div class="contents_data_toggle" contentsnumber="a1" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.targetListControl(this)">+</div>
-														<div class="contents_data_title">研究与试验发展(R&amp;D)人员</div>
-													</div>
+											</div>
+											<div class="contents_data_node_all">
+												<div class="contents_data_node">
+													<div class="contents_data_toggle" contentsnumber="b2"
+														viewtablename="technical_base_data_view" deploymentstatus="0"
+														onclick="DatabaseStatistics.targetListControl(this)">+</div>
+													<div class="contents_data_title">全国研究与试验发展(R&amp;D)人员全时当量</div>
 												</div>
-												<div class="contents_data_node_all">
-													<div class="contents_data_node">
-														<div class="contents_data_toggle" contentsnumber="b2" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.targetListControl(this)">+</div>
-														<div class="contents_data_title">全国研究与试验发展(R&amp;D)人员全时当量</div>
+												<div class="target_data_node_list" style="display: none">
+													<div class="target_data_node">
+														<div class="target_data_toggle"><input type="checkbox" /></div>
+														<div class="target_data_title">
+															全国研究与试验发展(R&amp;D)人员全时当量:R&amp;D人员全时当量合计</div>
 													</div>
-													<div class="target_data_node_list" style="display: none">
-														<div class="target_data_node">
-															<div class="target_data_toggle"><input type="checkbox" /></div>
-															<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:R&amp;D人员全时当量合计</div>
+													<div class="target_data_node">
+														<div class="target_data_toggle"><input type="checkbox" /></div>
+														<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:基础研究
 														</div>
-														<div class="target_data_node">
-															<div class="target_data_toggle"><input type="checkbox" /></div>
-															<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:基础研究</div>
+													</div>
+													<div class="target_data_node">
+														<div class="target_data_toggle"><input type="checkbox" /></div>
+														<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:应用研究
 														</div>
-														<div class="target_data_node">
-															<div class="target_data_toggle"><input type="checkbox" /></div>
-															<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:应用研究</div>
-														</div>
-														<div class="target_data_node">
-															<div class="target_data_toggle"><input type="checkbox" /></div>
-															<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:试验发展</div>
+													</div>
+													<div class="target_data_node">
+														<div class="target_data_toggle"><input type="checkbox" /></div>
+														<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:试验发展
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="data_tree_node_all">
-											<div class="data_tree_node">
-												<div class="data_tree_toggle" listtablename="technical_contents_list" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.contentsListControl(this)">+</div>
-												<div class="data_tree_title">中国科技统计年鉴2</div>
-											</div>
+									</div>
+									<div class="data_tree_node_all">
+										<div class="data_tree_node">
+											<div class="data_tree_toggle" listtablename="technical_contents_list"
+												viewtablename="technical_base_data_view" deploymentstatus="0"
+												onclick="DatabaseStatistics.contentsListControl(this)">+</div>
+											<div class="data_tree_title">中国科技统计年鉴2</div>
 										</div>
-										<div class="data_tree_node_all">
-											<div class="data_tree_node">
-												<div class="data_tree_toggle" listtablename="technical_contents_list" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.contentsListControl(this)">+</div>
-												<div class="data_tree_title">中国科技统计年鉴3</div>
-											</div>
-											<div class="contents_data_node_list" style="display: none">
-												<div class="contents_data_node_all">
-													<div class="contents_data_node">
-														<div class="contents_data_toggle" contentsnumber="al" viewtablename="technical_base_data_view" deploymentstatus="0" onclick="DatabaseStatistics.targetListControl(this)">+</div>
-														<div class="contents_data_title">综合</div>
-													</div>
+									</div>
+									<div class="data_tree_node_all">
+										<div class="data_tree_node">
+											<div class="data_tree_toggle" listtablename="technical_contents_list"
+												viewtablename="technical_base_data_view" deploymentstatus="0"
+												onclick="DatabaseStatistics.contentsListControl(this)">+</div>
+											<div class="data_tree_title">中国科技统计年鉴3</div>
+										</div>
+										<div class="contents_data_node_list" style="display: none">
+											<div class="contents_data_node_all">
+												<div class="contents_data_node">
+													<div class="contents_data_toggle" contentsnumber="al"
+														viewtablename="technical_base_data_view" deploymentstatus="0"
+														onclick="DatabaseStatistics.targetListControl(this)">+</div>
+													<div class="contents_data_title">综合</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<!-- 							<div class="presentation_content_b"> -->
-								<!-- 								<div class="presentation_content_type_b"> -->
-								<!-- 								</div> -->
-								<!-- 								<div class="presentation_content_b"> -->
-
-								<!-- 								</div> -->
-								<!-- 							</div> -->
-								<!-- 							<div class="presentation_content_c"> -->
-								<!-- 								<div class="presentation_content_type_c"> -->
-								<!-- 								</div> -->
-								<!-- 								<div class="presentation_content_c"> -->
-
-								<!-- 								</div> -->
-								<!-- 							</div> -->
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="width_adjustment">
-					<div class="width_adjustment_icon">
-						<div>.</div>
-						<div>.</div>
+			</div>
+			<div class="width_adjustment">
+				<div class="width_adjustment_icon">
+					<div>.</div>
+					<div>.</div>
+					<div></div>
+					.
+				</div>
+			</div>
+			<div class="data_template" style="width: 927px">
+				<input type="hidden" id="templateListFlag" value="0" />
+				<div class="template_title">我的数据模板&gt;数据模板 7</div>
+				<div class="template_list" style="display: none"></div>
+				<div class="template_detail">
+					<div class="template_menu">
 						<div></div>
-						.
 					</div>
-				</div>
-				<div class="data_template" style="width: 927px">
-					<input type="hidden" id="templateListFlag" value="0" />
-					<div class="template_title">我的数据模板&gt;数据模板 7</div>
-					<div class="template_list" style="display: none"></div>
-					<div class="template_detail">
-						<div class="template_menu">
-							<div></div>
-						</div>
-						<div class="template_exhibition">
-							<div class="template_progression">
-								<div class="template_progression_menu"></div>
-								<div class="template_progression_detail">
-									<div class="progression_show_control"></div>
-									<div class="progression_list"></div>
-								</div>
+					<div class="template_exhibition">
+						<div class="template_progression">
+							<div class="template_progression_menu"></div>
+							<div class="template_progression_detail">
+								<div class="progression_show_control"></div>
+								<div class="progression_list"></div>
 							</div>
-							<div class="template_chart"></div>
 						</div>
+						<div class="template_chart"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>
