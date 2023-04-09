@@ -1,4 +1,7 @@
 
+body{
+    font-size: 13px;
+}
 .whole_page {
 	height: 100%;
     width: 100%;
@@ -23,9 +26,13 @@
 }
 .page_title {
     /* height: 32px; */
-    position: relative;
+    position: ;
     padding: 10px 0;
-    /* display: flex; */
+    /* display: flex; */    
+    box-shadow: 0 2px 4px 0 hsla(0,0%,8%,.1);
+    height: 32px;
+    padding: 0 14px;
+    width: 100%;
 }
 .page_title_menu {
     display: flex;
@@ -104,12 +111,8 @@
 .target_data_node_list {
 	margin-left: 20px;
 }
-
-.template_list {
-	display: none;
-}
 .search_header{
-    padding: 10px;
+    padding: 6px;
     background-color: #884b8f;
 }
 .search_header .search_header_wrapper{ 
@@ -155,6 +158,7 @@
 }
 .input-group-text{
     background-color: #fff !important;
+    border: none;
 }
 .input-group-text .bi{
     color: #732b7b;
@@ -167,17 +171,20 @@
 }
 .form-control{
     border: none !important;
+    height: calc(1.5em + 0.75rem + 1px);
+    font-size: 13px;
 }
 .search_header_area_show .btn{
     color: #884b8f;
-    font-size: 14px;
+    font-size: 12px;
+    margin-left: 20px;
 }
 .search-screen-index .btn{
     line-height: 1px;
     color: white;
     background-color: #732b7b;
     background-color: hsla(0,0%,100%,.1);
-    font-size: 14px;
+    font-size: 12px;
 }
 .search-screen-index .btn-light.focus,.search-screen-index .btn-light:focus{
     background-color: #fff;
@@ -191,6 +198,7 @@
 .search_header_area_show .btn-light{
     background-color: #fff;
     color: #732b7b;
+    margin-left: 0;
 
 }
 .search_header_area_show .btn-light:hover{
@@ -277,4 +285,122 @@ display: flex;
 .form-group{
     margin-bottom: 0px;
     margin-top: 5px !important;
+}
+.database_header{
+	display: flex;
+}
+.database_header_tab{
+	margin: 5px;
+}
+
+.template_menu nav{
+	/* display: flex; */
+    padding: 10px 10px 0;
+    background-color: #2ca9a9;
+	border-radius: 6px 6px 0 0;
+}
+.template_menu .nav-item{
+	border-radius: 6px 6px 0 0;
+    margin-right: 5px;
+    background-color: hsla(0,0%,100%,.3);
+    color: white;
+}
+.template_menu .nav-item:hover{
+	border-radius: 6px 6px 0 0;
+    margin-right: 5px;
+    background-color: hsla(0,0%,100%,.3);
+    color: white;
+}
+.template_menu .active:hover{
+    background-color: #fff;
+}
+.template_menu .nav,.template_menu  .nav-tabs {
+    background-color: #2ca9a9;
+}
+.template_menu .nav-tabs .nav-item.show .nav-link, .template_menu .nav-tabs .nav-link.active{
+    color: #2ca9a9;
+}
+.progression_list{
+	height: 800px;
+    background-color: green;
+}
+
+.template_menu .nav-tabs .nav-link{
+    padding:.1rem .7rem;
+    position:relative;
+}
+.template_progression{
+    overflow: hidden;
+}
+.template_progression_menu{
+    display: flex;
+    padding: 6px 4px;
+    min-width: 800px;
+}
+
+.template_progression_menu .template_progression_menu_item{
+    
+}
+.template_progression_menu .template_progression_menu_item .btn{
+    font-size: 12px;
+    padding : 0;
+    color: #333;
+}
+.template_progression_menu .template_progression_menu_item .btn-link{
+    color: #000;
+}
+.template_progression_menu .template_progression_menu_item .btn-link .bi{
+    color: #a2a0b3;
+    margin-right: 5px;
+}
+.template_progression_menu .template_progression_menu_item ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    flex-wrap: wrap;
+    width: 380px;
+    padding: 10px;
+}
+.template_progression_menu .template_progression_menu_item ul li{
+    border: 1px solid #d3d2da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    flex: 0 0 auto;
+    height: 70px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+}
+.template_progression_menu .template_progression_menu_item .btn-link .bi-x-lg{
+    color: #ef5350;
+}
+.template_progression_menu span{
+    color: #e7e7e7;
+}
+.nav-tabulation-delete{
+    background-color: #fff;
+    color: #ed4c49;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    padding: 2px;
+    position: absolute;
+    right: -2px;
+    top: 2px;
+    position: absolute;
+}
+.template_detail_show{
+    padding:13px 16px 15px 0;
+}
+.breadcrumb-item{
+    color: #68497d;
+    font-size: 13px;
+}
+.breadcrumb-item:hover{
+    color: #68497d;
 }

@@ -1,5 +1,6 @@
 var DatabaseStatistics = {
-	checkDataList:[]
+	checkViewIdArr:[],
+	checkDataArr:[],
 }
 
 //数据库下目录控制
@@ -61,12 +62,21 @@ DatabaseStatistics.targetListControl = function(obj) {
 				var contentsListHtml = '<div class="target_data_node_list">';
 				$.each(contentsList, function (i, n) {
 					contentsListHtml = contentsListHtml + '<div class="target_data_node">'
-						+ '<div class="target_data_toggle"><input type="checkbox"></div>'
-						+ '<div class="target_data_title">' + n.viewName + '</div>'
+						+ '<div class="target_data_toggle"><input type="checkbox" class="target_data_toggle_class" onclick="DatabaseStatistics.clickTargetDataToggleClass(this)" viewId="' + n.viewId + '" viewName="' + n.viewName + '"></div>'
+						+ '<div class="target_data_title" onclick="DatabaseStatistics.clickTargetDataTitle(this);">' + n.viewName + '</div>'
+						+ '<div><button onclick="DatabaseStatistics.saveViewCare(' + n.viewId + ');">关注</button></div>'
 						+ '</div>';
 				});
 				contentsListHtml = contentsListHtml + '</div>';
 				$(obj).parent(".contents_data_node").parent(".contents_data_node_all").append(contentsListHtml);
+				
+				//判断能否拖拽
+				if ($("#templateListFlag").val() == 1) {
+					//使左侧数据库数列不能拖动
+					$(".target_data_node").addClass("target_data_node_seal");
+					$(".target_data_node").removeClass("target_data_node");
+				}
+				
 				//引入拖拽
 				var sortable = Sortable.create($(obj).parent(".contents_data_node").parent(".contents_data_node_all").children(".target_data_node_list")[0], {
                     group: {
@@ -77,9 +87,63 @@ DatabaseStatistics.targetListControl = function(obj) {
                     animation: 150,
                     sort: false, // 设为false，禁止sort
                     filter: ".target_data_node_seal",  // 过滤.not-sort的元素
+                    // 元素被选中
+//                    onChoose: function (/**Event*/evt) {
+//                        evt.oldIndex;  // element index within parent
+//                    },
+                    // 试图拖拽一个filtered的元素
+//                    onFilter: function (/**Event*/evt) {
+//                        var itemEl = evt.item;  // HTMLElement receiving the `mousedown|tapstart` event.
+//                        console.log(2)
+//                    },
+                    // 开始拖拽的时候
+                    onStart: function (/**Event*/evt) {
+                        evt.oldIndex;  // element index within parent
+                    },
+                    // 结束拖拽
+                    onEnd: function (/**Event*/evt) {
+                    	console.log(222)
+                    	var viewItem = $(evt.item).find(".target_data_toggle_class");
+                    	if (DatabaseStatistics.checkViewIdArr.indexOf(viewItem.attr("viewId")) == -1) {
+                    		DatabaseStatistics.checkViewIdArr.push(viewItem.attr("viewId"));
+                    		var viewDetail = {"viewId":viewItem.attr("viewId"),"viewName":viewItem.attr("viewName")};
+                    		DatabaseStatistics.checkDataArr.push(viewDetail);
+                    	}
+                    	//判断是否有此元素，没有就加进去
+//                    	DatabaseStatistics.checkViewIdArr.splice(checkViewIdArrIndex,1);//删除此位置元素
+//                		DatabaseStatistics.checkDataArr.splice(checkViewIdArrIndex,1);//删除此位置元素
+                    	var evtTo = evt.to;
+                    	if ($(evtTo).attr("class") == "progression_list") {
+                    		$(evtTo).find(".target_data_node").remove();
+                    		var checkHtml = "";
+                    		//循环做拖拽过来的数据
+                    		$.each(DatabaseStatistics.checkDataArr, function(i,n){
+                    			checkHtml = checkHtml + '<div class="progression_node">'
+	        						+ '<div class="progression_node_toggle"><input type="checkbox" class="progression_node_toggle_class" viewId="' + n.viewId + '" viewName="' + n.viewName + '"></div>'
+	        						+ '<div class="progression_node_title" onclick="DatabaseStatistics.clickTargetDataTitle(this);">' + n.viewName + '</div>'
+	        						+ '</div>';
+                    		});
+                    		$(evtTo).append(checkHtml);
+                    		//清理选中数据
+                    		DatabaseStatistics.checkViewIdArr = [];
+                    		DatabaseStatistics.checkDataArr = [];
+                    		//将checkbox取消选中
+//                    		$.each($(".target_data_toggle_class:checked"),function(i,n){
+////                    			n.checked = false;
+//                    			$(n).prop("checked",false);//取消勾选
+//                    		});
+                    		$(".target_data_toggle_class:checked").removeAttr('checked');
+//                    		for(var i = 0; i < $(".target_data_toggle_class:checked").length; i++) {
+//                    			$(".target_data_toggle_class:checked")[i].checked = false;
+//                    			i--;
+//                    		}
+                    		console.log(evt.from)
+                    	}
+                    },
+                    onClone: function (/**Event*/evt) {
+                    	console.log(111)
+                    },
                 });
-//				$(".target_data_node").addClass("target_data_node_seal");
-//				$(".target_data_node").removeClass("target_data_node");
 			}
 		});
 	} else {
@@ -91,6 +155,219 @@ DatabaseStatistics.targetListControl = function(obj) {
 			$(obj).parent(".contents_data_node").parent(".contents_data_node_all").children(".target_data_node_list").css("display","block");
 		}
 	}
+}
+
+//切换到我的数据模板列表
+DatabaseStatistics.chooseTemplateList = function(){
+
+
+	//  暂时先显示clone----------
+	$(".template_detail_clone").hide();
+	//  暂时先显示clone----------
+
+	//切换flag
+	$("#templateListFlag").val(1);
+	//切换template_title
+	$(".template_detail_show").hide();
+	$(".template_detail").hide();
+	$(".template_list_show").show();
+	$(".template_list").show();
+	//使左侧数据库数列不能拖动
+	$(".target_data_node").addClass("target_data_node_seal");
+	$(".target_data_node").removeClass("target_data_node");
+}
+
+//选择数据模板进行展示编辑
+DatabaseStatistics.chooseTemplateDetail = function(templateId,templateName){
+	//切换flag
+	$("#templateListFlag").val(0);
+	//切换template_title
+	$(".template_list_show").hide();
+	$("#template_detail_span").text(templateName);
+	$(".template_detail_show").show();
+	//使左侧数据库数列可以拖动
+	$(".target_data_node_seal").addClass("target_data_node");
+	$(".target_data_node_seal").removeClass("target_data_node_seal");
+	//判断此模板是否在编辑
+	if ($("#template_detail_"+templateId).length == 0) {
+		//从数据库中取出数据，暂时没这功能，新建一块
+		
+		//  暂时先显示clone----------
+		// var templateDetail = $(".template_detail_clone").clone(true);
+		// templateDetail.addClass("template_detail");
+		// templateDetail.removeClass("template_detail_clone");
+		// templateDetail.attr("id","template_detail_"+templateId);
+		$(".template_list").hide();
+		$(".template_detail_clone").show();
+		// $(".data_template").append(templateDetail);
+		// $("#template_detail_"+templateId).show();
+		//  暂时先显示clone----------
+		
+		//引入拖拽
+		var sortable = Sortable.create($("#template_detail_"+templateId).find(".progression_list")[0], {
+			group: {
+                name: 'shared',
+                pull: 'clone'
+            },
+            animation: 150,
+            // 结束拖拽
+            onEnd: function (/**Event*/evt) {
+//                var itemEl = evt.item;  // dragged HTMLElement
+//                evt.to;    // target list
+//                evt.from;  // previous list
+//                evt.oldIndex;  // element's old index within old parent
+//                evt.newIndex;  // element's new index within new parent
+//                evt.clone // the clone element
+//                evt.pullMode;  // when item is in another sortable: `"clone"` if cloning, `true` if moving
+            },
+        });
+	} else {
+		$(".template_list").hide();
+		$("#template_detail_"+templateId).show();
+	}
+}
+
+DatabaseStatistics.saveViewCare = function(viewId) {
+	var formData = new FormData();
+	formData.append("viewId", viewId);
+	$.ajax({
+		async: false,
+		url: "/databaseStatistics/saveViewCare",
+		type: "POST",
+		data: formData,
+		contentType: false,
+		processData: false,
+		success: function (data) {
+			alert("关注成功!")
+			// Feng.success("关注成功!");
+		},
+		error: function (data) {
+			if (data.responseJSON) {
+				alert("关注失败!" + data.responseJSON.message + "!")
+				//Feng.error("关注失败!" + data.responseJSON.message + "!");
+			}
+		}
+	});
+}
+
+DatabaseStatistics.selectViewCareList = function() {
+	$.ajax({
+		async: false,
+		url: "/databaseStatistics/selectViewCareList",
+		type: "POST",
+		contentType: false,
+		processData: false,
+		success: function (data) {
+			var viewCareHtml = '';
+			$.each(data, function (i, n) {
+				viewCareHtml = viewCareHtml + '<div class="target_data_node">'
+					+ '<div class="target_data_toggle"><input type="checkbox"></div>'
+					+ '<div class="target_data_title">' + n.viewName + '</div>'
+					+ '<div><button onclick="DatabaseStatistics.removeViewCare(' + n.viewCareId + ');">取消关注</button></div>'
+					+ '</div>';
+			});
+			$("#viewCareList").empty();
+			$("#viewCareList").append(viewCareHtml);
+		},
+		error: function (data) {
+			if (data.responseJSON) {
+				alert("关注列表取得失败!" + data.responseJSON.message + "!")
+				//Feng.error("关注列表取得失败!" + data.responseJSON.message + "!");
+			}
+		}
+	});
+}
+
+DatabaseStatistics.removeViewCare = function(viewCareId) {
+	var formData = new FormData();
+	formData.append("viewCareId", viewCareId);
+	$.ajax({
+		async: false,
+		url: "/databaseStatistics/removeViewCare",
+		type: "POST",
+		data: formData,
+		contentType: false,
+		processData: false,
+		success: function (data) {
+			alert("取消关注成功!")
+			var viewCareHtml = '';
+			$.each(data, function (i, n) {
+				viewCareHtml = viewCareHtml + '<div class="target_data_node">'
+					+ '<div class="target_data_toggle"><input type="checkbox"></div>'
+					+ '<div class="target_data_title">' + n.viewName + '</div>'
+					+ '<div><button onclick="DatabaseStatistics.removeViewCare(' + n.viewCareId + ');">取消关注</button></div>'
+					+ '</div>';
+			});
+			$("#viewCareList").empty();
+			$("#viewCareList").append(viewCareHtml);
+		},
+		error: function (data) {
+			if (data.responseJSON) {
+				alert("取消关注失败!" + data.responseJSON.message + "!")
+				//Feng.error("关注失败!" + data.responseJSON.message + "!");
+			}
+		}
+	});
+}
+
+DatabaseStatistics.clickTargetDataToggleClass = function(obj){
+    if($(obj).is(':checked')){
+		DatabaseStatistics.checkViewIdArr.push($(obj).attr("viewId"));
+		var viewDetail = {"viewId":$(obj).attr("viewId"),"viewName":$(obj).attr("viewName")};
+		DatabaseStatistics.checkDataArr.push(viewDetail);
+    }else {
+        var checkViewIdArrIndex = DatabaseStatistics.checkViewIdArr.indexOf($(obj).attr("viewId"))
+		DatabaseStatistics.checkViewIdArr.splice(checkViewIdArrIndex,1);//删除此位置元素
+		DatabaseStatistics.checkDataArr.splice(checkViewIdArrIndex,1);//删除此位置元素
+    }
+}
+
+DatabaseStatistics.clickTargetDataTitle = function(obj){
+	var rowView = $(obj).prev(".target_data_toggle").find("input")[0];
+	if (rowView.checked == true) {
+		rowView.checked = false;
+		var checkViewIdArrIndex = DatabaseStatistics.checkViewIdArr.indexOf($(rowView).attr("viewId"))
+		DatabaseStatistics.checkViewIdArr.splice(checkViewIdArrIndex,1);//删除此位置元素
+		DatabaseStatistics.checkDataArr.splice(checkViewIdArrIndex,1);//删除此位置元素
+	} else {
+		rowView.checked = true;
+		DatabaseStatistics.checkViewIdArr.push($(rowView).attr("viewId"));
+		var viewDetail = {"viewId":$(rowView).attr("viewId"),"viewName":$(rowView).attr("viewName")};
+		DatabaseStatistics.checkDataArr.push(viewDetail);
+	}
+}
+
+//切换到我的制图
+DatabaseStatistics.showProgression = function(obj){
+	$(obj).parents(".template_detail").find(".template_chart").hide();
+	$(obj).parents(".template_detail").find(".template_progression").show();
+}
+
+//切换到制图n
+DatabaseStatistics.showChart = function(obj,chartNumber){
+	$(obj).parents(".template_detail").find(".template_chart").hide();
+	$(obj).parents(".template_detail").find(".template_progression").hide();
+	$(obj).parents(".template_detail").find(".template_chart_"+chartNumber).show();
+}
+
+//增加一个制图
+DatabaseStatistics.addChart = function (obj){
+	var chartNumber = $(obj).parent().children(".chartNumber").val(); 
+	var chartNumberNext = parseInt(chartNumber) + 1;
+	//增加tab
+	var chartTab = '<div onclick="DatabaseStatistics.showChart(this,' + chartNumberNext + ')">制图' + chartNumberNext + '</div>';
+	$(obj).before(chartTab);
+	$(obj).parent().children(".chartNumber").val(chartNumberNext);
+	//增加tab内容
+	var newChart = $(obj).parents(".template_detail").find(".template_chart_0").clone();
+	//修改chart-div的class
+	newChart.addClass("template_chart_"+chartNumberNext);
+	newChart.removeClass("template_chart_0");
+	//隐藏其他的
+	$(obj).parents(".template_detail").find(".template_chart").hide();
+	$(obj).parents(".template_detail").find(".template_progression").hide();
+	newChart.css("display","block");
+	$(obj).parents(".template_detail").find(".template_exhibition").append(newChart);
 }
 
 $(function () {
@@ -154,4 +431,18 @@ $(function () {
     	moveX = 0;
     }
 });
+
+////下拉框查询组件点击查询栏时不关闭下拉框
+//$(function () {
+//	$("div.dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
+//		e.stopPropagation();
+//	});
+//});
+////下拉框查询组件点击查询栏时不关闭下拉框
+//$(function () {
+//	$(".nav-item").click(function (e) {
+//		e.preventDefault();
+//		$(this).tab('show');
+//	});
+//});
 

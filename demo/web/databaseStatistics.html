@@ -1,42 +1,44 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8">
 	<title>数据查看</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-		id="viewport-meta" />
-	<meta name="google" content="notranslate" />
-	<meta content="CDMNext" name="description" />
-	<meta content="ISI" name="author" />
+		id="viewport-meta">
+	<meta name="google" content="notranslate">
+	<meta content="CDMNext" name="description">
+	<meta content="ISI" name="author">
 
 	<script src="./js/jquery.min.js?v=2.1.4"></script>
-
-	<link href="./css/databaseStatistics.css?v=1.0" rel="stylesheet" />
-	<script src="./databaseStatistics.js?v=1.0"></script>
-	<script src="./Sortable.js?v=1.0"></script>
-	<script src="./js/data.js"></script>
-	<link href="./css/bootstrap.min.css" rel="stylesheet" />
-	<link href="./font/bootstrap-icons.css" rel="stylesheet" />
 	<script src="./js/bootstrap.bundle.min.js"></script>
-	<!-- 	<script src="/static/modular/technical/databaseStatistics/Sortable.min.js?v=1.0"></script> -->
-</head>
-<script>
-	//下拉框查询组件点击查询栏时不关闭下拉框
-	$(function () {
-		$("div.dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
-			e.stopPropagation();
-		});
-	});
-	//下拉框查询组件点击查询栏时不关闭下拉框
-	$(function () {
-		$(".nav-item").click(function (e) {
-			e.preventDefault();
-			$(this).tab('show');
-		});
-	});
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link href="./font/bootstrap-icons.css" rel="stylesheet">
 
-</script>
+	<script src="./js/Sortable.js?v=1.0"></script>
+	<!-- 	<script src="./js/Sortable.min.js?v=1.0"></script> -->
+
+	<link href="./css/databaseStatistics.css?v=1.0" rel="stylesheet">
+	<script src="./databaseStatistics.js?v=1.0"></script>
+	<script>
+		//下拉框查询组件点击查询栏时不关闭下拉框
+		$(function () {
+			$("div.dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
+				e.stopPropagation();
+			});
+		});
+		//下拉框查询组件点击查询栏时不关闭下拉框
+		$(function () {
+			$(".dropdown-menu .nav-item").click(function (e) {
+				e.preventDefault();
+				$(this).tab('show');
+			});
+		});
+
+	</script>
+</head>
+
+
 
 <body>
 	<div class="whole_page">
@@ -52,7 +54,10 @@
 			</div>
 		</div>
 		<div class="page_content">
-			<div class="target_content" style="width: 983px">
+			<div class="target_content" style="width: 955px;">
+
+
+
 				<div class="search_header">
 					<div class="search_header_wrapper row">
 						<div class="search_header_area">
@@ -63,7 +68,7 @@
 									<i class="bi bi-chevron-down"></i>
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<div class="search-area-container" data-stopPropagation>
+									<div class="search-area-container" data-stoppropagation="">
 										<div class="area-header-container">
 											<div class="input-group">
 												<input type="text" class="form-control" placeholder="搜素……"
@@ -90,8 +95,8 @@
 																<h5 class="card-header"> </h5>
 																<div class="card-body card-body-left">
 
-																	<div
-																		class="presentation_content presentation_content_a">
+																	<div class="presentation_content presentation_content_a"
+																		style="height: 762px;">
 																		<div class="data_tree_node_all">
 																			<div class="data_tree_node">
 																				<div class="data_tree_toggle"
@@ -149,8 +154,7 @@
 																						<div class="target_data_node">
 																							<div
 																								class="target_data_toggle">
-																								<input
-																									type="checkbox" />
+																								<input type="checkbox">
 																							</div>
 																							<div
 																								class="target_data_title">
@@ -160,8 +164,7 @@
 																						<div class="target_data_node">
 																							<div
 																								class="target_data_toggle">
-																								<input
-																									type="checkbox" />
+																								<input type="checkbox">
 																							</div>
 																							<div
 																								class="target_data_title">
@@ -171,8 +174,7 @@
 																						<div class="target_data_node">
 																							<div
 																								class="target_data_toggle">
-																								<input
-																									type="checkbox" />
+																								<input type="checkbox">
 																							</div>
 																							<div
 																								class="target_data_title">
@@ -182,8 +184,7 @@
 																						<div class="target_data_node">
 																							<div
 																								class="target_data_toggle">
-																								<input
-																									type="checkbox" />
+																								<input type="checkbox">
 																							</div>
 																							<div
 																								class="target_data_title">
@@ -323,7 +324,7 @@
 																		style="display: none">
 																		<div class="target_data_node">
 																			<div class="target_data_toggle">
-																				<input type="checkbox" />
+																				<input type="checkbox">
 																			</div>
 																			<div class="target_data_title">
 																				粤港澳大湾区
@@ -331,7 +332,7 @@
 																		</div>
 																		<div class="target_data_node">
 																			<div class="target_data_toggle">
-																				<input type="checkbox" />
+																				<input type="checkbox">
 																			</div>
 																			<div class="target_data_title">
 																				珠江三角洲
@@ -339,7 +340,7 @@
 																		</div>
 																		<div class="target_data_node">
 																			<div class="target_data_toggle">
-																				<input type="checkbox" />
+																				<input type="checkbox">
 																			</div>
 																			<div class="target_data_title">
 																				长江三角洲
@@ -347,7 +348,7 @@
 																		</div>
 																		<div class="target_data_node">
 																			<div class="target_data_toggle">
-																				<input type="checkbox" />
+																				<input type="checkbox">
 																			</div>
 																			<div class="target_data_title">
 																				渤海经济区
@@ -355,7 +356,7 @@
 																		</div>
 																		<div class="target_data_node">
 																			<div class="target_data_toggle">
-																				<input type="checkbox" />
+																				<input type="checkbox">
 																			</div>
 																			<div class="target_data_title">
 																				成渝地区
@@ -363,7 +364,7 @@
 																		</div>
 																		<div class="target_data_node">
 																			<div class="target_data_toggle">
-																				<input type="checkbox" />
+																				<input type="checkbox">
 																			</div>
 																			<div class="target_data_title">
 																				上海大都市圈
@@ -382,62 +383,71 @@
 																	<label class="form-check-label"
 																		for="contry">国家</label>
 																</div>
-																
+
 															</h5>
 															<div class="card-body">
 																<ul>
 																	<li>
 																		<h3>省份</h3>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck1">
 																			<label class="form-check-label"
 																				for="exampleCheck1">Albania</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck2">
 																			<label class="form-check-label"
 																				for="exampleCheck2">Bahrain</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck3">
 																			<label class="form-check-label"
 																				for="exampleCheck3">Chile</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck4">
 																			<label class="form-check-label"
 																				for="exampleCheck4">Albania</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck5">
 																			<label class="form-check-label"
 																				for="exampleCheck5">Bahrain</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck6">
 																			<label class="form-check-label"
 																				for="exampleCheck6">Chile</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck7">
 																			<label class="form-check-label"
 																				for="exampleCheck7">Albania</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck8">
 																			<label class="form-check-label"
 																				for="exampleCheck8">Bahrain</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck9">
 																			<label class="form-check-label"
 																				for="exampleCheck9">Chile</label>
@@ -447,55 +457,64 @@
 																	<li>
 																		<h3>辖区</h3>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck1">
 																			<label class="form-check-label"
 																				for="exampleCheck1">Albania</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck2">
 																			<label class="form-check-label"
 																				for="exampleCheck2">Bahrain</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck3">
 																			<label class="form-check-label"
 																				for="exampleCheck3">Chile</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck4">
 																			<label class="form-check-label"
 																				for="exampleCheck4">Albania</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck5">
 																			<label class="form-check-label"
 																				for="exampleCheck5">Bahrain</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck6">
 																			<label class="form-check-label"
 																				for="exampleCheck6">Chile</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck7">
 																			<label class="form-check-label"
 																				for="exampleCheck7">Albania</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck8">
 																			<label class="form-check-label"
 																				for="exampleCheck8">Bahrain</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck9">
 																			<label class="form-check-label"
 																				for="exampleCheck9">Chile</label>
@@ -505,55 +524,64 @@
 																		<h3>县</h3>
 
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck1">
 																			<label class="form-check-label"
 																				for="exampleCheck1">Albania</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck2">
 																			<label class="form-check-label"
 																				for="exampleCheck2">Bahrain</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck3">
 																			<label class="form-check-label"
 																				for="exampleCheck3">Chile</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck4">
 																			<label class="form-check-label"
 																				for="exampleCheck4">Albania</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck5">
 																			<label class="form-check-label"
 																				for="exampleCheck5">Bahrain</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck6">
 																			<label class="form-check-label"
 																				for="exampleCheck6">Chile</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck7">
 																			<label class="form-check-label"
 																				for="exampleCheck7">Albania</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck8">
 																			<label class="form-check-label"
 																				for="exampleCheck8">Bahrain</label>
 																		</div>
 																		<div class="form-group form-check">
-																			<input type="checkbox" class="form-check-input"
+																			<input type="checkbox"
+																				class="form-check-input"
 																				id="exampleCheck9">
 																			<label class="form-check-label"
 																				for="exampleCheck9">Chile</label>
@@ -639,71 +667,36 @@
 						</div>
 					</div>
 				</div>
+
+
+
 				<div class="search_body">
-					<div class="search_body_type"></div>
+					<div class="search_body_type">
+					</div>
 					<div class="search_body_database">
-						<div class="database_header"></div>
+						<div class="database_header">
+							<div class="database_header_tab">数据</div>
+							<div class="database_header_tab"><button
+									onclick="DatabaseStatistics.selectViewCareList();">关注列表</button></div>
+						</div>
+						<div class="database_header">
+							<div class="target_data_node_list" id="viewCareList"></div>
+						</div>
 						<div class="database_presentation">
 							<!-- 							<div class="presentation_briefings"></div> -->
 							<div class="presentation_content_a">
 								<div class="presentation_content_type_a">
 									<div>数据库</div>
+									<!-- 									<div>数列</div> -->
+									<!-- 									<div>数据集</div> -->
 								</div>
-								<div class="presentation_content presentation_content_a">
+								<div class="presentation_content presentation_content_a" style="height: 762px;">
 									<div class="data_tree_node_all">
 										<div class="data_tree_node">
 											<div class="data_tree_toggle" listtablename="technical_contents_list"
 												viewtablename="technical_base_data_view" deploymentstatus="0"
 												onclick="DatabaseStatistics.contentsListControl(this)">+</div>
 											<div class="data_tree_title">中国科技统计年鉴1</div>
-										</div>
-										<div class="contents_data_node_list" style="display: none">
-											<div class="contents_data_node_all">
-												<div class="contents_data_node">
-													<div class="contents_data_toggle" contentsnumber="al"
-														viewtablename="technical_base_data_view" deploymentstatus="0"
-														onclick="DatabaseStatistics.targetListControl(this)">+</div>
-													<div class="contents_data_title">综合</div>
-												</div>
-											</div>
-											<div class="contents_data_node_all">
-												<div class="contents_data_node">
-													<div class="contents_data_toggle" contentsnumber="a1"
-														viewtablename="technical_base_data_view" deploymentstatus="0"
-														onclick="DatabaseStatistics.targetListControl(this)">+</div>
-													<div class="contents_data_title">研究与试验发展(R&amp;D)人员</div>
-												</div>
-											</div>
-											<div class="contents_data_node_all">
-												<div class="contents_data_node">
-													<div class="contents_data_toggle" contentsnumber="b2"
-														viewtablename="technical_base_data_view" deploymentstatus="0"
-														onclick="DatabaseStatistics.targetListControl(this)">+</div>
-													<div class="contents_data_title">全国研究与试验发展(R&amp;D)人员全时当量</div>
-												</div>
-												<div class="target_data_node_list" style="display: none">
-													<div class="target_data_node">
-														<div class="target_data_toggle"><input type="checkbox" /></div>
-														<div class="target_data_title">
-															全国研究与试验发展(R&amp;D)人员全时当量:R&amp;D人员全时当量合计</div>
-													</div>
-													<div class="target_data_node">
-														<div class="target_data_toggle"><input type="checkbox" /></div>
-														<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:基础研究
-														</div>
-													</div>
-													<div class="target_data_node">
-														<div class="target_data_toggle"><input type="checkbox" /></div>
-														<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:应用研究
-														</div>
-													</div>
-													<div class="target_data_node">
-														<div class="target_data_toggle"><input type="checkbox" /></div>
-														<div class="target_data_title">全国研究与试验发展(R&amp;D)人员全时当量:试验发展
-														</div>
-													</div>
-												</div>
-											</div>
 										</div>
 									</div>
 									<div class="data_tree_node_all">
@@ -721,19 +714,23 @@
 												onclick="DatabaseStatistics.contentsListControl(this)">+</div>
 											<div class="data_tree_title">中国科技统计年鉴3</div>
 										</div>
-										<div class="contents_data_node_list" style="display: none">
-											<div class="contents_data_node_all">
-												<div class="contents_data_node">
-													<div class="contents_data_toggle" contentsnumber="al"
-														viewtablename="technical_base_data_view" deploymentstatus="0"
-														onclick="DatabaseStatistics.targetListControl(this)">+</div>
-													<div class="contents_data_title">综合</div>
-												</div>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
+							<!-- 							<div class="presentation_content_b"> -->
+							<!-- 								<div class="presentation_content_type_b"> -->
+							<!-- 								</div> -->
+							<!-- 								<div class="presentation_content_b"> -->
+
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<!-- 							<div class="presentation_content_c"> -->
+							<!-- 								<div class="presentation_content_type_c"> -->
+							<!-- 								</div> -->
+							<!-- 								<div class="presentation_content_c"> -->
+
+							<!-- 								</div> -->
+							<!-- 							</div> -->
 						</div>
 					</div>
 				</div>
@@ -742,27 +739,104 @@
 				<div class="width_adjustment_icon">
 					<div>.</div>
 					<div>.</div>
-					<div></div>
-					.
+					<div></div>.
 				</div>
 			</div>
-			<div class="data_template" style="width: 927px">
-				<input type="hidden" id="templateListFlag" value="0" />
-				<div class="template_title">我的数据模板&gt;数据模板 7</div>
-				<div class="template_list" style="display: none"></div>
-				<div class="template_detail">
-					<div class="template_menu">
-						<div></div>
+			<div class="data_template" style="width: 955px;">
+				<input type="hidden" id="templateListFlag" value="1">
+				<div class="template_title">
+					<div class="template_list_show">我的数据模板</div>
+					<div class="template_detail_show" style="display: none;">
+						<i class="bi bi-chevron-double-left"></i>
+						<a class="breadcrumb-item" href="javascript:void(0);"
+							onclick="DatabaseStatistics.chooseTemplateList();">我的数据模板</a>&nbsp;&gt;&nbsp;<span
+							id="template_detail_span"></span>
 					</div>
-					<div class="template_exhibition">
-						<div class="template_progression">
-							<div class="template_progression_menu"></div>
-							<div class="template_progression_detail">
-								<div class="progression_show_control"></div>
-								<div class="progression_list"></div>
+				</div>
+				<div class="template_list">
+					<div><a href="javascript:void(0);"
+							onclick="DatabaseStatistics.chooseTemplateDetail(1,'111');">111</a></div>
+					<div><a href="javascript:void(0);"
+							onclick="DatabaseStatistics.chooseTemplateDetail(2,'222');">222</a></div>
+				</div>
+				<div class="template_detail_clone" style="display: none;">
+					<div class="template_menu">
+						<nav>
+							<div class="nav nav-tabs" id="nav-tab2" role="tablist2">
+								<a class="nav-item nav-link active" id="nav-myList-tab" data-toggle="tab" href="#nav-myList" role="tab" aria-controls="nav-myList" aria-selected="true">我的数列</a>
+								<a class="nav-item nav-link" id="nav-tabulation-tab" data-toggle="tab" href="#nav-tabulation" role="tab" aria-controls="nav-tabulation" aria-selected="false">制表1<span class="nav-tabulation-delete"><i class="bi bi-x-lg"></i></span></a>
+								<a class="nav-item nav-link" disabled>+</a>
+							</div>
+						</nav>
+						<div class="tab-content" id="nav-tabContent2">
+							<div class="tab-pane fade show active" id="nav-myList" role="tabpanel" aria-labelledby="nav-myList-tab">
+								<div class="template_exhibition">
+									<div class="template_progression">
+										<div class="template_progression_menu">
+											<div class="template_progression_menu_item">
+												<button type="button" class="btn btn-link"><i class="bi bi-x-lg"></i> 1 已选数列</button><span>｜</span>
+												<button type="button" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-graph-up-arrow"></i>加图表<i class="bi bi-chevron-down"></i></button>
+												<div class="dropdown-menu dropdown-menu-right">
+												  <ul>
+													<li><a href="javascript:;">1</a></li>
+													<li><a href="javascript:;">2</a></li>
+													<li><a href="javascript:;">3</a></li>
+													<li><a href="javascript:;">4</a></li>
+												  </ul>
+												</div>
+											</div>
+											<span>｜</span>
+											<div class="template_progression_menu_item">
+												<button type="button" class="btn btn-link"><i class="bi bi-pencil-fill"></i></button>
+												<button type="button" class="btn btn-link"><i class="bi bi-stickies-fill"></i></button>
+												<button type="button" class="btn btn-link"><i class="bi bi-trash-fill"></i></button>
+											</div>
+											<span>｜</span>
+											<div class="template_progression_menu_item">
+												<button type="button" class="btn btn-link"><i class="bi bi-eye-fill"></i>预览</button>
+												<button type="button" class="btn btn-link"><i class="bi bi-folder2"></i>分组 <i class="bi bi-chevron-down"></i></button>
+												<button type="button" class="btn btn-link"><i class="bi bi-bell-fill"></i>添加到关注列表<i class="bi bi-chevron-down"></i></button>
+											</div>
+											<span>｜</span>
+											<div class="template_progression_menu_item">
+												<button type="button" class="btn btn-link"><i class="bi bi-card-text"></i>相关数列</button>
+											</div>
+										</div>
+										<div class="template_progression_detail">
+											<div class="progression_show_control"></div>
+											<div class="progression_list"></div>
+										</div>
+									</div>
+									<div class="template_chart" style="display: none;"></div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="nav-tabulation" role="tabpanel" aria-labelledby="nav-tabulation-tab">
+								<div class="template_exhibition">
+									<div class="template_progression">
+										<div class="template_progression_menu">
+											<div class="template_progression_menu_item">
+												<button type="button" class="btn btn-link"><i class="bi bi-graph-up-arrow"></i>加图表<i class="bi bi-chevron-down"></i></button>
+											</div>
+											<span>｜</span>
+											<div class="template_progression_menu_item">
+												<button type="button" class="btn btn-link"><i class="bi bi-fonts"></i>文本 </i></button>
+												<button type="button" class="btn btn-link"><i class="bi bi-image"></i>图片</button>
+											</div>
+											<span>｜</span>
+											<div class="template_progression_menu_item">
+												<button type="button" class="btn btn-link"><i class="bi bi-paperclip"></i></button>
+												<button type="button" class="btn btn-link"><i class="bi bi-sliders"></i></button>
+											</div>
+										</div>
+										<div class="template_progression_detail">
+											<div class="progression_show_control"></div>
+											<div class="progression_list"></div>
+										</div>
+									</div>
+									<div class="template_chart" style="display: none;"></div>
+								</div>
 							</div>
 						</div>
-						<div class="template_chart"></div>
 					</div>
 				</div>
 			</div>
