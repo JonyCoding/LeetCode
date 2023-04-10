@@ -159,12 +159,6 @@ DatabaseStatistics.targetListControl = function(obj) {
 
 //切换到我的数据模板列表
 DatabaseStatistics.chooseTemplateList = function(){
-
-
-	//  暂时先显示clone----------
-	$(".template_detail_clone").hide();
-	//  暂时先显示clone----------
-
 	//切换flag
 	$("#templateListFlag").val(1);
 	//切换template_title
@@ -191,17 +185,13 @@ DatabaseStatistics.chooseTemplateDetail = function(templateId,templateName){
 	//判断此模板是否在编辑
 	if ($("#template_detail_"+templateId).length == 0) {
 		//从数据库中取出数据，暂时没这功能，新建一块
-		
-		//  暂时先显示clone----------
-		// var templateDetail = $(".template_detail_clone").clone(true);
-		// templateDetail.addClass("template_detail");
-		// templateDetail.removeClass("template_detail_clone");
-		// templateDetail.attr("id","template_detail_"+templateId);
+		var templateDetail = $(".template_detail_clone").clone(true);
+		templateDetail.addClass("template_detail");
+		templateDetail.removeClass("template_detail_clone");
+		templateDetail.attr("id","template_detail_"+templateId);
 		$(".template_list").hide();
-		$(".template_detail_clone").show();
-		// $(".data_template").append(templateDetail);
-		// $("#template_detail_"+templateId).show();
-		//  暂时先显示clone----------
+		$(".data_template").append(templateDetail);
+		$("#template_detail_"+templateId).show();
 		
 		//引入拖拽
 		var sortable = Sortable.create($("#template_detail_"+templateId).find(".progression_list")[0], {
@@ -347,6 +337,8 @@ DatabaseStatistics.showProgression = function(obj){
 DatabaseStatistics.showChart = function(obj,chartNumber){
 	$(obj).parents(".template_detail").find(".template_chart").hide();
 	$(obj).parents(".template_detail").find(".template_progression").hide();
+	$(obj).parent().find("a").removeClass("active");
+	$(obj).addClass("active");
 	$(obj).parents(".template_detail").find(".template_chart_"+chartNumber).show();
 }
 
@@ -355,7 +347,8 @@ DatabaseStatistics.addChart = function (obj){
 	var chartNumber = $(obj).parent().children(".chartNumber").val(); 
 	var chartNumberNext = parseInt(chartNumber) + 1;
 	//增加tab
-	var chartTab = '<div onclick="DatabaseStatistics.showChart(this,' + chartNumberNext + ')">制图' + chartNumberNext + '</div>';
+	var chartTab = '<a onclick="DatabaseStatistics.showChart(this,' + chartNumberNext + ')" class="nav-item nav-link active">制图' + chartNumberNext + '<span class="nav-tabulation-delete"><i class="bi bi-x-lg"></i></span></a>';
+	$(obj).parent().find("a").removeClass("active");
 	$(obj).before(chartTab);
 	$(obj).parent().children(".chartNumber").val(chartNumberNext);
 	//增加tab内容
@@ -370,14 +363,19 @@ DatabaseStatistics.addChart = function (obj){
 	$(obj).parents(".template_detail").find(".template_exhibition").append(newChart);
 }
 
+//作图
+DatabaseStatistics.plot_echarts = function(chartType){
+	
+}
+
 $(function () {
 	var windowWidth = window.screen.availWidth;
 	var windowHeight = window.screen.availHeight;
 	var leftWidth = (windowWidth - 10) / 2;
 	var rightWidth = (windowWidth - 10) / 2;
 	$(".presentation_content").css("height", windowHeight - 270);
-	$(".target_content").css("width", leftWidth);
-	$(".data_template").css("width", rightWidth);
+	// $(".target_content").css("width", leftWidth);
+	// $(".data_template").css("width", rightWidth);
 	
 	//拖拽中间div控制两边div大小
 	var box = document.getElementsByClassName("width_adjustment")[0]; //获取元素
@@ -432,6 +430,23 @@ $(function () {
     }
 });
 
+//下拉框查询组件点击查询栏时不关闭下拉框
+$(function () {
+	$(".dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
+		e.stopPropagation();
+	});
+});
+//下拉框查询组件点击查询栏时不关闭下拉框
+$(function () {
+	$(".nav-item").click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
+	$(".nav-link").click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
+});
 
 //下拉框查询组件点击查询栏时不关闭下拉框
 $(function () {
