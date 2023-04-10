@@ -432,17 +432,21 @@ $(function () {
     }
 });
 
-////下拉框查询组件点击查询栏时不关闭下拉框
-//$(function () {
-//	$("div.dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
-//		e.stopPropagation();
-//	});
-//});
-////下拉框查询组件点击查询栏时不关闭下拉框
-//$(function () {
-//	$(".nav-item").click(function (e) {
-//		e.preventDefault();
-//		$(this).tab('show');
-//	});
-//});
 
+//下拉框查询组件点击查询栏时不关闭下拉框
+$(function () {
+	$(".dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
+		e.stopPropagation();
+	});
+});
+//下拉框查询组件点击查询栏时不关闭下拉框
+$(function () {
+	$(".nav-item").click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
+	$(".nav-link").click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
+});
