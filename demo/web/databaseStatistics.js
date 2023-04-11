@@ -3,6 +3,27 @@ var DatabaseStatistics = {
 	checkDataArr:[],
 }
 
+
+
+//下拉框查询组件点击查询栏时不关闭下拉框
+// 这段比较重要   为了避免报错引起失效所以拿到了前面
+$(function () {
+	$(".dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
+		e.stopPropagation();
+	});
+});
+//下拉框查询组件点击查询栏时不关闭下拉框
+$(function () {
+	$(".nav-item").click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
+	$(".nav-link").click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
+});
+
 //数据库下目录控制
 DatabaseStatistics.contentsListControl = function(obj) {
 	//1：判断子集是否存在；2：判断展开状态
@@ -428,40 +449,4 @@ $(function () {
     	$(".data_template").css("width", rightWidth);
     	moveX = 0;
     }
-});
-
-//下拉框查询组件点击查询栏时不关闭下拉框
-$(function () {
-	$(".dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
-		e.stopPropagation();
-	});
-});
-//下拉框查询组件点击查询栏时不关闭下拉框
-$(function () {
-	$(".nav-item").click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
-	$(".nav-link").click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
-});
-
-//下拉框查询组件点击查询栏时不关闭下拉框
-$(function () {
-	$(".dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
-		e.stopPropagation();
-	});
-});
-//下拉框查询组件点击查询栏时不关闭下拉框
-$(function () {
-	$(".nav-item").click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
-	$(".nav-link").click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
 });
