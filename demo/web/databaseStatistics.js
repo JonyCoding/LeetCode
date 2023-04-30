@@ -24,6 +24,62 @@ $(function () {
 	});
 });
 
+// 全局的遮罩层
+$(document).on('shown.bs.dropdown', ()=>{
+	$(".mask-layer").addClass('mask-show')
+	
+})
+$(document).on('hidden.bs.dropdown', ()=>{
+	$(".mask-layer").removeClass('mask-show')
+	
+})
+/* 
+		UI相关开始 
+*/
+
+// 实时获取盒子宽度
+$(document).ready(function(){
+	const box = document.getElementsByClassName('column-right')[0];
+	// 监听box元素的大小变化
+	const observer = new ResizeObserver(entries => {
+		
+		const screenWidth =	$(window).width()
+		const entryWidth = entries[0].contentRect.width
+		if(entryWidth < 550){
+			hideElements(".dynamic-right-text")
+		}else{
+			showElements(".dynamic-right-text")
+		}
+		if(screenWidth - entryWidth < 550){
+			$(".target_data_title").css('width', "80%");
+			hideElements(".target_data_comparison")
+		}else{
+			showElements(".target_data_comparison")
+		}
+		if(screenWidth - entryWidth < 480){
+			hideElements(".target_data_year")
+		}else{
+			showElements(".target_data_year")
+		}
+	});
+	observer.observe(box);
+});
+
+// 隐藏某个元素
+function hideElements(className){
+	console.log("className",$(className))
+	$(className).hide()
+}
+// 显示某个元素
+function showElements(className){
+	$(className).show()
+}
+
+/* 
+		UI相关结束 
+*/
+
+
 //数据库下目录控制
 DatabaseStatistics.contentsListControl = function(obj) {
 	//1：判断子集是否存在；2：判断展开状态
@@ -394,7 +450,7 @@ $(function () {
 	var windowHeight = window.screen.availHeight;
 	var leftWidth = (windowWidth - 10) / 2;
 	var rightWidth = (windowWidth - 10) / 2;
-	$(".presentation_content").css("height", windowHeight - 270);
+	// $(".presentation_content").css("height", windowHeight - 270);
 	// $(".target_content").css("width", leftWidth);
 	// $(".data_template").css("width", rightWidth);
 	
