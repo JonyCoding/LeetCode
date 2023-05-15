@@ -5,6 +5,9 @@ var DatabaseStatistics = {
 
 
 
+/* 
+		UI相关开始 
+*/
 //下拉框查询组件点击查询栏时不关闭下拉框
 // 这段比较重要   为了避免报错引起失效所以拿到了前面
 $(function () {
@@ -33,9 +36,47 @@ $(document).on('hidden.bs.dropdown', ()=>{
 	$(".mask-layer").removeClass('mask-show')
 	
 })
-/* 
-		UI相关开始 
-*/
+
+$(function () {
+
+	// $(".column-right .data_template_menu").hide()
+	$(".resize-save .target_content_menu").hide()
+
+	$(".search_header_expander").on("click", function (e) {
+		$(".resize-bar").attr("style","transition: all .3s;")
+		$(".resize-bar").addClass('active-resize-bar-right')
+		$(".column-right .data_template").hide()
+		$(".resize-line").hide()
+		$(".column-right .data_template_menu").show()
+	});
+	$(".template_detail_show_resize").on("click", function (e) {
+		$(".resize-bar").removeClass('active-resize-bar-right')
+		$(".column-right .data_template").show()
+		$(".resize-line").show()
+		$(".column-right .data_template_menu").hide()
+		setTimeout(() => {
+			$(".resize-bar").attr("style","")
+		}, 300);
+	});
+
+	$(".template_detail_show_button").on("click", function (e) {
+		$(".resize-bar").attr("style","transition: all .3s;")
+		$(".resize-bar").addClass('active-resize-bar-left')
+		$(".resize-save .target_content").hide()
+		$(".resize-line").hide()
+		$(".resize-save .target_content_menu").show()
+	});
+	$(".search_header_expander_resize").on("click", function (e) {
+		$(".resize-bar").removeClass('active-resize-bar-left')
+		$(".resize-save .target_content").show()
+		$(".resize-line").show()
+		$(".resize-save .target_content_menu").hide()
+		setTimeout(() => {
+			$(".resize-bar").attr("style","")
+		}, 300);
+	});
+	
+});
 
 // 实时获取盒子宽度
 $(document).ready(function(){
@@ -67,7 +108,6 @@ $(document).ready(function(){
 
 // 隐藏某个元素
 function hideElements(className){
-	console.log("className",$(className))
 	$(className).hide()
 }
 // 显示某个元素

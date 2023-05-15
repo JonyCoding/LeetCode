@@ -125,9 +125,11 @@ svg{
 }
 .page_content {
 	display: flex;
-	height: calc(100% - 32px);
+	height: calc(100vh - 35px);
 	position: relative;
-    margin-top: 35px;
+    /* margin-top: 35px; */
+	/* transform: translateY(32px); */
+	top: 35px;
 }
 .presentation_content {
 	overflow-y: auto;
@@ -586,6 +588,7 @@ svg{
 
 .progression_list {
 	height: 800px;
+	overflow-y: scroll;
 	/* background-color: green; */
 }
 .template_menu .nav-tabs .nav-link {
@@ -781,7 +784,7 @@ svg{
 	overflow: hidden;
 }
 .column-left {
-	height: 100vh;
+	height: calc(100vh - 35px);
 	background-color: #fff;
 	position: relative;
 	/* min-width: 600px; */
@@ -814,6 +817,20 @@ svg{
 	opacity: 0;
 	overflow: scroll;
     margin-right: -5px;
+	/* transition: all .3s; */
+}
+
+.active-resize-bar-right {
+	width: calc(100vw - 50px);
+	max-width: calc(100vw - 50px);
+	resize:none;
+	cursor:auto;
+}
+.active-resize-bar-left {
+	width: 50px;
+	min-width: 50px;
+	resize:none;
+	cursor:auto;
 }
 /* 拖拽线 */
 .resize-line {
@@ -868,6 +885,33 @@ svg{
 	transform: translate3d(0px, 80px, 3330px) !important;
 	z-index: 10;
 }
+/* 右边的菜单 */
+
+.data_template_menu{
+	display: flex;
+	align-items: center;
+	flex-direction:column;
+}
+.data_template_menu .template_detail_show_resize{
+    padding: 16px 8px;
+	padding-left: 0px;
+    cursor: pointer;
+}
+
+/* 左边的菜单 */
+.target_content_menu{
+	display: flex;
+	align-items: center;
+	flex-direction:column;
+
+}
+.target_content_menu .search_header_expander_resize{
+    padding: 18px 8px;
+	padding-left: 0px;
+    cursor: pointer;
+
+}
+
 .mask-layer {
 	width: 100vw;
 	height: 100vh;
@@ -984,4 +1028,10 @@ svg{
 	padding: 5px 0;
 	color: #602068;
 	font-size: 13px;
+}
+.search_header_expander{
+	cursor: pointer;
+}
+.template_detail_show{
+	cursor: pointer;
 }
