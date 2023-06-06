@@ -1,0 +1,18 @@
+extends ./index_tp.jade
+head  
+prepend head
+  - var title = "化物所首页";
+prepend body
+  - var body_id = "index";
+  - var path = "index";
+block main
+    template.
+        <div class="body">
+            <div id="diagramContainer" class="plumb-contianer">
+                <div id="item_left" class="item"></div>
+                <div id="item_right" class="item" style="left:150px;"></div>
+            </div>
+        </div>
+block script
+    script(src="https://cdn.bootcss.com/jsPlumb/2.6.8/js/jsplumb.min.js")
+    script(src="./js/plumb.js?v=#{time}")
