@@ -1,0 +1,48 @@
+// 设置连接线样式
+const connectorStyle = {
+    endpoints: ["Dot", "Blank"],
+    endpointStyle: [{ fill: "#666666", stroke: "#666666", strokeWidth: 2, radius: 5 }, { fill: "#666666" }],
+    connectorEditable: true,
+    // 设置连接线的类型和相关参数。这里使用了 "Flowchart" 类型的连接线，该类型的连接线会按照流程图的方式进行折线连接。
+    connector: ["Flowchart"],
+    // 设置端点的类型。这里使用了 "Dot" 类型的端点，即一个圆点。
+    // 置元素可以接受的最大连接数。设置为 -1 表示无连接数上限
+    maxConnections: -1,
+    // 设置端点的样式。
+    paintStyle: { fill: "transparent", stroke: "#666666", strokeWidth: 2 }, // 端点的样式
+    // 设置端点在鼠标悬停时的样式。
+    // hoverPaintStyle: { fill: "#0051ff" },
+    // 设置连接线的样式。
+    connectorStyle: { stroke: "#666666", strokeWidth: 2 },
+    overlays: [
+        ["Arrow", { width: 10, length: 12, location: 1 }]
+    ],
+};
+
+
+// 节点连接点的属性设置
+const paintSettings = {
+    // 设置元素是否可以作为连接线的源节点。如果设置为 true，则可以从该节点拉出连接线。
+    isSource: true,
+    // 设置元素是否可以作为连接线的目标节点。如果设置为 true，则可以将连接线连到该节点。
+    isTarget: true,
+    // 设置连接线的类型和相关参数。这里使用了 "Flowchart" 类型的连接线，该类型的连接线会按照流程图的方式进行折线连接。
+    connector: ["Flowchart"],
+    // 设置端点的类型。这里使用了 "Dot" 类型的端点，即一个圆点。
+    endpoint: ["Dot", { radius: 5 }],
+    endpointStyle: { fill: "transparent", stroke: "#666666", strokeWidth: 2 }, // 设置端点样式为空心
+    // 置元素可以接受的最大连接数。设置为 -1 表示无连接数上限
+    maxConnections: -1,
+    // 设置端点的样式。
+    paintStyle: { fill: "transparent", stroke: "#666666", strokeWidth: 2 }, // 端点的样式
+    // 设置端点在鼠标悬停时的样式。
+    hoverPaintStyle: { fill: "#0051ff" },
+    // 设置连接线的样式。
+    connectorStyle: { stroke: "#666666", strokeWidth: 2 },
+    overlays: [
+        ["Arrow", { width: 10, length: 12, location: 1 }]
+    ],
+};
+
+// 哪些节点可以设置连线
+const connectableList = ['node','empty']
