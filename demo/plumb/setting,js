@@ -43,8 +43,10 @@ const paintSettings = {
 	// // 设置连接线的样式。
 	connectorStyle: { stroke: "#666", strokeWidth: 2 },
 	overlays: [["PlainArrow", { width: 10, length: 12, location: 1 }]],
-};
+}
 
+// 设置有哪些类型的节点
+const nodeTypeList = ["node", "empty","explain","remark","icon"];
 // 哪些节点可以设置连线
 const connectableList = ["node", "empty"];
 
