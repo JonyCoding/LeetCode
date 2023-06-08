@@ -1,26 +1,67 @@
-// 设置连接线样式  ***这个主体是连接线
-const connectorStyle = {
+
+// 是否是预览模式
+let isReview = false
+// 设置有哪些类型的节点
+const nodeTypeList = ["node", "empty","explain","remark","icon"];
+// 哪些节点可以设置连线
+const connectableList = ["node", "empty","explain"];
+// 设置特殊节点，这些节点作为中间节点没有连线样式
+const connectorEmptyStyleList = ["empty","explain"];
+
+
+// 设置连线的公共样式，其他样式继承这个样式
+const commonConnectorStyle = {
 	connectorEditable: true,
 	// 设置连接线的类型和相关参数。这里使用了 "Flowchart" 类型的连接线，该类型的连接线会按照流程图的方式进行折线连接。
 	connector: ["Flowchart"],
 	// 置元素可以接受的最大连接数。设置为 -1 表示无连接数上限
 	maxConnections: -1,
 
-	// 连接线的样式
-	// 设置端点的类型。这里使用了 "Dot" 类型的端点，即一个圆点。
-	endpoints: ["Dot", "Blank"],
-	// 分别设置样式
-	endpointStyles: [{ fill: "#666666", stroke: "#666666", strokeWidth: 2, radius: 5 }, { fill: "#666666" }],
-	// 设置端点的样式。
-	paintStyle: { fill: "transparent", stroke: "#666666", strokeWidth: 2 }, // 线条样式
-	// 设置连接线的样式。
-	overlays: [["PlainArrow", { width: 10, length: 12, location: 1 }]],
+	// 设置线条的样式。
+	paintStyle: { fill: "transparent", stroke: "#666666", strokeWidth: 2 , radius: 15}, // 线条样式
 	// 鼠标放入连接线的样式
 	hoverPaintStyle: {
 		strokeWidth: 5,
 		stroke: "#aaa",
 	},
+	// 分别设置样式
+	endpointStyles: [{ fill: "#666666", stroke: "#666666", strokeWidth: 2, cornerRadius: 5}, { fill: "#666666" }],
+}
+// 设置连接线样式，这是默认的样式，起始为点结束为点，结束为箭头  ***这个主体是连接线
+const connectorStyleDefault = {
+	...commonConnectorStyle,
+	// 连接线的样式
+	// 设置端点的类型。这里使用了 "Dot" 类型的端点，即一个圆点。
+	endpoints: ["Dot", "Blank"],
+	// 分别设置样式
+	endpointStyles: [{ fill: "#666666", stroke: "#666666", strokeWidth: 2, radius: 5 }, { fill: "#666666" }],
+	// 设置连接线的样式。
+	overlays: [["PlainArrow", { width: 10, length: 12, location: 1 }]],
 };
+
+
+// 起始节点是点，结束节点没有箭头  ***这个主体是连接线
+const connectorStyleTarget = {
+	...commonConnectorStyle,
+	// 连接线的样式
+	// 设置端点的类型。这里使用了 "Dot" 类型的端点，即一个圆点。
+	endpoints: ["Dot", "Blank"],
+	// 分别设置样式
+	endpointStyles: [{ fill: "#666666", stroke: "#666666", strokeWidth: 2, radius: 5}, { fill: "#666666" }],
+};
+
+// 起始节点是空白，结束是箭头  ***这个主体是连接线
+const  connectorStyleSource = {
+	...commonConnectorStyle,
+	// 连接线的样式
+	// 设置端点的类型。这里使用了 "Dot" 类型的端点，即一个圆点。
+	endpoints: ["Blank", "Blank"],
+	// 分别设置样式
+	endpointStyles: [{ fill: "#666666", stroke: "#666666", strokeWidth: 2, radius: 0 }, { fill: "#666666" }],
+	// 设置连接线的样式。
+	overlays: [["PlainArrow", { width: 10, length: 12, location: 1 }]],
+};
+
 
 // 节点连接点的属性设置  ***这个主体是连接点
 const paintSettings = {
@@ -35,20 +76,23 @@ const paintSettings = {
 
 	// // 设置端点的类型。这里使用了 "Dot" 类型的端点，即一个圆点。
 	endpoints: ["Dot", "Blank"],
-	endpointStyle: { fill: "#666666", stroke: "#666666", strokeWidth: 2, radius: 2 },
+	endpointStyle: { fill: "#666666", stroke: "#666666", strokeWidth: 5, radius: 2 },
 	// // 线条样式
-	paintStyle: { fill: "transparent", stroke: "#666666", strokeWidth: 2 },
+	// paintStyle: { fill: "transparent", stroke: "#666666", strokeWidth: 2 },
 	// // 设置端点在鼠标悬停时的样式。
 	hoverPaintStyle: { fill: "#000", radius: 8 },
 	// // 设置连接线的样式。
 	connectorStyle: { stroke: "#666", strokeWidth: 2 },
-	overlays: [["PlainArrow", { width: 10, length: 12, location: 1 }]],
+	// overlays: [["PlainArrow", { width: 10, length: 12, location: 1 }]],
+}
+// 预览模式  ***这个主体是连接点
+const reviewPaintSettings = {
+	...paintSettings,
+	endpoints: "Blank",
+	endpointStyle: {  },
 }
 
-// 设置有哪些类型的节点
-const nodeTypeList = ["node", "empty","explain","remark","icon"];
-// 哪些节点可以设置连线
-const connectableList = ["node", "empty"];
+
 
 const endpointOptions = [
 	{ anchor: "Top", uuid: "nodeIdTopCenter" },

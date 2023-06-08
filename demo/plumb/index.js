@@ -13,7 +13,7 @@ jsPlumb.ready(function () {
 	// 双击连线删除事件加载
 	connectionDoubleClick();
 	// 双击删除节点事件绑定
-	nodeDoubleClick()
+	// nodeDoubleClick()
 });
 
 // 导出数据按钮点击事件处理程序
@@ -43,6 +43,7 @@ $("#addRemarkBtn").click(function () {
 });
 // 预览模式按钮点击事件处理程序
 $("#reviewBtn").click(function () {
+	isReview = !isReview
 	$('#canvas').toggleClass('review');
 	setTimeout(() => {
 		reload()
@@ -51,8 +52,9 @@ $("#reviewBtn").click(function () {
 
 // 增加节点的共同方法
 function addNode(requireInput, nodeType) {
-	const newNodeId = "node" + (flowchartData.length + 1);
+	const newNodeId = "node" + Date.now();;
 	let newNodeLabel = ""
+	let newNodeColor = "red"
 
 	if (!nodeTypeList.includes(nodeType)) {
 		alert("类型不合法");
@@ -62,6 +64,10 @@ function addNode(requireInput, nodeType) {
 	if (requireInput) {
 		// 弹出输入框，要求用户输入标签
 		newNodeLabel = prompt("请输入节点的标签：", "Node " + (flowchartData.length + 1));
+		newNodeColor = prompt("请输入节点的颜色色号，默认是红色：", "red");
+		if (newNodeColor === null) {
+			console.log("")
+		}
 		if (newNodeLabel === null) {
 			// 用户点击了取消按钮，停止添加节点
 			return;
@@ -69,7 +75,7 @@ function addNode(requireInput, nodeType) {
 	} else {
 		newNodeLabel = nodeType === 'empty' ? '' : "Node " + (flowchartData.length + 1)
 	}
-	// 没有id代表是要创建新元素
+
 	var newNode = {
 		id: newNodeId,
 		top: 150,
@@ -89,7 +95,10 @@ function addNode(requireInput, nodeType) {
 
 // 渲染节点
 function addElement(newNode) {
+	// 判断是否有拖拽事件发生
+	let isDragged = false;
 	// 创建新节点的 DOM 元素并添加到画布
+	console.log("newNode")
 	var newElement = $("<div>")
 		.attr("id", newNode.id)
 		.attr("node-type", newNode.type)
@@ -99,28 +108,62 @@ function addElement(newNode) {
 			top: newNode.top + "px",
 			left: newNode.left + "px",
 		})
-		.text(newNode.label);
+		.text(newNode.label)
+		.on('mousedown', function (event) {
+			isDragged = false;
+		})
+		.on('mousemove', function (event) {
+			isDragged = true;
+		})
+		.on('mouseup', function (event) {
+			if (!isDragged) {
+				const id = $(this).attr("id")
+				const node = $(this).attr("node-type")
+				// 预览模式时才触发单击事件
+				isReview ? nodeClick(id, node) : ""
+			}
+		});
+		if(isReview && newNode.type === 'empty'){
+			newElement.css({
+				'top': (newNode.top + 23) + 'px',
+				'left': (newNode.left + 21) + 'px'
+			});
+		}
 	$("#canvas").append(newElement);
-	// 绑定删除事件
-	delNode(newElement[0])
+	
+
+
+	// 编辑模式双击为删除事件，预览模式为自定义事件
+	if (!isReview) {
+		// 绑定双击删除事件
+		delNode(newElement[0])
+	}else{
+		newElement[0].addEventListener('dblclick', function () {
+			const id = $(this).attr("id")
+			const node = $(this).attr("node-type")
+			nodeClick(id, node)
+		});
+	}
 	// 可拖拽
-	instance.draggable(newElement, {
-		containment: "parent",
-	});
+	if (!isReview) {
+		instance.draggable(newElement, {
+			containment: "parent",
+			drag: function (event) {
+				changeCanvas(event)
+			}
+		});
+	}
 
 	// 让节点可以自由创建连线
 	if (connectableList.includes(newNode.type)) {
+		const paintStyle = isReview ? reviewPaintSettings : paintSettings
 		// 使用 addEndpoints 函数添加端点
 		instance.addEndpoints(
 			newNode.id,
 			endpointOptions,
-			paintSettings
+			paintStyle
 		);
 	}
-	// // 设置好连线后不可以再次拖拽
-	// jsPlumb.importDefaults({
-	// 	ConnectionsDetachable: false,
-	// });
 }
 
 
@@ -159,14 +202,26 @@ function getFkowCharData(nodes) {
 // 获取所有的连线数据，需要传入连线信息
 function getConnectionData(connections) {
 	let connectionData = [];
+	var connections = instance.getConnections();
 	connections.forEach(function (connection) {
 		const sourceId = connection.sourceId;
 		const targetId = connection.targetId;
 		// 获取源和目标节点的锚点类型
 		const sourceAnchorType = connection.endpoints[0].anchor.type;
 		const targetAnchorType = connection.endpoints[1].anchor.type;
+		// 获取源和目标节点的类型信息
+		const sourceNodeType = $("#" + sourceId).attr("node-type");
+		const targetNodeType = $("#" + targetId).attr("node-type");
 
-		connectionData.push({ source: sourceId, target: targetId, sourceAnchor: sourceAnchorType, targetAnchor: targetAnchorType });
+
+		connectionData.push({
+			source: sourceId,
+			target: targetId,
+			sourceAnchor: sourceAnchorType,
+			targetAnchor: targetAnchorType,
+			sourceNodeType: sourceNodeType,
+			targetNodeType: targetNodeType
+		});
 	});
 	return connectionData;
 }
@@ -181,7 +236,24 @@ function initNode(flowchartData) {
 
 // 创建连线
 function createConnection(connectionData) {
+	console.log("connectionData", connectionData)
+	console.log("connectorEmptyStyleList", connectorEmptyStyleList)
+
+	// 根据起始节点和结束节点类型选择不同的样式
 	connectionData.forEach(function (connection) {
+		let connectorStyle = connectorStyleDefault
+		// 如果是特殊节点，则加载特殊样式
+		if (connectorEmptyStyleList.includes(connection.sourceNodeType)) {
+			console.log("sourceNodeType")
+			connectorStyle = connectorStyleSource
+		}
+
+		if (connectorEmptyStyleList.includes(connection.targetNodeType)) {
+			console.log("targetNodeType")
+			connectorStyle = connectorStyleTarget
+
+		}
+		console.log("connectorStyle", connectorStyle)
 		instance.connect({
 			source: connection.source,
 			target: connection.target,
@@ -200,7 +272,7 @@ function connectionDoubleClick() {
 	});
 }
 
-// 双击删除节点事件
+// 给所有节点双击删除节点事件
 function nodeDoubleClick() {
 	// 使用你的节点类名替换'.node-class'
 	var nodes = document.querySelectorAll('.node-item');
@@ -209,7 +281,7 @@ function nodeDoubleClick() {
 	});
 }
 // 删除节点操作
-function delNode(node){
+function delNode(node) {
 	node.addEventListener('dblclick', function () {
 		if (confirm("确定要删除这个节点吗?")) {
 			// 删除节点的jsPlumb逻辑
@@ -221,11 +293,56 @@ function delNode(node){
 }
 
 // 重新渲染
-function reload(){
+function reload() {
 	instance.deleteEveryEndpoint();  // 删除所有端点和连线
 	$('#canvas').empty();  // 删除所有节点
 	// 根据数据创建节点
 	initNode(flowchartData);
 	// 根据数据创建连线
 	createConnection(connectionData);
+}
+
+// 拖拽节点变化画布宽度
+function changeCanvas(event) {
+	var element = $(event.el);
+	var canvas = document.getElementById('canvas');
+
+	var canvasWidth = canvas.offsetWidth;
+	var canvasHeight = canvas.offsetHeight;
+	var elementPosition = element.position();
+	var width = element.width();
+
+	var buffer = 150; // 检查的边缘距离
+	var expansion = 300; // 扩展的距离
+	if (canvasWidth - elementPosition.left - width < buffer) {
+		// 如果元素接近右边缘
+		canvas.style.width = (canvasWidth + expansion) + 'px';
+	}
+
+	if (canvasHeight - elementPosition.top < buffer) {
+		// 如果元素接近底边缘
+		canvas.style.height = (canvasHeight + expansion) + 'px';
+	}
+
+}
+
+// 计算节点的偏移量 
+function nodeOffset(newNode,newElement){
+	// 获取元素的宽度和高度
+	var elementWidth = newElement.width();
+	var elementHeight = newElement.height();
+	newElement.css({
+		'top': (newNode.top + elementHeight / 2) + 'px',
+		'left': (newNode.left + elementWidth / 2) + 'px'
+	});
+	return newElement
+}
+
+// 点击节点的公共处理函数
+function nodeClick(id, node) {
+	alert('单机事件：id:' + id + ' - ' + 'node:' + node)
+}
+// 双击节点的公共处理函数
+function nodeDblClick(id, node) {
+		alert('双击事件：id:' + id + ' - ' + 'node:' + node)
 }

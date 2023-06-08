@@ -3,9 +3,16 @@
 	<head>
 		<title>Flowchart Example</title>
 		<style>
-			#canvas {
-				width: 100%;
+			.container{
+				width: 100vw;
 				height: 80vh;
+				overflow: scroll;
+			}
+			#canvas {
+				min-width: 100vw;
+				width:fit-content;
+				height: 100%;
+				position: relative;
 				border: 1px solid #ccc;
 			}
 			.node-item{
@@ -14,6 +21,7 @@
 				cursor: move;
 				padding: 10px;
 				position: absolute;
+				width: max-content;
 
 			}
 			.node {
@@ -21,6 +29,7 @@
 				border: 2px solid #0051ff;
 				border-radius: 5px;
 				padding: 10px;
+				width: max-content;
 			}
 			.explain {
 				background-color: #0051ff;
@@ -31,8 +40,8 @@
 			}
 			.empty {
 				background-color: #0051ff;
-				width: 31px;
-				height: 31px;
+				width: 25px;
+				height: 25px;
 			}
 			.remark{
 				border: none;
@@ -44,14 +53,16 @@
 				padding: 10px;
 			}
 			.review .empty{
-				padding: 10px;
+				padding: 0px;
 				width: 0px;
 				height: 0px;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="canvas"></div>
+		<div class="container">
+			<div id="canvas"></div>
+		</div>
 		<button id="exportBtn">导出数据</button>
 		<button id="addNodeBtn">添加节点</button>
 		<button id="addEmptyBtn">添加中继</button>
