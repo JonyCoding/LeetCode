@@ -32,7 +32,7 @@ const connectorStyleDefault = {
 	...commonConnectorStyle,
 	// 连接线的样式
 	// 设置端点的类型。这里使用了 "Dot" 类型的端点，即一个圆点。
-	endpoints: ["Dot", "Blank"],
+	endpoints: ["Blank", "Blank"],
 	// 分别设置样式
 	endpointStyles: [{ fill: "#666666", stroke: "#666666", strokeWidth: 2, radius: 5 }, { fill: "#666666" }],
 	// 设置连接线的样式。
@@ -45,7 +45,7 @@ const connectorStyleTarget = {
 	...commonConnectorStyle,
 	// 连接线的样式
 	// 设置端点的类型。这里使用了 "Dot" 类型的端点，即一个圆点。
-	endpoints: ["Dot", "Blank"],
+	endpoints: ["Blank", "Blank"],
 	// 分别设置样式
 	endpointStyles: [{ fill: "#666666", stroke: "#666666", strokeWidth: 2, radius: 5}, { fill: "#666666" }],
 };
@@ -85,10 +85,11 @@ const paintSettings = {
 	connectorStyle: { stroke: "#666", strokeWidth: 2 },
 	// overlays: [["PlainArrow", { width: 10, length: 12, location: 1 }]],
 }
-// 预览模式  ***这个主体是连接点
+// 预览模式节点连接点的属性设置  ***这个主体是连接点
 const reviewPaintSettings = {
 	...paintSettings,
 	endpoints: "Blank",
+	hoverPaintStyle: {  },
 	endpointStyle: {  },
 }
 

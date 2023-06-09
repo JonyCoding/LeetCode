@@ -139,17 +139,17 @@ function addElement(newNode) {
 				}
 			}
 		});
+	// 中继节点隐藏处理
 	if (isReview && newNode.type === "empty") {
 		newElement.css({
 			top: newNode.top + 22 + "px",
 			left: newNode.left + 22 + "px",
 		});
 	}
-
-	console.log("newElement", newElement);
+	// 渲染到页面
 	$("#canvas").append(newElement);
 
-	// 编辑模式双击为删除事件，预览模式为自定义事件
+	// 绑定双击事件，编辑模式双击为删除事件，预览模式为自定义事件
 	if (!isReview) {
 		// 绑定双击删除事件
 		handledelNode(newElement[0]);
