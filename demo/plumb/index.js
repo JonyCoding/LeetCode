@@ -23,23 +23,23 @@ $("#exportBtn").click(function () {
 
 // [添加节点] 按钮点击事件处理程序
 $("#addNodeBtn").click(function () {
-	addNode(true, "node");
+	getNodeData(true, "node");
 });
 // [添加中继] 按钮点击事件处理程序
 $("#addEmptyBtn").click(function () {
-	addNode(false, "empty");
+	getNodeData(false, "empty");
 });
 // [添加连线说明文字] 按钮点击事件处理程序
 $("#addExplainBtn").click(function () {
-	addNode(true, "explain");
+	getNodeData(true, "explain");
 });
 // [添加图icon] 按钮点击事件处理程序
 $("#addIconBtn").click(function () {
-	addNode(true, "icon");
+	getNodeData(true, "icon");
 });
 // [添加备注] 按钮点击事件处理程序
 $("#addRemarkBtn").click(function () {
-	addNode(true, "remark");
+	getNodeData(true, "remark");
 });
 // 预览模式按钮点击事件处理程序
 $("#reviewBtn").click(function () {
@@ -50,48 +50,77 @@ $("#reviewBtn").click(function () {
 	}, 1);
 });
 
-// 增加节点的共同方法
-function addNode(requireInput, nodeType) {
-	const newNodeId = "node" + Date.now();
-	let newNodeLabel = "";
-	let newNodeColor = "red";
+// 获取节点传递数据
+function getNodeData(requireInput,nodeType){
+    const newNodeId = "node" + Date.now();
+    let newNodeLabel = "";
+    let typeClass = "";
 
-	if (!nodeTypeList.includes(nodeType)) {
-		alert("类型不合法");
-		return;
-	}
-	// 确定是否需要输入label标签
-	if (requireInput) {
-		// 弹出输入框，要求用户输入标签
-		newNodeLabel = prompt("请输入节点的标签：", "Node " + (flowchartData.length + 1));
-		newNodeColor = prompt("请输入节点的颜色色号，默认是红色：", "red");
-		if (newNodeColor === null) {
-			console.log("");
-		}
-		if (newNodeLabel === null) {
-			// 用户点击了取消按钮，停止添加节点
-			return;
-		}
-	} else {
-		newNodeLabel = nodeType === "empty" ? "" : "Node " + (flowchartData.length + 1);
-	}
+    if (!nodeTypeList.includes(nodeType)) {
+        alert("类型不合法");
+        return;
+    }
 
-	var newNode = {
-		id: newNodeId,
-		top: 150,
-		left: 400,
-		label: newNodeLabel,
-		type: nodeType,
-	};
-	// 添加新节点到数据列表
-	flowchartData.push(newNode);
-	// 渲染出来
-	addElement(newNode);
+    // 确定是否需要输入label标签
+    if (requireInput) {
+        // 弹出输入框，要求用户输入标签
+        newNodeLabel = prompt("请输入节点的标签：", "Node " + (flowchartData.length + 1));
+        typeClass = prompt("是否要额外添加一个class？", "Node " + (flowchartData.length + 1));
+        if (newNodeLabel === null) {
+            // 用户点击了取消按钮，停止添加节点
+            return;
+        }
+    } else {
+        newNodeLabel = nodeType === "empty" ? "" : "Node " + (flowchartData.length + 1);
+    }
 
-	// 更新数据
-	window.localStorage.setItem("flowchartData", JSON.stringify(flowchartData));
+
+    var newNode = {
+        id: newNodeId,
+        top: 0,
+        left: 0,
+        label: newNodeLabel,
+        type: nodeType,
+		typeClass: typeClass,
+    };
+	
+	addNode(newNode)
 }
 
+// 增加节点的共同方法
+/* 
+数据结构必须是
+{
+	id: newNodeId, // 节点的id。必须唯一
+	top: 0, // 如果新增节点默认传0，将渲染在当前屏幕中，否则将渲染在指定位置
+	left: 0, // 如果新增节点默认传0，将渲染在当前屏幕中，否则将渲染在指定位置
+	label: newNodeLabel, // 标签名，没有内容传空字符串不能是undefined
+	type: nodeType, // 节点的类型，参考settings.js，可以自定义类型
+	typeClass: "", // 给当前元素的一个特殊类名
+};
+*/
+function addNode(node) {
+	let newNode = Object.assign({},node) 
+
+	// 保证新增的节点必须在屏幕中间
+    // 获取画布的尺寸和位置
+    const canvas = document.getElementById("canvas");
+    const canvasRect = canvas.getBoundingClientRect();
+    // 计算节点位置，保证出现在当前用户的屏幕中
+    const newNodeTop = window.scrollY + window.innerHeight / 2 - canvasRect.top;
+    const newNodeLeft = window.scrollX + window.innerWidth / 2 - canvasRect.left;
+	newNode.top = newNode.top ? newNode.top : newNodeTop
+	newNode.left = newNode.left ? newNode.left : newNodeLeft
+
+    // 添加新节点到数据列表
+    flowchartData.push(newNode);
+
+    // 渲染出来
+    addElement(newNode);
+
+    // 更新数据
+    window.localStorage.setItem("flowchartData", JSON.stringify(flowchartData));
+}
 // 渲染节点
 function addElement(newNode) {
 	// 判断是否有拖拽事件发生
@@ -106,8 +135,10 @@ function addElement(newNode) {
 	var newElement = $("<div>")
 		.attr("id", newNode.id)
 		.attr("node-type", newNode.type)
+		.attr("type-class", newNode.typeClass)
 		.addClass(newNode.type)
 		.addClass("node-item")
+		.addClass(newNode.typeClass)
 		.css({
 			top: newNode.top + "px",
 			left: newNode.left + "px",
@@ -142,8 +173,8 @@ function addElement(newNode) {
 	// 中继节点隐藏处理
 	if (isReview && newNode.type === "empty") {
 		newElement.css({
-			top: newNode.top + 22 + "px",
-			left: newNode.left + 22 + "px",
+			top: newNode.top + 23 + "px",
+			left: newNode.left + 23 + "px",
 		});
 	}
 	// 渲染到页面
@@ -161,6 +192,8 @@ function addElement(newNode) {
 	if (!isReview) {
 		instance.draggable(newElement, {
 			containment: "parent",
+			// 拖拽步长为10
+			grid: [10, 10],
 			drag: function (event) {
 				changeCanvas(event);
 			},
@@ -174,7 +207,6 @@ function addElement(newNode) {
 		instance.addEndpoints(newNode.id, endpointOptions, paintStyle);
 	}
 }
-
 // [导出数据]按钮点击后处理函数
 function exportBtnHandle() {
 	// 获取所有的节点
@@ -202,7 +234,8 @@ function getFkowCharData(nodes) {
 		const left = parseInt($(this).css("left"));
 		const label = $(this).text();
 		const type = $(this).attr("node-type");
-		flowchartData.push({ id: id, top: top, left: left, label: label, type: type });
+		const typeClass = $(this).attr("type-class");
+		flowchartData.push({ id, top, left, label, type,typeClass });
 	});
 	return flowchartData;
 }
@@ -235,10 +268,24 @@ function getConnectionData(connections) {
 
 // 初始化数据的节点
 function initNode(flowchartData) {
+	// 加载完毕后需要指定canvas宽高
+    let canvas = $("#canvas");
+	let maxWidth = 0;
+	let maxHeight = 0;
 	// 遍历创建节点
 	flowchartData.forEach(function (node) {
 		addElement(node);
+        let $this = $(`#${node.id}`);  // 当前子元素
+        let width = $this.position().left + $this.outerWidth();  // 子元素最右侧距离 canvas 左边的距离
+        let height = $this.position().top + $this.outerHeight(); // 子元素最下方距离 canvas 顶部的距离
+
+        maxWidth = Math.max(maxWidth, width);
+        maxHeight = Math.max(maxHeight, height);
 	});
+    canvas.css({
+        width: maxWidth + 300 + "px",
+        height: maxHeight + 300 + "px",
+    });
 }
 
 // 创建连线

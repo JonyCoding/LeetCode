@@ -2,81 +2,22 @@
 <html>
 	<head>
 		<title>Flowchart Example</title>
-		<style>
-			.container{
-				width: 100vw;
-				height: 80vh;
-				overflow: scroll;
-			}
-			#canvas {
-				min-width: 100vw;
-				width:fit-content;
-				height: 100%;
-				position: relative;
-				border: 1px solid #ccc;
-			}
-			.node-item{
-				border: none;
-				background: none;
-				cursor: move;
-				padding: 10px;
-				position: absolute;
-				width: max-content;
-			}
-			.node {
-				background-color: #ffffff;
-				border: 2px solid #0051ff;
-				border-radius: 5px;
-				padding: 10px;
-				width: max-content;
-			}
-			.explain {
-				background-color: #0051ff;
-				color: white;
-				z-index: 10;
-				padding: 2px 10px;
-				border-radius: 20px;
-			}
-			/* 
-			1、如果需要修改此处，宽高必须一样！！！！
-			2、在js代码中对应的修改预览模式位置
-			3、js中大小为此处 (宽度/2)+1
-			*/
-			.empty {
-				background-color: #0051ff;
-				width: 45px;
-				height: 45px;
-				padding: 0;
-			}
-			.remark{
-				border: none;
-				background: none;
-				color: #000;
-			}
-			/* 预览模式代码 */
-			.review {
-				padding: 10px;
-			}
-			.review .empty{
-				padding: 0px;
-				width: 0px;
-				height: 0px;
-				border-top: 1px solid #ccc;
-				border-left: 1px solid #ccc;
-			}
-		</style>
+		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
 		<div class="container">
 			<div id="canvas"></div>
 		</div>
-		<button id="exportBtn">导出数据</button>
-		<button id="addNodeBtn">添加节点</button>
-		<button id="addExplainBtn">添加反应</button>
-		<button id="addIconBtn">添加图icon</button>
-		<button id="addEmptyBtn">添加中继</button>
-		<button id="addRemarkBtn">添加备注</button>
-		<button id="reviewBtn">预览模式</button>
+		<div class="button-container">
+			<button id="exportBtn">导出数据</button>
+			<button id="addNodeBtn">添加原料</button>
+			<button id="addExplainBtn">添加反应</button>
+			<button id="addIconBtn">添加图icon</button>
+			<button id="addRemarkBtn">添加备注</button>
+			<button id="addEmptyBtn">添加中继</button>
+			<button id="reviewBtn">预览模式</button>
+
+		</div>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdn.bootcdn.net/ajax/libs/jsPlumb/2.9.3/js/jsplumb.min.js"></script>

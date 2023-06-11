@@ -1,0 +1,102 @@
+.container{
+    width:98vw;
+    height: 90vh;
+    margin: 0px auto;
+    overflow: scroll;
+}
+#canvas {
+    min-width: 100vw;
+    min-height: 100%;
+    width:fit-content;
+    height: 100%;
+    position: relative;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#canvas {
+background-image: 
+    linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px), 
+    linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px);
+/* 网格大小为20 */
+background-size: 20px 20px;
+}
+.node-item{
+    border: none;
+    background: none;
+    cursor: move;
+    padding: 10px;
+    position: absolute;
+    width: max-content;
+}
+.node {
+    background-color: #ffffff;
+    border: 2px solid #0051ff;
+    border-radius: 5px;
+    padding: 10px;
+    width: max-content;
+}
+.explain {
+    background-color: #0051ff;
+    color: white;
+    z-index: 10;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+.testclass{
+    background-color: #58C083;
+    border-color: rgba(0,0,0,0.0);
+    color: #fff;
+}
+/* 
+1、如果需要修改此处，宽高必须一样！！！！
+2、在js代码中对应的修改预览模式位置
+3、js中大小为此处 (宽度/2)+1
+*/
+.empty {
+    background-color: #0051ff;
+    width: 47px;
+    height: 47px;
+    padding: 0;
+}
+.remark{
+    border: none;
+    background: none;
+    color: #000;
+}
+.button-container{
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+.button-container button{
+    width: max-content;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #6987c7;
+    color: #ffffff;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+.button-container button:hover{
+    border: 1px solid #6987c7;
+    background-color: #fff;
+    color: #6987c7;
+    cursor: pointer;
+}
+/* 预览模式代码 */
+.review {
+    /* padding: 10px; */
+}
+.review .empty{
+    padding: 0px;
+    width: 0px;
+    height: 0px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+.review {
+    background-image: none !important;
+    background-size: 20px 20px !important;
+}

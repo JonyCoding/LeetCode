@@ -73,6 +73,7 @@ var flowchartDataDefault = [
 		left: 101,
 		label: "馏分油",
 		type: "node",
+		typeClass: "",
 	},
 	{
 		id: "node12",
@@ -80,6 +81,7 @@ var flowchartDataDefault = [
 		left: 338,
 		label: "石脑油",
 		type: "node",
+		typeClass: "",
 	},
 	{
 		id: "node13",
@@ -87,6 +89,7 @@ var flowchartDataDefault = [
 		left: 341,
 		label: "尾油",
 		type: "node",
+		typeClass: "",
 	},
 	{
 		id: "node14",
@@ -94,6 +97,7 @@ var flowchartDataDefault = [
 		left: 339,
 		label: "润滑油",
 		type: "node",
+		typeClass: "",
 	},
 	{
 		id: "node15",
@@ -101,6 +105,7 @@ var flowchartDataDefault = [
 		left: 211,
 		label: "",
 		type: "empty",
+		typeClass: "",
 	},
 	{
 		id: "node16",
@@ -108,6 +113,7 @@ var flowchartDataDefault = [
 		left: 601,
 		label: "润滑油基础油",
 		type: "node",
+		typeClass: "",
 	},
 	{
 		id: "node17",
@@ -115,6 +121,7 @@ var flowchartDataDefault = [
 		left: 521,
 		label: "126",
 		type: "explain",
+		typeClass: "",
 	},
 	{
 		id: "node18",
@@ -122,6 +129,7 @@ var flowchartDataDefault = [
 		left: 415,
 		label: "14",
 		type: "remark",
+		typeClass: "",
 	},
 	{
 		id: "node19",
@@ -129,6 +137,7 @@ var flowchartDataDefault = [
 		left: 506,
 		label: "14",
 		type: "explain",
+		typeClass: "",
 	},
 	{
 		id: "node20",
@@ -136,6 +145,7 @@ var flowchartDataDefault = [
 		left: 184,
 		label: "13溶剂脱蜡及精致",
 		type: "remark",
+		typeClass: "",
 	},
 	{
 		id: "node1686277149257",
@@ -143,5 +153,6 @@ var flowchartDataDefault = [
 		left: 609,
 		label: "加一个",
 		type: "node",
+		typeClass: "",
 	},
 ];
