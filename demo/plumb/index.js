@@ -1,6 +1,7 @@
 const flowchartData = JSON.parse(window.localStorage.getItem("flowchartData")) || flowchartDataDefault;
 const connectionData = JSON.parse(window.localStorage.getItem("connectionData")) || connectionDataDefault;
-
+// 被选择的节点
+let selectedNode = null;
 // 创建实例
 const instance = jsPlumb.getInstance();
 
@@ -51,40 +52,43 @@ $("#reviewBtn").click(function () {
 });
 
 // 获取节点传递数据
-function getNodeData(requireInput,nodeType){
-    const newNodeId = "node" + Date.now();
-    let newNodeLabel = "";
-    let typeClass = "";
+function getNodeData(requireInput, nodeType) {
+	const newNodeId = "node" + Date.now();
+	let newNodeLabel = "";
+	let typeClass = "";
+	let imageSrc = "";
 
-    if (!nodeTypeList.includes(nodeType)) {
-        alert("类型不合法");
-        return;
-    }
+	if (!nodeTypeList.includes(nodeType)) {
+		alert("类型不合法");
+		return;
+	}
 
-    // 确定是否需要输入label标签
-    if (requireInput) {
-        // 弹出输入框，要求用户输入标签
-        newNodeLabel = prompt("请输入节点的标签：", "Node " + (flowchartData.length + 1));
-        typeClass = prompt("是否要额外添加一个class？", "Node " + (flowchartData.length + 1));
-        if (newNodeLabel === null) {
-            // 用户点击了取消按钮，停止添加节点
-            return;
-        }
-    } else {
-        newNodeLabel = nodeType === "empty" ? "" : "Node " + (flowchartData.length + 1);
-    }
+	// 确定是否需要输入label标签
+	if (requireInput) {
+		// 弹出输入框，要求用户输入标签
+		newNodeLabel = prompt("请输入节点的标签：", "Node " + (flowchartData.length + 1));
+		typeClass = prompt("是否要额外添加一个class？", "Node " + (flowchartData.length + 1));
+		if (nodeType === "icon") {
+			imageSrc = prompt("请输入图片的文件名及后缀", "coal.png");
+		}
+		if (newNodeLabel === null) {
+			// 用户点击了取消按钮，停止添加节点
+			return;
+		}
+	} else {
+		newNodeLabel = nodeType === "empty" ? "" : "Node " + (flowchartData.length + 1);
+	}
 
-
-    var newNode = {
-        id: newNodeId,
-        top: 0,
-        left: 0,
-        label: newNodeLabel,
-        type: nodeType,
+	var newNode = {
+		id: newNodeId,
+		top: 0,
+		left: 0,
+		label: newNodeLabel,
+		type: nodeType,
 		typeClass: typeClass,
-    };
-	
-	addNode(newNode)
+	};
+
+	addNode(newNode);
 }
 
 // 增加节点的共同方法
@@ -100,33 +104,33 @@ function getNodeData(requireInput,nodeType){
 };
 */
 function addNode(node) {
-	let newNode = Object.assign({},node) 
+	let newNode = Object.assign({}, node);
 
 	// 保证新增的节点必须在屏幕中间
-    // 获取画布的尺寸和位置
-    const canvas = document.getElementById("canvas");
-    const canvasRect = canvas.getBoundingClientRect();
-    // 计算节点位置，保证出现在当前用户的屏幕中
-    const newNodeTop = window.scrollY + window.innerHeight / 2 - canvasRect.top;
-    const newNodeLeft = window.scrollX + window.innerWidth / 2 - canvasRect.left;
-	newNode.top = newNode.top ? newNode.top : newNodeTop
-	newNode.left = newNode.left ? newNode.left : newNodeLeft
+	// 获取画布的尺寸和位置
+	const canvas = document.getElementById("canvas");
+	const canvasRect = canvas.getBoundingClientRect();
+	// 计算节点位置，保证出现在当前用户的屏幕中
+	const newNodeTop = window.scrollY + window.innerHeight / 2 - canvasRect.top;
+	const newNodeLeft = window.scrollX + window.innerWidth / 2 - canvasRect.left;
+	newNode.top = newNode.top ? newNode.top : newNodeTop;
+	newNode.left = newNode.left ? newNode.left : newNodeLeft;
 
-    // 添加新节点到数据列表
-    flowchartData.push(newNode);
+	// 添加新节点到数据列表
+	flowchartData.push(newNode);
 
-    // 渲染出来
-    addElement(newNode);
+	// 渲染出来
+	addElement(newNode);
 
-    // 更新数据
-    window.localStorage.setItem("flowchartData", JSON.stringify(flowchartData));
+	// 更新数据
+	window.localStorage.setItem("flowchartData", JSON.stringify(flowchartData));
 }
 // 渲染节点
 function addElement(newNode) {
 	// 判断是否有拖拽事件发生
 	let isDragged = false;
 	// 双击事件延迟
-	const DELAY = 260;
+	const DELAY = 190;
 	// 记录点击了几次
 	let clicks = 0;
 	// 单击事件防抖定时器
@@ -135,6 +139,7 @@ function addElement(newNode) {
 	var newElement = $("<div>")
 		.attr("id", newNode.id)
 		.attr("node-type", newNode.type)
+		.attr("image-src", newNode.imageSrc)
 		.attr("type-class", newNode.typeClass)
 		.addClass(newNode.type)
 		.addClass("node-item")
@@ -143,7 +148,6 @@ function addElement(newNode) {
 			top: newNode.top + "px",
 			left: newNode.left + "px",
 		})
-		.text(newNode.label)
 		.on("mousedown", function () {
 			isDragged = false;
 		})
@@ -157,8 +161,8 @@ function addElement(newNode) {
 					timer = setTimeout(() => {
 						const id = $(this).attr("id");
 						const node = $(this).attr("node-type");
-						// 预览模式时才触发单击事件
-						isReview ? nodeClick(id, node) : "";
+						// 预览模式时绑定自定义事件，编辑模式选择当前节点可以键盘上下左右移动
+						isReview ? nodeClick(id, node) : changeSelectedNode(newNode);
 						// 重置计数器
 						clicks = 0;
 					}, DELAY);
@@ -170,6 +174,17 @@ function addElement(newNode) {
 				}
 			}
 		});
+
+	if (newNode.type === "icon") {
+		newElement.append(
+			$("<img>")
+				.attr("src", imageBaseUrl + newNode.imageSrc)
+				.addClass("node-image"),
+			// $("<p>").text(newNode.label).addClass("node-label") // 你可能需要定义这个类以设定文字样式
+		);
+	} else {
+		newElement.text(newNode.label);
+	}
 	// 中继节点隐藏处理
 	if (isReview && newNode.type === "empty") {
 		newElement.css({
@@ -186,14 +201,14 @@ function addElement(newNode) {
 		handledelNode(newElement[0]);
 	} else {
 		// 绑定双击自定义事件
-		handleDblDelNode(newElement[0])
+		handleDblDelNode(newElement[0]);
 	}
 	// 可拖拽
 	if (!isReview) {
 		instance.draggable(newElement, {
 			containment: "parent",
 			// 拖拽步长为10
-			grid: [10, 10],
+			grid: [1, 1],
 			drag: function (event) {
 				changeCanvas(event);
 			},
@@ -235,7 +250,8 @@ function getFkowCharData(nodes) {
 		const label = $(this).text();
 		const type = $(this).attr("node-type");
 		const typeClass = $(this).attr("type-class");
-		flowchartData.push({ id, top, left, label, type,typeClass });
+		const imageSrc = $(this).attr("image-src");
+		flowchartData.push({ id, top, left, label, type, typeClass, imageSrc });
 	});
 	return flowchartData;
 }
@@ -269,23 +285,23 @@ function getConnectionData(connections) {
 // 初始化数据的节点
 function initNode(flowchartData) {
 	// 加载完毕后需要指定canvas宽高
-    let canvas = $("#canvas");
+	let canvas = $("#canvas");
 	let maxWidth = 0;
 	let maxHeight = 0;
 	// 遍历创建节点
 	flowchartData.forEach(function (node) {
 		addElement(node);
-        let $this = $(`#${node.id}`);  // 当前子元素
-        let width = $this.position().left + $this.outerWidth();  // 子元素最右侧距离 canvas 左边的距离
-        let height = $this.position().top + $this.outerHeight(); // 子元素最下方距离 canvas 顶部的距离
+		let $this = $(`#${node.id}`); // 当前子元素
+		let width = $this.position().left + $this.outerWidth(); // 子元素最右侧距离 canvas 左边的距离
+		let height = $this.position().top + $this.outerHeight(); // 子元素最下方距离 canvas 顶部的距离
 
-        maxWidth = Math.max(maxWidth, width);
-        maxHeight = Math.max(maxHeight, height);
+		maxWidth = Math.max(maxWidth, width);
+		maxHeight = Math.max(maxHeight, height);
 	});
-    canvas.css({
-        width: maxWidth + 300 + "px",
-        height: maxHeight + 300 + "px",
-    });
+	canvas.css({
+		width: maxWidth + 300 + "px",
+		height: maxHeight + 300 + "px",
+	});
 }
 
 // 创建连线
@@ -313,7 +329,7 @@ function createConnection(connectionData) {
 // 双击删除连线事件
 function connectionDoubleClick() {
 	instance.bind("dblclick", function (connection) {
-		if (confirm("确定要删除连线吗?")) {
+		if (!isReview && confirm("确定要删除连线吗?")) {
 			instance.deleteConnection(connection);
 		}
 	});
@@ -388,6 +404,73 @@ function nodeOffset(newNode, newElement) {
 		left: newNode.left + elementWidth / 2 + "px",
 	});
 	return newElement;
+}
+
+// 捕获键盘上下左右事件，上下左右可以移动
+document.addEventListener("keydown", function (e) {
+	if (selectedNode) {
+		// 如果有节点被选中
+		var newPosition;
+		var nodeElement = $("#" + selectedNode.id);
+		switch (e.keyCode) {
+			case 37: // 左箭头
+				newPosition = {
+					left: parseInt(nodeElement.css("left")) - 1,
+					top: parseInt(nodeElement.css("top")),
+				};
+				e.preventDefault();
+				break;
+			case 38: // 上箭头
+				newPosition = {
+					left: parseInt(nodeElement.css("left")),
+					top: parseInt(nodeElement.css("top")) - 1,
+				};
+				e.preventDefault();
+				break;
+			case 39: // 右箭头
+				newPosition = {
+					left: parseInt(nodeElement.css("left")) + 1,
+					top: parseInt(nodeElement.css("top")),
+				};
+				e.preventDefault();
+				break;
+			case 40: // 下箭头
+				newPosition = {
+					left: parseInt(nodeElement.css("left")),
+					top: parseInt(nodeElement.css("top")) + 1,
+				};
+				e.preventDefault();
+				break;
+			default:
+				return; // 如果按下的不是方向键，则不做任何操作
+		}
+		// 更新节点的位置
+		selectedNode.left = newPosition.left;
+		selectedNode.top = newPosition.top;
+		// 重新设置节点元素的样式
+		var nodeElement = $("#" + selectedNode.id);
+		nodeElement.css({
+			top: newPosition.top + "px",
+			left: newPosition.left + "px",
+		});
+		// 重绘该节点的所有连接
+		instance.revalidate(selectedNode.id);
+	}
+});
+
+function changeSelectedNode(node) {
+	if (selectedNode) {
+		$("#" + selectedNode.id).removeClass("node-active");
+	}
+	selectedNode = node;
+	$("#" + selectedNode.id).addClass("node-active");
+}
+
+function getFileNameFromURL(url) {
+	const parts = url.split("/");
+	const filename = parts.pop();
+
+	return filename;
 }
 
 // 点击节点的公共处理函数

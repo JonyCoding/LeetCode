@@ -1,10 +1,12 @@
 
 // 是否是预览模式
 let isReview = false
+// 是否是预览模式
+const imageBaseUrl = "./img/"
 // 设置有哪些类型的节点
 const nodeTypeList = ["node", "empty","explain","remark","icon"];
 // 哪些节点可以设置连线
-const connectableList = ["node", "empty","explain"];
+const connectableList = ["node", "empty","explain","icon"];
 // 设置特殊节点，这些节点作为中间节点没有连线样式
 const connectorEmptyStyleList = ["empty","explain"];
 
