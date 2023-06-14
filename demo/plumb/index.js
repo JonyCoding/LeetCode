@@ -45,20 +45,20 @@ $("#addRemarkBtn").click(function () {
 // 预览模式按钮点击事件处理程序
 $("#reviewBtn").click(function () {
 	isReview = !isReview;
-	$("#canvas").toggleClass("review");
+	$("#container").toggleClass("review");
 	setTimeout(() => {
 		reload();
 	}, 1);
 });
 // 下载
 $("#dewnLoad").click(function () {
-	console.log(html2canvas)
-	html2canvas(document.getElementById('canvas'), { useCORS: true }).then(canvas => {
-		console.log(canvas)
-		let imgData = canvas.toDataURL('image/png');
-		let a = document.createElement('a');
+	console.log(html2canvas);
+	html2canvas(document.getElementById("canvas"), { useCORS: true }).then((canvas) => {
+		console.log(canvas);
+		let imgData = canvas.toDataURL("image/png");
+		let a = document.createElement("a");
 		a.href = imgData;
-		a.download = 'canvas.png';
+		a.download = "canvas.png";
 		document.body.appendChild(a);
 		a.click();
 		document.body.removeChild(a);
@@ -193,7 +193,7 @@ function addElement(newNode) {
 		newElement.append(
 			$("<img>")
 				.attr("src", imageBaseUrl + newNode.imageSrc)
-				.addClass("node-image"),
+				.addClass("node-image")
 			// $("<p>").text(newNode.label).addClass("node-label") // 你可能需要定义这个类以设定文字样式
 		);
 	} else {
@@ -298,6 +298,8 @@ function getConnectionData(connections) {
 
 // 初始化数据的节点
 function initNode(flowchartData) {
+	isReview ? $("#container").addClass("review") : "";
+	isReview ? initCanvasDraggable() : "";
 	// 加载完毕后需要指定canvas宽高
 	let canvas = $("#canvas");
 	let maxWidth = 0;
@@ -485,6 +487,65 @@ function getFileNameFromURL(url) {
 	const filename = parts.pop();
 
 	return filename;
+}
+
+// 让画布可拖拽可放大缩小
+function initCanvasDraggable() {
+	let scale = 1;
+	let canvas = document.getElementById("canvas");
+	let container = document.getElementById("container");
+
+	canvas.addEventListener(
+		"wheel",
+		function (event) {
+			event.preventDefault(); // 阻止默认滚动行为
+			// 鼠标滚动一次增加的备注，实际倍数为 n += scaleAmount
+			let scaleAmount = 0.2;
+			if (event.deltaY < 0) {
+				// 鼠标滚轮向上滚
+				scale += scaleAmount;
+			} else {
+				// 鼠标滚轮向下滚
+				scale -= scaleAmount;
+			}
+
+			// transform属放大缩小
+			canvas.style.transform = "scale(" + scale + ")";
+		},
+		{ passive: false }
+	);
+
+	// 是否正在拖拽
+	let isDragging = false;
+	let previousMousePosition = { x: 0, y: 0 };
+
+	container.addEventListener("mousedown", function (event) {
+		isDragging = true;
+		previousMousePosition = { x: event.clientX, y: event.clientY };
+		container.style.cursor = "grabbing";
+	});
+
+	container.addEventListener("mousemove", function (event) {
+		if (isDragging) {
+			let dx = event.clientX - previousMousePosition.x;
+			let dy = event.clientY - previousMousePosition.y;
+
+			let currentTop = parseInt(canvas.style.top || "0");
+			let currentLeft = parseInt(canvas.style.left || "0");
+
+			canvas.style.top = currentTop + dy + "px";
+			canvas.style.left = currentLeft + dx + "px";
+
+			previousMousePosition = { x: event.clientX, y: event.clientY };
+		}
+	});
+
+	window.addEventListener("mouseup", function (event) {
+		if (isDragging) {
+			isDragging = false;
+			container.style.cursor = "default";
+		}
+	});
 }
 
 // 点击节点的公共处理函数
