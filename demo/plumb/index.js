@@ -50,6 +50,20 @@ $("#reviewBtn").click(function () {
 		reload();
 	}, 1);
 });
+// 下载
+$("#dewnLoad").click(function () {
+	console.log(html2canvas)
+	html2canvas(document.getElementById('canvas'), { useCORS: true }).then(canvas => {
+		console.log(canvas)
+		let imgData = canvas.toDataURL('image/png');
+		let a = document.createElement('a');
+		a.href = imgData;
+		a.download = 'canvas.png';
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+	});
+});
 
 // 获取节点传递数据
 function getNodeData(requireInput, nodeType) {
