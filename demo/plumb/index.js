@@ -4,18 +4,12 @@ const connectionData = JSON.parse(window.localStorage.getItem("connectionData"))
 let selectedNode = null;
 // 创建实例
 const instance = jsPlumb.getInstance();
+// 基本
+let canvas = document.getElementById("canvas");
+let container = document.getElementById("container");
 
 // 初始化流程图
-jsPlumb.ready(function () {
-	// 根据数据创建节点
-	initNode(flowchartData);
-	// 根据数据创建连线
-	createConnection(connectionData);
-	// 双击连线删除事件加载
-	connectionDoubleClick();
-	// 双击删除节点事件绑定
-	// nodeDoubleClick()
-});
+jsPlumb.ready(reload);
 
 // 导出数据按钮点击事件处理程序
 $("#exportBtn").click(function () {
@@ -51,19 +45,7 @@ $("#reviewBtn").click(function () {
 	}, 1);
 });
 // 下载
-$("#dewnLoad").click(function () {
-	console.log(html2canvas);
-	html2canvas(document.getElementById("canvas"), { useCORS: true }).then((canvas) => {
-		console.log(canvas);
-		let imgData = canvas.toDataURL("image/png");
-		let a = document.createElement("a");
-		a.href = imgData;
-		a.download = "canvas.png";
-		document.body.appendChild(a);
-		a.click();
-		document.body.removeChild(a);
-	});
-});
+$("#dewnLoad").click(exportPng);
 
 // 获取节点传递数据
 function getNodeData(requireInput, nodeType) {
@@ -100,6 +82,7 @@ function getNodeData(requireInput, nodeType) {
 		label: newNodeLabel,
 		type: nodeType,
 		typeClass: typeClass,
+		imageSrc: imageSrc,
 	};
 
 	addNode(newNode);
@@ -122,7 +105,6 @@ function addNode(node) {
 
 	// 保证新增的节点必须在屏幕中间
 	// 获取画布的尺寸和位置
-	const canvas = document.getElementById("canvas");
 	const canvasRect = canvas.getBoundingClientRect();
 	// 计算节点位置，保证出现在当前用户的屏幕中
 	const newNodeTop = window.scrollY + window.innerHeight / 2 - canvasRect.top;
@@ -299,7 +281,6 @@ function getConnectionData(connections) {
 // 初始化数据的节点
 function initNode(flowchartData) {
 	isReview ? $("#container").addClass("review") : "";
-	isReview ? initCanvasDraggable() : "";
 	// 加载完毕后需要指定canvas宽高
 	let canvas = $("#canvas");
 	let maxWidth = 0;
@@ -315,8 +296,8 @@ function initNode(flowchartData) {
 		maxHeight = Math.max(maxHeight, height);
 	});
 	canvas.css({
-		width: maxWidth + 300 + "px",
-		height: maxHeight + 300 + "px",
+		width: maxWidth + 100 + "px",
+		height: maxHeight + 100 + "px",
 	});
 }
 
@@ -344,11 +325,13 @@ function createConnection(connectionData) {
 
 // 双击删除连线事件
 function connectionDoubleClick() {
-	instance.bind("dblclick", function (connection) {
-		if (!isReview && confirm("确定要删除连线吗?")) {
-			instance.deleteConnection(connection);
-		}
-	});
+	if (isReview) {
+		instance.bind("dblclick", function (connection) {
+			if (!isReview && confirm("确定要删除连线吗?")) {
+				instance.deleteConnection(connection);
+			}
+		});
+	}
 }
 
 // 给所有节点双击删除节点事件
@@ -385,12 +368,15 @@ function reload() {
 	initNode(flowchartData);
 	// 根据数据创建连线
 	createConnection(connectionData);
+	// 双击连线删除事件加载
+	connectionDoubleClick();
+	// 预览模式拖拽和缩放
+	initCanvasDraggable();
 }
 
 // 拖拽节点变化画布宽度
 function changeCanvas(event) {
 	var element = $(event.el);
-	var canvas = document.getElementById("canvas");
 
 	var canvasWidth = canvas.offsetWidth;
 	var canvasHeight = canvas.offsetHeight;
@@ -408,6 +394,35 @@ function changeCanvas(event) {
 		// 如果元素接近底边缘
 		canvas.style.height = canvasHeight + expansion + "px";
 	}
+}
+
+function getCurrentDateTimeString() {
+	let now = new Date();
+	let year = now.getFullYear();
+	let month = (now.getMonth() + 1).toString().padStart(2, "0");
+	let day = now.getDate().toString().padStart(2, "0");
+	let hour = now.getHours().toString().padStart(2, "0");
+	let minute = now.getMinutes().toString().padStart(2, "0");
+
+	return `${year}${month}${day}${hour}${minute}`;
+}
+
+// 导出图片
+function exportPng() {
+	// 不要有太多余白
+	canvas.style.minWidth = "max-content";
+	canvas.style.minHeight = "max-content";
+	html2canvas(canvas, { useCORS: true }).then((canvasData) => {
+		let imgData = canvasData.toDataURL("image/png");
+		let a = document.createElement("a");
+		a.href = imgData;
+		a.download = "canvas_" + getCurrentDateTimeString() + ".png";
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+		canvas.style.minWidth = "100vw";
+		canvas.style.minHeight = "100%";
+	});
 }
 
 // 计算节点的偏移量
@@ -489,63 +504,66 @@ function getFileNameFromURL(url) {
 	return filename;
 }
 
+let scale = 1;
+// 是否正在拖拽
+let isDragging = false;
+let previousMousePosition = { x: 0, y: 0 };
+let handleWheel = function (event) {
+	event.preventDefault();
+	let scaleAmount = 0.2;
+	if (event.deltaY < 0) {
+		scale += scaleAmount;
+	} else {
+		scale -= scaleAmount;
+	}
+	const determinedScale = scale < 0.2 ? 0.1 : scale;
+	scale = determinedScale;
+	canvas.style.transform = "scale(" + determinedScale + ")";
+};
+
+let handleMouseDown = function (event) {
+	isDragging = true;
+	previousMousePosition = { x: event.clientX, y: event.clientY };
+	container.style.cursor = "grabbing";
+};
+
+let handleMouseMove = function (event) {
+	if (isDragging) {
+		let dx = event.clientX - previousMousePosition.x;
+		let dy = event.clientY - previousMousePosition.y;
+
+		let currentTop = parseInt(canvas.style.top || "0");
+		let currentLeft = parseInt(canvas.style.left || "0");
+
+		canvas.style.top = currentTop + dy + "px";
+		canvas.style.left = currentLeft + dx + "px";
+
+		previousMousePosition = { x: event.clientX, y: event.clientY };
+	}
+};
+
+let handleMouseUp = function (event) {
+	if (isDragging) {
+		isDragging = false;
+		container.style.cursor = "default";
+	}
+};
 // 让画布可拖拽可放大缩小
 function initCanvasDraggable() {
-	let scale = 1;
-	let canvas = document.getElementById("canvas");
-	let container = document.getElementById("container");
-
-	canvas.addEventListener(
-		"wheel",
-		function (event) {
-			event.preventDefault(); // 阻止默认滚动行为
-			// 鼠标滚动一次增加的备注，实际倍数为 n += scaleAmount
-			let scaleAmount = 0.2;
-			if (event.deltaY < 0) {
-				// 鼠标滚轮向上滚
-				scale += scaleAmount;
-			} else {
-				// 鼠标滚轮向下滚
-				scale -= scaleAmount;
-			}
-
-			// transform属放大缩小
-			canvas.style.transform = "scale(" + scale + ")";
-		},
-		{ passive: false }
-	);
-
-	// 是否正在拖拽
-	let isDragging = false;
-	let previousMousePosition = { x: 0, y: 0 };
-
-	container.addEventListener("mousedown", function (event) {
-		isDragging = true;
-		previousMousePosition = { x: event.clientX, y: event.clientY };
-		container.style.cursor = "grabbing";
-	});
-
-	container.addEventListener("mousemove", function (event) {
-		if (isDragging) {
-			let dx = event.clientX - previousMousePosition.x;
-			let dy = event.clientY - previousMousePosition.y;
-
-			let currentTop = parseInt(canvas.style.top || "0");
-			let currentLeft = parseInt(canvas.style.left || "0");
-
-			canvas.style.top = currentTop + dy + "px";
-			canvas.style.left = currentLeft + dx + "px";
-
-			previousMousePosition = { x: event.clientX, y: event.clientY };
-		}
-	});
-
-	window.addEventListener("mouseup", function (event) {
-		if (isDragging) {
-			isDragging = false;
-			container.style.cursor = "default";
-		}
-	});
+	if (isReview) {
+		container.addEventListener("wheel", handleWheel, { passive: false });
+		container.addEventListener("mousedown", handleMouseDown);
+		container.addEventListener("mousemove", handleMouseMove);
+		window.addEventListener("mouseup", handleMouseUp);
+	} else {
+		container.removeEventListener("wheel", handleWheel);
+		container.removeEventListener("mousedown", handleMouseDown);
+		container.removeEventListener("mousemove", handleMouseMove);
+		window.removeEventListener("mouseup", handleMouseUp);
+		canvas.style.top = "0px";
+		canvas.style.left = "0px";
+		canvas.style.transform = "scale(1)";
+	}
 }
 
 // 点击节点的公共处理函数

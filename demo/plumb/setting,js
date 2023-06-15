@@ -1,6 +1,6 @@
 
 // 是否是预览模式
-let isReview = true
+let isReview = false
 // 是否是预览模式
 const imageBaseUrl = "./img/"
 // 设置有哪些类型的节点
