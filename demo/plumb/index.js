@@ -7,6 +7,9 @@ const instance = jsPlumb.getInstance();
 // 基本
 let canvas = document.getElementById("canvas");
 let container = document.getElementById("container");
+let selectedElements = [];
+// 节点移动初始位置
+let startPos = null;
 
 // 初始化流程图
 jsPlumb.ready(reload);
@@ -144,13 +147,20 @@ function addElement(newNode) {
 			top: newNode.top + "px",
 			left: newNode.left + "px",
 		})
-		.on("mousedown", function () {
+		.on("mousedown", function (event) {
 			isDragged = false;
+			startPos = { x: event.clientX, y: event.clientY };
 		})
-		.on("mousemove", function () {
+		.on("mousemove", function (event) {
 			isDragged = true;
+			if (!startPos) return;
+			let dx = event.clientX - startPos.x;
+			let dy = event.clientY - startPos.y;
+			moveElements(dx, dy);
+			startPos = { x: event.clientX, y: event.clientY };
 		})
-		.on("mouseup", function () {
+		.on("mouseup", function (event) {
+			startPos = null;
 			if (!isDragged) {
 				clicks++; // 计数器
 				if (clicks === 1) {
@@ -508,6 +518,10 @@ let scale = 1;
 // 是否正在拖拽
 let isDragging = false;
 let previousMousePosition = { x: 0, y: 0 };
+// 选择框大小
+let box = document.getElementById("selection-box");
+// 开始节点位置
+let start = null;
 let handleWheel = function (event) {
 	event.preventDefault();
 	let scaleAmount = 0.2;
@@ -548,13 +562,63 @@ let handleMouseUp = function (event) {
 		container.style.cursor = "default";
 	}
 };
+
+let handleCanvasMousedown = function (event) {
+	// 重置选择框
+	box.style.display = "none";
+	start = { x: event.clientX, y: event.clientY };
+	box.style.left = start.x + "px";
+	box.style.top = start.y + "px";
+	box.style.width = "0px";
+	box.style.height = "0px";
+	box.style.display = "block";
+};
+
+let handleCanvasMousemove = function (event) {
+	if (!start) return;
+	let x = Math.min(event.clientX, start.x);
+	let y = Math.min(event.clientY, start.y);
+	let width = Math.abs(event.clientX - start.x);
+	let height = Math.abs(event.clientY - start.y);
+	box.style.left = x + "px";
+	box.style.top = y + "px";
+	box.style.width = width + "px";
+	box.style.height = height + "px";
+};
+
+let handleCanvasMouseup = function (event) {
+	// 选择框的边界
+	let boxBounds = box.getBoundingClientRect();
+	// 获取页面上的所有元素
+	let elements = canvas.getElementsByTagName("*");
+	selectedElements = [];
+	// 遍历所有元素
+	for (let i = 0; i < elements.length; i++) {
+		// 获取元素的边界
+		let elementBounds = elements[i].getBoundingClientRect();
+		elements[i].classList.remove("node-active");
+
+		// 检查元素是否在选择框内
+		if (elementBounds.left >= boxBounds.left && elementBounds.right <= boxBounds.right && elementBounds.top >= boxBounds.top && elementBounds.bottom <= boxBounds.bottom) {
+			if (elements[i].hasAttribute("node-type")) {
+				elements[i].classList.add("node-active");
+				selectedElements.push(elements[i]);
+			}
+		}
+	}
+	start = null;
+};
 // 让画布可拖拽可放大缩小
 function initCanvasDraggable() {
 	if (isReview) {
+		box.style.display = "none";
 		container.addEventListener("wheel", handleWheel, { passive: false });
 		container.addEventListener("mousedown", handleMouseDown);
 		container.addEventListener("mousemove", handleMouseMove);
 		window.addEventListener("mouseup", handleMouseUp);
+		canvas.removeEventListener("mousedown", handleCanvasMousedown);
+		canvas.removeEventListener("mousemove", handleCanvasMousemove);
+		canvas.removeEventListener("mouseup", handleCanvasMouseup);
 	} else {
 		container.removeEventListener("wheel", handleWheel);
 		container.removeEventListener("mousedown", handleMouseDown);
@@ -563,9 +627,40 @@ function initCanvasDraggable() {
 		canvas.style.top = "0px";
 		canvas.style.left = "0px";
 		canvas.style.transform = "scale(1)";
+		canvas.addEventListener("mousedown", handleCanvasMousedown);
+		canvas.addEventListener("mousemove", handleCanvasMousemove);
+		canvas.addEventListener("mouseup", handleCanvasMouseup);
 	}
 }
-
+// 防抖公共方法
+function debounce(func, delay) {
+	let debounceTimer;
+	return function (...args) {
+		const context = this;
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(() => {
+			func.apply(context, args);
+		}, delay);
+	};
+}
+// 移动已经倍选择的节点
+function moveElements(dx, dy) {
+	selectedElements.forEach((element) => {
+		let currentTop = parseInt(getComputedStyle(element).top, 10);
+		let currentLeft = parseInt(getComputedStyle(element).left, 10);
+		element.style.top = currentTop + dy + "px";
+		element.style.left = currentLeft + dx + "px";
+		function createNodeRevalidate(elementid) {
+			instance.revalidate(elementid);
+		}
+		// 防抖处理
+		let moveElementsDebounced = debounce(createNodeRevalidate, 100);
+		// 重新渲染连线防抖,如果想实时渲染的话，只需要直接调用createNodeRevalidate就可以了
+		// createNodeRevalidate(element.id);
+		// 实时渲染选择节点太多可能会卡顿，所以用防抖
+		moveElementsDebounced(element.id);
+	});
+}
 // 点击节点的公共处理函数
 function nodeClick(id, node) {
 	alert("单机事件：id:" + id + " - " + "node:" + node);
