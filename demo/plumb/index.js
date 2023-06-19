@@ -53,25 +53,18 @@ $("#scrollBtn").click(changeScrollDrop);
 // 下载
 $("#dewnLoad").click(exportPng);
 
-function changeScrollDrop(){
+function changeScrollDrop() {
 	isScroll = !isScroll;
 	canvas.style.top = "0px";
 	canvas.style.left = "0px";
 	canvas.style.transform = "scale(1)";
 	if (isScroll) {
 		container.removeEventListener("wheel", handleWheel);
-		container.removeEventListener("mousedown", handleMouseDown);
-		container.removeEventListener("mousemove", handleMouseMove);
-		window.removeEventListener("mouseup", handleMouseUp);
 		container.classList.add("isScroll");
 	} else {
 		container.addEventListener("wheel", handleWheel, { passive: false });
-		container.addEventListener("mousedown", handleMouseDown);
-		container.addEventListener("mousemove", handleMouseMove);
-		window.addEventListener("mouseup", handleMouseUp);
 		container.classList.add("isDrop");
 	}
-
 }
 
 // 获取节点传递数据
