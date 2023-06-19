@@ -115,31 +115,31 @@
 	border-top: 1px solid #ccc;
 	border-left: 1px solid #ccc;
 }
-.review #canvas{
+.review #canvas {
 	background-image: none !important;
 	background-size: 20px 20px !important;
-
 }
-.review {
 
-	/* 全局隐藏滚动条 */
-	overflow: auto; /* 视情况可能需要改为 scroll */
-	scrollbar-width: none; /* Firefox */
-	-ms-overflow-style: none; /* IE 10+ */
 
-	/* Chrome, Safari 和 Opera */
-	&::-webkit-scrollbar {
-		display: none;
-	}
+/* .isDrop {
+    overflow: hidden;
+} */
+
+.isDrop {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+.isDrop::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
 }
 
 
 #selection-box {
-    border: 1px solid #000;
-    /* background-color: rgba(0, 0, 0, 0.3); */
-    position: absolute;
-    pointer-events: none;
-    display: none;
+	border: 1px solid #000;
+	/* background-color: rgba(0, 0, 0, 0.3); */
+	position: absolute;
+	pointer-events: none;
+	display: none;
 	cursor: move;
 	z-index: 10;
 }

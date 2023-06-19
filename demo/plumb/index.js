@@ -10,7 +10,8 @@ let container = document.getElementById("container");
 let selectedElements = [];
 // 节点移动初始位置
 let startPos = null;
-
+// 预览模式是否是滚动模式
+let isScroll = false;
 // 初始化流程图
 jsPlumb.ready(reload);
 
@@ -47,8 +48,31 @@ $("#reviewBtn").click(function () {
 		reload();
 	}, 1);
 });
+// 滚动模式切换
+$("#scrollBtn").click(changeScrollDrop);
 // 下载
 $("#dewnLoad").click(exportPng);
+
+function changeScrollDrop(){
+	isScroll = !isScroll;
+	canvas.style.top = "0px";
+	canvas.style.left = "0px";
+	canvas.style.transform = "scale(1)";
+	if (isScroll) {
+		container.removeEventListener("wheel", handleWheel);
+		container.removeEventListener("mousedown", handleMouseDown);
+		container.removeEventListener("mousemove", handleMouseMove);
+		window.removeEventListener("mouseup", handleMouseUp);
+		container.classList.add("isScroll");
+	} else {
+		container.addEventListener("wheel", handleWheel, { passive: false });
+		container.addEventListener("mousedown", handleMouseDown);
+		container.addEventListener("mousemove", handleMouseMove);
+		window.addEventListener("mouseup", handleMouseUp);
+		container.classList.add("isDrop");
+	}
+
+}
 
 // 获取节点传递数据
 function getNodeData(requireInput, nodeType) {
@@ -372,6 +396,9 @@ function handleDblDelNode(newElement) {
 
 // 重新渲染
 function reload() {
+	canvas.style.top = "0px";
+	canvas.style.left = "0px";
+	canvas.style.transform = "scale(1)";
 	instance.deleteEveryEndpoint(); // 删除所有端点和连线
 	$("#canvas").empty(); // 删除所有节点
 	// 根据数据创建节点
@@ -632,6 +659,7 @@ function initCanvasDraggable() {
 		canvas.addEventListener("mouseup", handleCanvasMouseup);
 	}
 }
+
 // 防抖公共方法
 function debounce(func, delay) {
 	let debounceTimer;
