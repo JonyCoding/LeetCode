@@ -53,6 +53,18 @@ $("#scrollBtn").click(changeScrollDrop);
 // 下载
 $("#dewnLoad").click(exportPng);
 
+$("#searchBtn").click(function () {
+	id = prompt("请输入节点的id：", "1302_677");
+
+	canvas.style.transform = "scale(1)";
+	canvas.style.top = "0px";
+	canvas.style.left = "0px";
+	// 预览模式一定要给一个延时，因为预览模式下位置和缩放是不固定的不好确定位置
+	setTimeout(() => {
+		findNodeById(id)
+	}, 100);
+});
+
 function changeScrollDrop() {
 	isScroll = !isScroll;
 	canvas.style.top = "0px";
@@ -242,7 +254,7 @@ function addElement(newNode) {
 	if (connectableList.includes(newNode.type)) {
 		const paintStyle = isReview ? reviewPaintSettings : paintSettings;
 		// 使用 addEndpoints 函数添加端点
-		instance.addEndpoints(newNode.id, endpointOptions, paintStyle);
+		instance.addEndpoints(newNode.id, isReview ? [] : endpointOptions, paintStyle);
 	}
 }
 // [导出数据]按钮点击后处理函数
@@ -469,42 +481,51 @@ function nodeOffset(newNode, newElement) {
 
 // 捕获键盘上下左右事件，上下左右可以移动
 document.addEventListener("keydown", function (e) {
+	var newPosition;
 	if (selectedNode) {
 		// 如果有节点被选中
-		var newPosition;
 		var nodeElement = $("#" + selectedNode.id);
-		switch (e.keyCode) {
-			case 37: // 左箭头
-				newPosition = {
-					left: parseInt(nodeElement.css("left")) - 1,
-					top: parseInt(nodeElement.css("top")),
-				};
-				e.preventDefault();
-				break;
-			case 38: // 上箭头
-				newPosition = {
-					left: parseInt(nodeElement.css("left")),
-					top: parseInt(nodeElement.css("top")) - 1,
-				};
-				e.preventDefault();
-				break;
-			case 39: // 右箭头
-				newPosition = {
-					left: parseInt(nodeElement.css("left")) + 1,
-					top: parseInt(nodeElement.css("top")),
-				};
-				e.preventDefault();
-				break;
-			case 40: // 下箭头
-				newPosition = {
-					left: parseInt(nodeElement.css("left")),
-					top: parseInt(nodeElement.css("top")) + 1,
-				};
-				e.preventDefault();
-				break;
-			default:
-				return; // 如果按下的不是方向键，则不做任何操作
-		}
+	} else {
+		var nodeElement = $("#canvas");
+	}
+	console.log("aaaaa", selectedElements);
+	switch (e.keyCode) {
+		case 37: // 左箭头
+			newPosition = {
+				left: parseInt(nodeElement.css("left")) - 1,
+				top: parseInt(nodeElement.css("top")),
+			};
+			moveElements(-1, 0);
+			e.preventDefault();
+			break;
+		case 38: // 上箭头
+			newPosition = {
+				left: parseInt(nodeElement.css("left")),
+				top: parseInt(nodeElement.css("top")) - 1,
+			};
+			moveElements(0, -1);
+			e.preventDefault();
+			break;
+		case 39: // 右箭头
+			newPosition = {
+				left: parseInt(nodeElement.css("left")) + 1,
+				top: parseInt(nodeElement.css("top")),
+			};
+			moveElements(1, 0);
+			e.preventDefault();
+			break;
+		case 40: // 下箭头
+			newPosition = {
+				left: parseInt(nodeElement.css("left")),
+				top: parseInt(nodeElement.css("top")) + 1,
+			};
+			moveElements(0, 1);
+			e.preventDefault();
+			break;
+		default:
+			return; // 如果按下的不是方向键，则不做任何操作
+	}
+	if (selectedNode) {
 		// 更新节点的位置
 		selectedNode.left = newPosition.left;
 		selectedNode.top = newPosition.top;
@@ -682,6 +703,77 @@ function moveElements(dx, dy) {
 		moveElementsDebounced(element.id);
 	});
 }
+
+
+
+
+function findNodeById(id) {
+	var nodeElement = document.getElementById(id);
+	changeAnimationColor(nodeElement)
+	if (nodeElement) {
+		nodeElement.scrollIntoView({ block: 'center', inline: 'nearest' });
+		nodeElement.classList.add("searched-node");
+	}
+
+	setTimeout(function () {
+		nodeElement.classList.remove("searched-node");
+	}, 8000);
+}
+// 计算反差色
+function getContrastColor(element) {
+	let bgColor = getComputedStyle(element).getPropertyValue('background-color');
+	let bdColor = getComputedStyle(element).getPropertyValue('border-color');
+	let match = bgColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(,\s*(\d+))?\)/);
+	let match2 = bdColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(,\s*(\d+))?\)/) || match;
+	let [, r1, g1, b1] = match.map(Number);
+	let [, r2, g2, b2] = match2.map(Number);
+	let contrastR = 0;
+	let contrastG = 0;
+	let contrastB = 0;
+	if (r1 > 240 && g1 > 240 && b1 > 240) {
+		contrastR = 255 - r2;
+		contrastG = 255 - g2;
+		contrastB = 255 - b2;
+	} else if (r2 > 240 && g2 > 240 && b2 > 240) {
+		contrastR = 255;
+		contrastG = 175;
+		contrastB = 0;
+	} else {
+		contrastR = 255 - r1;
+		contrastG = 255 - g1;
+		contrastB = 255 - b1;
+	}
+	return { contrastR, contrastG, contrastB };
+}
+
+// 根据反差色插入动画
+function changeAnimationColor(element) {
+	let { contrastR, contrastG, contrastB } = getContrastColor(element)
+	let bgColor = getComputedStyle(element).getPropertyValue('background-color');
+	let style = document.createElement('style');
+
+	// 定义动画内容
+	style.innerHTML = `
+		@keyframes shadow-pulse {
+			0% {
+			box-shadow: 0 0 0 10px rgba(${contrastR}, ${contrastG}, ${contrastB}, 0.8);
+			background-color: rgba(${contrastR}, ${contrastG}, ${contrastB}, 0.8);
+
+			}
+			50% {
+			box-shadow: 0 0 20px 20px rgba(${contrastR}, ${contrastG}, ${contrastB}, 0.5);
+			background-color: rgba(${contrastR}, ${contrastG}, ${contrastB}, 0.5);
+			}
+			100% {
+			box-shadow: 0 0 0 30px rgba(0,0,0,0); 
+			background-color: ${bgColor};
+			}
+		}
+    `;
+	document.head.appendChild(style);
+}
+
+
 // 点击节点的公共处理函数
 function nodeClick(id, node) {
 	alert("单机事件：id:" + id + " - " + "node:" + node);
