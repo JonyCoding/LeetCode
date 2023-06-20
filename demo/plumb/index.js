@@ -228,7 +228,7 @@ function addElement(newNode) {
 		});
 	}
 	// 渲染到页面
-	$("#canvas").append(newElement);
+	// $("#canvas").append();
 
 	// 绑定双击事件，编辑模式双击为删除事件，预览模式为自定义事件
 	if (!isReview) {
@@ -256,6 +256,7 @@ function addElement(newNode) {
 		// 使用 addEndpoints 函数添加端点
 		instance.addEndpoints(newNode.id, isReview ? [] : endpointOptions, paintStyle);
 	}
+	return newElement
 }
 // [导出数据]按钮点击后处理函数
 function exportBtnHandle() {
@@ -324,16 +325,22 @@ function initNode(flowchartData) {
 	let canvas = $("#canvas");
 	let maxWidth = 0;
 	let maxHeight = 0;
+    let fragment = document.createDocumentFragment();
 	// 遍历创建节点
 	flowchartData.forEach(function (node) {
-		addElement(node);
-		let $this = $(`#${node.id}`); // 当前子元素
+		const newElement = addElement(node);
+        fragment.appendChild(newElement[0]);
+
+		let $this = newElement; // 当前子元素
 		let width = $this.position().left + $this.outerWidth(); // 子元素最右侧距离 canvas 左边的距离
 		let height = $this.position().top + $this.outerHeight(); // 子元素最下方距离 canvas 顶部的距离
 
 		maxWidth = Math.max(maxWidth, width);
 		maxHeight = Math.max(maxHeight, height);
 	});
+    // 将所有节点一次性添加到 canvas
+    canvas.append(fragment);
+
 	canvas.css({
 		width: maxWidth + 100 + "px",
 		height: maxHeight + 100 + "px",
