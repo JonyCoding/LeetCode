@@ -11,6 +11,7 @@
 	height: 100%;
 	position: relative;
 	box-sizing: border-box;
+	background-color: #0051ff;
 }
 
 #canvas {
@@ -26,6 +27,9 @@
 	padding: 10px;
 	position: absolute;
 	width: max-content;
+	font-size: 14px;
+	line-height: 14px;
+	border: 2px solid transparent;
 }
 .node-active {
 	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
@@ -38,6 +42,7 @@
 	width: max-content;
 	min-width: 83px;
 	text-align: center;
+	height: 14px;
 }
 .explain {
 	background-color: #0051ff;
@@ -45,6 +50,7 @@
 	z-index: 10;
 	padding: 2px 10px;
 	border-radius: 20px;
+	height: 14px;
 }
 .icon {
 	padding: 0px;

@@ -54,14 +54,14 @@ $("#scrollBtn").click(changeScrollDrop);
 $("#dewnLoad").click(exportPng);
 
 $("#searchBtn").click(function () {
-	id = prompt("请输入节点的id：", "1302_677");
+	id = prompt("请输入节点的id：", "1588_724");
 
 	canvas.style.transform = "scale(1)";
 	canvas.style.top = "0px";
 	canvas.style.left = "0px";
 	// 预览模式一定要给一个延时，因为预览模式下位置和缩放是不固定的不好确定位置
 	setTimeout(() => {
-		findNodeById(id)
+		findNodeById(id);
 	}, 100);
 });
 
@@ -154,7 +154,7 @@ function addNode(node) {
 	window.localStorage.setItem("flowchartData", JSON.stringify(flowchartData));
 }
 // 渲染节点
-function addElement(newNode) {
+async function addElement(newNode) {
 	// 判断是否有拖拽事件发生
 	let isDragged = false;
 	// 双击事件延迟
@@ -173,8 +173,8 @@ function addElement(newNode) {
 		.addClass("node-item")
 		.addClass(newNode.typeClass)
 		.css({
-			top: newNode.top + "px",
-			left: newNode.left + "px",
+			top: (newNode.top % 2 === 0 ? newNode.top : newNode.top + 1) + "px",
+			left: (newNode.left % 2 === 0 ? newNode.left : newNode.left + 1) + "px",
 		})
 		.on("mousedown", function (event) {
 			isDragged = false;
@@ -227,9 +227,21 @@ function addElement(newNode) {
 			left: newNode.left + 23 + "px",
 		});
 	}
-	// 渲染到页面
-	// $("#canvas").append();
 
+	// 渲染到页面
+	$("#canvas").append(newElement);
+	// const thisElement = $('#'+newNode.id)
+	// // 让所有节点高度必须为偶数
+	// let elementHeight = parseInt(thisElement.outerHeight()); // 获取当前高度
+	// console.log("elementHeight", elementHeight);
+	// var elementLineHeight = parseInt(thisElement.css("line-height"));
+	// if (elementHeight % 2 !== 0) {
+	// 	var currentTop = parseInt(thisElement.css("top")) - 1;
+	// 	// 如果高度为奇数
+	// 	console.log("currentTop", currentTop);
+	// 	// thisElement.css("line-height", elementLineHeight + 1 + "px"); // 将高度调整为偶数
+	// 	thisElement.css("top", currentTop + 'px');
+	// }
 	// 绑定双击事件，编辑模式双击为删除事件，预览模式为自定义事件
 	if (!isReview) {
 		// 绑定双击删除事件
@@ -256,7 +268,6 @@ function addElement(newNode) {
 		// 使用 addEndpoints 函数添加端点
 		instance.addEndpoints(newNode.id, isReview ? [] : endpointOptions, paintStyle);
 	}
-	return newElement
 }
 // [导出数据]按钮点击后处理函数
 function exportBtnHandle() {
@@ -325,22 +336,15 @@ function initNode(flowchartData) {
 	let canvas = $("#canvas");
 	let maxWidth = 0;
 	let maxHeight = 0;
-    let fragment = document.createDocumentFragment();
 	// 遍历创建节点
-	flowchartData.forEach(function (node) {
-		const newElement = addElement(node);
-        fragment.appendChild(newElement[0]);
-
-		let $this = newElement; // 当前子元素
+	flowchartData.forEach(async function (node) {
+		addElement(node);
+		let $this = $(`#${node.id}`); // 当前子元素
 		let width = $this.position().left + $this.outerWidth(); // 子元素最右侧距离 canvas 左边的距离
 		let height = $this.position().top + $this.outerHeight(); // 子元素最下方距离 canvas 顶部的距离
-
 		maxWidth = Math.max(maxWidth, width);
 		maxHeight = Math.max(maxHeight, height);
 	});
-    // 将所有节点一次性添加到 canvas
-    canvas.append(fragment);
-
 	canvas.css({
 		width: maxWidth + 100 + "px",
 		height: maxHeight + 100 + "px",
@@ -411,16 +415,18 @@ function reload() {
 	canvas.style.top = "0px";
 	canvas.style.left = "0px";
 	canvas.style.transform = "scale(1)";
-	instance.deleteEveryEndpoint(); // 删除所有端点和连线
 	$("#canvas").empty(); // 删除所有节点
-	// 根据数据创建节点
-	initNode(flowchartData);
-	// 根据数据创建连线
-	createConnection(connectionData);
-	// 双击连线删除事件加载
-	connectionDoubleClick();
-	// 预览模式拖拽和缩放
-	initCanvasDraggable();
+	instance.deleteEveryEndpoint(); // 删除所有端点和连线
+	setTimeout(async () => {
+		// 根据数据创建节点
+		await initNode(flowchartData);
+		// 根据数据创建连线
+		createConnection(connectionData);
+		// 双击连线删除事件加载
+		connectionDoubleClick();
+		// 预览模式拖拽和缩放
+		initCanvasDraggable();
+	}, 1);
 }
 
 // 拖拽节点变化画布宽度
@@ -570,18 +576,262 @@ let previousMousePosition = { x: 0, y: 0 };
 let box = document.getElementById("selection-box");
 // 开始节点位置
 let start = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let handleWheel = function (event) {
-	event.preventDefault();
-	let scaleAmount = 0.2;
-	if (event.deltaY < 0) {
-		scale += scaleAmount;
-	} else {
-		scale -= scaleAmount;
-	}
-	const determinedScale = scale < 0.2 ? 0.1 : scale;
-	scale = determinedScale;
-	canvas.style.transform = "scale(" + determinedScale + ")";
+	// event.preventDefault();
+	// let scaleAmount = 0.2;
+
+	// // 获取鼠标当前位置（相对于视口）
+	// let x = event.clientX;
+	// let y = event.clientY;
+
+	// // 获取 canvas 的位置
+	// let rect = canvas.getBoundingClientRect();
+
+	// // 将鼠标的位置转化为相对于 canvas 的位置
+	// let relativeX = x - rect.left;
+	// let relativeY = y - rect.top;
+
+	// // 设置缩放中心为鼠标当前位置
+	// canvas.style.transformOrigin = `${relativeX}px ${relativeY}px`;
+
+	// if (event.deltaY < 0) {
+	// 	scale += scaleAmount;
+	// } else {
+	// 	scale -= scaleAmount;
+	// }
+	// const determinedScale = scale < 0.2 ? 0.1 : scale;
+	// scale = determinedScale;
+	// canvas.style.transform = "scale(" + determinedScale + ")";
+
+
+	mouseEvent(canvas)
 };
+
+let mouseEvent = function (target) {
+	/**
+	 * 判断传入参数是否是HTML DOM
+	 */
+	let isElement = (obj) => {
+		return typeof HTMLElement === "object" ? obj instanceof HTMLElement : !!(obj && typeof obj === "object" && (obj.nodeType === 1 || obj.nodeType === 9) && typeof obj.nodeName === "string");
+	};
+
+	/**
+	 * 被拖拽物、被缩放元素
+	 */
+	let drawEl = target;
+	/**
+	 * 如果传入参数不是一个HTML DOM，则查找目标元素
+	 */
+	if (!isElement(target)) {
+		drawEl = document.querySelector(target);
+	}
+
+	/**
+	 * 父元素：容器
+	 */
+	const parent = drawEl.parentElement;
+
+	/**
+	 * 获取父元素的大小及其相对于视口的位置。
+	 */
+	const parentRect = parent.getBoundingClientRect();
+
+	/**
+	 * 鼠标相对于目标物缩放点的距离
+	 */
+	let diffX = 0,
+		diffY = 0;
+
+	/**
+	 * 是否正在拖拽
+	 */
+	let isDrawing = false;
+
+	/**
+	 * 鼠标当前相对于父容器的坐标
+	 */
+	let mouseX = 0,
+		mouseY = 0;
+
+	/**
+	 * 偏移坐标，缩放比例
+	 */
+	let translateX = 0,
+		translateY = 0;
+	let scale = 1;
+
+	/**
+	 * 一次缩放的比例
+	 */
+	const diff = 0.01;
+
+	/**
+	 * 滚轮滚动方向是否向上
+	 * 向上,缩小
+	 * 向下，放大
+	 */
+	let isUpward = false;
+
+	/**
+	 * 刷新鼠标距离目标元素缩放点的距离
+	 */
+	let refreshMousePositionDiffValue = () => {
+		diffX = mouseX - translateX;
+		diffY = mouseY - translateY;
+	};
+
+	/**
+	 * 更新样式
+	 */
+	let refreshTargetStyle = () => {
+		drawEl.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+		parent.style.cursor = isDrawing ? "move" : "default";
+	};
+
+	/**
+	 * 鼠标移动事件
+	 */
+	parent.addEventListener("mousemove", (e) => {
+		mouseX = e.x - parentRect.left;
+		mouseY = e.y - parentRect.top;
+
+		if (isDrawing) {
+			translateX = mouseX - diffX;
+			translateY = mouseY - diffY;
+
+			refreshTargetStyle();
+		}
+	});
+
+	/**
+	 * 鼠标按下事件
+	 */
+	parent.addEventListener("mousedown", () => {
+		refreshMousePositionDiffValue();
+		isDrawing = true;
+		refreshTargetStyle();
+	});
+
+	/**
+	 * 鼠标抬起事件
+	 */
+	window.addEventListener("mouseup", () => {
+		isDrawing = false;
+		refreshTargetStyle();
+	});
+
+	/**
+	 * 鼠标滚动事件
+	 */
+
+	let mouseZoom = (e) => {
+		e = e || window.event;
+
+		if (e.wheelDelta) {
+			isUpward = e.wheelDelta > 0;
+		} else if (e.detail) {
+			isUpward = e.detail < 0;
+		}
+
+		let oldWidth = scale * drawEl.clientWidth;
+		let oldHeight = scale * drawEl.clientHeight;
+
+		if (isUpward) {
+			scale += diff;
+		} else if (!isUpward && scale > 0.05) {
+			scale -= diff;
+		}
+
+		let newWidth = scale * drawEl.clientWidth;
+		let newHeight = scale * drawEl.clientHeight;
+
+		//刷新鼠标距离目标元素缩放点坐标
+		refreshMousePositionDiffValue();
+
+		/**
+		 * 重新计算缩放偏移量
+		 */
+		translateX -= (newWidth - oldWidth) * (diffX / oldWidth);
+		translateY -= (newHeight - oldHeight) * (diffY / oldHeight);
+
+		refreshTargetStyle();
+	};
+
+	/**
+	 * 鼠标滚轮兼容
+	 */
+
+	/*IE、Opera注册事件*/
+	// if (document.attachEvent) {
+	// 	parent.attachEvent("onmousewheel", mouseZoom);
+	// }
+	// //Firefox使用addEventListener添加滚轮事件
+	// if (document.addEventListener) {
+	// 	parent.addEventListener("DOMMouseScroll", mouseZoom, false);
+	// }
+	//Safari与Chrome属于同一类型
+	// window.onmousewheel = parent.onmousewheel = mouseZoom;
+
+	/**
+	 * 页面初始化
+	 */
+
+	/**
+	 * 判断缩放元素高度是否高于容器高度
+	 * 如果大于，则缩放值容器高度
+	 */
+	if (drawEl.clientHeight > parent.clientHeight) {
+		scale = 1 - (drawEl.clientHeight - parent.clientHeight) / drawEl.clientHeight;
+	}
+
+	/**
+	 * 让目标元素居中显示
+	 */
+	translateX = (parent.clientWidth - scale * drawEl.clientWidth) / 2;
+	translateY = (parent.clientHeight - scale * drawEl.clientHeight) / 2;
+
+	//设置初始样式
+	drawEl.style.transformOrigin = "0 0";
+
+	/**
+	 * 当目标元素 是img时，需要禁用元素鼠标可拖拽
+	 * div user-drag 默认是none 可以不设置
+	 */
+	drawEl.style.userDrag = "none";
+	drawEl.style.webkitUserDrag = "none";
+
+	//禁用选则，防止拖拽时出现先择元素内部元素的情况
+	drawEl.style.userSelect = "none";
+
+	refreshTargetStyle();
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
 let handleMouseDown = function (event) {
 	isDragging = true;
@@ -711,25 +961,33 @@ function moveElements(dx, dy) {
 	});
 }
 
-
-
-
+let searchNode = null;
+let timeoutId = null;
 function findNodeById(id) {
-	var nodeElement = document.getElementById(id);
-	changeAnimationColor(nodeElement)
-	if (nodeElement) {
-		nodeElement.scrollIntoView({ block: 'center', inline: 'nearest' });
-		nodeElement.classList.add("searched-node");
+	if (searchNode) {
+		searchNode.classList.remove("searched-node");
 	}
-
-	setTimeout(function () {
-		nodeElement.classList.remove("searched-node");
+	// 用心的覆盖原来的
+	searchNode = document.getElementById(id);
+	if (!searchNode) {
+		alert(`请确认是否有ID为【${id}】的节点`);
+		return false;
+	}
+	changeAnimationColor(searchNode);
+	if (searchNode) {
+		searchNode.scrollIntoView({ block: "center", inline: "nearest" });
+		searchNode.classList.add("searched-node");
+	}
+	timeoutId ? clearTimeout(timeoutId) : "";
+	timeoutId = setTimeout(function () {
+		searchNode.classList.remove("searched-node");
 	}, 8000);
 }
 // 计算反差色
 function getContrastColor(element) {
-	let bgColor = getComputedStyle(element).getPropertyValue('background-color');
-	let bdColor = getComputedStyle(element).getPropertyValue('border-color');
+	console.log(element);
+	let bgColor = getComputedStyle(element).getPropertyValue("background-color");
+	let bdColor = getComputedStyle(element).getPropertyValue("border-color");
 	let match = bgColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(,\s*(\d+))?\)/);
 	let match2 = bdColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(,\s*(\d+))?\)/) || match;
 	let [, r1, g1, b1] = match.map(Number);
@@ -755,9 +1013,9 @@ function getContrastColor(element) {
 
 // 根据反差色插入动画
 function changeAnimationColor(element) {
-	let { contrastR, contrastG, contrastB } = getContrastColor(element)
-	let bgColor = getComputedStyle(element).getPropertyValue('background-color');
-	let style = document.createElement('style');
+	let { contrastR, contrastG, contrastB } = getContrastColor(element);
+	let bgColor = getComputedStyle(element).getPropertyValue("background-color");
+	let style = document.createElement("style");
 
 	// 定义动画内容
 	style.innerHTML = `
@@ -779,7 +1037,6 @@ function changeAnimationColor(element) {
     `;
 	document.head.appendChild(style);
 }
-
 
 // 点击节点的公共处理函数
 function nodeClick(id, node) {
