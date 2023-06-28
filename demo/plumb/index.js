@@ -330,7 +330,7 @@ function getConnectionData(connections) {
 }
 
 // 初始化数据的节点
-function initNode(flowchartData) {
+async function initNode(flowchartData) {
 	isReview ? $("#container").addClass("review") : "";
 	// 加载完毕后需要指定canvas宽高
 	let canvas = $("#canvas");
@@ -577,260 +577,141 @@ let box = document.getElementById("selection-box");
 // 开始节点位置
 let start = null;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+let originX = 0;
+let originY = 0;
+let parentWidth = canvas.parentElement.getBoundingClientRect().width;
 
 let handleWheel = function (event) {
-	// event.preventDefault();
-	// let scaleAmount = 0.2;
+    event.preventDefault();
+    let scaleAmount = 0.1;
 
-	// // 获取鼠标当前位置（相对于视口）
-	// let x = event.clientX;
-	// let y = event.clientY;
+    let rect = canvas.getBoundingClientRect();
+    let x = event.clientX - rect.left;  // 鼠标相对于画布的位置
+    let y = event.clientY - rect.top;
 
-	// // 获取 canvas 的位置
-	// let rect = canvas.getBoundingClientRect();
+    // 更新缩放级别
+    if (event.deltaY < 0) {
+        scale += scaleAmount;
+    } else {
+        scale -= scaleAmount;
+        scale = scale < 0.2 ? 0.2 : scale;
+    }
 
-	// // 将鼠标的位置转化为相对于 canvas 的位置
-	// let relativeX = x - rect.left;
-	// let relativeY = y - rect.top;
+    // 计算新的缩放原点，新的原点始终是鼠标的位置
+    if(scale > 0.2){
+        originX = x / rect.width;
+        originY = y / rect.height;
+    }
 
-	// // 设置缩放中心为鼠标当前位置
-	// canvas.style.transformOrigin = `${relativeX}px ${relativeY}px`;
-
-	// if (event.deltaY < 0) {
-	// 	scale += scaleAmount;
-	// } else {
-	// 	scale -= scaleAmount;
-	// }
-	// const determinedScale = scale < 0.2 ? 0.1 : scale;
-	// scale = determinedScale;
-	// canvas.style.transform = "scale(" + determinedScale + ")";
-
-
-	mouseEvent(canvas)
+    // 设置缩放和新的位置
+    canvas.style.zoom = scale;
+    canvas.style.transformOrigin = `${originX * 100}% ${originY * 100}%`;
 };
 
-let mouseEvent = function (target) {
-	/**
-	 * 判断传入参数是否是HTML DOM
-	 */
-	let isElement = (obj) => {
-		return typeof HTMLElement === "object" ? obj instanceof HTMLElement : !!(obj && typeof obj === "object" && (obj.nodeType === 1 || obj.nodeType === 9) && typeof obj.nodeName === "string");
-	};
-
-	/**
-	 * 被拖拽物、被缩放元素
-	 */
-	let drawEl = target;
-	/**
-	 * 如果传入参数不是一个HTML DOM，则查找目标元素
-	 */
-	if (!isElement(target)) {
-		drawEl = document.querySelector(target);
-	}
-
-	/**
-	 * 父元素：容器
-	 */
-	const parent = drawEl.parentElement;
-
-	/**
-	 * 获取父元素的大小及其相对于视口的位置。
-	 */
-	const parentRect = parent.getBoundingClientRect();
-
-	/**
-	 * 鼠标相对于目标物缩放点的距离
-	 */
-	let diffX = 0,
-		diffY = 0;
-
-	/**
-	 * 是否正在拖拽
-	 */
-	let isDrawing = false;
-
-	/**
-	 * 鼠标当前相对于父容器的坐标
-	 */
-	let mouseX = 0,
-		mouseY = 0;
-
-	/**
-	 * 偏移坐标，缩放比例
-	 */
-	let translateX = 0,
-		translateY = 0;
-	let scale = 1;
-
-	/**
-	 * 一次缩放的比例
-	 */
-	const diff = 0.01;
-
-	/**
-	 * 滚轮滚动方向是否向上
-	 * 向上,缩小
-	 * 向下，放大
-	 */
-	let isUpward = false;
-
-	/**
-	 * 刷新鼠标距离目标元素缩放点的距离
-	 */
-	let refreshMousePositionDiffValue = () => {
-		diffX = mouseX - translateX;
-		diffY = mouseY - translateY;
-	};
-
-	/**
-	 * 更新样式
-	 */
-	let refreshTargetStyle = () => {
-		drawEl.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-		parent.style.cursor = isDrawing ? "move" : "default";
-	};
-
-	/**
-	 * 鼠标移动事件
-	 */
-	parent.addEventListener("mousemove", (e) => {
-		mouseX = e.x - parentRect.left;
-		mouseY = e.y - parentRect.top;
-
-		if (isDrawing) {
-			translateX = mouseX - diffX;
-			translateY = mouseY - diffY;
-
-			refreshTargetStyle();
-		}
-	});
-
-	/**
-	 * 鼠标按下事件
-	 */
-	parent.addEventListener("mousedown", () => {
-		refreshMousePositionDiffValue();
-		isDrawing = true;
-		refreshTargetStyle();
-	});
-
-	/**
-	 * 鼠标抬起事件
-	 */
-	window.addEventListener("mouseup", () => {
-		isDrawing = false;
-		refreshTargetStyle();
-	});
-
-	/**
-	 * 鼠标滚动事件
-	 */
-
-	let mouseZoom = (e) => {
-		e = e || window.event;
-
-		if (e.wheelDelta) {
-			isUpward = e.wheelDelta > 0;
-		} else if (e.detail) {
-			isUpward = e.detail < 0;
-		}
-
-		let oldWidth = scale * drawEl.clientWidth;
-		let oldHeight = scale * drawEl.clientHeight;
-
-		if (isUpward) {
-			scale += diff;
-		} else if (!isUpward && scale > 0.05) {
-			scale -= diff;
-		}
-
-		let newWidth = scale * drawEl.clientWidth;
-		let newHeight = scale * drawEl.clientHeight;
-
-		//刷新鼠标距离目标元素缩放点坐标
-		refreshMousePositionDiffValue();
-
-		/**
-		 * 重新计算缩放偏移量
-		 */
-		translateX -= (newWidth - oldWidth) * (diffX / oldWidth);
-		translateY -= (newHeight - oldHeight) * (diffY / oldHeight);
-
-		refreshTargetStyle();
-	};
-
-	/**
-	 * 鼠标滚轮兼容
-	 */
-
-	/*IE、Opera注册事件*/
-	// if (document.attachEvent) {
-	// 	parent.attachEvent("onmousewheel", mouseZoom);
-	// }
-	// //Firefox使用addEventListener添加滚轮事件
-	// if (document.addEventListener) {
-	// 	parent.addEventListener("DOMMouseScroll", mouseZoom, false);
-	// }
-	//Safari与Chrome属于同一类型
-	// window.onmousewheel = parent.onmousewheel = mouseZoom;
-
-	/**
-	 * 页面初始化
-	 */
-
-	/**
-	 * 判断缩放元素高度是否高于容器高度
-	 * 如果大于，则缩放值容器高度
-	 */
-	if (drawEl.clientHeight > parent.clientHeight) {
-		scale = 1 - (drawEl.clientHeight - parent.clientHeight) / drawEl.clientHeight;
-	}
-
-	/**
-	 * 让目标元素居中显示
-	 */
-	translateX = (parent.clientWidth - scale * drawEl.clientWidth) / 2;
-	translateY = (parent.clientHeight - scale * drawEl.clientHeight) / 2;
-
-	//设置初始样式
-	drawEl.style.transformOrigin = "0 0";
-
-	/**
-	 * 当目标元素 是img时，需要禁用元素鼠标可拖拽
-	 * div user-drag 默认是none 可以不设置
-	 */
-	drawEl.style.userDrag = "none";
-	drawEl.style.webkitUserDrag = "none";
-
-	//禁用选则，防止拖拽时出现先择元素内部元素的情况
-	drawEl.style.userSelect = "none";
-
-	refreshTargetStyle();
-};
-
-
-
-
-
-
-
-
-
-
-
+// let mouseEvent = function (target) {
+// 	// 检查传入参数是否是一个 HTML DOM 元素
+// 	let isElement = (obj) => {
+// 	  return typeof HTMLElement === "object" ? obj instanceof HTMLElement : !!(obj && typeof obj === "object" && (obj.nodeType === 1 || obj.nodeType === 9) && typeof obj.nodeName === "string");
+// 	};
+  
+// 	let drawEl = target;
+// 	if (!isElement(target)) {
+// 	  drawEl = document.querySelector(target);
+// 	}
+  
+// 	const parent = drawEl.parentElement;
+// 	const parentRect = parent.getBoundingClientRect();
+  
+// 	let diffX = 0,
+// 		diffY = 0;
+  
+// 	let isDrawing = false;
+  
+// 	let mouseX = 0,
+// 		mouseY = 0;
+  
+// 	let translateX = 0,
+// 		translateY = 0;
+// 	let scale = 1;
+  
+// 	const diff = 0.01;
+  
+// 	let isUpward = false;
+  
+// 	// 刷新鼠标相对于目标元素缩放点的距离
+// 	let refreshMousePositionDiffValue = () => {
+// 	  diffX = mouseX - translateX;
+// 	  diffY = mouseY - translateY;
+// 	};
+  
+// 	// 刷新目标元素的样式
+// 	let refreshTargetStyle = () => {
+// 	  drawEl.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+// 	  parent.style.cursor = isDrawing ? "move" : "default";
+// 	};
+  
+// 	// 鼠标移动事件
+// 	parent.addEventListener("mousemove", (e) => {
+// 	  mouseX = e.x - parentRect.left;
+// 	  mouseY = e.y - parentRect.top;
+  
+// 	  if (isDrawing) {
+// 		translateX = mouseX - diffX;
+// 		translateY = mouseY - diffY;
+  
+// 		refreshTargetStyle();
+// 	  }
+// 	});
+  
+// 	parent.addEventListener("mousedown", () => {
+// 	  refreshMousePositionDiffValue();
+// 	  isDrawing = true;
+// 	  refreshTargetStyle();
+// 	});
+  
+// 	window.addEventListener("mouseup", () => {
+// 	  isDrawing = false;
+// 	  refreshTargetStyle();
+// 	});
+  
+// 	let mouseZoom = (e) => {
+// 	  e = e || window.event;
+  
+// 	  if (e.wheelDelta) {
+// 		isUpward = e.wheelDelta > 0;
+// 	  } else if (e.detail) {
+// 		isUpward = e.detail < 0;
+// 	  }
+  
+// 	  let oldWidth = scale * drawEl.clientWidth;
+// 	  let oldHeight = scale * drawEl.clientHeight;
+  
+// 	  if (isUpward) {
+// 		scale += diff;
+// 	  } else if (!isUpward && scale > 0.05) {
+// 		scale -= diff;
+// 	  }
+  
+// 	  let newWidth = scale * drawEl.clientWidth;
+// 	  let newHeight = scale * drawEl.clientHeight;
+  
+// 	  refreshMousePositionDiffValue();
+  
+// 	  translateX -= (newWidth - oldWidth) * (diffX / oldWidth);
+// 	  translateY -= (newHeight - oldHeight) * (diffY / oldHeight);
+  
+// 	  refreshTargetStyle();
+// 	};
+  
+// 	// 添加鼠标滚轮事件监听
+// 	parent.addEventListener("wheel", mouseZoom);
+  
+// 	// 添加 Firefox 的鼠标滚轮事件监听
+// 	if (document.addEventListener) {
+// 	  parent.addEventListener("DOMMouseScroll", mouseZoom, false);
+// 	}
+  
+	// 如果目标元素的高度超过父容器的高度，计算初始
 
 
 let handleMouseDown = function (event) {
@@ -841,8 +722,9 @@ let handleMouseDown = function (event) {
 
 let handleMouseMove = function (event) {
 	if (isDragging) {
-		let dx = event.clientX - previousMousePosition.x;
-		let dy = event.clientY - previousMousePosition.y;
+		// zoom会影响元素大小，所以需要根据比例调整移动距离
+		let dx = (event.clientX - previousMousePosition.x) * (1/scale);
+		let dy = (event.clientY - previousMousePosition.y) * (1/scale);
 
 		let currentTop = parseInt(canvas.style.top || "0");
 		let currentLeft = parseInt(canvas.style.left || "0");
