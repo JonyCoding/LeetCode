@@ -1,0 +1,14 @@
+-var time=new Date().getTime();
+doctype html
+html(lang="zh-CN")
+  block head
+    include ./head.jade
+    block style
+  block body
+    body(id="#{body_id}")
+      .main#app
+          h-header(path="#{path}")
+          block main
+          div
+            h-footer
+      block script

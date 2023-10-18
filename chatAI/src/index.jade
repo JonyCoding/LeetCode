@@ -1,0 +1,85 @@
+extends ./index_tp.jade
+prepend head
+  - var title = "化物所首页";
+prepend body
+  - var body_id = "index";
+  - var path = "index";
+block main
+    template.
+        <div class="body">
+            <div class="index-page">
+              <div class="index-header">
+                <div class="header-container">
+                  <h3>找AI问答，上chat</h3>
+                  <el-input placeholder="请输入内容" value="">
+                    <div slot="prepend">
+                      <i class="el-icon-search"></i>
+                    </div>
+                    <el-button slot="append">发现一下</el-button>
+                  </el-input>
+                  <div class="hot-search">
+                    <h5>热门搜索</h5>
+                    <ul>
+                      <li>双一流 </li>
+                      <li>学科专业目录 </li>
+                      <li>学科评估 </li>
+                      <li>本科专业目录</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="layout page-index-container">
+                <div class="news-list">
+                  <ul>
+                    <li>
+                      <div class="text">
+                        <h4>教育部任命！吴正国任江南大学党委书记</h4>
+                        <div class="time">
+                          <span>教育部、江南大学</span>
+                          <span>10-16 16:23</span>
+                        </div>
+                      </div>
+                      <div class="news-image">
+                        <img src="./img/news-item.jpg" alt="">
+                        <span>能源</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="text">
+                        <h4>教育部任命！吴正国任江南大学党委书记</h4>
+                        <div class="time">
+                          <span>教育部、江南大学</span>
+                          <span>10-16 16:23</span>
+                        </div>
+                      </div>
+                      <div class="news-image">
+                        <img src="./img/news-item.jpg" alt="">
+                        <span>能源</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="text">
+                        <h4>教育部任命！吴正国任江南大学党委书记</h4>
+                        <div class="time">
+                          <span>教育部、江南大学</span>
+                          <span>10-16 16:23</span>
+                        </div>
+                      </div>
+                      <div class="news-image">
+                        <img src="./img/news-item.jpg" alt="">
+                        <span>能源</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="index-data">
+                  <div class="container-title">
+                    <h3>数据</h3>
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNCIgdmlld0JveD0iMCAwIDQ4IDQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzNCNThGRSIvPgo8cmVjdCB4PSI0MCIgd2lkdGg9IjgiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiMzQjU4RkUiLz4KPC9zdmc+Cg==" alt=""/>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+block script
+  script(src="./js/index.js?v=#{time}")

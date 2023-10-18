@@ -1,0 +1,98 @@
+.red {
+	background-color: red !important;
+	opacity: 0.5;
+}
+
+.no_ml {
+	margin-left: 0 !important;
+}
+
+.no_mr {
+	margin-right: 0 !important;
+}
+
+.no_pl {
+	padding-left: 0 !important;
+}
+
+.no_pr {
+	padding-right: 0 !important;
+}
+.clear {
+	&:after {
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+
+.vleft {
+	vertical-align: top;
+	float: left;
+}
+
+.vright {
+	vertical-align: top;
+	float: right;
+}
+
+.bg_jpg_m(@name) {
+	background-image: url("../img/@{name}.jpg");
+}
+
+.bg_png_m(@name) {
+	background-image: url("../img/@{name}.png");
+}
+
+.before-icon(@url,@size) {
+	position: relative;
+	line-height: @size;
+	&:before {
+		content: " ";
+		display: inline-block;
+		height: @size;
+		width: @size;
+		margin-right: 5px;
+		background: url(@url) no-repeat center;
+		background-size: @size;
+		vertical-align: top;
+	}
+}
+.before-text-icon(@icon,@size) {
+	position: relative;
+	line-height: @size;
+	&:before {
+		content: @icon;
+		display: inline-block;
+		font-size: @size;
+		height: @size;
+		width: @size;
+		vertical-align: top;
+		font-family: bootstrap-icons !important;
+	}
+}
+.max-text-line(@maxLine) {
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: @maxLine;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+.container-center() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+@ft3: #333333;
+@ft6: #666666;
+@ft9: #999999;
+@bd: #dedede;
+@bg: #f8f8f8;
+/**/
+
+.h4, .h5, .h6, h4, h5, h6{
+	margin: 0;
+}

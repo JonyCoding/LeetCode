@@ -710,8 +710,25 @@ let handleWheel = function (event) {
 // 	if (document.addEventListener) {
 // 	  parent.addEventListener("DOMMouseScroll", mouseZoom, false);
 // 	}
-  
-	// 如果目标元素的高度超过父容器的高度，计算初始
+// if (drawEl.clientHeight > parent.clientHeight) {
+// 	scale = 1 - (drawEl.clientHeight - parent.clientHeight) / drawEl.clientHeight;
+// }
+
+// translateX = (parent.clientWidth - scale * drawEl.clientWidth) / 2;
+// translateY = (parent.clientHeight - scale * drawEl.clientHeight) / 2;
+
+// //设置初始样式
+// drawEl.style.transformOrigin = "0 0";
+
+// 
+// drawEl.style.userDrag = "none";
+// drawEl.style.webkitUserDrag = "none";
+
+// //禁用选则，防止拖拽时出现先择元素内部元素的情况
+// drawEl.style.userSelect = "none";
+
+// refreshTargetStyle();
+// }
 
 
 let handleMouseDown = function (event) {
