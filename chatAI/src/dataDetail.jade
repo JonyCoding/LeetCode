@@ -1,0 +1,81 @@
+extends ./index_tp.jade
+prepend head
+  - var title = "化物所首页";
+prepend body
+  - var body_id = "index";
+  - var path = "data";
+block main
+    template.
+        <div class="body">
+            <div class="data-detail-page">
+              <div class="index-header">
+                <div class="header-container">
+                  <h3>找AI问答，上chat</h3>
+                  <el-input placeholder="请输入内容" value="">
+                    <div slot="prepend">
+                      <i class="el-icon-search"></i>
+                    </div>
+                    <el-button slot="append">发现一下</el-button>
+                  </el-input>
+                  <div class="hot-search">
+                    <h5>热门搜索</h5>
+                    <ul>
+                      <li>双一流 </li>
+                      <li>学科专业目录 </li>
+                      <li>学科评估 </li>
+                      <li>本科专业目录</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            <div class="layout page-data-container">
+                <div class="breadcrumb"><a href="/data" class="nuxt-link-active">数据</a> <span>&gt;</span> <a href="/data#80"
+                      class="">科研项目</a> <span>&gt;</span>
+                  高校思想政治理论课教师研究专项一般项目
+              </div>
+              <div class="main-container">
+
+                <div class="main-box">
+                    
+                </div>
+                <div class="data-main">
+                    <div class="top-controll">
+                        <div  class="table-title">
+                            <div ><span  class="title">高校思想政治理论课教师研究专项一般项目</span></div>
+                            <div  class="download">
+                                数据下载
+                            </div>
+                        </div>
+                    </div>
+                    <el-table :data="tableData" border="true" stripe style="width: 100%">
+                        <el-table-column header-align="center" align="center" prop="country" label="国家" width="180" fixed>
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="year" label="年度" width="180" fixed>
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="agriculture" label="农业" width="180">
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="industry" label="工业" width="180">
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="transportation" label="交通运输" width="180">
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="aviationAndShipping" label="航空和海运" width="180">
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="landUseAndForestry" label="土地利用变化和林业" width="180">
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="waste" label="废弃物" width="180">
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="manufacturingAndConstruction" label="制造业和建筑业" width="180">
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="energy" label="能源" width="180">
+                        </el-table-column>
+                        <el-table-column header-align="center" align="center" prop="consumables" label="耗材" width="180">
+                        </el-table-column>
+                    </el-table>
+
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+block script
+  script(src="./js/dataDetail.js?v=#{time}")

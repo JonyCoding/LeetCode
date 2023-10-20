@@ -1,0 +1,116 @@
+extends ./index_tp.jade
+prepend head
+  - var title = "化物所首页";
+prepend body
+  - var body_id = "chat";
+  - var path = "chat";
+block main
+    template.
+        <div class="body">
+            <div class="chat-page">
+              <div class="layout ai-container">
+                <div class="slide-bar">
+                    <div class="ai-logo">
+                        <img src="./img/ai-logo.webp" alt="">
+                    </div>
+                    <div class="chat-list">
+                        <div class="list-header-wrap">
+                            <i class="el-icon-message"></i>
+                            <div class="title">对话列表</div>
+                        </div>
+                        <ul>
+                            <li>
+                                <span>默</span>
+                                <div class="chatinfo">
+                                    <div class="title">默认对话</div>
+                                    <div class="time">10-20 13:24</div>
+                                </div>
+                            </li>
+                            <li>
+                                <span>默</span>
+                                <div class="chatinfo">
+                                    <div class="title">帮小灰灰给红太狼写一封感恩母爱的信</div>
+                                    <div class="time">10-20 13:24</div>
+                                </div>
+                            </li>
+                            <li>
+                                <span>默</span>
+                                <div class="chatinfo">
+                                    <div class="title">写一个口语化的AI短视频脚本</div>
+                                    <div class="time">10-20 13:24</div>
+                                </div>
+                            </li>
+                            <li>
+                                <span>默</span>
+                                <div class="chatinfo">
+                                    <div class="title">遇到火灾，是救自己的狗还是陌生的小孩</div>
+                                    <div class="time">10-20 13:24</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="message-container">
+                        <div class="message-list">
+                            <div class="message hello-container">
+                                <h1>Hi， 你好</h1>
+                                <p>我是你的专属AI伙伴，可以与你语音对话，点击个人中心立即开启</p>
+                                <p>你可以试着问我： </p>
+                                <div class="recommend-list">
+                                    <ul>
+                                        <li>
+                                            <p>“AI伙伴可以做什么？”</p>
+                                            <a href="">去试试</a>
+                                        </li>
+                                        <li>
+                                            <p>“帮小灰灰给红太狼写一封感恩母爱的信”</p>
+                                            <a href="">去试试</a>
+                                        </li>
+                                        <li>
+                                            <p>遇到火灾，是救自己的狗还是陌生的小孩</p>
+                                            <a href="">去试试</a>
+                                        </li>
+                                        <li>
+                                            <p>母胎单身26年该如何找对象</p>
+                                            <a href="">去试试</a>
+                                        </li>
+                                        <li>
+                                            <p>写一个口语化的AI短视频脚本</p>
+                                            <a href="">去试试</a>
+                                        </li>
+                                        <li>
+                                            <p>“AI伙伴可以做什么？”</p>
+                                            <a href="">去试试</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="chat-position-question">
+                                <div class="chat-message question">
+                                    <p>遇到火灾，是救自己的狗还是陌生的小孩</p>
+                                </div>
+
+                            </div>
+                            <div class="chat-position-answer">
+                                <div class="chat-message answer">
+                                    <p>在遇到火灾时，首先要确保自己的安全。在确保自身安全的情况下，如果火势较小，可以尝试救出自己的狗，但要小心谨慎，不要冒险行事。
+            
+                                        如果火势较大或存在危险，应该优先考虑陌生人的安全。如果有人受伤或需要帮助，应该立即拨打急救电话或向其他人寻求帮助。同时，也可以向当地的消防部门或相关机构求助。
+                                        
+                                        无论选择救狗还是陌生人的孩子，都要保持冷静和理智。不要冒险行事或做出错误的决定。在紧急情况下，与他人合作、分享信息和资源是至关重要的。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-input">
+                            <div class="text-input-right" style="padding-left:27px;">
+                                <textarea class="text-input-textarea_2VhUr" type="text" placeholder="你可以问我任何问题" maxlength="1000" spellcheck="false"
+                                    autocapitalize="none" autocomplete="off" autocorrect="off"></textarea>
+                                <i class="el-icon-caret-top"></i>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+block script
+  script(src="./js/chat.js?v=#{time}")

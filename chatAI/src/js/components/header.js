@@ -1,7 +1,7 @@
 Vue.component("h-header", {
 	data: function () {
 		return {
-			isSelect: "newsPolicy",
+			isSelect: "index",
 			menuList: [
 				{
 					title: "首页",
@@ -9,11 +9,11 @@ Vue.component("h-header", {
 				},
 				{
 					title: "数据",
-					pageURL: "energy-knowledge.html",
+					pageURL: "data.html",
 				},
 				{
 					title: "产品",
-					pageURL: "energy-knowledge.html",
+					pageURL: "chat.html",
 				}
 			],
 		};
