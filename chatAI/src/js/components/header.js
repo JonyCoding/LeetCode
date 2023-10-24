@@ -3,18 +3,18 @@ Vue.component("h-header", {
 		return {
 			isSelect: "index",
 			menuList: [
-				{
-					title: "首页",
-					pageURL: "index.html",
-				},
-				{
-					title: "数据",
-					pageURL: "data.html",
-				},
-				{
-					title: "产品",
-					pageURL: "chat.html",
-				}
+				// {
+				// 	title: "首页",
+				// 	pageURL: "index.html",
+				// },
+				// {
+				// 	title: "数据",
+				// 	pageURL: "data.html",
+				// },
+				// {
+				// 	title: "产品",
+				// 	pageURL: "chat.html",
+				// }
 			],
 		};
 	},
