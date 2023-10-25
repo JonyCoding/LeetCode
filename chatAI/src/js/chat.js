@@ -372,6 +372,139 @@ let vm = new Vue({
 					],
 				},
 			],
+			patentMessage: [
+				{
+					id: 1000001,
+					type: "question",
+					message: "锂离子电池四大关键材料是什么",
+					status: "default",
+					isSelect: false,
+					time: "10-20 13:24",
+					source: [
+						{
+							id: 20001,
+							title: "知乎",
+							url: "www.zhihu.com",
+						},
+					],
+				},
+				{
+					id: 1000002,
+					type: "answer",
+					message: "为您找到十条最相关的记录，请查看：",
+					status: "default",
+					isSelect: false,
+					time: "10-20 13:24",
+					source: [
+						{
+							id: 20001,
+							title: "知乎",
+							url: "www.zhihu.com",
+						},
+						{
+							id: 20001,
+							title: "百度",
+							url: "www.baidu.com",
+						},
+					],
+					table: {
+						column: [
+							{
+								label: "标题",
+								key: "title",
+							},
+							{
+								label: "专利号",
+								key: "patentNo",
+							},
+							{
+								label: "相关关联度",
+								key: "relevancy",
+							},
+							{
+								label: "公开(公告)日标题",
+								key: "date",
+							},
+							{
+								label: "汇报人",
+								key: "user",
+							},
+						],
+						data: [
+							{
+								title: "Title 1",
+								patentNo: "PN001",
+								relevancy: "RelevancyRelevancyRelevancyRelevancyRelevancyRelevancy 1",
+								date: "2023-01-01",
+								user: "User 1",
+							},
+							{
+								title: "Title 2",
+								patentNo: "PN002",
+								relevancy: "Relevancy 2",
+								date: "2023-01-02",
+								user: "User 2",
+							},
+							{
+								title: "Title 3",
+								patentNo: "PN003",
+								relevancy: "Relevancy 3",
+								date: "2023-01-03",
+								user: "User 3",
+							},
+							{
+								title: "Title 4",
+								patentNo: "PN004",
+								relevancy: "Relevancy 4",
+								date: "2023-01-04",
+								user: "User 4",
+							},
+							{
+								title: "Title 5",
+								patentNo: "PN005",
+								relevancy: "Relevancy 5",
+								date: "2023-01-05",
+								user: "User 5",
+							},
+							{
+								title: "Title 6",
+								patentNo: "PN006",
+								relevancy: "Relevancy 6",
+								date: "2023-01-06",
+								user: "User 6",
+							},
+							{
+								title: "Title 7",
+								patentNo: "PN007",
+								relevancy: "Relevancy 7",
+								date: "2023-01-07",
+								user: "User 7",
+							},
+							{
+								title: "Title 8",
+								patentNo: "PN008",
+								relevancy: "Relevancy 8",
+								date: "2023-01-08",
+								user: "User 8",
+							},
+							{
+								title: "Title 9",
+								patentNo: "PN009",
+								relevancy: "Relevancy 9",
+								date: "2023-01-09",
+								user: "User 9",
+							},
+							{
+								title: "Title 10",
+								patentNo: "PN010",
+								relevancy: "Relevancy 10",
+								date: "2023-01-10",
+								user: "User 10",
+							},
+						],
+					},
+				},
+			],
 			messageList: [],
 			recommendList: [
 				{
@@ -399,9 +532,81 @@ let vm = new Vue({
 					message: "现在商业化应用最广的储能技术是哪个？",
 				},
 			],
+			tableData: [
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+				{
+					year: "一种气燃料汽车",
+					country: "CN210212031U",
+					agriculture: "95%",
+					industry: "2023/10/25",
+					transportation: "王某某",
+				},
+			],
 			nextId: "",
 			loading: false,
-			activeName: "second",
+			activeName: "first",
 		};
 	},
 	mounted() {
@@ -409,7 +614,7 @@ let vm = new Vue({
 			if (this.$refs.messageContainer) {
 				vm.$refs.messageContainer.scrollTop = vm.$refs.messageContainer.scrollHeight;
 			}
-			vm.messageList = vm.historyMessage;
+			vm.messageList = vm.patentMessage;
 		});
 	},
 	methods: {

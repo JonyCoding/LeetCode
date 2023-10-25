@@ -781,6 +781,9 @@ html {
 					z-index: 1;
 					background-color: aliceblue;
 				}
+				.chat-position-answer{
+					width: max-content;
+				}
 			}
 			.hello-container {
 				padding: 13px 19px;
@@ -956,6 +959,129 @@ html {
 				&:hover {
 					.content-wrapper {
 						display: block;
+					}
+				}
+
+				.table-container {
+					width: 100%;
+					background-color: #fff;
+					background: #fff;
+					border-radius: 20px;
+					border-radius: 20px;
+					-webkit-box-sizing: border-box;
+					box-sizing: border-box;
+					display: -webkit-box;
+					display: -webkit-flex;
+					display: flex;
+					-webkit-box-orient: vertical;
+					-webkit-box-direction: normal;
+					-webkit-flex-direction: column;
+					flex-direction: column;
+					height: 100%;
+					position: relative;
+					padding: 0px 22px 0px;
+					.icon-wrapper {
+						font-weight: 500;
+						display: flex;
+						-webkit-box-pack: center;
+						-webkit-justify-content: center;
+						justify-content: center;
+						-webkit-box-align: center;
+						-webkit-align-items: center;
+						align-items: center;
+						width: 48px;
+						height: 48px;
+						border-radius: 50%;
+						position: absolute;
+						top: -25px;
+						left: 25px;
+						background-color: #fff;
+						transition: all 0.3s;
+						span {
+							font-family: PingFangSC-Semibold;
+							font-weight: 500;
+							font-size: 19px;
+							display: block;
+							width: 40px;
+							height: 40px;
+							border-radius: 50%;
+							background-color: #5240ff;
+							text-align: center;
+							line-height: 40px;
+							color: white;
+						}
+					}
+					.title {
+						h2 {
+							padding-right: 15px;
+							font-size: 16px;
+							font-weight: 600;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: normal;
+							-webkit-line-clamp: 1;
+						}
+					}
+					.info {
+						border-bottom: 1px solid #edeef0;
+						padding-bottom: 16px;
+						margin-top: 10px;
+						.patent-number {
+							font-size: 12px;
+						}
+						p {
+							font-family: PingFangSC-Regular;
+							color: #848691;
+							line-height: 21px;
+							font-size: 14px;
+							color: #666;
+							margin: 5px 0;
+							span {
+								font-size: 12px;
+								font-weight: 600;
+								color: #333;
+							}
+						}
+					}
+					.bottom {
+						a {
+							display: flex;
+							justify-content: end;
+							align-items: center;
+							padding: 8px 0 12px;
+
+							&:hover {
+								h3 {
+									color: #5240ff;
+								}
+								svg {
+									width: 18px;
+									height: 18px;
+									color: red;
+									path {
+										fill: #5747ff;
+									}
+								}
+							}
+							h3 {
+								color: #333;
+								font-size: 14px;
+								font-weight: 600;
+								display: -webkit-box;
+								-webkit-box-orient: vertical;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								white-space: normal;
+								-webkit-line-clamp: 1;
+								margin-right: 10px;
+							}
+							svg {
+								width: 18px;
+								height: 18px;
+							}
+						}
 					}
 				}
 
@@ -1256,139 +1382,6 @@ html {
 			&:after {
 				content: "";
 				width: 30%;
-			}
-			li {
-				width: 48%;
-				background-color: #fff;
-				background: #fff;
-				border-radius: 20px;
-				border-radius: 20px;
-				-webkit-box-sizing: border-box;
-				box-sizing: border-box;
-				display: -webkit-box;
-				display: -webkit-flex;
-				display: flex;
-				-webkit-box-orient: vertical;
-				-webkit-box-direction: normal;
-				-webkit-flex-direction: column;
-				flex-direction: column;
-				height: 100%;
-				position: relative;
-				padding: 33px 22px 0px;
-				margin-top: 10px;
-				margin-bottom: 30px;
-				.icon-wrapper {
-					font-weight: 500;
-					display: flex;
-					-webkit-box-pack: center;
-					-webkit-justify-content: center;
-					justify-content: center;
-					-webkit-box-align: center;
-					-webkit-align-items: center;
-					align-items: center;
-					width: 48px;
-					height: 48px;
-					border-radius: 50%;
-					position: absolute;
-					top: -25px;
-					left: 25px;
-					background-color: #fff;
-					transition: all .3s;
-					span {
-						font-family: PingFangSC-Semibold;
-						font-weight: 500;
-						font-size: 19px;
-						display: block;
-						width: 40px;
-						height: 40px;
-						border-radius: 50%;
-						background-color: #5240ff;
-						text-align: center;
-						line-height: 40px;
-						color: white;
-					}
-				}
-				.title {
-					h2 {
-						padding-right: 15px;
-						font-size: 16px;
-						font-weight: 600;
-						display: -webkit-box;
-						-webkit-box-orient: vertical;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						white-space: normal;
-						-webkit-line-clamp: 1;
-					}
-				}
-				.info {
-					border-bottom: 1px solid #edeef0;
-					padding-bottom: 16px;
-					.patent-number{
-						font-size: 12px;
-					}
-					p {
-						font-family: PingFangSC-Regular;
-						color: #848691;
-						line-height: 21px;
-						font-size: 14px;
-						color: #666;
-						margin: 5px 0;
-						span {
-							font-size: 12px;
-							font-weight: 600;
-							color: #333;
-						}
-					}
-				}
-				.bottom {
-					a {
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-						padding: 8px 0 12px;
-						h3 {
-							color: #333;
-							font-size: 14px;
-							font-weight: 600;
-							display: -webkit-box;
-							-webkit-box-orient: vertical;
-							overflow: hidden;
-							text-overflow: ellipsis;
-							white-space: normal;
-							-webkit-line-clamp: 1;
-						}
-						svg {
-							width: 18px;
-							height: 18px;
-						}
-					}
-				}
-				&:hover {
-					cursor: pointer;
-					box-shadow: 0 10px 24px 0 rgba(179, 178, 255, 0.24);
-					transition: box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;
-					.icon-wrapper{
-						transform: scale(1.2);
-						top: -22px;
-						left: 35px;
-					}
-					.bottom {
-						a {
-							h3 {
-								color: #5240ff;
-							}
-							svg {
-								width: 18px;
-								height: 18px;
-								color: red;
-								path {
-									fill: #5747ff;
-								}
-							}
-						}
-					}
-				}
 			}
 		}
 	}

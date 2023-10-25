@@ -68,6 +68,22 @@ block main
                                                             </i>
                                                         </div>
                                                         <p v-html="item.message"></p>
+                                                        <div class="table-container" v-if="item.table&&item.table.column">
+                                                            <div class="info"> 
+                                                                <el-table :data="item.table.data" border="true" stripe>
+                                                                    <el-table-column v-for="columnItem in item.table.column" header-align="center" align="center" :prop="columnItem.key" :label="columnItem.label" width="140">
+                                                                    </el-table-column>
+                                                                </el-table>
+                                                            </div>
+                                                            <div class="bottom">
+                                                                <a href="#">
+                                                                    <h3>查看更多</h3>
+                                                                    <i>
+                                                                        <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(5.988022, 7.575341)" fill="#1F1F1F" fill-rule="nonzero"> <path id="形状结合" d="M24.404979,7.81597009e-14 L43.1949486,18.2186954 C43.9766061,18.976588 44.0025639,20.2099866 43.2829126,20.9997771 L43.1630887,21.1206604 L24.3731191,38.5554968 L21.6524036,35.6233121 L36.759,21.604 L0.00546200221,21.6545661 L-4.03588274e-12,17.6545699 L36.814,17.604 L21.6205438,2.87174526 L24.404979,7.81597009e-14 Z"></path> </g> </g> </svg>
+                                                                    </i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <div v-if="item.source&&item.source.length > 0" class="source">
                                                             <span>参考：</span>
                                                             <ul>
@@ -94,79 +110,6 @@ block main
                                         </div>
                                     </el-tab-pane>
                                     <el-tab-pane label="专利检索" name="second">
-                                        <div class="patent-list">
-                                            <ul>
-                                                <li>
-                                                    <div class="icon-wrapper">
-                                                        <span>国</span>
-                                                    </div>
-                                                    <div class="title">
-                                                        <h2>国画大师</h2>
-                                                        <i></i>
-                                                    </div>
-                                                    <div class="info">
-                                                        <p class="patent-number">CN210212031U</p>
-                                                        <p><span>相似关联度：</span>94.55%</p>
-                                                        <p><span>公开（公告）日：</span>2020-03-31</p>
-                                                        <p><span>标准化申请人：</span>[王登详]</p>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <a href="#">
-                                                            <h3>10人看过</h3>
-                                                            <i>
-                                                                <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(5.988022, 7.575341)" fill="#1F1F1F" fill-rule="nonzero"> <path id="形状结合" d="M24.404979,7.81597009e-14 L43.1949486,18.2186954 C43.9766061,18.976588 44.0025639,20.2099866 43.2829126,20.9997771 L43.1630887,21.1206604 L24.3731191,38.5554968 L21.6524036,35.6233121 L36.759,21.604 L0.00546200221,21.6545661 L-4.03588274e-12,17.6545699 L36.814,17.604 L21.6205438,2.87174526 L24.404979,7.81597009e-14 Z"></path> </g> </g> </svg>
-                                                            </i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="icon-wrapper">
-                                                        <span>国</span>
-                                                    </div>
-                                                    <div class="title">
-                                                        <h2>国画大师</h2>
-                                                        <i></i>
-                                                    </div>
-                                                    <div class="info">
-                                                        <p class="patent-number">CN210212031U</p>
-                                                        <p><span>相似关联度：</span>94.55%</p>
-                                                        <p><span>公开（公告）日：</span>2020-03-31</p>
-                                                        <p><span>标准化申请人：</span>[王登详]</p>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <a href="#">
-                                                            <h3>10人看过</h3>
-                                                            <i>
-                                                                <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(5.988022, 7.575341)" fill="#1F1F1F" fill-rule="nonzero"> <path id="形状结合" d="M24.404979,7.81597009e-14 L43.1949486,18.2186954 C43.9766061,18.976588 44.0025639,20.2099866 43.2829126,20.9997771 L43.1630887,21.1206604 L24.3731191,38.5554968 L21.6524036,35.6233121 L36.759,21.604 L0.00546200221,21.6545661 L-4.03588274e-12,17.6545699 L36.814,17.604 L21.6205438,2.87174526 L24.404979,7.81597009e-14 Z"></path> </g> </g> </svg>
-                                                            </i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="icon-wrapper">
-                                                        <span>国</span>
-                                                    </div>
-                                                    <div class="title">
-                                                        <h2>国画大师</h2>
-                                                        <i></i>
-                                                    </div>
-                                                    <div class="info">
-                                                        <p class="patent-number">CN210212031U</p>
-                                                        <p><span>相似关联度：</span>94.55%</p>
-                                                        <p><span>公开（公告）日：</span>2020-03-31</p>
-                                                        <p><span>标准化申请人：</span>[王登详]</p>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <a href="#">
-                                                            <h3>10人看过</h3>
-                                                            <i>
-                                                                <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(5.988022, 7.575341)" fill="#1F1F1F" fill-rule="nonzero"> <path id="形状结合" d="M24.404979,7.81597009e-14 L43.1949486,18.2186954 C43.9766061,18.976588 44.0025639,20.2099866 43.2829126,20.9997771 L43.1630887,21.1206604 L24.3731191,38.5554968 L21.6524036,35.6233121 L36.759,21.604 L0.00546200221,21.6545661 L-4.03588274e-12,17.6545699 L36.814,17.604 L21.6205438,2.87174526 L24.404979,7.81597009e-14 Z"></path> </g> </g> </svg>
-                                                            </i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </el-tab-pane>
                                     <el-tab-pane label="数据检索" name="third">数据检索</el-tab-pane>
                                 </el-tabs>
