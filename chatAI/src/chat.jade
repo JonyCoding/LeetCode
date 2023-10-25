@@ -19,10 +19,10 @@ block main
                             <div class="title">对话列表</div>
                         </div>
                         <ul>
-                            <li v-for="(item,index) in historyMessage" :key="item.id + index" :class="item.isSelect?'history-select':''" @click="changeHistory(item.id)">
-                                <span>{{item.title[0]}}</span>
+                            <li v-for="(item,index) in historyMessage.filter(item=>item.type === 'question')" :key="item.id + index" :class="item.isSelect?'history-select':''" @click="changeHistory(item.id)">
+                                <span>{{item.message[0]}}</span>
                                 <div class="chatinfo">
-                                    <div class="title">{{item.title}}</div>
+                                    <div class="title">{{item.message}}</div>
                                     <div class="time">{{item.time}}</div>
                                 </div>
                             </li>
@@ -46,7 +46,7 @@ block main
                                     </div>
                                 </div>
                                 <template  v-for="(item,index) in messageList">
-                                    <div class="chat-position-question" :key="item.id+index" v-if="item.type === 'question'">
+                                    <div :id="'message-'+item.id" class="chat-position-question" :key="item.id+index" v-if="item.type === 'question'">
                                         <div class="chat-message question">
                                             <p v-html="item.message"></p>
                                         </div>

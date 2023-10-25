@@ -1925,7 +1925,7 @@
 .index-footer {
   width: 100%;
   position: relative;
-  background-color: #3e8ee2;
+	background-color: #3b58fe;
 }
 .footer-container {
   display: flex;
@@ -1970,7 +1970,7 @@
 }
 .copy-right {
   text-align: center;
-  background-color: #186ec8;
+	background-color: #3b58fe;
   color: white;
   font-size: 14px;
   padding: 20px 0;
@@ -2278,7 +2278,7 @@
   width: 100%;
   height: 290px;
   position: relative;
-  background-color: #3e8ee2;
+	background-color: #3b58fe;
 }
 .footer-container {
   display: flex;
@@ -2317,7 +2317,7 @@
 }
 .copy-right {
   text-align: center;
-  background-color: #186ec8;
+	background-color: #3b58fe;
   color: white;
   font-size: 14px;
   padding: 20px 0;
@@ -2571,7 +2571,7 @@
     min-width: 330px;
     height: auto;
     position: relative;
-    background-color: #3e8ee2;
+    background-color: #3b58fe;
     /* padding: 20px; */
   }
   .footer-container {
@@ -2619,7 +2619,7 @@
   }
   .copy-right {
     text-align: center;
-    background-color: #186ec8;
+    background-color: #3b58fe;
     color: white;
     font-size: 14px;
     padding: 20px 0;
