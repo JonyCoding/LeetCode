@@ -31,49 +31,145 @@ block main
                 </div>
                     <div class="message-container">
                         <div class="message-list" ref="messageContainer">
-                            <div  class="message-cont" >
-                                <div class="message hello-container">
-                                    <h1>Hi， 你好</h1>
-                                    <p>我是你的专属AI伙伴，可以与你语音对话，点击个人中心立即开启</p>
-                                    <p>你可以试着问我： </p>
-                                    <div class="recommend-list">
-                                        <ul>
-                                            <li v-for="(item,index) in recommendList" :key="item.id+index"  @click="getRecommendAnswer(index,false)">
-                                                <p><span>“</span>{{item.message}}<span>”</span></p>
-                                                <a href="javascript:;" @click="getRecommendAnswer(index,true)">去试试</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <template  v-for="(item,index) in messageList">
-                                    <div :id="'message-'+item.id" class="chat-position-question" :key="item.id+index" v-if="item.type === 'question'">
-                                        <div class="chat-message question">
-                                            <p v-html="item.message"></p>
-                                        </div>
-        
-                                    </div>
-                                    <div class="chat-position-answer" v-else>
-                                        <div class="chat-message answer">
-                                            <div class="content-wrapper">
-                                                <i @click="changeStatus(item,'like')">
-                                                    <svg v-if="item.status !== 'like'" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
-                                                    <svg v-else t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
-                                                </i>
-                                                <i @click="changeStatus(item,'dislike')">
-                                                    <svg v-if="item.status !== 'dislike'" style="transform: rotate(-180deg);" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
-                                                    <svg v-else style="transform: rotate(-180deg);" t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
-                                                </i>
+                            <div class="tab-list">
+                                <el-tabs v-model="activeName" @tab-click="handleClick">
+                                    <el-tab-pane label="AI问答" name="first">  
+                                        <div  class="message-cont" >
+                                            <div class="message hello-container">
+                                                <h1>Hi， 你好</h1>
+                                                <p>我是你的专属AI伙伴，可以与你语音对话，点击个人中心立即开启</p>
+                                                <p>你可以试着问我： </p>
+                                                <div class="recommend-list">
+                                                    <ul>
+                                                        <li v-for="(item,index) in recommendList" :key="item.id+index"  @click="getRecommendAnswer(index,false)">
+                                                            <p><span>“</span>{{item.message}}<span>”</span></p>
+                                                            <a href="javascript:;" @click="getRecommendAnswer(index,true)">去试试</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                            <p v-html="item.message"></p>
-                                            <div v-if="item.source&&item.source.length > 0" class="source">
-                                                <span>参考：</span>
-                                                <ul>
-                                                    <li v-for="(item2,index2) in item.source"><span>{{index2+1}} </span><a target="_blank" :href="item2.url">{{item2.title}}</a></li>
-                                                </ul>
-                                            </div>
+                                            <template  v-for="(item,index) in messageList">
+                                                <div :id="'message-'+item.id" class="chat-position-question" :key="item.id+index" v-if="item.type === 'question'">
+                                                    <div class="chat-message question">
+                                                        <p v-html="item.message"></p>
+                                                    </div>
+                    
+                                                </div>
+                                                <div class="chat-position-answer" v-else>
+                                                    <div class="chat-message answer">
+                                                        <div class="content-wrapper">
+                                                            <i @click="changeStatus(item,'like')">
+                                                                <svg v-if="item.status !== 'like'" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
+                                                                <svg v-else t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
+                                                            </i>
+                                                            <i @click="changeStatus(item,'dislike')">
+                                                                <svg v-if="item.status !== 'dislike'" style="transform: rotate(-180deg);" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
+                                                                <svg v-else style="transform: rotate(-180deg);" t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
+                                                            </i>
+                                                        </div>
+                                                        <p v-html="item.message"></p>
+                                                        <div v-if="item.source&&item.source.length > 0" class="source">
+                                                            <span>参考：</span>
+                                                            <ul>
+                                                                <li v-for="(item2,index2) in item.source"><span>{{index2+1}} </span><a target="_blank" :href="item2.url">{{item2.title}}</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="bottom-wrapper" v-if="messageList.length === index+1 && !chatLoading">
+                                                        <div class="button-container">
+                                                            <i @click="changeStatus(item,'like')">
+                                                                <svg v-if="item.status !== 'like'" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
+                                                                <svg v-else t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
+                                                            </i>
+                                                            <i @click="changeStatus(item,'dislike')" class="dislike">
+                                                                <svg v-if="item.status !== 'dislike'" style="transform: rotate(-180deg);" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
+                                                                <svg v-else style="transform: rotate(-180deg);" t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
+                                                            </i>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </template>
                                         </div>
-                                    </div>
-                                </template>
+                                    </el-tab-pane>
+                                    <el-tab-pane label="专利检索" name="second">
+                                        <div class="patent-list">
+                                            <ul>
+                                                <li>
+                                                    <div class="icon-wrapper">
+                                                        <span>国</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h2>国画大师</h2>
+                                                        <i></i>
+                                                    </div>
+                                                    <div class="info">
+                                                        <p class="patent-number">CN210212031U</p>
+                                                        <p><span>相似关联度：</span>94.55%</p>
+                                                        <p><span>公开（公告）日：</span>2020-03-31</p>
+                                                        <p><span>标准化申请人：</span>[王登详]</p>
+                                                    </div>
+                                                    <div class="bottom">
+                                                        <a href="#">
+                                                            <h3>10人看过</h3>
+                                                            <i>
+                                                                <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(5.988022, 7.575341)" fill="#1F1F1F" fill-rule="nonzero"> <path id="形状结合" d="M24.404979,7.81597009e-14 L43.1949486,18.2186954 C43.9766061,18.976588 44.0025639,20.2099866 43.2829126,20.9997771 L43.1630887,21.1206604 L24.3731191,38.5554968 L21.6524036,35.6233121 L36.759,21.604 L0.00546200221,21.6545661 L-4.03588274e-12,17.6545699 L36.814,17.604 L21.6205438,2.87174526 L24.404979,7.81597009e-14 Z"></path> </g> </g> </svg>
+                                                            </i>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="icon-wrapper">
+                                                        <span>国</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h2>国画大师</h2>
+                                                        <i></i>
+                                                    </div>
+                                                    <div class="info">
+                                                        <p class="patent-number">CN210212031U</p>
+                                                        <p><span>相似关联度：</span>94.55%</p>
+                                                        <p><span>公开（公告）日：</span>2020-03-31</p>
+                                                        <p><span>标准化申请人：</span>[王登详]</p>
+                                                    </div>
+                                                    <div class="bottom">
+                                                        <a href="#">
+                                                            <h3>10人看过</h3>
+                                                            <i>
+                                                                <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(5.988022, 7.575341)" fill="#1F1F1F" fill-rule="nonzero"> <path id="形状结合" d="M24.404979,7.81597009e-14 L43.1949486,18.2186954 C43.9766061,18.976588 44.0025639,20.2099866 43.2829126,20.9997771 L43.1630887,21.1206604 L24.3731191,38.5554968 L21.6524036,35.6233121 L36.759,21.604 L0.00546200221,21.6545661 L-4.03588274e-12,17.6545699 L36.814,17.604 L21.6205438,2.87174526 L24.404979,7.81597009e-14 Z"></path> </g> </g> </svg>
+                                                            </i>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="icon-wrapper">
+                                                        <span>国</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h2>国画大师</h2>
+                                                        <i></i>
+                                                    </div>
+                                                    <div class="info">
+                                                        <p class="patent-number">CN210212031U</p>
+                                                        <p><span>相似关联度：</span>94.55%</p>
+                                                        <p><span>公开（公告）日：</span>2020-03-31</p>
+                                                        <p><span>标准化申请人：</span>[王登详]</p>
+                                                    </div>
+                                                    <div class="bottom">
+                                                        <a href="#">
+                                                            <h3>10人看过</h3>
+                                                            <i>
+                                                                <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(5.988022, 7.575341)" fill="#1F1F1F" fill-rule="nonzero"> <path id="形状结合" d="M24.404979,7.81597009e-14 L43.1949486,18.2186954 C43.9766061,18.976588 44.0025639,20.2099866 43.2829126,20.9997771 L43.1630887,21.1206604 L24.3731191,38.5554968 L21.6524036,35.6233121 L36.759,21.604 L0.00546200221,21.6545661 L-4.03588274e-12,17.6545699 L36.814,17.604 L21.6205438,2.87174526 L24.404979,7.81597009e-14 Z"></path> </g> </g> </svg>
+                                                            </i>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </el-tab-pane>
+                                    <el-tab-pane label="数据检索" name="third">数据检索</el-tab-pane>
+                                </el-tabs>
                             </div>
                         </div>
                         <div class="footer-input">

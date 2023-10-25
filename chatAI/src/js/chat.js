@@ -275,6 +275,102 @@ let vm = new Vue({
 						},
 					],
 				},
+				{
+					id: 1000017,
+					type: "question",
+					message: "现在商业化应用最广的储能技术是哪个",
+					status: "dislike",
+
+					isSelect: false,
+					time: "10-20 13:24",
+					source: [
+						{
+							id: 20001,
+							title: "知乎",
+							url: "www.zhihu.com",
+						},
+					],
+				},
+				{
+					id: 1000018,
+					type: "answer",
+					message: "抽水蓄能技术是目前技术最成熟、应用最广泛的储能技术，具有规模大、寿命长、运行费用低等优点，具备调峰、调频、黑启动等功能，但其建设周期较长，且需要适宜的地理资源条件。",
+					status: "dislike",
+
+					isSelect: false,
+					time: "10-20 13:24",
+					source: [
+						{
+							id: 20001,
+							title: "知乎",
+							url: "www.zhihu.com",
+						},
+					],
+				},
+				{
+					id: 1000019,
+					type: "question",
+					message: "现在商业化应用最广的储能技术是哪个",
+					status: "dislike",
+
+					isSelect: false,
+					time: "10-20 13:24",
+					source: [
+						{
+							id: 20001,
+							title: "知乎",
+							url: "www.zhihu.com",
+						},
+					],
+				},
+				{
+					id: 1000020,
+					type: "answer",
+					message: "抽水蓄能技术是目前技术最成熟、应用最广泛的储能技术，具有规模大、寿命长、运行费用低等优点，具备调峰、调频、黑启动等功能，但其建设周期较长，且需要适宜的地理资源条件。",
+					status: "dislike",
+
+					isSelect: false,
+					time: "10-20 13:24",
+					source: [
+						{
+							id: 20001,
+							title: "知乎",
+							url: "www.zhihu.com",
+						},
+					],
+				},
+				{
+					id: 1000021,
+					type: "question",
+					message: "现在商业化应用最广的储能技术是哪个",
+					status: "dislike",
+
+					isSelect: false,
+					time: "10-20 13:24",
+					source: [
+						{
+							id: 20001,
+							title: "知乎",
+							url: "www.zhihu.com",
+						},
+					],
+				},
+				{
+					id: 1000022,
+					type: "answer",
+					message: "抽水蓄能技术是目前技术最成熟、应用最广泛的储能技术，具有规模大、寿命长、运行费用低等优点，具备调峰、调频、黑启动等功能，但其建设周期较长，且需要适宜的地理资源条件。",
+					status: "dislike",
+
+					isSelect: false,
+					time: "10-20 13:24",
+					source: [
+						{
+							id: 20001,
+							title: "知乎",
+							url: "www.zhihu.com",
+						},
+					],
+				},
 			],
 			messageList: [],
 			recommendList: [
@@ -305,6 +401,7 @@ let vm = new Vue({
 			],
 			nextId: "",
 			loading: false,
+			activeName: "second",
 		};
 	},
 	mounted() {
@@ -429,6 +526,7 @@ let vm = new Vue({
 						}
 					} else {
 						vm.chatLoading = false;
+						vm.handleMessagesChange();
 						clearInterval(interval);
 					}
 				}, 50);
@@ -443,7 +541,7 @@ let vm = new Vue({
 			}
 		},
 		// 消息数组长度或者最后一条消息变化时自动滚动到最下面
-		handleMessagesChange(newVal, oldVal) {
+		handleMessagesChange() {
 			this.$nextTick(() => {
 				if (this.$refs.messageContainer) {
 					this.$refs.messageContainer.scrollTop = this.$refs.messageContainer.scrollHeight;
