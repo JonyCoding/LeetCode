@@ -5,6 +5,23 @@ let vm = new Vue({
 		return {
 			newMessage: "",
 			chatLoading: false,
+			showElement: false,
+			modelTabList: [
+				{
+					title: "AI问答",
+					key: "chat",
+				},
+				{
+					title: "专利查询",
+					key: "patent",
+				},
+				{
+					title: "数据查询",
+					key: "data",
+				},
+			],
+			modelTabKey: "chat",
+			modelTabIndex: 0,
 			historyMessage: [
 				{
 					id: 1000001,
@@ -371,10 +388,8 @@ let vm = new Vue({
 						},
 					],
 				},
-			],
-			patentMessage: [
 				{
-					id: 1000001,
+					id: 1000031,
 					type: "question",
 					message: "锂离子电池四大关键材料是什么",
 					status: "default",
@@ -389,7 +404,7 @@ let vm = new Vue({
 					],
 				},
 				{
-					id: 1000002,
+					id: 1000032,
 					type: "answer",
 					message: "为您找到十条最相关的记录，请查看：",
 					status: "default",
@@ -519,18 +534,6 @@ let vm = new Vue({
 					id: 3,
 					message: "新型压缩空气储能有哪些",
 				},
-				{
-					id: 4,
-					message: "全钒液流电池（钒电池）工作原理",
-				},
-				{
-					id: 5,
-					message: "我国新型储能发展目标",
-				},
-				{
-					id: 6,
-					message: "现在商业化应用最广的储能技术是哪个？",
-				},
 			],
 			tableData: [
 				{
@@ -614,10 +617,43 @@ let vm = new Vue({
 			if (this.$refs.messageContainer) {
 				vm.$refs.messageContainer.scrollTop = vm.$refs.messageContainer.scrollHeight;
 			}
-			vm.messageList = vm.patentMessage;
+			vm.messageList = vm.historyMessage;
 		});
 	},
 	methods: {
+		cleatMessageList() {
+			vm.historyMessage = [];
+			vm.messageList = vm.historyMessage;
+		},
+		getKeyIndex(key) {
+			return vm.modelTabList.findIndex((item) => item.key === key);
+		},
+		// 切换模型
+		changeModelTab(key) {
+			if (key) {
+				vm.modelTabKey = key;
+			}
+		},
+		// 换一换推荐
+		changeRecommend() {
+			vm.recommendList = [];
+			setTimeout(() => {
+				vm.recommendList = [
+					{
+						id: 1,
+						message: "我国新型储能发展目标?",
+					},
+					{
+						id: 2,
+						message: "现在商业化应用最广的储能技",
+					},
+					{
+						id: 3,
+						message: "锂离子电池四大关键材料是什么",
+					},
+				];
+			}, 1000);
+		},
 		// 根据id滚动到具体的位置
 		scrollToElement(elementId) {
 			const element = document.getElementById(elementId);
@@ -765,6 +801,17 @@ let vm = new Vue({
 	watch: {
 		messageListMessage: "handleMessagesChange",
 		messageListLength: "handleMessagesChange",
+		modelTabKey(newVal, oldVal) {
+			if (newVal !== oldVal) {
+				const keyFlag = vm.getKeyIndex(vm.modelTabKey);
+				if (keyFlag !== 2) {
+					vm.modelTabIndex = keyFlag;
+				} else {
+					vm.modelTabKey = oldVal;
+					vm.$message.error("该功能暂未开放，敬请期待！");
+				}
+			}
+		},
 	},
 });
 

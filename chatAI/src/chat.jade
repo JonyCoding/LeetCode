@@ -19,100 +19,122 @@ block main
                             <div class="title">对话列表</div>
                         </div>
                         <ul>
-                            <li v-for="(item,index) in historyMessage.filter(item=>item.type === 'question')" :key="item.id + index" :class="item.isSelect?'history-select':''" @click="changeHistory(item.id)">
-                                <span>{{item.message[0]}}</span>
-                                <div class="chatinfo">
-                                    <div class="title">{{item.message}}</div>
-                                    <div class="time">{{item.time}}</div>
-                                </div>
-                            </li>
+                            <template v-if="historyMessage.length>0">
+                                <li v-for="(item,index) in historyMessage.filter(item=>item.type === 'question')" :key="item.id + index" :class="item.isSelect?'history-select':''" @click="changeHistory(item.id)">
+                                    <span>{{item.message[0]}}</span>
+                                    <div class="chatinfo">
+                                        <div class="title">{{item.message}}</div>
+                                        <div class="time">{{item.time}}</div>
+                                    </div>
+                                </li>
+                            </template>
+                            <template v-else>
+                                <li class="history-select" @click="changeHistory(item.id)">
+                                    <span>默</span>
+                                    <div class="chatinfo">
+                                        <div class="title">默认对话</div>
+                                        <!-- <div class="time">{{item.time}}</div> -->
+                                    </div>
+                                </li>
+                            </template>
                         </ul>
                     </div>
                 </div>
                     <div class="message-container">
                         <div class="message-list" ref="messageContainer">
                             <div class="tab-list">
-                                <el-tabs v-model="activeName" @tab-click="handleClick">
-                                    <el-tab-pane label="AI问答" name="first">  
-                                        <div  class="message-cont" >
-                                            <div class="message hello-container">
-                                                <h1>Hi， 你好</h1>
-                                                <p>我是你的专属AI伙伴，可以与你语音对话，点击个人中心立即开启</p>
-                                                <p>你可以试着问我： </p>
-                                                <div class="recommend-list">
+                                <div :class="showElement?'hover-change-model change-model':'change-model'" @mouseover="showElement = true" @mouseout="showElement = false">
+                                        <p v-if="showElement">选择对话模型</p>
+                                        <p v-if="!showElement">当前模型：{{modelTabList[modelTabIndex].title}}</p>
+                                        <div class="model-tab">
+                                            <ul>
+                                                <li v-for="(item,index) in modelTabList" :class="modelTabKey === item.key?'model-select':''" @click="changeModelTab(item.key,index)"><span>{{item.title}}</span></li>
+                                            </ul>
+                                        </div>
+                                </div>
+                                <div  class="message-cont" >
+                                    <div class="message hello-container">
+                                        <h1>Hi， 你好</h1>
+                                        <p>我是你的专属AI伙伴，可以与你语音对话，点击个人中心立即开启</p>
+                                        <p>你可以试着问我： </p>
+                                        <div class="recommend-list">
+                                            <ul v-if="recommendList.length > 0">
+                                                <li v-for="(item,index) in recommendList" :key="item.id+index"  @click="getRecommendAnswer(index,false)">
+                                                    <p><span>“</span>{{item.message}}<span>”</span></p>
+                                                    <a href="javascript:;" @click="getRecommendAnswer(index,true)">去试试</a>
+                                                </li>
+                                            </ul>
+                                            <div class="jumping-dots" v-else>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                            </div>
+                                        </div>
+                                        <div class="changeRecomm" @click="changeRecommend">
+                                            <svg t="1698336998842" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6334" width="15" height="15"><path d="M935.005091 459.752727a34.909091 34.909091 0 1 1 49.361454 49.361455l-78.382545 78.382545a34.816 34.816 0 0 1-49.338182 0l-78.405818-78.382545a34.909091 34.909091 0 1 1 49.361455-49.361455l14.801454 14.824728C818.525091 311.738182 678.330182 186.181818 508.928 186.181818c-130.466909 0-250.484364 76.706909-305.710545 195.397818a34.932364 34.932364 0 0 1-63.301819-29.463272C206.522182 208.896 351.418182 116.363636 508.904727 116.363636c210.152727 0 383.534545 159.953455 404.992 364.474182l21.085091-21.085091z m-73.960727 189.021091a34.932364 34.932364 0 0 1 16.965818 46.382546C811.310545 838.353455 666.461091 930.909091 508.951273 930.909091c-210.106182 0-383.534545-159.953455-404.968728-364.497455l-21.108363 21.108364a34.909091 34.909091 0 1 1-49.384727-49.361455l78.42909-78.42909a34.909091 34.909091 0 0 1 49.338182 0l78.382546 78.42909a34.909091 34.909091 0 1 1-49.338182 49.338182l-14.824727-14.801454C199.354182 735.534545 339.549091 861.090909 508.951273 861.090909c130.490182 0 250.507636-76.706909 305.710545-195.397818a34.909091 34.909091 0 0 1 46.382546-16.919273z" fill="#797979" p-id="6335"></path></svg>
+                                            <span>换一个</span>
+                                        </div>
+                                    </div>
+                                    <template  v-for="(item,index) in messageList">
+                                        <div :id="'message-'+item.id" class="chat-position-question" :key="item.id+index" v-if="item.type === 'question'">
+                                            <div class="chat-message question">
+                                                <p v-html="item.message"></p>
+                                            </div>
+            
+                                        </div>
+                                        <div class="chat-position-answer" v-else>
+                                            <div class="chat-message answer">
+                                                <div class="content-wrapper">
+                                                    <i @click="changeStatus(item,'like')">
+                                                        <svg v-if="item.status !== 'like'" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
+                                                        <svg v-else t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
+                                                    </i>
+                                                    <i @click="changeStatus(item,'dislike')">
+                                                        <svg v-if="item.status !== 'dislike'" style="transform: rotate(-180deg);" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
+                                                        <svg v-else style="transform: rotate(-180deg);" t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
+                                                    </i>
+                                                </div>
+                                                <p v-html="item.message"></p>
+                                                <div class="table-container" v-if="item.table&&item.table.column">
+                                                    <div class="info"> 
+                                                        <el-table :data="item.table.data" :border="true" stripe>
+                                                            <el-table-column v-for="columnItem in item.table.column" header-align="center" align="center" :prop="columnItem.key" :label="columnItem.label" width="140">
+                                                            </el-table-column>
+                                                        </el-table>
+                                                    </div>
+                                                    <div class="bottom">
+                                                        <a href="#">
+                                                            <h3>查看更多</h3>
+                                                            <i>
+                                                                <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(5.988022, 7.575341)" fill="#1F1F1F" fill-rule="nonzero"> <path id="形状结合" d="M24.404979,7.81597009e-14 L43.1949486,18.2186954 C43.9766061,18.976588 44.0025639,20.2099866 43.2829126,20.9997771 L43.1630887,21.1206604 L24.3731191,38.5554968 L21.6524036,35.6233121 L36.759,21.604 L0.00546200221,21.6545661 L-4.03588274e-12,17.6545699 L36.814,17.604 L21.6205438,2.87174526 L24.404979,7.81597009e-14 Z"></path> </g> </g> </svg>
+                                                            </i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div v-if="item.source&&item.source.length > 0" class="source">
+                                                    <span>参考：</span>
                                                     <ul>
-                                                        <li v-for="(item,index) in recommendList" :key="item.id+index"  @click="getRecommendAnswer(index,false)">
-                                                            <p><span>“</span>{{item.message}}<span>”</span></p>
-                                                            <a href="javascript:;" @click="getRecommendAnswer(index,true)">去试试</a>
-                                                        </li>
+                                                        <li v-for="(item2,index2) in item.source"><span>{{index2+1}} </span><a target="_blank" :href="item2.url">{{item2.title}}</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <template  v-for="(item,index) in messageList">
-                                                <div :id="'message-'+item.id" class="chat-position-question" :key="item.id+index" v-if="item.type === 'question'">
-                                                    <div class="chat-message question">
-                                                        <p v-html="item.message"></p>
-                                                    </div>
-                    
-                                                </div>
-                                                <div class="chat-position-answer" v-else>
-                                                    <div class="chat-message answer">
-                                                        <div class="content-wrapper">
-                                                            <i @click="changeStatus(item,'like')">
-                                                                <svg v-if="item.status !== 'like'" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
-                                                                <svg v-else t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
-                                                            </i>
-                                                            <i @click="changeStatus(item,'dislike')">
-                                                                <svg v-if="item.status !== 'dislike'" style="transform: rotate(-180deg);" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
-                                                                <svg v-else style="transform: rotate(-180deg);" t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
-                                                            </i>
-                                                        </div>
-                                                        <p v-html="item.message"></p>
-                                                        <div class="table-container" v-if="item.table&&item.table.column">
-                                                            <div class="info"> 
-                                                                <el-table :data="item.table.data" border="true" stripe>
-                                                                    <el-table-column v-for="columnItem in item.table.column" header-align="center" align="center" :prop="columnItem.key" :label="columnItem.label" width="140">
-                                                                    </el-table-column>
-                                                                </el-table>
-                                                            </div>
-                                                            <div class="bottom">
-                                                                <a href="#">
-                                                                    <h3>查看更多</h3>
-                                                                    <i>
-                                                                        <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(5.988022, 7.575341)" fill="#1F1F1F" fill-rule="nonzero"> <path id="形状结合" d="M24.404979,7.81597009e-14 L43.1949486,18.2186954 C43.9766061,18.976588 44.0025639,20.2099866 43.2829126,20.9997771 L43.1630887,21.1206604 L24.3731191,38.5554968 L21.6524036,35.6233121 L36.759,21.604 L0.00546200221,21.6545661 L-4.03588274e-12,17.6545699 L36.814,17.604 L21.6205438,2.87174526 L24.404979,7.81597009e-14 Z"></path> </g> </g> </svg>
-                                                                    </i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div v-if="item.source&&item.source.length > 0" class="source">
-                                                            <span>参考：</span>
-                                                            <ul>
-                                                                <li v-for="(item2,index2) in item.source"><span>{{index2+1}} </span><a target="_blank" :href="item2.url">{{item2.title}}</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="bottom-wrapper" v-if="messageList.length === index+1 && !chatLoading">
-                                                        <div class="button-container">
-                                                            <i @click="changeStatus(item,'like')">
-                                                                <svg v-if="item.status !== 'like'" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
-                                                                <svg v-else t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
-                                                            </i>
-                                                            <i @click="changeStatus(item,'dislike')" class="dislike">
-                                                                <svg v-if="item.status !== 'dislike'" style="transform: rotate(-180deg);" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
-                                                                <svg v-else style="transform: rotate(-180deg);" t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
-                                                            </i>
+                                            
+                                            <div class="bottom-wrapper" v-if="messageList.length === index+1 && !chatLoading">
+                                                <div class="button-container">
+                                                    <i @click="changeStatus(item,'like')">
+                                                        <svg v-if="item.status !== 'like'" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
+                                                        <svg v-else t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
+                                                    </i>
+                                                    <i @click="changeStatus(item,'dislike')" class="dislike">
+                                                        <svg v-if="item.status !== 'dislike'" style="transform: rotate(-180deg);" t="1697869345831" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4047" width="20" height="20"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="4048"></path></svg>
+                                                        <svg v-else style="transform: rotate(-180deg);" t="1697870166640" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5947" width="16" height="16"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="5948" fill="#7359ff"></path></svg>
+                                                    </i>
 
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                            </template>
+                                            </div>
                                         </div>
-                                    </el-tab-pane>
-                                    <el-tab-pane label="专利检索" name="second">
-                                    </el-tab-pane>
-                                    <el-tab-pane label="数据检索" name="third">数据检索</el-tab-pane>
-                                </el-tabs>
+                                    </template>
+                                </div>
                             </div>
                         </div>
                         <div class="footer-input">
@@ -121,14 +143,29 @@ block main
                                 <div class="dot"></div>
                                 <div class="dot"></div>
                             </div>
-                            <div class="text-input-right" style="padding-left:27px;">
-                                <textarea :disabled="chatLoading" @keydown.enter="checkSend" v-model="newMessage" class="text-input-textarea_2VhUr" type="text" placeholder="你可以问我任何问题" maxlength="1000" spellcheck="false" autocapitalize="none" autocomplete="off" autocorrect="off"></textarea>
-                                <i @click="sendMessage">
-                                    <svg t="1697815535912" :class="chatLoading?'icon icon-loading':'icon'" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4119"
-                                        id="mx_n_1697815535913" width="20" height="20">
-                                        <path d="M0 0l1024 512L0 1024V0z m0 409.6v204.8l512-102.4L0 409.6z" p-id="4120" fill="#ffe"></path>
-                                    </svg>
-                                </i>
+                            <div :class="chatLoading?'model-redio-loading model-change-bottom':'model-change-bottom'">
+                                <div :class="'model-redio'">
+                                    <el-radio-group v-model="modelTabKey" @change="changeModelTab()">
+                                        <el-radio v-for="(item,index) in modelTabList" :label="item.key">{{item.title}}</el-radio>
+                                      </el-radio-group>
+                                </div>
+                            </div>
+                            <div :class="chatLoading?'input-container input-container-loading':'input-container'">
+                                <div class="clear-button" @click="cleatMessageList">
+                                    <i>
+                                        <svg t="1698329997321" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4184" width="25" height="25"><path d="M558.933333 938.666667c-119.466667-21.333333-226.133333-81.066667-307.2-166.4-85.333333-81.066667-145.066667-192-166.4-307.2l226.133334-98.133334 345.6 345.6-98.133334 226.133334z m-256-482.133334l-128 55.466667c12.8 72.533333 76.8 162.133333 132.266667 217.6 55.466667 55.466667 128 93.866667 204.8 110.933333l51.2-123.733333-260.266667-260.266667z m384 170.666667L396.8 337.066667c25.6-17.066667 55.466667-29.866667 85.333333-25.6 46.933333 0 89.6 17.066667 123.733334 42.666666L874.666667 85.333333c8.533333-8.533333 17.066667-12.8 29.866666-12.8 12.8 0 25.6 4.266667 29.866667 12.8 17.066667 17.066667 21.333333 42.666667 4.266667 64l-264.533334 264.533334c51.2 64 55.466667 149.333333 12.8 213.333333z" p-id="4185" fill="#ffffff"></path></svg>
+                                    </i>
+
+                                </div>
+                                <div class="text-input-right" style="padding-left:27px;">
+                                    <textarea :disabled="chatLoading" @keydown.enter="checkSend" v-model="newMessage" class="text-input-textarea_2VhUr" type="text" placeholder="你可以问我任何问题" maxlength="1000" spellcheck="false" autocapitalize="none" autocomplete="off" autocorrect="off"></textarea>
+                                    <i class="send-message" @click="sendMessage">
+                                        <svg t="1697815535912" :class="chatLoading?'icon icon-loading':'icon'" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4119"
+                                            id="mx_n_1697815535913" width="20" height="20">
+                                            <path d="M0 0l1024 512L0 1024V0z m0 409.6v204.8l512-102.4L0 409.6z" p-id="4120" fill="#ffe"></path>
+                                        </svg>
+                                    </i>
+                                </div>
                             </div>
                         </div>
                     </div>
