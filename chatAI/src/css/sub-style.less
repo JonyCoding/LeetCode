@@ -33,6 +33,24 @@
 #menu-action {
 	display: none;
 }
+
+.main {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+header,
+footer {
+	flex: 0 0 auto;
+}
+
+.body {
+	flex: 1 1 auto;
+	background-image: linear-gradient(to bottom right, #ddebfe, #f2f2fe);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 .head-menu {
 	width: 50%;
 }
@@ -217,14 +235,13 @@
 	}
 }
 .copy-right {
-    text-align: center;
-    background-color: #3b58fe;
-    color: white;
-    font-size: 14px;
-    padding: 20px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+	text-align: center;
+	background-color: #3b58fe;
+	color: white;
+	font-size: 14px;
+	padding: 20px 0;
+	width: 100%;
+	bottom: 0;
 }
 
 /* 工具-化学结束 */
@@ -676,7 +693,7 @@
 	}
 	.flex-container {
 		display: block;
-		background-color: #5240ff;
+		background-color: #ffffff;
 		width: 80%;
 		min-width: 330px;
 		height: auto;
@@ -952,7 +969,7 @@
 	.index-footer {
 		width: 100%;
 		min-width: 330px;
-		height: auto;
+		height: 50px;
 		position: relative;
 		background-color: #3b58fe;
 		/* padding: 20px; */
