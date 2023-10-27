@@ -9,7 +9,7 @@ block main
         <div class="body">
             <div class="chat-page">
               <div class="layout ai-container">
-                <div class="slide-bar">
+                <div :class="showMessageHistory?'slide-bar isOpen':'slide-bar'">
                     <div class="ai-logo">
                         <img src="./img/ai-logo2.png" alt="">
                     </div>
@@ -52,7 +52,11 @@ block main
                                             </ul>
                                         </div>
                                 </div>
-                                <div  class="message-cont" >
+                                <div class="message-cont" >
+                                    <div @click="openSlideBar" :class="showMessageHistory?'desk':''"></div>
+                                    <div class="open-message-button" @click="openSlideBar">
+                                        <svg t="1698409740584" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6481" width="20" height="20"><path d="M881.298746 520.342595 398.119373 0 175.112486 0 658.29178 520.342595 175.112507 1003.504117l223.006914 0L881.298746 520.342595z" p-id="6482"></path></svg>
+                                    </div>
                                     <div class="message hello-container">
                                         <h1>Hi， 你好</h1>
                                         <p>我是你的专属AI伙伴，可以与你语音对话，点击个人中心立即开启</p>

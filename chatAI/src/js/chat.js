@@ -6,6 +6,7 @@ let vm = new Vue({
 			newMessage: "",
 			chatLoading: false,
 			showElement: false,
+			showMessageHistory:false,
 			modelTabList: [
 				{
 					title: "AI问答",
@@ -621,6 +622,9 @@ let vm = new Vue({
 		});
 	},
 	methods: {
+		openSlideBar(){
+			vm.showMessageHistory = !vm.showMessageHistory
+		},
 		cleatMessageList() {
 			vm.historyMessage = [];
 			vm.messageList = vm.historyMessage;
