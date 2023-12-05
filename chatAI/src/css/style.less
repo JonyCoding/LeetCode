@@ -1263,6 +1263,12 @@ html {
 						}
 					}
 					.bottom {
+						.isPC{
+							display: flex;
+						}
+						.isMobile{
+							display: none;
+						}
 						a {
 							display: flex;
 							justify-content: end;
@@ -1718,6 +1724,12 @@ html {
 		white-space: normal;
 		-webkit-line-clamp: 1;
 	}
+	.chat-page .message-container .message-list .answer .table-container .bottom .isPC{
+		display: none;
+	}
+	.chat-page .message-container .message-list .answer .table-container .bottom .isMobile{
+		display: flex;
+	}
 }
 
 @media screen and (max-width: 654px) {
@@ -1747,5 +1759,8 @@ html {
 		background: #f1f1fc;
 		padding: 10px 20px;
 		border-radius: 10px;
+	}
+	.chat-page .message-container .footer-input .jumping-dots{
+		z-index: 101
 	}
 }

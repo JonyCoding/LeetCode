@@ -110,6 +110,166 @@ a {
 		}
 	}
 }
+.login-sciences-container {
+	background: url("../img/login-sciences-bg.png") center no-repeat;
+	background-size: cover;
+	// background-size: 100vw;
+	height: 100vh;
+	position: relative;
+	.login-view-container {
+		max-width: 1620px;
+		margin: 0px auto;
+		display: flex;
+		align-items: center;
+		position: absolute;
+		justify-content: space-between;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		.login-logo {
+			width: 40%;
+		}
+		.login-form {
+			border-radius: 20px;
+
+			box-shadow: 3px 2px 1px 0px rgba(255, 255, 255, 0.25) inset;
+			width: 472px;
+			background: rgba(255, 255, 255, 0.90);
+			box-shadow: 0px 17px 28px 4px rgba(21, 53, 92, 0.4);
+			border-radius: 20px;
+			padding: 54px 35px;
+			text-align: center;
+			.form-bg{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+				opacity: 0.1;
+				background: url("../img/login-sciences-from-bg.png"), lightgray 50% / cover no-repeat;
+
+			}
+			h3 {
+				color: #000;
+				margin-top: 31px;
+				font-family: PingFang SC;
+				font-size: 28px;
+				font-style: normal;
+				font-weight: 600;
+				line-height: normal;
+			}
+			p{
+				color: #B0AFAF;
+
+				font-family: PingFang SC;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: normal;
+				margin-top: 10px;
+			}
+			.select-login-type {
+				text-align: center;
+				margin-top: 50px;
+			}
+			.form-container {
+				z-index: 2;
+				position: relative;
+				.input-container {
+					.check-code{
+						width: 100%;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						.security-code-input{
+							width: 244px;
+						}
+						.check-code-img{
+							margin-right: 15px;
+							img{
+								width: 120px;
+								height: 50px;
+							}
+						}
+					}
+					.security-code{
+						width: 100%;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						.security-code-input{
+							width: 244px;
+						}
+						a{
+							color: #004EA2;
+
+							font-family: Hiragino Sans;
+							font-size: 16px;
+							font-style: normal;
+							font-weight: 500;
+							line-height: normal;
+							margin-right: 20px;
+						}
+					}
+					.el-input{
+						
+						margin-top: 22px;
+						.svg1{
+							position: absolute;
+							top: 8px;
+							left: 5px;
+						}
+						.svg2{
+							position: absolute;
+							top: 15px;
+							left: 10px;
+						}
+					}
+					.el-input__inner {
+						width: 100%;
+						height: 50px;
+						border-radius: 8px;
+						border-radius: 10px;
+						font-size: 16px;
+						border: 1px solid #E6E6E6;
+
+						background: #FFF;
+						padding-left: 40px;
+					}
+					.input-item {
+						width: 100%;
+						display: flex;
+						justify-content: start;
+						flex-wrap: wrap;
+						span {
+							color: #999;
+							margin-top: 13px;
+							font-family: Hiragino Sans;
+							font-size: 16px;
+							font-style: normal;
+							font-weight: 500;
+							line-height: normal;
+							margin-left: 10px;
+						}
+					}
+					.buttom-container {
+						margin-top: 30px;
+						.el-button {
+							width: 100%;
+							height: 56px;
+							border-radius: 10px;
+						}
+						.el-button + .el-button {
+							margin-left: 0;
+							margin-top: 24px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .register-container {
 	background: url("../img/login-bg.png") center no-repeat;
 	background-size: cover;
