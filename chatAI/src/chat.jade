@@ -154,6 +154,7 @@ block main
                                       </el-radio-group>
                                 </div>
                             </div>
+                            <el-button @click="sendMessage">dawdad</el-button>
                             <div :class="chatLoading?'input-container input-container-loading':'input-container'">
                                 <div class="clear-button" @click="cleatMessageList">
                                     <i>
@@ -162,7 +163,7 @@ block main
 
                                 </div>
                                 <div class="text-input-right" style="padding-left:27px;">
-                                    <textarea :disabled="chatLoading" @keydown.enter="checkSend" v-model="newMessage" class="text-input-textarea_2VhUr" type="text" placeholder="你可以问我任何问题" maxlength="1000" spellcheck="false" autocapitalize="none" autocomplete="off" autocorrect="off"></textarea>
+                                    <textarea ref="inputChat" :disabled="chatLoading" @keydown.enter="checkSend" v-model="newMessage" class="text-input-textarea_2VhUr" type="text" placeholder="你可以问我任何问题" maxlength="1000" spellcheck="false" autocapitalize="none" autocomplete="off" autocorrect="off"></textarea>
                                     <i class="send-message" @click="sendMessage">
                                         <svg t="1697815535912" :class="chatLoading?'icon icon-loading':'icon'" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4119"
                                             id="mx_n_1697815535913" width="20" height="20">

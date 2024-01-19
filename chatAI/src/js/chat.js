@@ -721,15 +721,24 @@ let vm = new Vue({
 		},
 		// 发送消息，消息为输入框的内容
 		sendMessage() {
+			vm.$refs.inputChat.focus()
+			return
 			vm.chatLoading = true;
 			vm.addQuestion(vm.newMessage);
 		},
 		// 确认是发送消息还是换行
 		checkSend(event) {
-			// 如果按下的是Enter键，而且没有按住Shift键，则发送消息
-			event.preventDefault();
-			if (event.key === "Enter" && !event.shiftKey) {
-				this.sendMessage();
+			// 如果按下的是Enter键
+			if (event.key === "Enter") {
+				if (event.shiftKey) {
+					// 按下Shift键的时候换行
+					// 让默认的行为继续执行，即换行
+					event.stopPropagation();
+				} else {
+					// 否则，发送消息
+					event.preventDefault();
+					this.sendMessage();
+				}
 			}
 		},
 		// 增加问题
@@ -757,6 +766,7 @@ let vm = new Vue({
 			}
 			vm.messageList.push(messageData);
 			vm.newMessage = "";
+			changeInputHeight()
 			if (type === "answer") {
 				let index = 0;
 
@@ -818,19 +828,22 @@ let vm = new Vue({
 		},
 	},
 });
+function changeInputHeight(){
+	const textarea = document.querySelector(".text-input-textarea_2VhUr");
+	let lineHeight = parseInt(window.getComputedStyle(textarea).lineHeight);
+	
+	// 初始化为一行的高度
+	textarea.style.height = lineHeight + "px";
+	
+	textarea.addEventListener("input", function () {
+		// 先重置高度以获取正确的 scrollHeight
+		this.style.height = lineHeight + "px";
+	
+		// 调整高度以匹配内容
+		if (this.scrollHeight > this.clientHeight) {
+			this.style.height = this.scrollHeight + "px";
+		}
+	});
 
-const textarea = document.querySelector(".text-input-textarea_2VhUr");
-let lineHeight = parseInt(window.getComputedStyle(textarea).lineHeight);
-
-// 初始化为一行的高度
-textarea.style.height = lineHeight + "px";
-
-textarea.addEventListener("input", function () {
-	// 先重置高度以获取正确的 scrollHeight
-	this.style.height = lineHeight + "px";
-
-	// 调整高度以匹配内容
-	if (this.scrollHeight > this.clientHeight) {
-		this.style.height = this.scrollHeight + "px";
-	}
-});
+}
+changeInputHeight()
