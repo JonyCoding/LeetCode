@@ -153,6 +153,111 @@ function addNode(node) {
 	// 更新数据
 	window.localStorage.setItem("flowchartData", JSON.stringify(flowchartData));
 }
+// [导出数据]按钮点击后处理函数
+function exportBtnHandle() {
+	// 获取所有的节点
+	const nodeStr = "." + nodeTypeList.join(",.");
+	var nodes = $(nodeStr);
+	var flowchartData = getFkowCharData(nodes);
+
+	// 获取所有的连线数据
+	var connections = instance.getConnections();
+	var connectionData = getConnectionData(connections);
+
+	// 暂时存在本地
+	console.log("flowchartData", flowchartData);
+	console.log("connectionData", connectionData);
+	window.localStorage.setItem("flowchartData", JSON.stringify(flowchartData));
+	window.localStorage.setItem("connectionData", JSON.stringify(connectionData));
+}
+
+// 获取所有的节点信息，需要传入所有的节点
+function getFkowCharData(nodes) {
+	let flowchartData = [];
+	nodes.each(function () {
+		const id = $(this).attr("id");
+		const top = parseInt($(this).css("top"));
+		const left = parseInt($(this).css("left"));
+		const label = $(this).text();
+		const type = $(this).attr("node-type");
+		const typeClass = $(this).attr("type-class");
+		const imageSrc = $(this).attr("image-src");
+		flowchartData.push({ id, top, left, label, type, typeClass, imageSrc });
+	});
+	return flowchartData;
+}
+
+// 获取所有的连线数据，需要传入连线信息
+function getConnectionData(connections) {
+	let connectionData = [];
+	connections.forEach(function (connection) {
+		const sourceId = connection.sourceId;
+		const targetId = connection.targetId;
+		const sourceAnchorType = connection.endpoints[0].anchor.type;
+		const targetAnchorType = connection.endpoints[1].anchor.type;
+
+		const sourceNodeType = $("#" + sourceId).attr("node-type");
+		const targetNodeType = $("#" + targetId).attr("node-type");
+
+		console.log(`Connection from ${sourceId} (${sourceNodeType}) to ${targetId} (${targetNodeType})`);
+
+		connectionData.push({
+			source: sourceId,
+			target: targetId,
+			sourceAnchor: sourceAnchorType,
+			targetAnchor: targetAnchorType,
+			sourceNodeType: sourceNodeType,
+			targetNodeType: targetNodeType,
+		});
+	});
+	return connectionData;
+}
+
+
+// 初始化数据的节点
+async function initNode(flowchartData) {
+	if (isReview) {
+		$("#container").addClass("review");
+	}
+
+	let canvas = $("#canvas");
+	let maxWidth = 0;
+	let maxHeight = 0;
+	let index = 0;
+
+	// 返回一个 Promise，以确保节点渲染完成
+	return new Promise((resolve) => {
+		const renderNode = () => {
+			// 渲染单个节点
+			if (index < flowchartData.length) {
+				const node = flowchartData[index];
+				addElement(node);
+				let $this = $(`#${node.id}`); // 当前子元素
+
+				// 计算位置
+				let width = $this.position().left + $this.outerWidth(); // 子元素最右侧距离 canvas 左边的距离
+				let height = $this.position().top + $this.outerHeight(); // 子元素最下方距离 canvas 顶部的距离
+
+				maxWidth = Math.max(maxWidth, width);
+				maxHeight = Math.max(maxHeight, height);
+
+				index++;
+				// 使用 requestAnimationFrame 进行下一次渲染
+				requestAnimationFrame(renderNode);
+			} else {
+				// 更新 canvas 大小
+				canvas.css({
+					width: maxWidth + 100 + "px",
+					height: maxHeight + 100 + "px",
+				});
+				resolve(); // 确保渲染完成后 resolve Promise
+			}
+		};
+
+		renderNode(); // 开始渲染节点
+	});
+}
+
 // 渲染节点
 async function addElement(newNode) {
 	// 判断是否有拖拽事件发生
@@ -230,18 +335,6 @@ async function addElement(newNode) {
 
 	// 渲染到页面
 	$("#canvas").append(newElement);
-	// const thisElement = $('#'+newNode.id)
-	// // 让所有节点高度必须为偶数
-	// let elementHeight = parseInt(thisElement.outerHeight()); // 获取当前高度
-	// console.log("elementHeight", elementHeight);
-	// var elementLineHeight = parseInt(thisElement.css("line-height"));
-	// if (elementHeight % 2 !== 0) {
-	// 	var currentTop = parseInt(thisElement.css("top")) - 1;
-	// 	// 如果高度为奇数
-	// 	console.log("currentTop", currentTop);
-	// 	// thisElement.css("line-height", elementLineHeight + 1 + "px"); // 将高度调整为偶数
-	// 	thisElement.css("top", currentTop + 'px');
-	// }
 	// 绑定双击事件，编辑模式双击为删除事件，预览模式为自定义事件
 	if (!isReview) {
 		// 绑定双击删除事件
@@ -268,89 +361,12 @@ async function addElement(newNode) {
 		// 使用 addEndpoints 函数添加端点
 		instance.addEndpoints(newNode.id, isReview ? [] : endpointOptions, paintStyle);
 	}
-}
-// [导出数据]按钮点击后处理函数
-function exportBtnHandle() {
-	// 获取所有的节点
-	const nodeStr = "." + nodeTypeList.join(",.");
-	var nodes = $(nodeStr);
-	var flowchartData = getFkowCharData(nodes);
+	var newElement = $("<div>") //... 剩余代码保持不变
 
-	// 获取所有的连线数据
-	var connections = instance.getConnections();
-	var connectionData = getConnectionData(connections);
-
-	// 暂时存在本地
-	console.log("flowchartData", flowchartData);
-	console.log("connectionData", connectionData);
-	window.localStorage.setItem("flowchartData", JSON.stringify(flowchartData));
-	window.localStorage.setItem("connectionData", JSON.stringify(connectionData));
+	return newElement;
 }
 
-// 获取所有的节点信息，需要传入所有的节点
-function getFkowCharData(nodes) {
-	let flowchartData = [];
-	nodes.each(function () {
-		const id = $(this).attr("id");
-		const top = parseInt($(this).css("top"));
-		const left = parseInt($(this).css("left"));
-		const label = $(this).text();
-		const type = $(this).attr("node-type");
-		const typeClass = $(this).attr("type-class");
-		const imageSrc = $(this).attr("image-src");
-		flowchartData.push({ id, top, left, label, type, typeClass, imageSrc });
-	});
-	return flowchartData;
-}
-
-// 获取所有的连线数据，需要传入连线信息
-function getConnectionData(connections) {
-	let connectionData = [];
-	var connections = instance.getConnections();
-	connections.forEach(function (connection) {
-		const sourceId = connection.sourceId;
-		const targetId = connection.targetId;
-		// 获取源和目标节点的锚点类型
-		const sourceAnchorType = connection.endpoints[0].anchor.type;
-		const targetAnchorType = connection.endpoints[1].anchor.type;
-		// 获取源和目标节点的类型信息
-		const sourceNodeType = $("#" + sourceId).attr("node-type");
-		const targetNodeType = $("#" + targetId).attr("node-type");
-
-		connectionData.push({
-			source: sourceId,
-			target: targetId,
-			sourceAnchor: sourceAnchorType,
-			targetAnchor: targetAnchorType,
-			sourceNodeType: sourceNodeType,
-			targetNodeType: targetNodeType,
-		});
-	});
-	return connectionData;
-}
-
-// 初始化数据的节点
-async function initNode(flowchartData) {
-	isReview ? $("#container").addClass("review") : "";
-	// 加载完毕后需要指定canvas宽高
-	let canvas = $("#canvas");
-	let maxWidth = 0;
-	let maxHeight = 0;
-	// 遍历创建节点
-	flowchartData.forEach(async function (node) {
-		addElement(node);
-		let $this = $(`#${node.id}`); // 当前子元素
-		let width = $this.position().left + $this.outerWidth(); // 子元素最右侧距离 canvas 左边的距离
-		let height = $this.position().top + $this.outerHeight(); // 子元素最下方距离 canvas 顶部的距离
-		maxWidth = Math.max(maxWidth, width);
-		maxHeight = Math.max(maxHeight, height);
-	});
-	canvas.css({
-		width: maxWidth + 100 + "px",
-		height: maxHeight + 100 + "px",
-	});
-}
-
+// 创建连线
 // 创建连线
 function createConnection(connectionData) {
 	// 根据起始节点和结束节点类型选择不同的样式
@@ -372,6 +388,8 @@ function createConnection(connectionData) {
 		});
 	});
 }
+
+
 
 // 双击删除连线事件
 function connectionDoubleClick() {
@@ -411,22 +429,31 @@ function handleDblDelNode(newElement) {
 }
 
 // 重新渲染
-function reload() {
+async function reload() {
+	// 重置 canvas 位置和缩放
 	canvas.style.top = "0px";
 	canvas.style.left = "0px";
 	canvas.style.transform = "scale(1)";
 	$("#canvas").empty(); // 删除所有节点
 	instance.deleteEveryEndpoint(); // 删除所有端点和连线
-	setTimeout(async () => {
-		// 根据数据创建节点
-		await initNode(flowchartData);
-		// 根据数据创建连线
+	let a = new Date()
+	console.log(a)
+	// 根据数据创建节点
+	await initNode(flowchartData);
+	let b = new Date()
+	console.log(b-a)
+
+	// 确保节点渲染完成后，再创建连接
+	setTimeout(() => {
 		createConnection(connectionData);
-		// 双击连线删除事件加载
-		connectionDoubleClick();
-		// 预览模式拖拽和缩放
-		initCanvasDraggable();
+
 	}, 1);
+
+	// 双击连线删除事件加载
+	connectionDoubleClick();
+
+	// 预览模式拖拽和缩放
+	initCanvasDraggable();
 }
 
 // 拖拽节点变化画布宽度
@@ -582,136 +609,31 @@ let originY = 0;
 let parentWidth = canvas.parentElement.getBoundingClientRect().width;
 
 let handleWheel = function (event) {
-    event.preventDefault();
-    let scaleAmount = 0.1;
+	event.preventDefault();
+	let scaleAmount = 0.1;
 
-    let rect = canvas.getBoundingClientRect();
-    let x = event.clientX - rect.left;  // 鼠标相对于画布的位置
-    let y = event.clientY - rect.top;
+	let rect = canvas.getBoundingClientRect();
+	let x = event.clientX - rect.left;  // 鼠标相对于画布的位置
+	let y = event.clientY - rect.top;
 
-    // 更新缩放级别
-    if (event.deltaY < 0) {
-        scale += scaleAmount;
-    } else {
-        scale -= scaleAmount;
-        scale = scale < 0.2 ? 0.2 : scale;
-    }
+	// 更新缩放级别
+	if (event.deltaY < 0) {
+		scale += scaleAmount;
+	} else {
+		scale -= scaleAmount;
+		scale = scale < 0.2 ? 0.2 : scale;
+	}
 
-    // 计算新的缩放原点，新的原点始终是鼠标的位置
-    if(scale > 0.2){
-        originX = x / rect.width;
-        originY = y / rect.height;
-    }
+	// 计算新的缩放原点，新的原点始终是鼠标的位置
+	if (scale > 0.2) {
+		originX = x / rect.width;
+		originY = y / rect.height;
+	}
 
-    // 设置缩放和新的位置
-    canvas.style.zoom = scale;
-    canvas.style.transformOrigin = `${originX * 100}% ${originY * 100}%`;
+	// 设置缩放和新的位置
+	canvas.style.zoom = scale;
+	canvas.style.transformOrigin = `${originX * 100}% ${originY * 100}%`;
 };
-
-// let mouseEvent = function (target) {
-// 	// 检查传入参数是否是一个 HTML DOM 元素
-// 	let isElement = (obj) => {
-// 	  return typeof HTMLElement === "object" ? obj instanceof HTMLElement : !!(obj && typeof obj === "object" && (obj.nodeType === 1 || obj.nodeType === 9) && typeof obj.nodeName === "string");
-// 	};
-  
-// 	let drawEl = target;
-// 	if (!isElement(target)) {
-// 	  drawEl = document.querySelector(target);
-// 	}
-  
-// 	const parent = drawEl.parentElement;
-// 	const parentRect = parent.getBoundingClientRect();
-  
-// 	let diffX = 0,
-// 		diffY = 0;
-  
-// 	let isDrawing = false;
-  
-// 	let mouseX = 0,
-// 		mouseY = 0;
-  
-// 	let translateX = 0,
-// 		translateY = 0;
-// 	let scale = 1;
-  
-// 	const diff = 0.01;
-  
-// 	let isUpward = false;
-  
-// 	// 刷新鼠标相对于目标元素缩放点的距离
-// 	let refreshMousePositionDiffValue = () => {
-// 	  diffX = mouseX - translateX;
-// 	  diffY = mouseY - translateY;
-// 	};
-  
-// 	// 刷新目标元素的样式
-// 	let refreshTargetStyle = () => {
-// 	  drawEl.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-// 	  parent.style.cursor = isDrawing ? "move" : "default";
-// 	};
-  
-// 	// 鼠标移动事件
-// 	parent.addEventListener("mousemove", (e) => {
-// 	  mouseX = e.x - parentRect.left;
-// 	  mouseY = e.y - parentRect.top;
-  
-// 	  if (isDrawing) {
-// 		translateX = mouseX - diffX;
-// 		translateY = mouseY - diffY;
-  
-// 		refreshTargetStyle();
-// 	  }
-// 	});
-  
-// 	parent.addEventListener("mousedown", () => {
-// 	  refreshMousePositionDiffValue();
-// 	  isDrawing = true;
-// 	  refreshTargetStyle();
-// 	});
-  
-// 	window.addEventListener("mouseup", () => {
-// 	  isDrawing = false;
-// 	  refreshTargetStyle();
-// 	});
-  
-// 	let mouseZoom = (e) => {
-// 	  e = e || window.event;
-  
-// 	  if (e.wheelDelta) {
-// 		isUpward = e.wheelDelta > 0;
-// 	  } else if (e.detail) {
-// 		isUpward = e.detail < 0;
-// 	  }
-  
-// 	  let oldWidth = scale * drawEl.clientWidth;
-// 	  let oldHeight = scale * drawEl.clientHeight;
-  
-// 	  if (isUpward) {
-// 		scale += diff;
-// 	  } else if (!isUpward && scale > 0.05) {
-// 		scale -= diff;
-// 	  }
-  
-// 	  let newWidth = scale * drawEl.clientWidth;
-// 	  let newHeight = scale * drawEl.clientHeight;
-  
-// 	  refreshMousePositionDiffValue();
-  
-// 	  translateX -= (newWidth - oldWidth) * (diffX / oldWidth);
-// 	  translateY -= (newHeight - oldHeight) * (diffY / oldHeight);
-  
-// 	  refreshTargetStyle();
-// 	};
-  
-// 	// 添加鼠标滚轮事件监听
-// 	parent.addEventListener("wheel", mouseZoom);
-  
-// 	// 添加 Firefox 的鼠标滚轮事件监听
-// 	if (document.addEventListener) {
-// 	  parent.addEventListener("DOMMouseScroll", mouseZoom, false);
-// 	}
-  
-	// 如果目标元素的高度超过父容器的高度，计算初始
 
 
 let handleMouseDown = function (event) {
@@ -723,8 +645,8 @@ let handleMouseDown = function (event) {
 let handleMouseMove = function (event) {
 	if (isDragging) {
 		// zoom会影响元素大小，所以需要根据比例调整移动距离
-		let dx = (event.clientX - previousMousePosition.x) * (1/scale);
-		let dy = (event.clientY - previousMousePosition.y) * (1/scale);
+		let dx = (event.clientX - previousMousePosition.x) * (1 / scale);
+		let dy = (event.clientY - previousMousePosition.y) * (1 / scale);
 
 		let currentTop = parseInt(canvas.style.top || "0");
 		let currentLeft = parseInt(canvas.style.left || "0");

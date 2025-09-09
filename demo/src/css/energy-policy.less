@@ -1,0 +1,324 @@
+// 能源政策模拟器页面样式
+.energy-policy {
+  .energy-policy-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background: #ffffff;
+    color: #303133;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    // 顶部工具栏
+    .tool-bar {
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      background: #f5f7fa;
+      border-bottom: 1px solid #e4e7ed;
+
+      .tool-bar-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        
+        .logo {
+          font-size: 14px;
+          font-weight: bold;
+          color: #409eff;
+        }
+        
+        .title {
+          font-size: 14px;
+          color: #303133;
+        }
+      }
+
+      .tool-bar-right {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+
+        .tool-item {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          cursor: pointer;
+          padding: 5px 8px;
+          border-radius: 3px;
+          font-size: 12px;
+          color: #606266;
+          
+          &:hover {
+            background: #ecf5ff;
+            color: #409eff;
+          }
+
+          i {
+            font-size: 14px;
+          }
+          
+          &.language-selector {
+            background: #e4e7ed;
+            padding: 4px 8px;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+
+    // 主要内容区域
+    .main-content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+
+      // 左侧面板
+      .left-panel {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        background: #ffffff;
+        border-right: 1px solid #e4e7ed;
+
+        .top-section,
+        .bottom-section {
+          h3 {
+            padding: 12px 15px;
+            margin: 0;
+            font-size: 13px;
+            background: #f5f7fa;
+            color: #303133;
+            font-weight: 500;
+            border-bottom: 1px solid #e4e7ed;
+          }
+
+          .section-content {
+            padding: 0;
+            overflow-y: auto;
+          }
+        }
+
+        .top-section {
+          flex: 0 0 auto;
+          border-bottom: 1px solid #e4e7ed;
+        }
+
+        .bottom-section {
+          flex: 1;
+          overflow-y: auto;
+        }
+        
+        // 场景列表样式
+        .scenario-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          
+          &.compact {
+            .scenario-item {
+              padding: 6px 15px;
+              margin-bottom: 2px;
+            }
+          }
+          
+          .scenario-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 12px;
+            border-bottom: 1px solid #f0f2f5;
+            color: #606266;
+            transition: all 0.3s ease;
+            
+            &:hover {
+              background: #f5f7fa;
+            }
+            
+            &.active {
+              background: #ecf5ff;
+              color: #409eff;
+            }
+            
+            i {
+              margin-right: 8px;
+              font-size: 12px;
+              color: #909399;
+            }
+            
+            span {
+              flex: 1;
+            }
+          }
+        }
+        
+        // 政策树型结构样式
+        .policy-tree {
+          .policy-category {
+            margin-bottom: 8px;
+            
+            .category-header {
+              padding: 8px 15px;
+              background: #f8f9fa;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              font-weight: 600;
+              color: #303133;
+              font-size: 12px;
+              transition: all 0.3s ease;
+              
+              &:hover {
+                background: #e9ecef;
+              }
+              
+              i {
+                margin-right: 8px;
+                transition: transform 0.3s ease;
+                
+                &.expanded {
+                  transform: rotate(90deg);
+                }
+              }
+              
+              input[type="checkbox"] {
+                margin-right: 8px;
+              }
+            }
+            
+            .policy-items {
+              margin-left: 16px;
+              margin-top: 4px;
+              
+              .policy-subcategory {
+                margin-bottom: 4px;
+                
+                .subcategory-header {
+                  padding: 6px 15px;
+                  background: #ffffff;
+                  border: 1px solid #e4e7ed;
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  font-weight: 500;
+                  color: #606266;
+                  font-size: 11px;
+                  transition: all 0.3s ease;
+                  
+                  &:hover {
+                    background: #f5f7fa;
+                  }
+                  
+                  i {
+                    margin-right: 6px;
+                    font-size: 10px;
+                    transition: transform 0.3s ease;
+                    
+                    &.expanded {
+                      transform: rotate(90deg);
+                    }
+                  }
+                  
+                  input[type="checkbox"] {
+                    margin-right: 6px;
+                  }
+                }
+                
+                .policy-subitems {
+                  margin-left: 20px;
+                  margin-top: 2px;
+                  
+                  .policy-item {
+                    padding: 4px 15px;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    font-size: 11px;
+                    color: #909399;
+                    transition: all 0.3s ease;
+                    
+                    &:hover {
+                      background: #f9f9f9;
+                      color: #409eff;
+                    }
+                    
+                    input[type="checkbox"] {
+                      margin-right: 8px;
+                    }
+                    
+                    span {
+                      flex: 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // 右侧面板
+      .right-panel {
+        flex: 1;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        
+        .chart-container {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          
+          .chart-header {
+            margin-bottom: 20px;
+            
+            h2 {
+              font-size: 16px;
+              color: #303133;
+              margin: 0;
+              font-weight: 500;
+            }
+            
+            .chart-controls {
+              margin-top: 10px;
+            }
+          }
+          
+          .chart-content {
+            flex: 1;
+            background: #f5f7fa;
+            border: 1px solid #e4e7ed;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            .chart-placeholder {
+              color: #909399;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Element UI 图标样式适配
+.el-icon {
+  font-family: element-icons !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
