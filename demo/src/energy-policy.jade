@@ -19,270 +19,62 @@ block main
                             <span class="title">ENERGY POLICY SIMULATOR 能源政策模拟器</span>
                         </div>
                         <div class="tool-bar-right">
-                            <div class="tool-item">
+                            <div class="tool-item" title="首页">
                                 <i class="el-icon-house"></i>
                             </div>
-                            <div class="tool-item">
+                            <div class="tool-item" title="刷新">
                                 <i class="el-icon-refresh"></i>
                             </div>
-                            <div class="tool-item">
+                            <div class="tool-item" title="新建文档">
                                 <i class="el-icon-document"></i>
                             </div>
-                            <div class="tool-item">
+                            <div class="tool-item" title="下载">
                                 <i class="el-icon-download"></i>
                             </div>
-                            <div class="tool-item">
+                            <div class="tool-item" title="上传">
                                 <i class="el-icon-upload2"></i>
                             </div>
-                            <div class="tool-item">
+                            <div class="tool-item" title="帮助">
                                 <i class="el-icon-question"></i>
-                            </div>
-                            <div class="tool-item language-selector">
-                                <span>中文</span>
-                            </div>
-                            <div class="tool-item">
-                                <span>帮助</span>
-                            </div>
-                            <div class="tool-item">
-                                <span>文件</span>
-                            </div>
-                            <div class="tool-item">
-                                <span>登录</span>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 主要内容区域 -->
                     <div class="main-content">
                         <!-- 左侧面板 -->
                         <div class="left-panel">
-                            <!-- 新情景 - 简化为4个固定项目 -->
+                            <!-- 新情景 - 数据驱动 -->
                             <div class="top-section">
-                                <h3>新情景</h3>
+                                <h3>
+                                    <i class="el-icon-folder-opened"></i>
+                                    新情景
+                                </h3>
                                 <div class="section-content">
                                     <ul class="scenario-list compact">
-                                        <li class="scenario-item active">
+                                        <li class="scenario-item" v-for="scenario in scenarios" :key="scenario.id" @click="selectScenario(scenario.id)" :class="{active: scenario.active}">
+                                            <input type="radio" name="scenario" :value="scenario.id" :checked="scenario.active">
                                             <i class="el-icon-document"></i>
-                                            <span>基准情景</span>
-                                        </li>
-                                        <li class="scenario-item">
-                                            <i class="el-icon-document"></i>
-                                            <span>低碳情景</span>
-                                        </li>
-                                        <li class="scenario-item">
-                                            <i class="el-icon-document"></i>
-                                            <span>高碳情景</span>
-                                        </li>
-                                        <li class="scenario-item">
-                                            <i class="el-icon-document"></i>
-                                            <span>自定义情景</span>
+                                            <span>{{ scenario.name }}</span>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            
-                            <!-- 政策设置 - 树型结构 -->
+
+                            <!-- 参数设置 - 数据驱动的树型结构 -->
                             <div class="bottom-section">
-                                <h3>政策设置</h3>
+                                <h3>
+                                    <i class="el-icon-setting"></i>
+                                    参数设置
+                                </h3>
                                 <div class="section-content">
-                                    <div class="policy-tree">
-                                        <div class="policy-category">
-                                            <div class="category-header expandable">
-                                                <i class="el-icon-arrow-right"></i>
-                                                <input type="checkbox">
-                                                <span>能源政策</span>
-                                            </div>
-                                            <div class="policy-items">
-                                                <div class="policy-subcategory">
-                                                    <div class="subcategory-header">
-                                                        <i class="el-icon-arrow-right"></i>
-                                                        <input type="checkbox">
-                                                        <span>碳定价机制</span>
-                                                    </div>
-                                                    <div class="policy-subitems">
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>碳税政策</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>碳交易系统</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>碳边境调节机制</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="policy-subcategory">
-                                                    <div class="subcategory-header">
-                                                        <i class="el-icon-arrow-right"></i>
-                                                        <input type="checkbox">
-                                                        <span>可再生能源政策</span>
-                                                    </div>
-                                                    <div class="policy-subitems">
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>可再生能源补贴</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>绿色电力证书</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>净计量政策</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="policy-category">
-                                            <div class="category-header expandable">
-                                                <i class="el-icon-arrow-right"></i>
-                                                <input type="checkbox">
-                                                <span>环境政策</span>
-                                            </div>
-                                            <div class="policy-items">
-                                                <div class="policy-subcategory">
-                                                    <div class="subcategory-header">
-                                                        <i class="el-icon-arrow-right"></i>
-                                                        <input type="checkbox">
-                                                        <span>排放控制</span>
-                                                    </div>
-                                                    <div class="policy-subitems">
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>排放标准</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>排放限额</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>零排放区域</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="policy-subcategory">
-                                                    <div class="subcategory-header">
-                                                        <i class="el-icon-arrow-right"></i>
-                                                        <input type="checkbox">
-                                                        <span>环保税收</span>
-                                                    </div>
-                                                    <div class="policy-subitems">
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>环境保护税</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>资源税</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="policy-category">
-                                            <div class="category-header expandable">
-                                                <i class="el-icon-arrow-right"></i>
-                                                <input type="checkbox">
-                                                <span>技术创新政策</span>
-                                            </div>
-                                            <div class="policy-items">
-                                                <div class="policy-subcategory">
-                                                    <div class="subcategory-header">
-                                                        <i class="el-icon-arrow-right"></i>
-                                                        <input type="checkbox">
-                                                        <span>研发支持</span>
-                                                    </div>
-                                                    <div class="policy-subitems">
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>研发税收优惠</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>创新基金</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>技术示范项目</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="policy-subcategory">
-                                                    <div class="subcategory-header">
-                                                        <i class="el-icon-arrow-right"></i>
-                                                        <input type="checkbox">
-                                                        <span>产业化支持</span>
-                                                    </div>
-                                                    <div class="policy-subitems">
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>首台套政策</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>政府采购优先</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="policy-category">
-                                            <div class="category-header expandable">
-                                                <i class="el-icon-arrow-right"></i>
-                                                <input type="checkbox">
-                                                <span>交通运输政策</span>
-                                            </div>
-                                            <div class="policy-items">
-                                                <div class="policy-subcategory">
-                                                    <div class="subcategory-header">
-                                                        <i class="el-icon-arrow-right"></i>
-                                                        <input type="checkbox">
-                                                        <span>新能源汽车</span>
-                                                    </div>
-                                                    <div class="policy-subitems">
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>购车补贴</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>免征购置税</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>充电基础设施建设</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="policy-subcategory">
-                                                    <div class="subcategory-header">
-                                                        <i class="el-icon-arrow-right"></i>
-                                                        <input type="checkbox">
-                                                        <span>传统燃油车限制</span>
-                                                    </div>
-                                                    <div class="policy-subitems">
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>燃油车禁售时间表</span>
-                                                        </div>
-                                                        <div class="policy-item">
-                                                            <input type="checkbox">
-                                                            <span>限行限号政策</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="parameter-tree">
+                                        <el-tree :data="treeData" :props="defaultProps" @node-click="handleNodeClick" :render-content="renderContent" :allow-drop="allowDrop" :draggable="false" node-key="id" :expand-on-click-node="true" :check-on-click-node="false"></el-tree>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- 右侧图表区域 -->
                         <div class="right-panel">
                             <div class="chart-container">
