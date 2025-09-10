@@ -22,18 +22,18 @@ let vm = new Vue({
                             id: 'renewable-ratio',
                             label: '可再生能源比例',
                             children: [
-                                { id: 'renewable-low', label: '低比例 (20%)', value: 20, selected: false, isLeaf: true },
-                                { id: 'renewable-medium', label: '中比例 (40%)', value: 40, selected: false, isLeaf: true },
-                                { id: 'renewable-high', label: '高比例 (60%)', value: 60, selected: true, isLeaf: true }
+                                { id: 'renewable-low', label: '低比例 (20%)', value: 20 },
+                                { id: 'renewable-medium', label: '中比例 (40%)', value: 40 },
+                                { id: 'renewable-high', label: '高比例 (60%)', value: 60 }
                             ]
                         },
                         {
                             id: 'coal-ratio',
                             label: '煤炭比例',
                             children: [
-                                { id: 'coal-low', label: '低比例 (10%)', value: 10, selected: false, isLeaf: true },
-                                { id: 'coal-medium', label: '中比例 (30%)', value: 30, selected: true, isLeaf: true },
-                                { id: 'coal-high', label: '高比例 (50%)', value: 50, selected: false, isLeaf: true }
+                                { id: 'coal-low', label: '低比例 (10%)', value: 10 },
+                                { id: 'coal-medium', label: '中比例 (30%)', value: 30 },
+                                { id: 'coal-high', label: '高比例 (50%)', value: 50 }
                             ]
                         }
                     ]
@@ -46,18 +46,18 @@ let vm = new Vue({
                             id: 'carbon-intensity',
                             label: '碳强度目标',
                             children: [
-                                { id: 'carbon-strict', label: '严格目标 (-65%)', value: -65, selected: false, isLeaf: true },
-                                { id: 'carbon-moderate', label: '适中目标 (-40%)', value: -40, selected: true, isLeaf: true },
-                                { id: 'carbon-loose', label: '宽松目标 (-20%)', value: -20, selected: false, isLeaf: true }
+                                { id: 'carbon-strict', label: '严格目标 (-65%)', value: -65 },
+                                { id: 'carbon-moderate', label: '适中目标 (-40%)', value: -40 },
+                                { id: 'carbon-loose', label: '宽松目标 (-20%)', value: -20 }
                             ]
                         },
                         {
                             id: 'emission-cap',
                             label: '排放上限',
                             children: [
-                                { id: 'emission-low', label: '低上限 (80亿吨)', value: 8000000000, selected: false, isLeaf: true },
-                                { id: 'emission-medium', label: '中上限 (100亿吨)', value: 10000000000, selected: true, isLeaf: true },
-                                { id: 'emission-high', label: '高上限 (120亿吨)', value: 12000000000, selected: false, isLeaf: true }
+                                { id: 'emission-low', label: '低上限 (80亿吨)', value: 8000000000 },
+                                { id: 'emission-medium', label: '中上限 (100亿吨)', value: 10000000000 },
+                                { id: 'emission-high', label: '高上限 (120亿吨)', value: 12000000000 }
                             ]
                         }
                     ]
@@ -70,18 +70,18 @@ let vm = new Vue({
                             id: 'gdp-growth',
                             label: 'GDP增长率',
                             children: [
-                                { id: 'gdp-low', label: '低增长 (4%)', },
-                                { id: 'gdp-medium', label: '中增长 (6%)', value: 6, selected: true, isLeaf: true },
-                                { id: 'gdp-high', label: '高增长 (8%)', value: 8, selected: false, isLeaf: true }
+                                { id: 'gdp-low', label: '低增长 (4%)', value: 4 },
+                                { id: 'gdp-medium', label: '中增长 (6%)', value: 6 },
+                                { id: 'gdp-high', label: '高增长 (8%)', value: 8 }
                             ]
                         },
                         {
                             id: 'energy-price',
                             label: '能源价格水平',
                             children: [
-                                { id: 'price-low', label: '低价格', value: 'low', selected: false, isLeaf: true },
-                                { id: 'price-medium', label: '中等价格', value: 'medium', selected: true, isLeaf: true },
-                                { id: 'price-high', label: '高价格', value: 'high', selected: false, isLeaf: true }
+                                { id: 'price-low', label: '低价格', value: 'low' },
+                                { id: 'price-medium', label: '中等价格', value: 'medium' },
+                                { id: 'price-high', label: '高价格', value: 'high' }
                             ]
                         }
                     ]
@@ -94,32 +94,25 @@ let vm = new Vue({
                             id: 'tech-progress',
                             label: '技术进步速度',
                             children: [
-                                { id: 'tech-slow', label: '缓慢进步', value: 'slow', selected: false, isLeaf: true },
-                                { id: 'tech-normal', label: '正常进步', value: 'normal', selected: true, isLeaf: true },
-                                { id: 'tech-fast', label: '快速进步', value: 'fast', selected: false, isLeaf: true }
+                                { id: 'tech-slow', label: '缓慢进步', value: 'slow' },
+                                { id: 'tech-normal', label: '正常进步', value: 'normal' },
+                                { id: 'tech-fast', label: '快速进步', value: 'fast' }
                             ]
                         },
                         {
                             id: 'innovation-level',
                             label: '创新投入水平',
-                            children: [
-                                { id: 'innovation-low', label: '低投入 (GDP的1%)', value: 1, selected: false, isLeaf: true },
-                                { id: 'innovation-medium', label: '中投入 (GDP的2%)', value: 2, selected: true, isLeaf: true },
-                                { id: 'innovation-high', label: '高投入 (GDP的3%)', value: 3, selected: false, isLeaf: true }
-                            ]
+                            value: 0
                         }
                     ]
                 }
             ],
-            // el-tree 配置
             defaultProps: {
                 children: 'children',
                 label: 'label'
             },
-            // 政策树展开状态
             expandedCategories: {},
             expandedSubcategories: {},
-            // 政策选择状态
             selectedPolicies: {}
         };
     },
@@ -129,7 +122,6 @@ let vm = new Vue({
     },
     methods: {
         selectScenario(scenarioId) {
-            // 重置所有情景状态
             this.scenarios.forEach(scenario => {
                 scenario.active = false;
             });
@@ -141,7 +133,6 @@ let vm = new Vue({
             console.log('选择情景:', scenarioId);
         },
         initParameterTree() {
-            // 为单选按钮添加事件监听
             const radioButtons = document.querySelectorAll('input[type="radio"][name="scenario"]');
             radioButtons.forEach(radio => {
                 radio.addEventListener('change', (e) => {
@@ -153,31 +144,44 @@ let vm = new Vue({
         },
         // el-tree 节点点击事件
         handleNodeClick(data, node, component) {
-            // 只有叶子节点才能被选择
-            if (data.isLeaf) {
-                // 找到同级的所有叶子节点，取消选中状态
-                const parent = node.parent;
-                if (parent && parent.data.children) {
-                    parent.data.children.forEach(child => {
-                        if (child.isLeaf) {
-                            child.selected = false;
-                        }
-                    });
-                }
+            console.log('节点点击事件触发:', data);
+
+            // 只有叶子节点才能被选择（没有children属性或children为空）
+            if (!data.children || data.children.length === 0) {
+                console.log('这是叶子节点，可以选择');
+
+                // 递归取消所有叶子节点的选中状态
+                this.clearAllSelections(this.treeData);
 
                 // 设置当前节点为选中状态
-                data.selected = true;
+                this.$set(data, 'selected', true);
+                this.$forceUpdate();
 
-                console.log('参数选择:', data.label, data.value);
+                console.log('=== 当前选择的参数 ===');
+                console.log('ID:', data.id);
+                console.log('标签:', data.label);
+                console.log('值:', data.value);
+                console.log('选中状态:', data.selected);
+                console.log('========================');
+            } else {
+                console.log('这是父节点，不能选择');
             }
         },
-        // 检查节点是否可选择（只有叶子节点可选择）
+        // 递归清除所有选中状态
+        clearAllSelections(nodes) {
+            nodes.forEach(node => {
+                if (!node.children || node.children.length === 0) {
+                    this.$set(node, 'selected', false);
+                } else if (node.children) {
+                    this.clearAllSelections(node.children);
+                }
+            });
+        },
         allowDrop(draggingNode, dropNode, type) {
             return false; // 禁用拖拽
         },
-        // 自定义节点内容渲染
         renderContent(h, { node, data, store }) {
-            if (data.isLeaf) {
+            if (!data.children || data.children.length === 0) {
                 return h('span', {
                     class: {
                         'tree-leaf-node': true,
